@@ -46,5 +46,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .idea
-node_modules/
+node_modules/**
 src/npm-debug.log
