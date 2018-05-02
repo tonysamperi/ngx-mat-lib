@@ -10,9 +10,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$xmat-primary: mat-palette($xmat-toid-blue);
-$xmat-accent: mat-palette($xmat-toid-blue-accent);
-$xmat-accent-light: mat-palette($xmat-toid-blue-accent-light);
+$xmat-primary: mat-palette($xmat-blue);
+$xmat-accent: mat-palette($xmat-blue-accent);
+$xmat-accent-light: mat-palette($xmat-blue-accent-light);
 $xmat-warn: mat-palette($mat-red);
 $xmat-theme: mat-light-theme($xmat-primary, $xmat-accent, $xmat-warn);
 

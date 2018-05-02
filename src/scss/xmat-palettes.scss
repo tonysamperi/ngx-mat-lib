@@ -1,7 +1,7 @@
 @import '~@angular/material/_theming';
 
 //Define custom color behaviour. Changed props are commented
-$xmat-toid-blue: (
+$xmat-blue: (
         50: #122a3f,
         100: #c5cae9, //progress-bar background is from here (why is that?!?!?!?)
         200: #1d4567,
@@ -34,7 +34,7 @@ $xmat-toid-blue: (
         )
 );
 
-$xmat-toid-blue-accent: (
+$xmat-blue-accent: (
         50 : #fbfdff,
         100 : #f4faff,
         200 : #edf7ff,
@@ -67,7 +67,7 @@ $xmat-toid-blue-accent: (
         )
 );
 
-$xmat-toid-blue-accent-light: (
+$xmat-blue-accent-light: (
         50 : #fdfeff,
         100 : #fbfdfe,
         200 : #f9fcfe,
