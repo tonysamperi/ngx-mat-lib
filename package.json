@@ -1,10 +1,9 @@
 {
   "name": "ngx-mat-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of useful components, services and features for Angular 4+",
   "main": "index.ts",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tonysamperi/ngx-mat-lib.git"
