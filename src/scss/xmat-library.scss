@@ -1,0 +1,139 @@
+@import "./ubi-vars";
+
+/* THEME OVERRIDES - START */
+mat-table {
+  &.debug {
+    mat-header-cell.mat-header-cell, mat-cell.mat-cell {
+      border: 1px solid map-get($ubi-colors, red);
+    }
+  }
+  // Bug fix for mat-checkbox inside a mat-cell
+  mat-cell.mat-cell, mat-header-cell.mat-header-cell {
+    overflow: visible;
+  }
+}
+
+mat-form-field {
+  &.autoWidth {
+    min-width: 140px;
+    > div.mat-input-wrapper {
+      > div.mat-input-flex {
+        > div.mat-input-infix {
+          width: auto;
+        }
+      }
+    }
+  }
+  &.invert {
+    .mat-form-field-underline {
+      background-color: rgba(map-get($ubi-colors, white), 0.75);
+    }
+    input.mat-input-element, label.mat-form-field-placeholder {
+      color: map-get($ubi-colors, white);
+    }
+    &.mat-form-field-disabled {
+      opacity: 0.2;
+      input.mat-input-element {
+        cursor: not-allowed;
+      }
+    }
+  }
+  .mat-form-field-prefix {
+    mat-icon.mat-icon {
+      &.matPrefixSmall {
+        font-size: 100%;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+/* THEME OVERRIDES - END */
+
+/* LAYOUT - START */
+.ubi-position-relative {
+  position: relative;
+}
+
+.ubi-block{
+  display: block;
+}
+
+.ubi-debug{
+  display: none !important;
+}
+
+.ubi-fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+
+}
+
+.ubi-fade.ubi-fade-in {
+  opacity: 1;
+}
+
+@each $direction in $text-directions {
+  .ubi-float-#{$direction} {
+    float: $direction;
+  }
+}
+
+.ubi-margin {
+  @each $direction in $directions {
+    &-#{$direction} {
+      $i: 0;
+      @while $i < 30 {
+        &-#{$i} {
+          margin-#{$direction}: #{$i}px;
+        }
+        $i: $i + 10;
+      }
+    }
+  }
+}
+
+@each $direction in $directions {
+  .ubi-padding-#{$direction} {
+    padding-#{$direction}: $ubi-pad * 2;
+  }
+}
+
+.ubi-padding-mat {
+  padding: $ubi-pad * 2;
+}
+
+/* LAYOUT - END */
+
+/* TEXT AND COLORS - START */
+@each $direction in $text-directions {
+  .ubi-text-#{$direction} {
+    text-align: $direction;
+  }
+}
+
+@each $color-name, $color-value in $ubi-colors {
+  .ubi-color-#{$color-name} {
+    color: $color-value;
+  }
+}
+
+@each $color-name, $color-value in $ubi-colors {
+  .ubi-bg-#{$color-name} {
+    background-color: $color-value;
+  }
+}
+/* TEXT AND COLORS - END */
+
+/* MISC */
+.ubi-cursor-pointer {
+  cursor: pointer;
+}
+
+.ubi-required:after {
+  content: "*";
+  margin-left: 5px;
+  color: red;
+}

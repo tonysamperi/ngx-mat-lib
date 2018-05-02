@@ -1,0 +1,8 @@
+<div class="ubi-snack-bar mat-simple-snackbar">
+    {{data.message}}
+        <button mat-button class="mat-simple-snackbar-action"
+                *ngIf="data.showAction"
+                (click)="closeSnack()">
+            {{data.actionText}}
+        </button>
+</div>

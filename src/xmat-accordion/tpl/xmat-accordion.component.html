@@ -1,0 +1,13 @@
+<mat-accordion>
+    <mat-expansion-panel [expanded]="isExpanded">
+        <mat-expansion-panel-header #ubiAccordionHeader>
+            <mat-panel-title>
+                <ng-content select=".ubi-accordion-title"></ng-content>
+            </mat-panel-title>
+            <mat-panel-description>
+                <ng-content select=".ubi-accordion-desc"></ng-content>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ng-content select=".ubi-accordion-content"></ng-content>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,39 @@
+{
+  "name": "ngx-mat-lib",
+  "version": "1.0.0",
+  "description": "A set of useful components, services and features for Angular 4+",
+  "main": "index.ts",
+  "scripts": {
+    "test": "ng test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonysamperi/ngx-mat-lib.git"
+  },
+  "keywords": [
+    "Angular",
+    "Angular5",
+    "Material",
+    "Material2",
+    "Library",
+    "Angular4",
+    "Angular4+"
+  ],
+  "author": "Tony Samperi <github@tonysamperi.it> (tonysamperi.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tonysamperi/ngx-mat-lib/issues"
+  },
+  "homepage": "https://github.com/tonysamperi/ngx-mat-lib#readme",
+  "dependencies": {
+    "@angular-devkit/core": "^0.4.8",
+    "@angular/cli": "^1.6.3",
+    "@angular/common": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/flex-layout": "^2.0.0-beta.10-4905443",
+    "@angular/forms": "^5.0.0",
+    "@angular/material": "^5.0.3",
+    "@types/lodash": "^4.14.96",
+    "lodash": "^4.17.10"
+  }
+}

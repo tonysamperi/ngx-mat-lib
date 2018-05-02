@@ -1,0 +1,13 @@
+@import "../../scss/ubi-vars";
+
+:host{
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(map-get($ubi-colors, black), 0.25);
+  &.ubi-overlay-light{
+    background-color: rgba(map-get($ubi-colors, white), 0.25);
+  }
+}

@@ -1,0 +1,33 @@
+// Import all the tools needed to customize the theme and extract parts of it
+@import "../../scss/ubi-vars";
+
+ul.ubi-states-legend {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  > li {
+    color: map-get($ubi-colors, grey);
+    line-height: 24px;
+    font-family: $ubi-font-family;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 10px 5px;
+    &:before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      display: block;
+      margin-right: 10px;
+      float: left;
+      border: 2px solid;
+    }
+
+    @each $state in $states {
+      &.#{$state}:before {
+        background-color: map-get($ubi-states, #{$state}-soft);
+        border-color: map-get($ubi-states, #{$state}-hard);
+      }
+    }
+  }
+}
