@@ -1,11 +1,11 @@
 // Import all the tools needed to customize the theme and extract parts of it
-@import "../../scss/ubi-vars";
+@import "../../scss/xmat-vars";
 // Define a mixin that accepts a theme and outputs the color styles for the component.
-:host(ubi-spinner) {
+:host(xmat-spinner) {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(map-get($ubi-colors, white), 0.5);
+  background-color: rgba(map-get($xmat-colors, white), 0.5);
   z-index: 5;
 }
 

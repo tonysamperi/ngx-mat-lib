@@ -1,10 +1,10 @@
-@import "./ubi-vars";
+@import "./xmat-vars";
 
 /* THEME OVERRIDES - START */
 mat-table {
   &.debug {
     mat-header-cell.mat-header-cell, mat-cell.mat-cell {
-      border: 1px solid map-get($ubi-colors, red);
+      border: 1px solid map-get($xmat-colors, red);
     }
   }
   // Bug fix for mat-checkbox inside a mat-cell
@@ -26,10 +26,10 @@ mat-form-field {
   }
   &.invert {
     .mat-form-field-underline {
-      background-color: rgba(map-get($ubi-colors, white), 0.75);
+      background-color: rgba(map-get($xmat-colors, white), 0.75);
     }
     input.mat-input-element, label.mat-form-field-placeholder {
-      color: map-get($ubi-colors, white);
+      color: map-get($xmat-colors, white);
     }
     &.mat-form-field-disabled {
       opacity: 0.2;
@@ -51,19 +51,19 @@ mat-form-field {
 /* THEME OVERRIDES - END */
 
 /* LAYOUT - START */
-.ubi-position-relative {
+.xmat-position-relative {
   position: relative;
 }
 
-.ubi-block{
+.xmat-block{
   display: block;
 }
 
-.ubi-debug{
+.xmat-debug{
   display: none !important;
 }
 
-.ubi-fade {
+.xmat-fade {
   opacity: 0;
   -webkit-transition: opacity .15s linear;
   -o-transition: opacity .15s linear;
@@ -71,17 +71,17 @@ mat-form-field {
 
 }
 
-.ubi-fade.ubi-fade-in {
+.xmat-fade.xmat-fade-in {
   opacity: 1;
 }
 
 @each $direction in $text-directions {
-  .ubi-float-#{$direction} {
+  .xmat-float-#{$direction} {
     float: $direction;
   }
 }
 
-.ubi-margin {
+.xmat-margin {
   @each $direction in $directions {
     &-#{$direction} {
       $i: 0;
@@ -96,43 +96,43 @@ mat-form-field {
 }
 
 @each $direction in $directions {
-  .ubi-padding-#{$direction} {
-    padding-#{$direction}: $ubi-pad * 2;
+  .xmat-padding-#{$direction} {
+    padding-#{$direction}: $xmat-pad * 2;
   }
 }
 
-.ubi-padding-mat {
-  padding: $ubi-pad * 2;
+.xmat-padding-mat {
+  padding: $xmat-pad * 2;
 }
 
 /* LAYOUT - END */
 
 /* TEXT AND COLORS - START */
 @each $direction in $text-directions {
-  .ubi-text-#{$direction} {
+  .xmat-text-#{$direction} {
     text-align: $direction;
   }
 }
 
-@each $color-name, $color-value in $ubi-colors {
-  .ubi-color-#{$color-name} {
+@each $color-name, $color-value in $xmat-colors {
+  .xmat-color-#{$color-name} {
     color: $color-value;
   }
 }
 
-@each $color-name, $color-value in $ubi-colors {
-  .ubi-bg-#{$color-name} {
+@each $color-name, $color-value in $xmat-colors {
+  .xmat-bg-#{$color-name} {
     background-color: $color-value;
   }
 }
 /* TEXT AND COLORS - END */
 
 /* MISC */
-.ubi-cursor-pointer {
+.xmat-cursor-pointer {
   cursor: pointer;
 }
 
-.ubi-required:after {
+.xmat-required:after {
   content: "*";
   margin-left: 5px;
   color: red;

@@ -4,7 +4,6 @@
   "description": "A set of useful components, services and features for Angular 4+",
   "main": "index.ts",
   "scripts": {
-    "test": "ng test"
   },
   "repository": {
     "type": "git",

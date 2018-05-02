@@ -1,14 +1,14 @@
 // Import all the tools needed to customize the theme and extract parts of it
-@import "../../scss/ubi-vars";
+@import "../../scss/xmat-vars";
 
-ul.ubi-states-legend {
+ul.xmat-states-legend {
   list-style-type: none;
   padding: 0;
   margin: 0;
   > li {
-    color: map-get($ubi-colors, grey);
+    color: map-get($xmat-colors, grey);
     line-height: 24px;
-    font-family: $ubi-font-family;
+    font-family: $xmat-font-family;
     font-size: 12px;
     font-weight: bold;
     display: inline-block;
@@ -25,8 +25,8 @@ ul.ubi-states-legend {
 
     @each $state in $states {
       &.#{$state}:before {
-        background-color: map-get($ubi-states, #{$state}-soft);
-        border-color: map-get($ubi-states, #{$state}-hard);
+        background-color: map-get($xmat-states, #{$state}-soft);
+        border-color: map-get($xmat-states, #{$state}-hard);
       }
     }
   }

@@ -1,9 +1,9 @@
-@import "../../scss/ubi-vars";
+@import "../../scss/xmat-vars";
 
 $chip-contrast-map: (
-        primary: mat-color($ubi-primary, 50),
-        accent: mat-color($ubi-primary),
-        warn: mat-color($ubi-primary)
+        primary: mat-color($xmat-primary, 50),
+        accent: mat-color($xmat-primary),
+        warn: mat-color($xmat-primary)
 );
 
 mat-chip-list.mat-chip-list-small mat-chip {
@@ -12,7 +12,7 @@ mat-chip-list.mat-chip-list-small mat-chip {
     padding: 2px 5px;
     @each $mat-key, $mat-color in $chip-contrast-map {
       &.mat-#{$mat-key} {
-        background-color: map-get($ubi-colors, $mat-key);
+        background-color: map-get($xmat-colors, $mat-key);
         border: 2px solid transparent;
       }
       &.mat-#{$mat-key}.mat-chip-selected {

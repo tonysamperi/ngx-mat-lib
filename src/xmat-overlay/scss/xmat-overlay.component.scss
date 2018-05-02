@@ -1,4 +1,4 @@
-@import "../../scss/ubi-vars";
+@import "../../scss/xmat-vars";
 
 :host{
   display: block;
@@ -6,8 +6,8 @@
   z-index: 1;
   width: 100%;
   height: 100%;
-  background-color: rgba(map-get($ubi-colors, black), 0.25);
-  &.ubi-overlay-light{
-    background-color: rgba(map-get($ubi-colors, white), 0.25);
+  background-color: rgba(map-get($xmat-colors, black), 0.25);
+  &.xmat-overlay-light{
+    background-color: rgba(map-get($xmat-colors, white), 0.25);
   }
 }

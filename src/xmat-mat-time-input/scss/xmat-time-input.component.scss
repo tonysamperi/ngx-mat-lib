@@ -1,25 +1,25 @@
-@import "../../scss/ubi-vars";
+@import "../../scss/xmat-vars";
 
 /**
-* THESE RULES SHOULD BE IN ubi-mat-time-input.component.scss
-*      :host-context(.mat-groupCtrl-field-type-ubi-mat-time-input.mat-groupCtrl-field-can-float) :host(.ubi-mat-time-input){
+* THESE RULES SHOULD BE IN xmat-mat-time-input.component.scss
+*      :host-context(.mat-groupCtrl-field-type-xmat-mat-time-input.mat-groupCtrl-field-can-float) :host(.xmat-mat-time-input){
 *          border: 1px solid blue;
 *      }
 *
-*      :host-context(.mat-groupCtrl-field-type-ubi-mat-time-input.mat-groupCtrl-field-should-float) :host(.ubi-mat-time-input){
+*      :host-context(.mat-groupCtrl-field-type-xmat-mat-time-input.mat-groupCtrl-field-should-float) :host(.xmat-mat-time-input){
 *          border: 1px solid green;
 *      }
 *
 **** SINCE THIS RULES DON'T WORK => COPY THE FOLLOWING RULES IN styles.scss
-* .mat-groupCtrl-field-type-ubi-mat-time-input {
+* .mat-groupCtrl-field-type-xmat-mat-time-input {
 *     &[floatlabel="never"],
 *     &.mat-groupCtrl-field-can-float {
-*         .ubi-mat-time-input + span > label {
+*         .xmat-mat-time-input + span > label {
 *             opacity: 0;
 *         }
 *     }
 *     &.mat-groupCtrl-field-should-float {
-*         .ubi-mat-time-input + span > label {
+*         .xmat-mat-time-input + span > label {
 *             opacity: 1;
 *         }
 *     }
@@ -28,9 +28,9 @@
 * ==> SEE THIS FOR UPDATES ==> https://github.com/webcomponents/webcomponentsjs/issues/146
 */
 
-$error-color: map-get($ubi-colors, red);
+$error-color: map-get($xmat-colors, red);
 
-div.ubi-mat-time {
+div.xmat-mat-time {
   div {
     display: flex;
   }
@@ -44,14 +44,14 @@ div.ubi-mat-time {
     text-align: center;
   }
 
-  span.ubi-mat-time-colon,
-  span.ubi-mat-time-required {
+  span.xmat-mat-time-colon,
+  span.xmat-mat-time-required {
     cursor: default;
   }
 
-  &.ubi-mat-time-invalid {
-    span.ubi-mat-time-colon,
-    span.ubi-mat-time-required {
+  &.xmat-mat-time-invalid {
+    span.xmat-mat-time-colon,
+    span.xmat-mat-time-required {
       color: $error-color;
     }
     //Firefox fix opacity

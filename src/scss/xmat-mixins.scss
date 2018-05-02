@@ -1,11 +1,11 @@
-@import "ubi-vars";
+@import "xmat-vars";
 
 //MIXINS
-@mixin ubi-states-classes($prefix: "", $suffix: "") {
+@mixin xmat-states-classes($prefix: "", $suffix: "") {
   @each $state in $states {
     #{$prefix}#{$state}#{$suffix} {
-      background-color: map-get($ubi-states, #{$state}-soft);
-      //border: 2px solid map-get($ubi-states, #{$state}-hard);
+      background-color: map-get($xmat-states, #{$state}-soft);
+      //border: 2px solid map-get($xmat-states, #{$state}-hard);
     }
   }
 
@@ -14,7 +14,7 @@
   }
 }
 
-@mixin ubi-transform($transforms) {
+@mixin xmat-transform($transforms) {
   -moz-transform: $transforms;
   -o-transform: $transforms;
   -ms-transform: $transforms;
@@ -22,14 +22,14 @@
   transform: $transforms;
 }
 
-@mixin ubi-transition($transition...) {
+@mixin xmat-transition($transition...) {
   -moz-transition: $transition;
   -o-transition: $transition;
   -webkit-transition: $transition;
   transition: $transition;
 }
 
-@mixin ubi-transform-origin($origin) {
+@mixin xmat-transform-origin($origin) {
   -moz-transform-origin: $origin;
   -o-transform-origin: $origin;
   -ms-transform-origin: $origin;
@@ -37,7 +37,7 @@
   transform-origin: $origin;
 }
 
-@mixin ubi-box-shadow($xOffset: 0, $yOffset: 0, $blur: 0, $spread: 0, $color: #444, $type:"") {
+@mixin xmat-box-shadow($xOffset: 0, $yOffset: 0, $blur: 0, $spread: 0, $color: #444, $type:"") {
   -webkit-box-shadow: $xOffset $yOffset $blur $spread $color #{$type};
   -moz-box-shadow: $xOffset $yOffset $blur $spread $color #{$type};
   box-shadow: $xOffset $yOffset $blur $spread $color #{$type};
