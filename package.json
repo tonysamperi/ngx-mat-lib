@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-lib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A set of useful components, services and features for Angular 4+",
   "main": "index.ts",
   "scripts": {},
