@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {XmatMock} from "./ubi-mock.model";
+import {XmatMock} from "./xmat-mock.model";
 
 @Injectable()
 export class XmatMocksListService {
