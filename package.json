@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-lib",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "A set of useful components, services and features for Angular 5+",
   "scripts": {
     "test-sass": "node-sass --include-path scss test/style.scss --importer=node_modules/node-sass-tilde-importer test/build/style.css",
