@@ -14,7 +14,7 @@ export class XmatActionBase {
 export const _XmatActionMixinBase = mixinColor(XmatActionBase);
 
 @Component({
-    selector: '[ubiAction]',
+    selector: '[xmatAction]',
     inputs: ["color"],
     host: {
         "[attr.disabled]": "disabled || null",

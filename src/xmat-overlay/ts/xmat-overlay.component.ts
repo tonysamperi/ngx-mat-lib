@@ -1,16 +1,16 @@
 import {Component, ElementRef, AfterViewInit, Input} from "@angular/core";
 
-export enum ubiOverlayStyles {
-    dark = "dark",
-    light = "light"
+export enum xmatOverlayStyles {
+    dark,
+    light
 }
 
 @Component({
-    selector: "ubi-overlay",
-    templateUrl: "../tpl/ubi-overlay.component.html",
-    styleUrls: ["../scss/ubi-overlay.component.scss"],
+    selector: "xmat-overlay",
+    templateUrl: "../tpl/xmat-overlay.component.html",
+    styleUrls: ["../scss/xmat-overlay.component.scss"],
     host: {
-        "[class.ubi-overlay-light]": "isLight"
+        "[class.xmat-overlay-light]": "isLight"
     }
 })
 
@@ -28,7 +28,7 @@ export class XmatOverlayComponent implements AfterViewInit {
     ngAfterViewInit() {
         const element = this.elementRef.nativeElement;
         element.parentNode.style.position = "relative";
-        this.isLight = this._overlayStyle === ubiOverlayStyles.light
+        this.isLight = this._overlayStyle === xmatOverlayStyles[xmatOverlayStyles.light]
     }
 
 }

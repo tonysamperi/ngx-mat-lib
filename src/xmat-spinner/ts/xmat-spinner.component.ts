@@ -4,9 +4,9 @@ import {MatSpinner} from "@angular/material";
 const defaultDiameter = 100;
 
 @Component({
-    selector: "ubi-spinner",
-    templateUrl: "../tpl/ubi-spinner.component.html",
-    styleUrls: ["../scss/ubi-spinner.component.scss"]
+    selector: "xmat-spinner",
+    templateUrl: "../tpl/xmat-spinner.component.html",
+    styleUrls: ["../scss/xmat-spinner.component.scss"]
 })
 export class XmatSpinnerComponent implements AfterViewInit {
 

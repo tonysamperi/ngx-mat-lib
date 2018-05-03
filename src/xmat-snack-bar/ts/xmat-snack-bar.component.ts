@@ -1,15 +1,15 @@
 import {Component, Inject} from "@angular/core";
 import {MatSnackBarRef, MAT_SNACK_BAR_DATA} from "@angular/material";
-import {XmatSnackBarData} from "./ubi-snack-bar-data.model";
+import {XmatSnackBarData} from "./xmat-snack-bar-data.model";
 
 const noop = () => {
 
 };
 
 @Component({
-    selector: "ubi-snack-bar",
-    templateUrl: "../tpl/ubi-snack-bar.component.html",
-    styleUrls: ["../scss/ubi-snack-bar.component.scss"]
+    selector: "xmat-snack-bar",
+    templateUrl: "../tpl/xmat-snack-bar.component.html",
+    styleUrls: ["../scss/xmat-snack-bar.component.scss"]
 })
 export class XmatSnackBarComponent {
 

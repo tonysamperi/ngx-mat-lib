@@ -2,9 +2,9 @@ import {Component, Input, OnInit} from "@angular/core";
 import {XmatStatesLabelsMap, XmatStates} from "./xmat-states.model";
 
 @Component({
-    selector: "ubi-states-legend",
-    templateUrl: "../tpl/ubi-states-legend.component.html",
-    styleUrls: ["../scss/ubi-states-legend.component.scss"]
+    selector: "xmat-states-legend",
+    templateUrl: "../tpl/xmat-states-legend.component.html",
+    styleUrls: ["../scss/xmat-states-legend.component.scss"]
 })
 
 export class XmatStatesLegendComponent implements OnInit {

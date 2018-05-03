@@ -3,20 +3,20 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class XmatSharedDataService {
 
-    private _ubiData: object = {};
+    private _xmatData: object = {};
 
     public set(key: string, data: any) {
-        this._ubiData[key] = data;
+        this._xmatData[key] = data;
     }
 
     public get(key: string): any {
-        return this._ubiData[key];
+        return this._xmatData[key];
     }
 
     public pop(key: string): any {
-        let result = this._ubiData[key];
+        let result = this._xmatData[key];
         // If the property can't be deleted echo an error.
-        if (!delete this._ubiData[key]) {
+        if (!delete this._xmatData[key]) {
             console.warn("COULDN'T DELETE PROP \"" + key + "\"FROM Shared");
         }
         return result;

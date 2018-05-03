@@ -2,8 +2,8 @@ import {Component, Inject} from "@angular/core";
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
-    selector: "ubi-confirm-dialog",
-    templateUrl: "../tpl/ubi-confirm-dialog.component.html",
+    selector: "xmat-confirm-dialog",
+    templateUrl: "../tpl/xmat-confirm-dialog.component.html",
 })
 export class XmatConfirmDialog {
 

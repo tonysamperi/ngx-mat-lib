@@ -1,4 +1,4 @@
-<div [ngClass]="dynamicClassList" class="ubi-mat-time" [formGroup]="parts">
+<div [ngClass]="dynamicClassList" class="xmat-mat-time" [formGroup]="parts">
     <input class="hours"
            formControlName="hours"
            (focus)="setTouched()"
@@ -8,7 +8,7 @@
            [placeholder]="placeholderH"
            maxlength="2"
            size="2">
-    <span class="ubi-mat-time-colon">&#58;</span>
+    <span class="xmat-mat-time-colon">&#58;</span>
     <input class="minutes"
            formControlName="minutes"
            (focus)="setTouched()"
@@ -18,7 +18,7 @@
            [placeholder]="placeholderM"
            maxlength="2"
            size="2">
-    <span class="ubi-mat-time-required"
+    <span class="xmat-mat-time-required"
           *ngIf="required">*</span>
 </div>
 

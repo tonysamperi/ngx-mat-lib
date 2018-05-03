@@ -1,3 +1,9 @@
+/**
+ * ngx-mat-lib
+ * @author Tony Samperi
+ * TODO: figure out why this error is shown now
+ * >>> Property shouldPlaceholderFloat from interface MatFormFieldControl is not implemented <<<
+ */
 import {NgModule} from '@angular/core';
 import {DateAdapter, MAT_DATE_FORMATS} from "@angular/material";
 import {

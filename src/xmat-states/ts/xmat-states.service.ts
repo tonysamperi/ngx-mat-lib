@@ -1,4 +1,4 @@
-import {StatesClassNames, XmatStates} from "./ubi-states.model";
+import {StatesClassNames, XmatStates} from "./xmat-states.model";
 import * as _ from "lodash";
 
 export class XmatStatesClassNamesService {

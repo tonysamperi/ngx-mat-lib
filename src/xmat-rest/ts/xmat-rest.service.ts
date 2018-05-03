@@ -20,8 +20,8 @@ import {XmatHttpConfig} from "../../xmat-services/xmat-http-config.model";
 @Injectable()
 export class XmatRestService {
 
-    protected _restBaseUrl = this._ubiConstants.restBaseUrl;
-    protected _ds = this._ubiConstants.ds;
+    protected _restBaseUrl = this._xmatConstants.restBaseUrl;
+    protected _ds = this._xmatConstants.ds;
 
     protected readonly httpMethods = {
         get: "GET",
@@ -55,12 +55,12 @@ export class XmatRestService {
     };
 
     constructor(protected _http: HttpClient,
-                protected _ubiConstants: XmatConstantsService) {
+                protected _xmatConstants: XmatConstantsService) {
 
     }
 
     protected _generateHttpConfig(method: string = this.httpMethods.get, url: string = "", queryable: boolean = false): XmatHttpConfig {
-        url = this._ubiConstants.removeTrailingSlash(url);
+        url = this._xmatConstants.removeTrailingSlash(url);
         return {
             method: method,
             url: url,
@@ -85,7 +85,7 @@ export class XmatRestService {
                  */
                 if (!!config.data) {
                     //Accepting 0, null, void 0 as empty params
-                    if (this._ubiConstants.isStrictlyObject(config.data)) {
+                    if (this._xmatConstants.isStrictlyObject(config.data)) {
                         for (let key in config.data) {
                             params = params.append(key, config.data[key]);
                         }

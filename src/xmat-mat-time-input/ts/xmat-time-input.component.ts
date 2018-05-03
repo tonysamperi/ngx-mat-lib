@@ -7,12 +7,12 @@ import {
 import {Component, ElementRef, forwardRef, Input, OnDestroy, AfterViewInit} from '@angular/core';
 import {MatFormFieldControl} from '@angular/material';
 import {Subject} from 'rxjs/Subject';
-import {XmatTime} from "./ubi-time.model";
+import {XmatTime} from "./xmat-time.model";
 
-const controlType = "ubi-mat-time-input";
+const controlType = "xmat-mat-time-input";
 const elementType = "input";
 const classNames = {
-    invalid: "ubi-mat-time-invalid"
+    invalid: "xmat-mat-time-invalid"
 };
 const hoursPattern = new RegExp("^([01][0-9]|2[0-3])");
 const minutesPattern = new RegExp("^([0-5][0-9])$");
@@ -20,14 +20,14 @@ const minutesPattern = new RegExp("^([0-5][0-9])$");
 @Component({
     selector: controlType,
     templateUrl: "../tpl/xmat-time-input.component.html",
-    styleUrls: ["../scss/ubi-mat-time-input.component.scss"],
+    styleUrls: ["../scss/xmat-mat-time-input.component.scss"],
     providers: [
         {provide: MatFormFieldControl, useExisting: XmatMatTimeInputComponent},
         {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => XmatMatTimeInputComponent), multi: true},
         {provide: NG_VALIDATORS, useExisting: forwardRef(() => XmatMatTimeInputComponent), multi: true}
     ],
     host: {
-        "[class.ubi-mat-time-input]": "true",
+        "[class.xmat-mat-time-input]": "true",
         "[class.floating]": "shouldLabelFloat",
         "[class.filled]": "isFilled",
         "[id]": "id",
@@ -156,10 +156,10 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
     }
 
     ngAfterViewInit(): void {
-        let ubiInput = this._elRef.nativeElement;
-        let container = ubiInput.closest("mat-form-field");
-        let isContainerValid = !!container && container.classList.contains("mat-form-field-type-ubi-mat-time-input");
-        if (isContainerValid && container.contains(ubiInput)) {
+        let xmatInput = this._elRef.nativeElement;
+        let container = xmatInput.closest("mat-form-field");
+        let isContainerValid = !!container && container.classList.contains("mat-form-field-type-xmat-mat-time-input");
+        if (isContainerValid && container.contains(xmatInput)) {
             this._$matFormField = container;
         }
     }

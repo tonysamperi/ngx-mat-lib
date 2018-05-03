@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {SpinnerState} from "./spinner-state.model";
 import {XmatGlobalSpinnerService} from "./xmat-global-spinner.service";
-import 'rxjs/add/operator/delay';
 
 @Component({
     selector: "xmat-global-spinner",
@@ -23,8 +22,7 @@ export class XmatGlobalSpinnerComponent implements OnInit {
         /**
          * The delay prevents the "ExpressionHasChangedAfterCheck" error
          */
-        this.subscription = this._spinnerService.spinnerState.
-        delay(0).subscribe((state: SpinnerState) => {
+        this.subscription = this._spinnerService.spinnerState.delay(0).subscribe((state: SpinnerState) => {
             this.showSpinner = state.show;
         });
     }

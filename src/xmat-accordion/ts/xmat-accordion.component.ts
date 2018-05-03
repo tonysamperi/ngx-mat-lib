@@ -4,16 +4,16 @@ const transcludedHeaderSelector = ".xmat-accordion-title";
 const transcludedContentSelector = ".xmat-accordion-content";
 
 @Component({
-    selector: "ubi-accordion",
-    templateUrl: "../tpl/ubi-accordion.component.html",
-    styleUrls: ["../scss/ubi-accordion.component.scss"]
+    selector: "xmat-accordion",
+    templateUrl: "../tpl/xmat-accordion.component.html",
+    styleUrls: ["../scss/xmat-accordion.component.scss"]
 })
 
 
 export class XmatAccordionComponent implements AfterViewInit {
 
     @Input("expanded") isExpanded: boolean;
-    @ViewChild('ubiAccordionHeader') private _ubiAccordionHeader;
+    @ViewChild('xmatAccordionHeader') private _xmatAccordionHeader;
 
     /**
      * ua = viewModel
@@ -25,7 +25,7 @@ export class XmatAccordionComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        let $header = this._ubiAccordionHeader._element.nativeElement;
+        let $header = this._xmatAccordionHeader._element.nativeElement;
         let $panel = $header.parentElement;
         if ($header.querySelectorAll(transcludedHeaderSelector).length === 0) {
             $panel.removeChild($header);

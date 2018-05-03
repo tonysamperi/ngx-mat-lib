@@ -11,23 +11,23 @@ import * as _ from "lodash";
 export class XmatMockService implements HttpInterceptor {
 
     private _defaultResponseBody = {data: void 0, message: "forbidden"};
-    private readonly _ds = this._ubiConstants.ds;
-    private _fileEndings = this._ubiConstants.mocksEndings;
-    private readonly _fileNameSpace = this._ubiConstants.fileNameSpace;
-    private readonly _mocksBaseUrl: string = this._ubiConstants.mocksBaseUrl;
-    private readonly _methodsKeys: object = this._ubiConstants.methodsKeys;
+    private readonly _ds = this._xmatConstants.ds;
+    private _fileEndings = this._xmatConstants.mocksEndings;
+    private readonly _fileNameSpace = this._xmatConstants.fileNameSpace;
+    private readonly _mocksBaseUrl: string = this._xmatConstants.mocksBaseUrl;
+    private readonly _methodsKeys: object = this._xmatConstants.methodsKeys;
 
     private _mocks: object = {};
 
-    private readonly _paramsPlaceholder = this._ubiConstants.paramsPlaceholder;
+    private readonly _paramsPlaceholder = this._xmatConstants.paramsPlaceholder;
     private readonly _qm: string = "?";
-    private readonly _queryUrlParam = this._ubiConstants.queryUrlParam;
-    private readonly _restBaseUrl: string = this._ubiConstants.restBaseUrl;
+    private readonly _queryUrlParam = this._xmatConstants.queryUrlParam;
+    private readonly _restBaseUrl: string = this._xmatConstants.restBaseUrl;
 
-    constructor(protected _ubiConstants: XmatConstantsService,
-                protected _ubiMocksList: XmatMocksListService) {
+    constructor(protected _xmatConstants: XmatConstantsService,
+                protected _xmatMocksList: XmatMocksListService) {
 
-        let mocks = this._ubiMocksList.get();
+        let mocks = this._xmatMocksList.get();
         _.each(mocks, (mock) => {
             this.pushMockHandler(mock);
         });
@@ -85,7 +85,7 @@ export class XmatMockService implements HttpInterceptor {
 
 
     private mockExists(mockKey) {
-        return !!this._mocks[mockKey] && typeof this._mocks[mockKey] === typeof this._ubiConstants.noop;
+        return !!this._mocks[mockKey] && typeof this._mocks[mockKey] === typeof this._xmatConstants.noop;
     }
 
     private generateJsonUrl(serviceUrl: string, methodKey: string, fileSuffix: string = "", status: string = this._fileEndings.ok) {
