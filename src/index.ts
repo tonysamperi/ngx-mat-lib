@@ -6,7 +6,10 @@ export {XmatMatMiniChipListModule} from "./xmat-mat-chip-list";
 export {XmatMenuModule} from "./xmat-menu";
 export {XmatOverlayModule} from "./xmat-overlay";
 export {XmatPipesModule} from "./xmat-pipes";
-export {XmatRestModule} from "./xmat-rest";
+export {
+    XmatRestModule,
+    XmatRestService
+} from "./xmat-rest";
 export {XmatSnackBarModule} from "./xmat-snack-bar";
 export {XmatSpinnerModule} from "./xmat-spinner";
 export {XmatStatesModule} from "./xmat-states";

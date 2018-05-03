@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {MatDialog, MatSnackBar, MatSnackBarRef} from "@angular/material";
+import {MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig, MatSnackBarRef} from "@angular/material";
 import {Observable} from "rxjs/Observable";
-import {XmatConfirmDialog} from "../xmat-dialog/ts/ubi-confirm-dialog.component";
-import {XmatConstantsService} from "./ubi-constants.service";
-import {XmatSnackBarComponent} from "../xmat-snack-bar/ts/ubi-snack-bar.component";
-import {XmatSnackBarData} from "../xmat-snack-bar/ts/ubi-snack-bar-data.model";
+import {XmatConfirmDialog} from "../xmat-dialog/ts/xmat-confirm-dialog.component";
+import {XmatConstantsService} from "./xmat-constants.service";
+import {XmatSnackBarComponent} from "../xmat-snack-bar/ts/xmat-snack-bar.component";
+import {XmatSnackBarData} from "../xmat-snack-bar/ts/xmat-snack-bar-data.model";
 
 const colorParams = {
     center: 128,
@@ -44,7 +44,7 @@ export class XmatFunctionsService {
 
     constructor(protected _dialog: MatDialog,
                 protected  _snackBar: MatSnackBar,
-                protected _ubiConstants: XmatConstantsService) {
+                protected _xmatConstants: XmatConstantsService) {
 
     }
 
@@ -141,12 +141,14 @@ export class XmatFunctionsService {
     }
 
     openConfirmDialog(data = {}, disableClose: boolean = false): Observable<boolean> {
-        //Open dialog and pass data plus options
-        let dialogRef = this._dialog.open(XmatConfirmDialog, {
-            width: this._ubiConstants.dialogOptions.defaultWidth,
+        let dialogConfig = new MatDialogConfig();
+        _.extend(dialogConfig, {
+            width: this._xmatConstants.dialogOptions.defaultWidth,
             data: data,
             disableClose: disableClose
         });
+        //Open dialog and pass data plus options
+        let dialogRef = this._dialog.open(XmatConfirmDialog, dialogConfig);
 
         return new Observable(observer => {
             //Catch result
@@ -158,11 +160,16 @@ export class XmatFunctionsService {
         });
     }
 
-    showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}) {
-        return this._snackBar.openFromComponent(XmatSnackBarComponent, {
+    showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}): MatSnackBarRef {
+
+        let snackBarConfig = new MatSnackBarConfig();
+
+        _.extend(snackBarConfig, {
             data: data,
             duration: 5000
         });
+
+        return this._snackBar.openFromComponent(XmatSnackBarComponent, snackBarConfig);
     }
 
 }

@@ -18,7 +18,7 @@ export const _XmatActionMixinBase = mixinColor(XmatActionBase);
     inputs: ["color"],
     host: {
         "[attr.disabled]": "disabled || null",
-        "class": "ubi-action",
+        "class": "xmat-action",
         "[class.mat-primary]": 'color == "primary"',
         "[class.mat-accent]": 'color == "accent"',
         "[class.mat-warn]": 'color == "warn"'

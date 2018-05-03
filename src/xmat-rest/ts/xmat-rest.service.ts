@@ -2,8 +2,8 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
-import {XmatConstantsService} from "../../xmat-services/ubi-constants.service";
-import {XmatHttpConfig} from "../../xmat-services/ubi-http-config.model";
+import {XmatConstantsService} from "../../xmat-services/xmat-constants.service";
+import {XmatHttpConfig} from "../../xmat-services/xmat-http-config.model";
 
 /**
  * UBI REST BY TONY SAMPERI
@@ -20,9 +20,6 @@ import {XmatHttpConfig} from "../../xmat-services/ubi-http-config.model";
 @Injectable()
 export class XmatRestService {
 
-    /**
-     * TODO: Update Gitlab Wiki REST MAP
-     */
     protected _restBaseUrl = this._ubiConstants.restBaseUrl;
     protected _ds = this._ubiConstants.ds;
 
