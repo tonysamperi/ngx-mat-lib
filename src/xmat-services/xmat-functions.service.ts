@@ -5,6 +5,7 @@ import {XmatConfirmDialog} from "../xmat-dialog/ts/xmat-confirm-dialog.component
 import {XmatConstantsService} from "./xmat-constants.service";
 import {XmatSnackBarComponent} from "../xmat-snack-bar/ts/xmat-snack-bar.component";
 import {XmatSnackBarData} from "../xmat-snack-bar/ts/xmat-snack-bar-data.model";
+import * as _ from "lodash";
 
 const colorParams = {
     center: 128,
@@ -160,7 +161,7 @@ export class XmatFunctionsService {
         });
     }
 
-    showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}): MatSnackBarRef {
+    showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}): MatSnackBarRef<XmatSnackBarComponent> {
 
         let snackBarConfig = new MatSnackBarConfig();
 
