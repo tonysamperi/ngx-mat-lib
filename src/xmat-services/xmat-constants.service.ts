@@ -98,7 +98,8 @@ export class XmatConstantsService {
 
     public readonly showMenu: boolean = true;
 
-    constructor() {
+    constructor(restBaseUrl: string = "") {
+        this.restBaseUrl = restBaseUrl;
     }
 
     /**

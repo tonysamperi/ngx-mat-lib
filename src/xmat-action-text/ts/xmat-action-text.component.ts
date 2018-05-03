@@ -7,11 +7,11 @@ const DEFAULT_COLOR = "primary";
 
 // Boilerplate for applying mixins to MatToolbar.
 /** @docs-private */
-export class XmatActionBase {
+export class XmatActionTextBase {
     constructor(public _elementRef: ElementRef) {
     }
 }
-export const _XmatActionMixinBase = mixinColor(XmatActionBase);
+export const _XmatActionMixinBase = mixinColor(XmatActionTextBase);
 
 @Component({
     selector: '[xmatAction]',
@@ -29,7 +29,7 @@ export const _XmatActionMixinBase = mixinColor(XmatActionBase);
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class XmatActionComponent extends _XmatActionMixinBase implements CanColor, CanDisable {
+export class XmatActionTextComponent extends _XmatActionMixinBase implements CanColor, CanDisable {
 
     color: ThemePalette;
     disabled: boolean;
