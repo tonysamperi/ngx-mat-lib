@@ -28,3 +28,9 @@ export {
     XmatDelayedHttpParams,
     XmatSelectOptions
 } from "./xmat-models"
+
+export {
+    XmatMockService,
+    XmatMocksListService,
+    XmatMock
+} from "./xmat-mock"
