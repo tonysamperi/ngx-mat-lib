@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {SpinnerState} from "./spinner-state.model";
 import {XmatGlobalSpinnerService} from "./xmat-global-spinner.service";
+import 'rxjs/add/operator/delay';
 
 @Component({
     selector: "xmat-global-spinner",

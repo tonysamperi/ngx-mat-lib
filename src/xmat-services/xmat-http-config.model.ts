@@ -4,7 +4,7 @@ import {XmatDelayedHttpParams} from "../xmat-models/xmat-delayed-http-params.mod
 export interface XmatHttpConfig {
     method: string,
     url: string,
-    data: object,
+    data?: object,
     queryable: boolean,
     params?: HttpParams | XmatDelayedHttpParams | any
 }

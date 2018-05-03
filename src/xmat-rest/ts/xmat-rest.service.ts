@@ -75,7 +75,7 @@ export class XmatRestService {
         }
         if (!config.url) {
             console.error("Error: [$http:badconfig]", config);
-            return void 0;
+            return new Observable();
         }
         switch (config.method) {
             case this.httpMethods.get:
@@ -104,7 +104,7 @@ export class XmatRestService {
 
             default:
                 console.error("Error: [XmatRest:badmethod]", this.$http.arguments);
-                return void 0;
+                return new Observable();
         }
     };
 }

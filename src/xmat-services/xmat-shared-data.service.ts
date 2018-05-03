@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class XmatSharedDataService {
 
-    private _xmatData: object = {};
+    private _xmatData: {[key: string]: any} = {};
 
     public set(key: string, data: any) {
         this._xmatData[key] = data;

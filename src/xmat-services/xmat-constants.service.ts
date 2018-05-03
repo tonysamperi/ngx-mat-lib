@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {MethodsMap} from "../xmat-rest/ts/methods-map.model";
 
-
-//Consts variables
+//Const variables
 export const labels = {
     accept: "Ok",
     cancel: "Annulla",
@@ -99,8 +98,7 @@ export class XmatConstantsService {
 
     public readonly showMenu: boolean = true;
 
-    constructor(restBaseUrl: string) {
-        this.restBaseUrl = restBaseUrl;
+    constructor() {
     }
 
     /**

@@ -59,5 +59,3 @@ import {
 })
 export class XmatLibraryModule {
 }
-
-export * from "./src";

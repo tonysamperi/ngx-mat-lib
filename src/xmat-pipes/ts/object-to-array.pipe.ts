@@ -2,10 +2,15 @@ import {Pipe, PipeTransform} from "@angular/core";
 
 import * as _ from "lodash";
 
+interface ArrayItemToObject {
+    key: string;
+    value: any;
+}
+
 @Pipe({name: 'objectToArray'})
 export class ObjectToArray implements PipeTransform {
 
-    transform(object: any, limitTo: number = -1): any[] {
+    transform(object: { [param: string]: any }, limitTo: number = -1): ArrayItemToObject[] {
         if (!object || object !== Object(object) || Array.isArray(object)) {
             return void 0;
         }

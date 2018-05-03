@@ -17,10 +17,11 @@ const classNames = {
 const hoursPattern = new RegExp("^([01][0-9]|2[0-3])");
 const minutesPattern = new RegExp("^([0-5][0-9])$");
 
+//noinspection JSAnnotator
 @Component({
     selector: controlType,
     templateUrl: "../tpl/xmat-time-input.component.html",
-    styleUrls: ["../scss/xmat-mat-time-input.component.scss"],
+    styleUrls: ["../scss/xmat-time-input.component.scss"],
     providers: [
         {provide: MatFormFieldControl, useExisting: XmatMatTimeInputComponent},
         {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => XmatMatTimeInputComponent), multi: true},
