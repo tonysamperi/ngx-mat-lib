@@ -23,3 +23,8 @@ export {
     MAT_DATE_CUSTOM_FORMATS,
     XmatMatDateLocale
 } from "./xmat-services/";
+
+export {
+    XmatDelayedHttpParams,
+    XmatSelectOptions
+} from "./xmat-models"
