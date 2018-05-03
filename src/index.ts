@@ -1,7 +1,7 @@
 export {XmatAccordionModule} from "./xmat-accordion";
 export {XmatActionModule} from "./xmat-action-text";
 export {XmatDialogModule} from "./xmat-dialog";
-export {XmatGlobalSpinnerModule} from "./xmat-global-spinner";
+export {XmatGlobalSpinnerModule, XmatGlobalSpinnerService} from "./xmat-global-spinner";
 export {XmatMatMiniChipListModule} from "./xmat-mat-chip-list";
 export {XmatMenuModule} from "./xmat-menu";
 export {XmatOverlayModule} from "./xmat-overlay";

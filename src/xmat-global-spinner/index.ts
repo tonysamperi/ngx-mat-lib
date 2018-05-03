@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {MatProgressSpinnerModule} from "@angular/material";
 import {XmatGlobalSpinnerComponent} from "./ts/xmat-global-spinner.component";
 import {XmatGlobalSpinnerService} from "./ts/xmat-global-spinner.service";
+
 @NgModule({
     declarations: [
         XmatGlobalSpinnerComponent
@@ -20,3 +21,5 @@ import {XmatGlobalSpinnerService} from "./ts/xmat-global-spinner.service";
 })
 export class XmatGlobalSpinnerModule {
 }
+
+export {XmatGlobalSpinnerService} from "./ts/xmat-global-spinner.service";
