@@ -28,6 +28,35 @@
 * ==> SEE THIS FOR UPDATES ==> https://github.com/webcomponents/webcomponentsjs/issues/146
 */
 
+/**
+*
+* THESE RULES SHOULD BE IN ubi-mat-time-input.component.scss
+*  :host-context(.mat-form-field-type-ubi-mat-time-input.mat-form-field-can-float) :host(.ubi-mat-time-input){
+*      border: 1px solid blue;
+*  }
+*
+*   :host-context(.mat-form-field-type-ubi-mat-time-input.mat-form-field-should-float) :host(.ubi-mat-time-input){
+*      border: 1px solid green;
+*   }
+*
+*/
+.mat-form-field-type-xmat-mat-time-input {
+  &[floatlabel="never"],
+  &.mat-form-field-can-float {
+    .xmat-time-input + span > label {
+      opacity: 0;
+    }
+  }
+  &.mat-form-field-should-float {
+
+    .xmat-time-input + span > label {
+      opacity: 1;
+    }
+
+  }
+}
+
+
 $error-color: map-get($xmat-colors, red);
 
 div.xmat-mat-time {

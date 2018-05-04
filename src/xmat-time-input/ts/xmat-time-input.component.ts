@@ -4,12 +4,12 @@ import {
     FormBuilder, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors,
     Validators
 } from "@angular/forms";
-import {Component, ElementRef, forwardRef, Input, OnDestroy, AfterViewInit} from '@angular/core';
+import {Component, ElementRef, forwardRef, Input, OnDestroy, AfterViewInit, ViewEncapsulation} from '@angular/core';
 import {MatFormFieldControl} from '@angular/material';
 import {Subject} from 'rxjs/Subject';
 import {XmatTime} from "./xmat-time.model";
 
-const controlType = "xmat-mat-time-input";
+const controlType = "xmat-time-input";
 const elementType = "input";
 const classNames = {
     invalid: "xmat-mat-time-invalid"
@@ -58,7 +58,8 @@ const minutesPattern = new RegExp("^([0-5][0-9])$");
         "[class.filled]": "isFilled",
         "[id]": "id",
         "[attr.aria-describedby]": "describedBy",
-    }
+    },
+    encapsulation: ViewEncapsulation.None
 })
 
 export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>, AfterViewInit, OnDestroy {
