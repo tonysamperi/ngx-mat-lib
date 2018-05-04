@@ -20,7 +20,32 @@ const minutesPattern = new RegExp("^([0-5][0-9])$");
 //noinspection JSAnnotator
 @Component({
     selector: controlType,
-    templateUrl: "../tpl/xmat-time-input.component.html",
+    template: `
+        <div [ngClass]="dynamicClassList" class="xmat-mat-time" [formGroup]="parts">
+            <input class="hours"
+                   formControlName="hours"
+                   (focus)="setTouched()"
+                   (keypress)="typingValidation($event, true)"
+                   (change)="inputChange($event)"
+                   (blur)="inputChange($event)"
+                   [placeholder]="placeholderH"
+                   maxlength="2"
+                   size="2">
+            <span class="xmat-mat-time-colon">&#58;</span>
+            <input class="minutes"
+                   formControlName="minutes"
+                   (focus)="setTouched()"
+                   (keypress)="typingValidation($event)"
+                   (change)="inputChange($event)"
+                   (blur)="inputChange($event)"
+                   [placeholder]="placeholderM"
+                   maxlength="2"
+                   size="2">
+            <span class="xmat-mat-time-required"
+                  *ngIf="required">*</span>
+        </div>
+
+    `,
     styleUrls: ["../scss/xmat-time-input.component.scss"],
     providers: [
         {provide: MatFormFieldControl, useExisting: XmatMatTimeInputComponent},
