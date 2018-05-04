@@ -81,8 +81,20 @@ gulp.task('rollup:fesm', function () {
             // A list of IDs of modules that should remain external to the bundle
             // See "external" in https://rollupjs.org/#core-functionality
             external: [
+                '@angular/animations',
+                '@angular/cdk',
+                '@angular/cli',
+                '@angular/common',
+                '@angular/compiler',
+                '@angular/compiler-cli',
                 '@angular/core',
-                '@angular/common'
+                '@angular/flex-layout',
+                '@angular/forms',
+                '@angular/material',
+                '@angular/platform-browser',
+                '@angular/platform-browser-dynamic',
+                '@angular/router',
+                'rxjs'
             ],
 
             output: {
@@ -116,8 +128,20 @@ gulp.task('rollup:umd', function () {
             // A list of IDs of modules that should remain external to the bundle
             // See "external" in https://rollupjs.org/#core-functionality
             external: [
+                '@angular/animations',
+                '@angular/cdk',
+                '@angular/cli',
+                '@angular/common',
+                '@angular/compiler',
+                '@angular/compiler-cli',
                 '@angular/core',
-                '@angular/common'
+                '@angular/flex-layout',
+                '@angular/forms',
+                '@angular/material',
+                '@angular/platform-browser',
+                '@angular/platform-browser-dynamic',
+                '@angular/router',
+                'rxjs'
             ],
 
             output: {
