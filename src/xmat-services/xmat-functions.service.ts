@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig, MatSnackBarRef} from "@angular/material";
 import {Observable} from "rxjs/Observable";
-import {XmatConfirmDialog} from "../xmat-dialog/ts/xmat-confirm-dialog.component";
+import {XmatConfirmDialogComponent} from "../xmat-dialog/ts/xmat-confirm-dialog.component";
 import {XmatConstantsService} from "./xmat-constants.service";
 import {XmatSnackBarComponent} from "../xmat-snack-bar/ts/xmat-snack-bar.component";
 import {XmatSnackBarData} from "../xmat-snack-bar/ts/xmat-snack-bar-data.model";
@@ -149,7 +149,7 @@ export class XmatFunctionsService {
             disableClose: disableClose
         });
         //Open dialog and pass data plus options
-        let dialogRef = this._dialog.open(XmatConfirmDialog, dialogConfig);
+        let dialogRef = this._dialog.open(XmatConfirmDialogComponent, dialogConfig);
 
         return new Observable(observer => {
             //Catch result

@@ -1,4 +1,4 @@
-## X Mat Library v 1.0.17
+## X Mat Library v 1.0.18
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 

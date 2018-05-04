@@ -5,6 +5,8 @@ import {timer} from "rxjs/observable/timer";
 import {XmatConstantsService} from "../../xmat-services/xmat-constants.service";
 import {XmatMock} from "./xmat-mock.model";
 import {XmatMocksListService} from "./xmat-mocks-list.service";
+import "rxjs/add/operator/switchMap";
+import 'rxjs/add/operator/do';
 import * as _ from "lodash";
 
 @Injectable()

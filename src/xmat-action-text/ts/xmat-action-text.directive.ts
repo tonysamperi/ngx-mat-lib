@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, ViewEncapsulation} from "@angular/core";
 import {CanColor} from "@angular/material/core";
 import {CanDisable, mixinColor, ThemePalette} from "@angular/material";
 
@@ -14,14 +14,14 @@ export class XmatActionTextBase {
 export const _XmatActionMixinBase = mixinColor(XmatActionTextBase);
 
 @Component({
-    selector: '[xmatAction]',
+    selector: "[xmatActionText]",
     inputs: ["color"],
     host: {
         "[attr.disabled]": "disabled || null",
         "class": "xmat-action",
-        "[class.mat-primary]": 'color == "primary"',
-        "[class.mat-accent]": 'color == "accent"',
-        "[class.mat-warn]": 'color == "warn"'
+        "[class.mat-primary]": "color ==   'primary'",
+        "[class.mat-accent]": "color == 'accent",
+        "[class.mat-warn]": "color == 'warn'"
     },
     template: `
         <ng-content></ng-content>
@@ -34,7 +34,7 @@ export class XmatActionTextComponent extends _XmatActionMixinBase implements Can
     color: ThemePalette;
     disabled: boolean;
 
-    constructor(elementRef: ElementRef,) {
+    constructor(elementRef: ElementRef) {
 
         super(elementRef);
 

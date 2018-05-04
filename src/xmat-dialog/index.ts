@@ -1,8 +1,8 @@
-import {NgModule} from '@angular/core';
+import {NgModule} from "@angular/core";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule} from "@angular/forms";
 import {MatButtonModule, MatDatepickerModule, MatFormFieldModule, MatIconModule} from "@angular/material";
-import {XmatConfirmDialog} from './ts/xmat-confirm-dialog.component';
+import {XmatConfirmDialogComponent} from "./ts/xmat-confirm-dialog.component";
 
 @NgModule({
     imports: [
@@ -14,14 +14,16 @@ import {XmatConfirmDialog} from './ts/xmat-confirm-dialog.component';
         MatIconModule
     ],
     declarations: [
-        XmatConfirmDialog
+        XmatConfirmDialogComponent
     ],
     exports: [
-        XmatConfirmDialog
+        XmatConfirmDialogComponent
     ],
     entryComponents: [
-        XmatConfirmDialog
+        XmatConfirmDialogComponent
     ]
 })
 export class XmatDialogModule {
 }
+
+export {XmatConfirmDialogComponent} from "./ts/xmat-confirm-dialog.component";

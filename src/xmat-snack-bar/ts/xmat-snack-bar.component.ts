@@ -8,7 +8,17 @@ const noop = () => {
 
 @Component({
     selector: "xmat-snack-bar",
-    templateUrl: "../tpl/xmat-snack-bar.component.html",
+    // templateUrl: "../tpl/xmat-snack-bar.component.html",
+    template: `
+        <div class="xmat-snack-bar mat-simple-snackbar">
+            {{data.message}}
+            <button mat-button class="mat-simple-snackbar-action"
+                    *ngIf="data.showAction"
+                    (click)="closeSnack()">
+                {{data.actionText}}
+            </button>
+        </div>
+    `,
     styleUrls: ["../scss/xmat-snack-bar.component.scss"]
 })
 export class XmatSnackBarComponent {

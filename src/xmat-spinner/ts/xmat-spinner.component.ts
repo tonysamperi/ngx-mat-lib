@@ -5,7 +5,13 @@ const defaultDiameter = 100;
 
 @Component({
     selector: "xmat-spinner",
-    templateUrl: "../tpl/xmat-spinner.component.html",
+    // templateUrl: "../tpl/xmat-spinner.component.html",
+    template: `
+        <mat-spinner
+                class="xmat-spinner"
+                [diameter]="diameter"
+                [hidden]="!showSpinner"></mat-spinner>
+    `,
     styleUrls: ["../scss/xmat-spinner.component.scss"]
 })
 export class XmatSpinnerComponent implements AfterViewInit {

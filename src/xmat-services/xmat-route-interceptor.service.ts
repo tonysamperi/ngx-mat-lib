@@ -1,6 +1,10 @@
 import {Injectable} from "@angular/core";
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
 
+/**
+ * HOW TO
+ * Extend this class to create your custom can navigates
+ */
 @Injectable()
 export class XmatRouteInterceptorService implements CanActivate {
 

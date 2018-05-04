@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs/Subject";
 import {SpinnerState} from "./spinner-state.model";
+import {Subject} from "rxjs/Subject";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class XmatGlobalSpinnerService {
@@ -8,7 +9,7 @@ export class XmatGlobalSpinnerService {
 
     spinnerState = this._spinnerSubj.asObservable();
 
-    private _requests: number = 0;
+    private _requests = 0;
 
     constructor() {
     }
@@ -19,7 +20,13 @@ export class XmatGlobalSpinnerService {
     }
 
     hide() {
-        this._requests > 0 && this._requests--;
-        !this._requests && this._spinnerSubj.next(<SpinnerState>{show: false});
+        if (this._requests > 0) {
+            this._requests--;
+        }
+        if (this._requests < 1) {
+            // Really necessary?
+            this._requests = 0;
+            this._spinnerSubj.next(<SpinnerState>{show: false});
+        }
     }
 }
