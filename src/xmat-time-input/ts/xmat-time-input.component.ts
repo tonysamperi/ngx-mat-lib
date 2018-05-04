@@ -12,7 +12,7 @@ import {XmatTime} from "./xmat-time.model";
 const controlType = "xmat-time-input";
 const elementType = "input";
 const classNames = {
-    invalid: "xmat-mat-time-invalid"
+    invalid: "xmat-time-invalid"
 };
 const hoursPattern = new RegExp("^([01][0-9]|2[0-3])");
 const minutesPattern = new RegExp("^([0-5][0-9])$");
@@ -21,7 +21,7 @@ const minutesPattern = new RegExp("^([0-5][0-9])$");
 @Component({
     selector: controlType,
     template: `
-        <div [ngClass]="dynamicClassList" class="xmat-mat-time" [formGroup]="parts">
+        <div [ngClass]="dynamicClassList" class="xmat-time-input-wrap" [formGroup]="parts">
             <input class="hours"
                    formControlName="hours"
                    (focus)="setTouched()"
@@ -31,7 +31,7 @@ const minutesPattern = new RegExp("^([0-5][0-9])$");
                    [placeholder]="placeholderH"
                    maxlength="2"
                    size="2">
-            <span class="xmat-mat-time-colon">&#58;</span>
+            <span class="xmat-time-colon">&#58;</span>
             <input class="minutes"
                    formControlName="minutes"
                    (focus)="setTouched()"
@@ -41,7 +41,7 @@ const minutesPattern = new RegExp("^([0-5][0-9])$");
                    [placeholder]="placeholderM"
                    maxlength="2"
                    size="2">
-            <span class="xmat-mat-time-required"
+            <span class="xmat-time-required"
                   *ngIf="required">*</span>
         </div>
 
@@ -185,7 +185,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
     ngAfterViewInit(): void {
         let xmatInput = this._elRef.nativeElement;
         let container = xmatInput.closest("mat-form-field");
-        let isContainerValid = !!container && container.classList.contains("mat-form-field-type-xmat-mat-time-input");
+        let isContainerValid = !!container && container.classList.contains("mat-form-field-type-xmat-time-input");
         if (isContainerValid && container.contains(xmatInput)) {
             this._$matFormField = container;
         }

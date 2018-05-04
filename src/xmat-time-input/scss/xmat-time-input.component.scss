@@ -40,12 +40,15 @@
 *   }
 *
 */
-.mat-form-field-type-xmat-mat-time-input {
+:host-context(.mat-form-field-type-xmat-time-input) {
+
   &[floatlabel="never"],
   &.mat-form-field-can-float {
+
     .xmat-time-input + span > label {
       opacity: 0;
     }
+
   }
   &.mat-form-field-should-float {
 
@@ -56,10 +59,28 @@
   }
 }
 
+.mat-form-field-type-xmat-time-input {
+
+  &[floatlabel="never"],
+  &.mat-form-field-can-float {
+
+    .xmat-time-input + span > label {
+      opacity: 0;
+    }
+
+  }
+  &.mat-form-field-should-float {
+
+    .xmat-time-input + span > label {
+      opacity: 1;
+    }
+
+  }
+}
 
 $error-color: map-get($xmat-colors, red);
 
-div.xmat-mat-time {
+div.xmat-time-input-wrap {
   div {
     display: flex;
   }
@@ -73,14 +94,14 @@ div.xmat-mat-time {
     text-align: center;
   }
 
-  span.xmat-mat-time-colon,
-  span.xmat-mat-time-required {
+  span.xmat-time-colon,
+  span.xmat-time-required {
     cursor: default;
   }
 
-  &.xmat-mat-time-invalid {
-    span.xmat-mat-time-colon,
-    span.xmat-mat-time-required {
+  &.xmat-time-invalid {
+    span.xmat-time-colon,
+    span.xmat-time-required {
       color: $error-color;
     }
     //Firefox fix opacity
