@@ -1,4 +1,12 @@
-# xMatLib 1.1.0
+# xMatLib 1.1.1
+
+A bunch of utilities and components to use in your Angular 5+ apps!
+
+## Motivation
+
+Angular Material is a complete tool. But there are ways to use come components which may come handy.
+For example xMatLib includes an SCSS library which provides common classes and mixins, 
+that you can use in your app to drastically reduce duplicate code!
 
 ## Installation
 

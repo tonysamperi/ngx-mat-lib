@@ -18,3 +18,5 @@ import {XmatMatTimeInputComponent} from './ts/xmat-time-input.component';
 })
 export class XmatTimeInputModule {
 }
+
+export {XmatTime} from "./ts/xmat-time.model";
