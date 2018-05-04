@@ -67,9 +67,11 @@ test/**
 # Build files
 dist/*
 
+# Old dev
+_libtest/*
+
 # Playground tmp files
 .playground
-
 
 # TypeScript
 src/*.js
