@@ -1,0 +1,7 @@
+<div class="xmat-menu">
+    <button mat-button
+            routerLink="{{menuItem.href}}"
+            routerLinkActive="active"
+            *ngFor="let menuItem of menuItems">{{menuItem.label}}
+    </button>
+</div>

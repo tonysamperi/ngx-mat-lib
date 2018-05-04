@@ -1,0 +1,139 @@
+@import "./xmat-vars";
+
+/* THEME OVERRIDES - START */
+mat-table {
+  &.debug {
+    mat-header-cell.mat-header-cell, mat-cell.mat-cell {
+      border: 1px solid map-get($xmat-colors, red);
+    }
+  }
+  // Bug fix for mat-checkbox inside a mat-cell
+  mat-cell.mat-cell, mat-header-cell.mat-header-cell {
+    overflow: visible;
+  }
+}
+
+mat-form-field {
+  &.autoWidth {
+    min-width: 140px;
+    > div.mat-input-wrapper {
+      > div.mat-input-flex {
+        > div.mat-input-infix {
+          width: auto;
+        }
+      }
+    }
+  }
+  &.invert {
+    .mat-form-field-underline {
+      background-color: rgba(map-get($xmat-colors, white), 0.75);
+    }
+    input.mat-input-element, label.mat-form-field-placeholder {
+      color: map-get($xmat-colors, white);
+    }
+    &.mat-form-field-disabled {
+      opacity: 0.2;
+      input.mat-input-element {
+        cursor: not-allowed;
+      }
+    }
+  }
+  .mat-form-field-prefix {
+    mat-icon.mat-icon {
+      &.matPrefixSmall {
+        font-size: 100%;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+/* THEME OVERRIDES - END */
+
+/* LAYOUT - START */
+.xmat-position-relative {
+  position: relative;
+}
+
+.xmat-block{
+  display: block;
+}
+
+.xmat-debug{
+  display: none !important;
+}
+
+.xmat-fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+
+}
+
+.xmat-fade.xmat-fade-in {
+  opacity: 1;
+}
+
+@each $direction in $text-directions {
+  .xmat-float-#{$direction} {
+    float: $direction;
+  }
+}
+
+.xmat-margin {
+  @each $direction in $directions {
+    &-#{$direction} {
+      $i: 0;
+      @while $i < 30 {
+        &-#{$i} {
+          margin-#{$direction}: #{$i}px;
+        }
+        $i: $i + 10;
+      }
+    }
+  }
+}
+
+@each $direction in $directions {
+  .xmat-padding-#{$direction} {
+    padding-#{$direction}: $xmat-pad * 2;
+  }
+}
+
+.xmat-padding-mat {
+  padding: $xmat-pad * 2;
+}
+
+/* LAYOUT - END */
+
+/* TEXT AND COLORS - START */
+@each $direction in $text-directions {
+  .xmat-text-#{$direction} {
+    text-align: $direction;
+  }
+}
+
+@each $color-name, $color-value in $xmat-colors {
+  .xmat-color-#{$color-name} {
+    color: $color-value;
+  }
+}
+
+@each $color-name, $color-value in $xmat-colors {
+  .xmat-bg-#{$color-name} {
+    background-color: $color-value;
+  }
+}
+/* TEXT AND COLORS - END */
+
+/* MISC */
+.xmat-cursor-pointer {
+  cursor: pointer;
+}
+
+.xmat-required:after {
+  content: "*";
+  margin-left: 5px;
+  color: red;
+}

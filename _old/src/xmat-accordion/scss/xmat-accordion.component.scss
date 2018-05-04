@@ -1,0 +1,30 @@
+@import "../../scss/xmat-vars";
+
+:host {
+
+  &[color="accent"] ::ng-deep {
+    mat-expansion-panel.mat-expansion-panel {
+      position: relative;
+      z-index: 1;
+      background-color: map-get($xmat-colors, accent-light);
+      //border: 1px solid map-get($xmat-colors, accent); //Can't use border on host because it prevents it to fully disappear
+    }
+  }
+
+  ::ng-deep {
+    mat-expansion-panel.mat-expansion-panel {
+      .mat-expansion-panel-content {
+        .mat-expansion-panel-body {
+          padding-top: 24px;
+          padding-left: $xmat-pad * 2;
+          padding-right: $xmat-pad * 2;
+        }
+      }
+
+      .xmat-accordion-no-header .mat-expansion-panel-body {
+        padding-top: $xmat-pad * 2;
+      }
+    }
+
+  }
+}
