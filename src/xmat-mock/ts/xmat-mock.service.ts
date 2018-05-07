@@ -6,7 +6,7 @@ import {XmatConstantsService} from "../../xmat-services/xmat-constants.service";
 import {XmatMock} from "./xmat-mock.model";
 import {XmatMocksListService} from "./xmat-mocks-list.service";
 import "rxjs/add/operator/switchMap";
-import 'rxjs/add/operator/do';
+import "rxjs/add/operator/do";
 import * as _ from "lodash";
 
 @Injectable()
@@ -35,18 +35,18 @@ export class XmatMockService implements HttpInterceptor {
         });
     }
 
-    //Here the magic happens
+    // Here the magic happens
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (!!(<any>window).times[request.url]) {
             let startTime = (<any>window).times[request.url];
             let finalTime = Date.now();
             console.info(`SECOND INTERCEPTOR after ${(finalTime - startTime)} ms`);
         }
-        //Separate query string from the rest
+        // Separate query string from the rest
         let urlParts = request.url.split(this._qm);
         let mockKey = this._methodsKeys[request.method] + urlParts[0];
 
-        //Checks for non parametric URL
+        // Checks for non parametric URL
         if (this.mockExists(mockKey)) {
             return this._mocks[mockKey](request, next, urlParts[1]);
         }
@@ -64,7 +64,7 @@ export class XmatMockService implements HttpInterceptor {
 
     }
 
-    //Private methods
+    // Private methods
     private extractUrlParams(serviceUrl: string) {
         /**
          * E.G. serviceUrl = "/rest/cd/property-store/5/id";
@@ -78,7 +78,7 @@ export class XmatMockService implements HttpInterceptor {
         let cleanUrl = serviceUrl.replace(this._restBaseUrl, "");
         let urlParams = cleanUrl.split(this._ds);
         urlParams.shift();
-        //If true it means there was at least one param
+        // If true it means there was at least one param
         if (urlParams.length > 0) {
             return urlParams;
         }
@@ -118,7 +118,7 @@ export class XmatMockService implements HttpInterceptor {
             let mockRequest;
             if (!!mock.customUrl) {
 
-                //If params placeholder is in custom URL, params are concat to url with slashes
+                // If params placeholder is in custom URL, params are concat to url with slashes
                 let url = mock.customUrl.replace(this._paramsPlaceholder, params.join(this._ds));
                 mockRequest = request.clone({
                     url: url + (!!queryString ? this._qm + queryString : "")
@@ -130,21 +130,22 @@ export class XmatMockService implements HttpInterceptor {
                     suffix += this._fileNameSpace + param;
                 });
                 let ending = mock.result === false ? this._fileEndings.ko : this._fileEndings.ok;
-                let url = this.generateJsonUrl(mock.url, this._methodsKeys[request.method], suffix, ending);
-                let queriedUrl = this.generateJsonUrl(mock.url, this._methodsKeys[request.method], this._fileNameSpace + this._queryUrlParam, ending);
+                let method = this._methodsKeys[request.method];
+                let url = this.generateJsonUrl(mock.url, method, suffix, ending);
+                let queriedUrl = this.generateJsonUrl(mock.url, method, this._fileNameSpace + this._queryUrlParam, ending);
                 mockRequest = request.clone({
                     url: request.urlWithParams.indexOf(this._queryUrlParam) > 0 ? queriedUrl : url,
                     method: "GET"
                 });
             }
-            //return next.handle(jsonRequest);
+            // return next.handle(jsonRequest);
             const delay = timer(mock.timeout);
             const start = Date.now();
             return delay.switchMap(() => next.handle(mockRequest))
                 .do((event: HttpResponse<any>) => {
-                    if (event.type == HttpEventType.Response) {
+                    if (event.type === HttpEventType.Response) {
                         const elapsed = Date.now() - start;
-                        // console.log(`Request for ${jsonRequest.urlWithParams} took ${elapsed} ms.`, event);
+                        console.log(`Request for ${request.urlWithParams} took ${elapsed} ms.`, event);
                     }
                 });
         };

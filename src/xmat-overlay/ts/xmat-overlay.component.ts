@@ -24,11 +24,10 @@ export class XmatOverlayComponent implements AfterViewInit {
     constructor(private elementRef: ElementRef) {
     }
 
-
     ngAfterViewInit() {
         const element = this.elementRef.nativeElement;
         element.parentNode.style.position = "relative";
-        this.isLight = this._overlayStyle === xmatOverlayStyles[xmatOverlayStyles.light]
+        this.isLight = this._overlayStyle === xmatOverlayStyles[xmatOverlayStyles.light];
     }
 
 }

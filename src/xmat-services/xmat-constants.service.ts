@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {MethodsMap} from "../xmat-rest/ts/methods-map.model";
 
-//Const variables
+// Const variables
 export const labels = {
     accept: "Ok",
     cancel: "Annulla",
@@ -13,7 +13,12 @@ export const labels = {
     genericError: "Errore tecnico generico",
     leave: "Me ne vado",
     months: {
-        full: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+        full: [
+            "Gennaio", "Febbraio", "Marzo",
+            "Aprile", "Maggio", "Giugno",
+            "Luglio", "Agosto", "Settembre",
+            "Ottobre", "Novembre", "Dicembre"
+        ],
         short: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]
     },
     stay: "Rimango qui",
@@ -34,7 +39,7 @@ export class XmatConstantsService {
     };
     public readonly mocksBaseUrl: string = "assets/services-mocks/";
     public readonly restBaseUrl: string = "";
-    //URLS ARE NOT ALPHABETICALLY ORDERED SINCE IT'S LIKELY THAT THEY'LL CHANGE OFTEN AT THIS TIME
+    // URLS ARE NOT ALPHABETICALLY ORDERED SINCE IT'S LIKELY THAT THEY'LL CHANGE OFTEN AT THIS TIME
 
     public readonly dialogData: any = {
         checkOnSave: {
@@ -119,7 +124,7 @@ export class XmatConstantsService {
     }
 
     noop(): void {
-        //NOOP: DOES NOTHING
+        // NOOP: DOES NOTHING
     }
 
     removeTrailingSlash(target: string) {

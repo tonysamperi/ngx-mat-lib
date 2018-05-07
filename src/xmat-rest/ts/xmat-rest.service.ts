@@ -30,7 +30,7 @@ export class XmatRestService {
         put: "PUT"
     };
 
-    //Sample data
+    // Sample data
     public readonly servicesUrls = {
         /**
          *  myServiceA: "my-service-a"
@@ -67,7 +67,7 @@ export class XmatRestService {
             data: void 0,
             queryable: queryable
         };
-    };
+    }
 
     $http<T>(config: XmatHttpConfig = this._generateHttpConfig()): Observable<T> {
         if (!config.method) {
@@ -84,7 +84,7 @@ export class XmatRestService {
                  * Transform data in query params
                  */
                 if (!!config.data) {
-                    //Accepting 0, null, void 0 as empty params
+                    // Accepting 0, null, void 0 as empty params
                     if (this._xmatConstants.isStrictlyObject(config.data)) {
                         for (let key in config.data) {
                             params = params.append(key, config.data[key]);
@@ -106,7 +106,7 @@ export class XmatRestService {
                 console.error("Error: [XmatRest:badmethod]", this.$http.arguments);
                 return new Observable();
         }
-    };
+    }
 }
 
 

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig, MatSnackBarRef} from "@angular/material";
 import {Observable} from "rxjs/Observable";
 import {XmatConfirmDialogComponent} from "../xmat-dialog/ts/xmat-confirm-dialog.component";
@@ -12,6 +12,7 @@ const colorParams = {
     diversity: 10,
     width: 127
 };
+
 const hexValues: string = "0123456789ABCDEF";
 
 const byte2Hex = (n) => {
@@ -22,7 +23,6 @@ const rgb2Hex = (r, g, b) => {
     return "#" + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 };
 
-//const methods
 const eachFrom = (array, index, iteratee) => {
     let _index = index == null ? -1 : index, length = array == null ? 0 : array.length;
 
@@ -57,7 +57,7 @@ export class XmatFunctionsService {
     }
 
     createReflectionModel(source, level = 0): any {
-        //For both arrays and objects
+        // For both arrays and objects
         if (!!source && typeof source === typeof {}) {
             let target = {};
             if (Array.isArray(source)) {
@@ -66,8 +66,8 @@ export class XmatFunctionsService {
             let sourceKeys = Object.keys(source);
             for (let i = 0; i < sourceKeys.length; i++) {
                 let key = sourceKeys[i];
-                //Always create new key on the target, it will eventually be converted to object
-                //For both arrays and objects
+                // Always create new key on the target, it will eventually be converted to object
+                // For both arrays and objects
                 if (!!source[key] && typeof source[key] === typeof {}) {
                     target[key] = this.createReflectionModel(source[key], level + 1);
                 }
@@ -86,7 +86,7 @@ export class XmatFunctionsService {
     dateAddMonths(date: Date = new Date(), months: number = 0): Date {
         let day = date.getDate();
         date.setMonth(date.getMonth() + +months);
-        if (date.getDate() != day) {
+        if (date.getDate() !== day) {
             date.setDate(0);
         }
         return date;
@@ -126,8 +126,10 @@ export class XmatFunctionsService {
                 r = 1, g = 0, b = q;
                 break;
         }
-        let c = "#" + ("00" + (~~(r * 255)).toString(16)).slice(-2) + ("00" + (~~(g * 255)).toString(16)).slice(-2) + ("00" + (~~(b * 255)).toString(16)).slice(-2);
-        return (c);
+        let red = ("00" + (~~(r * 255)).toString(16)).slice(-2);
+        let green = ("00" + (~~(g * 255)).toString(16)).slice(-2);
+        let blue = ("00" + (~~(b * 255)).toString(16)).slice(-2);
+        return ("#" + red + green + blue);
     }
 
     getRandomNonConsecutiveHex(phase: number = 10) {
@@ -148,11 +150,11 @@ export class XmatFunctionsService {
             data: data,
             disableClose: disableClose
         });
-        //Open dialog and pass data plus options
+        // Open dialog and pass data plus options
         let dialogRef = this._dialog.open(XmatConfirmDialogComponent, dialogConfig);
 
         return new Observable(observer => {
-            //Catch result
+            // Catch result
             dialogRef.afterClosed().subscribe(result => {
                 observer.next(result);
                 observer.complete();

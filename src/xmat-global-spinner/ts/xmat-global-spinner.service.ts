@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {SpinnerState} from "./spinner-state.model";
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
+import {Subject, Observable} from "rxjs";
 
 @Injectable()
 export class XmatGlobalSpinnerService {

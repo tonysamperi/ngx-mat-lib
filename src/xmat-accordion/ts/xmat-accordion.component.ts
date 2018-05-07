@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
 
-const transcludedHeaderSelector:string = ".xmat-accordion-title";
-const transcludedContentSelector:string = ".xmat-accordion-content";
+const transcludedHeaderSelector: string = ".xmat-accordion-title";
+// const transcludedContentSelector: string = ".xmat-accordion-content";
 
 @Component({
     selector: "xmat-accordion",
@@ -13,7 +13,7 @@ const transcludedContentSelector:string = ".xmat-accordion-content";
 export class XmatAccordionComponent implements AfterViewInit {
 
     @Input("expanded") isExpanded: boolean;
-    @ViewChild('xmatAccordionHeader') private _xmatAccordionHeader:any; //TODO find out type
+    @ViewChild("xmatAccordionHeader") private _xmatAccordionHeader: any; // TODO find out type
 
     /**
      * ua = viewModel
@@ -32,6 +32,5 @@ export class XmatAccordionComponent implements AfterViewInit {
             $panel.classList.add("xmat-accordion-no-header");
         }
     }
-
 
 }

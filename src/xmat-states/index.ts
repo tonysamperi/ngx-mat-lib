@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule} from "@angular/core";
 import {XmatStatesLegendComponent} from "./ts/xmat-states-legend.component";
 
 
@@ -11,6 +11,4 @@ import {XmatStatesLegendComponent} from "./ts/xmat-states-legend.component";
     ]
 })
 export class XmatStatesModule {
-
-
 }

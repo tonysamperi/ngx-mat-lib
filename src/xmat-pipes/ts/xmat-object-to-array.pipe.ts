@@ -3,7 +3,7 @@ import {ArrayItemToObject} from "./xmat-object-to-array.model";
 import * as _ from "lodash";
 
 
-@Pipe({name: 'objectToArray'})
+@Pipe({name: "objectToArray"})
 export class XmatObjectToArrayPipe implements PipeTransform {
 
     transform(object: { [param: string]: any }, limitTo: number = -1): ArrayItemToObject[] {
@@ -14,7 +14,7 @@ export class XmatObjectToArrayPipe implements PipeTransform {
         let keys = [];
         _.each(Object.keys(object), (key, index) => {
             keys.push({key: key, value: object[key]});
-            //Breaks when limit is reached
+            // Breaks when limit is reached
             return index > limitTo;
         });
         return keys;

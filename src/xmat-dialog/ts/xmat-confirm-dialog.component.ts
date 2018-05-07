@@ -23,6 +23,4 @@ export class XmatConfirmDialogComponent {
     onYesClick(): void {
         this._dialogRef.close(true);
     }
-
-
 }

@@ -24,6 +24,6 @@ export class XmatStatesLegendComponent implements OnInit {
                 className: XmatStates[item],
                 description: desc
             });
-        })
+        });
     }
 }

@@ -2,10 +2,6 @@ import {Component, Inject} from "@angular/core";
 import {MatSnackBarRef, MAT_SNACK_BAR_DATA} from "@angular/material";
 import {XmatSnackBarData} from "./xmat-snack-bar-data.model";
 
-const noop = () => {
-
-};
-
 @Component({
     selector: "xmat-snack-bar",
     // templateUrl: "../tpl/xmat-snack-bar.component.html",
@@ -29,7 +25,7 @@ export class XmatSnackBarComponent {
     }
 
     closeSnack() {
-        if (typeof this.data.actionCallback === typeof noop) {
+        if (typeof this.data.actionCallback === typeof isNaN) {
             this.data.actionCallback();
         }
         this.snackBarRef.dismiss();

@@ -1,12 +1,12 @@
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
+import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {FocusMonitor} from "@angular/cdk/a11y";
 import {
     FormBuilder, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors,
     Validators
 } from "@angular/forms";
-import {Component, ElementRef, forwardRef, Input, OnDestroy, AfterViewInit, ViewEncapsulation} from '@angular/core';
-import {MatFormFieldControl} from '@angular/material';
-import {Subject} from 'rxjs/Subject';
+import {Component, ElementRef, forwardRef, Input, OnDestroy, AfterViewInit, ViewEncapsulation} from "@angular/core";
+import {MatFormFieldControl} from "@angular/material";
+import {Subject} from "rxjs/Subject";
 import {XmatTime} from "./xmat-time.model";
 
 const controlType = "xmat-time-input";
@@ -99,7 +99,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
     set required(req) {
         this._required = coerceBooleanProperty(req);
         this._updateValidators();
-        //Emit stateChange to update value in mat-groupCtrl-field
+        // Emit stateChange to update value in mat-groupCtrl-field
         this.stateChanges.next();
     }
 
@@ -112,14 +112,14 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
         this._disabled = coerceBooleanProperty(dis);
         this._disabled ? this.parts.disable() : this.parts.enable();
         this._updateValidators();
-        //Emit stateChange to update value in mat-groupCtrl-field
+        // Emit stateChange to update value in mat-groupCtrl-field
         this.stateChanges.next();
     }
 
     @Input()
     get value(): XmatTime | null {
         let n = this.parts.value;
-        if (n.hours.length == 2 && n.minutes.length == 2) {
+        if (n.hours.length === 2 && n.minutes.length === 2) {
             return new XmatTime(n.hours, n.minutes);
         }
         return null;
@@ -192,7 +192,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
     }
 
     onContainerClick(event: MouseEvent): void {
-        if ((event.target as Element).tagName.toLowerCase() != elementType) {
+        if ((event.target as Element).tagName.toLowerCase() !== elementType) {
             this._elRef.nativeElement.querySelector(elementType).focus();
         }
     }
@@ -201,7 +201,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
         this.describedBy = ids.join(" ");
     }
 
-    // registers 'fn' that will be fired when changes are made
+    // registers "fn" that will be fired when changes are made
     // this is how we emit the changes back to the groupCtrl
     registerOnChange(fn: any): void {
         this._propagateChange = fn;
@@ -214,9 +214,9 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
     setTouched(): void {
         this.parts.markAsTouched();
         this.validate(this.parts);
-        //Updates errorState to show mat-error
-        //this.errorState = this.parts.invalid;
-        //Emit stateChange to update value in mat-groupCtrl-field
+        // Updates errorState to show mat-error
+        // this.errorState = this.parts.invalid;
+        // Emit stateChange to update value in mat-groupCtrl-field
         this.stateChanges.next();
 
     }
@@ -255,7 +255,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
             return false;
         }
 
-        if (isHours && this.parts.value.hours.length == 1) {
+        if (isHours && this.parts.value.hours.length === 1) {
             this._elRef.nativeElement.querySelectorAll(elementType)[1].focus();
         }
     }
@@ -283,7 +283,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
         this._handlePropagation();
     }
 
-    //Private methods
+    // Private methods
     private _handlePropagation(): void {
         let toPropagate = void 0;
         if (this.parts.valid) {
@@ -291,15 +291,15 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
             toPropagate = new XmatTime(value.hours, value.minutes);
         }
         this._propagateChange(toPropagate);
-        //Emit stateChange to update value in mat-groupCtrl-field
+        // Emit stateChange to update value in mat-groupCtrl-field
         this.stateChanges.next();
     }
 
     // the method set in registerOnChange to emit changes back to the groupCtrl
     private _propagateChange = (_: any) => {
-    };
+    }
 
-    //If disable or required change, updates validation rules
+    // If disable or required change, updates validation rules
     private _updateValidators(): void {
         let hoursCtrl = this.parts.get("hours");
         let minsCtrl = this.parts.get("minutes");

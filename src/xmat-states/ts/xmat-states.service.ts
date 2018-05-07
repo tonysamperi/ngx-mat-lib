@@ -7,7 +7,7 @@ export class XmatStatesClassNamesService {
 
     constructor(prefix: string) {
         _.each(XmatStates, (state, key) => {
-            //Continue if key is not a number
+            // Continue if key is not a number
             if (typeof XmatStates[state] !== typeof 0) {
                 return true;
             }
