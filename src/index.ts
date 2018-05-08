@@ -14,3 +14,5 @@ export * from "./xmat-snack-bar/index";
 export * from "./xmat-spinner/index";
 export * from "./xmat-states/index";
 export * from "./xmat-time-input/index";
+export * from "./xmat-validators/index";
+

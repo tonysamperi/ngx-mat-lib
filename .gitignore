@@ -59,7 +59,6 @@ Temporary Items
 # Others such as NodeJS modules and logs
 *.log
 node_modules/**
-test/**
 
 # Ngc generated files
 **/*.ngfactory.ts
@@ -73,6 +72,7 @@ _libtest/*
 # Playground/build tmp files
 .playground
 .tmp
+test/build
 
 # TypeScript
 src/*.js
