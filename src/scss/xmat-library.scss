@@ -55,11 +55,11 @@ mat-form-field {
   position: relative;
 }
 
-.xmat-block{
+.xmat-block {
   display: block;
 }
 
-.xmat-debug{
+.xmat-debug {
   display: none !important;
 }
 
@@ -84,6 +84,9 @@ mat-form-field {
 .xmat-margin- {
   @each $direction in $directions {
     &#{$direction}- {
+      &mat {
+        margin-#{$direction}: $xmat-pad * 2;
+      }
       $i: 0;
       @while $i < 30 {
         &#{$i} {
@@ -94,21 +97,26 @@ mat-form-field {
     }
   }
 }
+
+.xmat-margin-mat {
+  margin: $xmat-pad * 2;
+}
+
 .xmat-padding- {
-	@each $direction in $directions {
-	  &#{$direction}- {
-        &mat {
-          padding-#{$direction}: $xmat-pad * 2;
-        }
-        $i: 0;
-        @while $i < 30 {
-          &#{$i} {
-            margin-#{$direction}: #{$i}px;
-          }
-          $i: $i + 10;
-        }
+  @each $direction in $directions {
+    &#{$direction}- {
+      &mat {
+        padding-#{$direction}: $xmat-pad * 2;
       }
-	}
+      $i: 0;
+      @while $i < 30 {
+        &#{$i} {
+          padding-#{$direction}: #{$i}px;
+        }
+        $i: $i + 10;
+      }
+    }
+  }
 }
 
 .xmat-padding-mat {
@@ -135,6 +143,7 @@ mat-form-field {
     background-color: $color-value;
   }
 }
+
 /* TEXT AND COLORS - END */
 
 /* MISC */
