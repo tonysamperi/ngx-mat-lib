@@ -6,3 +6,6 @@
 #1.1.9
 * Fixed broken package
 * Added publish procedure to README.MD
+
+#1.1.10
+* Fixed isValidLength function

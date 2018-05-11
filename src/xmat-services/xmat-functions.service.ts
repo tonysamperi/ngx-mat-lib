@@ -148,7 +148,7 @@ export class XmatFunctionsService {
     }
 
     isValidLength(value: any): boolean {
-        return this.isNumeric(value) && value > 0;
+        return this.isNumeric(value) && value >= 0;
     }
 
     openConfirmDialog(data = {}, disableClose: boolean = false): Observable<boolean> {
