@@ -1,4 +1,4 @@
-# xMatLib 1.1.8
+# xMatLib 1.1.9
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -15,6 +15,15 @@ To install this library, run:
 ```bash
 $ npm install ngx-mat-lib --save-dev
 ```
+
+## Development
+
+* Edit src files
+* Update version in src/package.json
+* Run npm build
+* Commit
+* Run npm version x.x.x
+* Run npm publish dist
 
 ## Consuming your library
 
