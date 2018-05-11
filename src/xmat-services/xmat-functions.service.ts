@@ -143,6 +143,14 @@ export class XmatFunctionsService {
 
     }
 
+    isNumeric(value: any): boolean {
+        return !isNaN(parseInt(value, 10));
+    }
+
+    isValidLength(value: any): boolean {
+        return this.isNumeric(value) && value > 0;
+    }
+
     openConfirmDialog(data = {}, disableClose: boolean = false): Observable<boolean> {
         let dialogConfig = new MatDialogConfig();
         _.extend(dialogConfig, {
