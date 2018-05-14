@@ -5,8 +5,22 @@ const transcludedHeaderSelector: string = ".xmat-accordion-title";
 
 @Component({
     selector: "xmat-accordion",
-    templateUrl: "../tpl/xmat-accordion.component.html",
-    styleUrls: ["../scss/xmat-accordion.component.scss"]
+    styleUrls: ["../scss/xmat-accordion.component.scss"],
+    template: `
+        <mat-accordion>
+            <mat-expansion-panel [expanded]="isExpanded">
+                <mat-expansion-panel-header #xmatAccordionHeader>
+                    <mat-panel-title>
+                        <ng-content select=".xmat-accordion-title"></ng-content>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <ng-content select=".xmat-accordion-desc"></ng-content>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <ng-content select=".xmat-accordion-content"></ng-content>
+            </mat-expansion-panel>
+        </mat-accordion>
+    `,
 })
 
 

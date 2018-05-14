@@ -12,3 +12,6 @@
 
 #1.1.11
 * Extended margin and padding classes up to 50px
+
+#1.1.12
+* Fixed external template for xmat-accordion (404 when using it)
