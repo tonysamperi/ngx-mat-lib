@@ -9,3 +9,6 @@
 
 #1.1.10
 * Fixed isValidLength function
+
+#1.1.11
+* Extended margin and padding classes up to 50px

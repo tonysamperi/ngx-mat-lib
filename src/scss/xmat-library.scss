@@ -88,7 +88,7 @@ mat-form-field {
         margin-#{$direction}: $xmat-pad * 2;
       }
       $i: 0;
-      @while $i < 30 {
+      @while $i < 51 {
         &#{$i} {
           margin-#{$direction}: #{$i}px;
         }
@@ -109,7 +109,7 @@ mat-form-field {
         padding-#{$direction}: $xmat-pad * 2;
       }
       $i: 0;
-      @while $i < 30 {
+      @while $i < 51 {
         &#{$i} {
           padding-#{$direction}: #{$i}px;
         }
