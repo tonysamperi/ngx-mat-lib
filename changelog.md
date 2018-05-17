@@ -18,3 +18,6 @@
 
 #1.1.13
 * Changed CustomDateAdapter according to [this stack overflow](https://stackoverflow.com/questions/48762645/material-datepicker-parses-incorrectly-if-user-write-date-in-input)
+
+#1.1.14
+* Added parser to xmat-date-locale.service

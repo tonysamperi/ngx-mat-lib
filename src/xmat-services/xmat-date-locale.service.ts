@@ -24,6 +24,22 @@ export const MAT_DATE_CUSTOM_FORMATS = {
 };
 
 export class XmatMatDateLocale extends NativeDateAdapter {
+
+    parse(value: any): Date | null {
+
+        if ((typeof value === typeof "") && (value.indexOf(xmatSep) > -1)) {
+            const str = value.split(xmatSep);
+
+            const year = Number(str[2]);
+            const month = Number(str[1]) - 1;
+            const date = Number(str[0]);
+
+            return new Date(year, month, date);
+        }
+        const timestamp = typeof value === typeof 0 ? value : Date.parse(value);
+        return isNaN(timestamp) ? null : new Date(timestamp);
+    }
+
     format(date: Date, displayFormat: Object): string {
         if (displayFormat === MAT_DATE_CUSTOM_FORMATS.display.dateInput) {
             let day = date.getDate();
