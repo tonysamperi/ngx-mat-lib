@@ -1,30 +1,39 @@
 @import "../../scss/xmat-vars";
+@import "../../scss/xmat-mixins";
 
-:host {
+$palette: (
+        primary: mat-color($xmat-primary),
+        accent: mat-color($xmat-accent-light),
+        warn: mat-color($xmat-warn)
+);
 
-  &[color="accent"] ::ng-deep {
-    mat-expansion-panel.mat-expansion-panel {
-      position: relative;
-      z-index: 1;
-      background-color: map-get($xmat-colors, accent-light);
-      //border: 1px solid map-get($xmat-colors, accent); //Can't use border on host because it prevents it to fully disappear
+// PAY ATTENTION: when using 'encapsulation: ViewEncapsulation.none' :host selector won't work...
+.xmat-accordion {
+
+  @each $mat-key, $mat-color in $palette {
+    &.mat-#{$mat-key} {
+      mat-expansion-panel.mat-expansion-panel {
+        position: relative;
+        z-index: 1;
+        background-color: $mat-color;
+      }
     }
   }
 
-  ::ng-deep {
-    mat-expansion-panel.mat-expansion-panel {
-      .mat-expansion-panel-content {
-        .mat-expansion-panel-body {
-          padding-top: 24px;
-          padding-left: $xmat-pad * 2;
-          padding-right: $xmat-pad * 2;
-        }
-      }
+  mat-expansion-panel.mat-expansion-panel {
+    .mat-expansion-panel-content {
+      .mat-expansion-panel-body {
+        padding-top: 24px;
+        padding-left: $xmat-pad * 2;
+        padding-right: $xmat-pad * 2;
+        @include xmat-box-shadow(0px -5px 5px -5px #e2e2e2 inset)
 
-      .xmat-accordion-no-header .mat-expansion-panel-body {
-        padding-top: $xmat-pad * 2;
       }
     }
 
+    .xmat-accordion-no-header .mat-expansion-panel-body {
+      padding-top: $xmat-pad * 2;
+    }
   }
+
 }

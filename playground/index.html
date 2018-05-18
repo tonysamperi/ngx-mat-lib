@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>ngx-mat-lib Playground</title>
     <base href="/">
     <meta charset="UTF-8">
+    <link href="index.css" type="text/css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -13,11 +14,14 @@
 
     <script src="systemjs.config.js"></script>
     <script>
-      System.import('.playground/index.js').catch(function(err){ console.error(err); });
+        // System.import('./index.scss');
+        System.import('.playground/index.js').catch(function (err) {
+            console.error(err);
+        });
     </script>
-  </head>
+</head>
 
-  <body>
-    <mat-lib-test>Loading AppComponent content here ...</mat-lib-test>
-  </body>
+<body>
+<mat-lib-test>Loading AppComponent content here ...</mat-lib-test>
+</body>
 </html>

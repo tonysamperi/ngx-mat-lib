@@ -1,0 +1,21 @@
+<h2>TIME INPUT</h2>
+<mat-form-field class="autoWidth">
+    <xmat-time-input name="ubiTimeInputTest"
+                     placeholder="hh:mm"
+                     [(ngModel)]="testTimeModel"
+                     [disabled]="isUbiTimeInputDisabled"
+                     [required]="isUbiTimeInputRequired"></xmat-time-input>
+</mat-form-field>
+<hr/>
+<div style="height: 100px">
+    <span xmatActionText color="accent">MIO TEST</span>
+</div>
+<hr/>
+<button (click)="accordionOpened = !accordionOpened">ACCORDION TOGGLE</button> EXPANDED = {{accordionOpened ? "true":"false"}}
+<xmat-accordion [expanded]="accordionOpened" color="primary">
+    <div class="xmat-accordion-content" >
+        <div style="width: 50%; margin: 0 auto; padding: 16px; background: #e2e2e2">
+            <h2>MY ACCORDION CONTENT</h2>
+        </div>
+    </div>
+</xmat-accordion>

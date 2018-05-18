@@ -2,12 +2,13 @@
  * This is only for local test
  */
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
+import {NgModule, ViewEncapsulation} from "@angular/core";
 import {Component} from "@angular/core";
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 
 import {
     MAT_LABEL_GLOBAL_OPTIONS,
@@ -29,7 +30,7 @@ import {
     MatToolbarModule,
 } from "@angular/material";
 
-import {XmatTimeInputModule, XmatTime} from "ngx-mat-lib";
+import {XmatActionTextModule, XmatAccordionModule, XmatTimeInputModule, XmatTime} from "ngx-mat-lib";
 
 @NgModule({
     exports: [
@@ -49,7 +50,8 @@ import {XmatTimeInputModule, XmatTime} from "ngx-mat-lib";
         MatSidenavModule,
         MatStepperModule,
         MatTableModule,
-        MatToolbarModule
+        MatToolbarModule,
+        XmatAccordionModule
     ]
 })
 export class CdkMaterialImportsModule {
@@ -58,17 +60,9 @@ export class CdkMaterialImportsModule {
 
 @Component({
     selector: "mat-lib-test",
-    template: `
-        <h2>TIME INPUT</h2>
-        <mat-form-field class="autoWidth">
-            <xmat-time-input name="ubiTimeInputTest"
-                             placeholder="hh:mm"
-                             [(ngModel)]="testTimeModel"
-                             [disabled]="isUbiTimeInputDisabled"
-                             [required]="isUbiTimeInputRequired"></xmat-time-input>
-        </mat-form-field>
-    `,
-    styleUrls: ["./index.scss"]
+    templateUrl: "./test.html",
+    styleUrls: [""],
+    encapsulation: ViewEncapsulation.None
 })
 class AppComponent {
 
@@ -81,6 +75,8 @@ class AppComponent {
     textDisabled: boolean = false;
     textValue: string = "";
     testTimeModel = new XmatTime("12", "15");
+
+    accordionOpened: boolean = true;
 }
 
 @NgModule({

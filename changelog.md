@@ -21,3 +21,6 @@
 
 #1.1.14
 * Added parser to xmat-date-locale.service
+
+#1.1.15
+* Fixed XmatActionText and XmatAccordion (host issue)

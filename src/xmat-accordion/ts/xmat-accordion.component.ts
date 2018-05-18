@@ -1,11 +1,31 @@
-import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation} from "@angular/core";
+import {CanColor} from "@angular/material/core";
+import {CanDisable, mixinColor, ThemePalette} from "@angular/material";
 
+const DEFAULT_COLOR = "accent";
 const transcludedHeaderSelector: string = ".xmat-accordion-title";
 // const transcludedContentSelector: string = ".xmat-accordion-content";
+
+
+// Boilerplate for applying mixins to MatToolbar.
+/** @docs-private */
+export class XmatAccordionBase {
+    constructor(public _elementRef: ElementRef) {
+    }
+}
+export const _XmatAccordionMixinBase = mixinColor(XmatAccordionBase);
 
 @Component({
     selector: "xmat-accordion",
     styleUrls: ["../scss/xmat-accordion.component.scss"],
+    host: {
+        "[attr.disabled]": "disabled || null",
+        "class": "xmat-accordion",
+        "[class.mat-primary]": "color == 'primary'",
+        "[class.mat-accent]": "color == 'accent'",
+        "[class.mat-warn]": "color == 'warn'",
+        "(click)": "onContainerClick($event)"
+    },
     template: `
         <mat-accordion>
             <mat-expansion-panel [expanded]="isExpanded">
@@ -21,10 +41,14 @@ const transcludedHeaderSelector: string = ".xmat-accordion-title";
             </mat-expansion-panel>
         </mat-accordion>
     `,
+    encapsulation: ViewEncapsulation.None
 })
 
 
-export class XmatAccordionComponent implements AfterViewInit {
+export class XmatAccordionComponent extends _XmatAccordionMixinBase implements CanColor, CanDisable, AfterViewInit, OnInit {
+
+    @Input() color: ThemePalette;
+    @Input() disabled: boolean;
 
     @Input("expanded") isExpanded: boolean;
     @ViewChild("xmatAccordionHeader") private _xmatAccordionHeader: any; // TODO find out type
@@ -35,7 +59,10 @@ export class XmatAccordionComponent implements AfterViewInit {
      */
     public ua = {};
 
-    constructor() {
+    constructor(elementRef: ElementRef) {
+        super(elementRef);
+
+        this.color = DEFAULT_COLOR;
     }
 
     ngAfterViewInit() {
@@ -47,4 +74,11 @@ export class XmatAccordionComponent implements AfterViewInit {
         }
     }
 
+    ngOnInit() {
+        console.info("XmatAccordionComponent COLOR", this.color);
+    }
+
+    onContainerClick($event: any) {
+        !this.disabled || $event.stopPropagation();
+    }
 }

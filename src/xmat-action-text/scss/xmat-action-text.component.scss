@@ -1,0 +1,17 @@
+@import "../../scss/xmat-vars";
+
+$palette: (
+        primary: mat-color($xmat-primary),
+        accent: mat-color($xmat-accent),
+        warn: mat-color($xmat-warn)
+);
+
+.xmat-action {
+  cursor: pointer;
+
+  @each $mat-key, $mat-color in $palette {
+    &.mat-#{$mat-key} {
+      color: $mat-color;
+    }
+  }
+}

@@ -61,7 +61,7 @@
             "rxjs/ReplaySubject": 'npm:rxjs/ReplaySubject.js',
             "rxjs/Subject": 'npm:rxjs/Subject.js',
             "rxjs/Subscription": 'npm:rxjs/Subscription.js',
-            'tslib': 'npm:tslib/tslib.js'
+            'tslib': 'npm:tslib/tslib.js',
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -83,6 +83,10 @@
                 main: 'ngx-mat-lib.umd.js',
                 defaultExtension: 'js'
             }
+        },
+        meta: {
+            "*.scss": {"loader": "sass"},
+            "*.sass": {"loader": "sass"}
         }
     });
 })(this);
