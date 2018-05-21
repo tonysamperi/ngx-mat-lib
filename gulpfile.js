@@ -213,8 +213,9 @@ gulp.task('copy:scss', function () {
  */
 gulp.task('build:scss', function () {
     console.log("Build:SCSS");
-    return gulp.src([`${scssDistFolder}/**/*`])
-        .pipe(sass({
+    return gulp.src([
+        `${scssDistFolder}/xmat-library.scss`,
+    ]).pipe(sass({
             importer: tildeImporter
         }))
         .pipe(gulp.dest(cssDistFolder));

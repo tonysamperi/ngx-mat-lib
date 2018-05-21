@@ -75,7 +75,7 @@ mat-form-field {
   opacity: 1;
 }
 
-@each $direction in $text-directions {
+@each $direction in $float-directions {
   .xmat-float-#{$direction} {
     float: $direction;
   }

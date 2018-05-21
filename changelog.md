@@ -32,3 +32,7 @@
 
 #1.1.17
 * Fixed extra "px" in dynamic margin/padding rules
+
+#1.1.18
+* Removed useless generated CSS stylesheets
+* Fixed wrongly generated float rule (center)
