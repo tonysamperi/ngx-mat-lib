@@ -7,6 +7,8 @@ var gulp = require('gulp'),
     fs = require('fs-extra'),
     runSequence = require('run-sequence'),
     inlineResources = require('./tools/gulp/inline-resources');
+var sass = require('gulp-sass');
+var tildeImporter = require('node-sass-tilde-importer');
 
 const rootFolder = path.join(__dirname);
 const srcFolder = path.join(rootFolder, 'src');
@@ -17,6 +19,7 @@ const distFolder = path.join(rootFolder, 'dist');
 //TS
 const scssFolder = path.join(srcFolder, "scss");
 const scssDistFolder = path.join(distFolder, "scss");
+const cssDistFolder = path.join(distFolder, "css");
 
 /**
  * 1. Delete /dist folder
@@ -205,6 +208,19 @@ gulp.task('copy:scss', function () {
         .pipe(gulp.dest(scssDistFolder));
 });
 
+/**
+ * 9c. [TS] Build scss folder from /dist/scss to /dist/css
+ */
+gulp.task('build:scss', function () {
+    console.log("Build:SCSS");
+    return gulp.src([`${scssDistFolder}/**/*`])
+        .pipe(sass({
+            importer: tildeImporter
+        }))
+        .pipe(gulp.dest(cssDistFolder));
+});
+
+
 
 /**
  * 10. Delete /.tmp folder
@@ -232,6 +248,7 @@ gulp.task('compile', function () {
         'copy:manifest',
         'copy:readme',
         'copy:scss',
+        'build:scss',
         'clean:build',
         'clean:tmp',
         function (err) {

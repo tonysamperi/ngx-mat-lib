@@ -24,3 +24,8 @@
 
 #1.1.15
 * Fixed XmatActionText and XmatAccordion (host issue)
+
+#1.1.16
+* Fixed XmatDateLocale to fully recognize valid/invalid dates
+* Improved css rules for margin/padding
+* Added CSS build to provide hints when developing

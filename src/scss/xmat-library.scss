@@ -81,46 +81,37 @@ mat-form-field {
   }
 }
 
-.xmat-margin- {
-  @each $direction in $directions {
-    &#{$direction}- {
-      &mat {
-        margin-#{$direction}: $xmat-pad * 2;
-      }
-      $i: 0;
-      @while $i < 51 {
-        &#{$i} {
-          margin-#{$direction}: #{$i}px;
+@each $rule in $space-rules {
+
+  .xmat-#{$rule}- {
+    @each $direction in $directions {
+      &#{$direction}- {
+        $i: 0;
+        @while $i < 51 {
+          &#{$i} {
+            #{$rule}-#{$direction}: #{$i}px;
+          }
+          $i: $i + 10;
         }
-        $i: $i + 10;
+
+        $i: 1;
+        @while $i < 5 {
+          $value: $i * $xmat-pad;
+          &#{$i}x {
+            #{$rule}-#{$direction}: #{$value}px;
+          }
+          $i: $i + 1;
+        }
       }
     }
   }
 }
 
-.xmat-margin-mat {
-  margin: $xmat-pad * 2;
-}
-
-.xmat-padding- {
-  @each $direction in $directions {
-    &#{$direction}- {
-      &mat {
-        padding-#{$direction}: $xmat-pad * 2;
-      }
-      $i: 0;
-      @while $i < 51 {
-        &#{$i} {
-          padding-#{$direction}: #{$i}px;
-        }
-        $i: $i + 10;
-      }
-    }
+// Default full margin/padding of 16px
+@each $rule in $space-rules {
+  .xmat-#{$rule}-mat {
+    #{$rule}: $xmat-pad * 2;
   }
-}
-
-.xmat-padding-mat {
-  padding: $xmat-pad * 2;
 }
 
 /* LAYOUT - END */

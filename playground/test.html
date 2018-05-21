@@ -19,3 +19,30 @@
         </div>
     </div>
 </xmat-accordion>
+
+<h2>DATEPICKER</h2>
+
+<mat-form-field>
+    <input matInput [matDatepicker]="rhMinPicker"
+           #rhMinDate="ngModel"
+           [(ngModel)]="dpModel"
+           [min]="minDate"
+           [max]="maxDate"
+           name="rh_filter_date"
+           required="true"
+           placeholder="Data richiesta da">
+    <mat-datepicker-toggle matSuffix [for]="rhMinPicker"></mat-datepicker-toggle>
+    <mat-datepicker #rhMinPicker></mat-datepicker>
+    <mat-error *ngIf="rhMinDate.hasError('required')">
+        Campo obbligatorio
+    </mat-error>
+    <mat-error *ngIf="rhMinDate.hasError('matDatepickerParse')">
+        Il formato della data non è corretto
+    </mat-error>
+    <mat-error *ngIf="rhMinDate.hasError('matDatepickerMin')">
+        La minima data consentita è {{minDate | date:'dd/MM/yyyy'}}
+    </mat-error>
+    <mat-error *ngIf="rhMinDate.hasError('matDatepickerMax')">
+        La massima data consentita è {{maxDate | date:'dd/MM/yyyy'}}
+    </mat-error>
+</mat-form-field>
