@@ -29,3 +29,6 @@
 * Fixed XmatDateLocale to fully recognize valid/invalid dates
 * Improved css rules for margin/padding
 * Added CSS build to provide hints when developing
+
+#1.1.17
+* Fixed extra "px" in dynamic margin/padding rules
