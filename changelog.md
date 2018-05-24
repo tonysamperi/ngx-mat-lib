@@ -40,3 +40,4 @@
 #1.1.19
 * Splitted xmat-library in components
 * Added grid system (bootstrap style) in xmat-library
+* removed useless OnInit from xmat-accordion
