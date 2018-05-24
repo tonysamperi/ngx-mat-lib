@@ -36,3 +36,7 @@
 #1.1.18
 * Removed useless generated CSS stylesheets
 * Fixed wrongly generated float rule (center)
+
+#1.1.19
+* Splitted xmat-library in components
+* Added grid system (bootstrap style) in xmat-library

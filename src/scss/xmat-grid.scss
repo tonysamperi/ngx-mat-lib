@@ -1,0 +1,65 @@
+$xmat-grid-cols: 12;
+$xmat-col-width: 100%/$xmat-grid-cols;
+$xmat-col: ".xmat-col-";
+$xmat-all-cols: "";
+
+.xmat-row {
+  display: block;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 10px;
+  &:before {
+    display: table;
+    content: " ";
+  }
+  &:after {
+    display: table;
+    content: " ";
+    clear: both;
+  }
+  &.xmat-row-noMarginLeft {
+    margin-left: 0;
+  }
+  &.xmat-row-noSideMargin {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  &.xmat-row-noMarginBottom {
+    margin-bottom: 0;
+  }
+  &.xmat-row-noMargin {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+@for $i from 1 through $xmat-grid-cols {
+  $cur-selector: #{$xmat-col}#{$i};
+  $xmat-all-cols: $xmat-all-cols + $cur-selector + ", ";
+  #{$cur-selector} {
+    width: $i * $xmat-col-width;
+  }
+
+}
+
+#{$xmat-all-cols} {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  float: left;
+  margin: 0;
+}
+
+.xmat-col-noPadding {
+  padding: 0;
+}
+
+.xmat-col-noPaddingLeft {
+  padding-left: 0;
+}
+
+.xmat-col-noPaddingRight {
+  padding-right: 0;
+}
