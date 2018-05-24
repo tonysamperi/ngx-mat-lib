@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, Input, ViewChild, ViewEncapsulation} from "@angular/core";
 import {CanColor} from "@angular/material/core";
 import {CanDisable, mixinColor, ThemePalette} from "@angular/material";
 
@@ -45,7 +45,7 @@ export const _XmatAccordionMixinBase = mixinColor(XmatAccordionBase);
 })
 
 
-export class XmatAccordionComponent extends _XmatAccordionMixinBase implements CanColor, CanDisable, AfterViewInit, OnInit {
+export class XmatAccordionComponent extends _XmatAccordionMixinBase implements CanColor, CanDisable, AfterViewInit {
 
     @Input() color: ThemePalette;
     @Input() disabled: boolean;
@@ -72,10 +72,6 @@ export class XmatAccordionComponent extends _XmatAccordionMixinBase implements C
             $panel.removeChild($header);
             $panel.classList.add("xmat-accordion-no-header");
         }
-    }
-
-    ngOnInit() {
-        console.info("XmatAccordionComponent COLOR", this.color);
     }
 
     onContainerClick($event: any) {
