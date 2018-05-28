@@ -46,3 +46,9 @@
 * Added XmatAlertDialogComponent (based on sweet-alert-2)
 * Fixed templates for XmatDialogModule
 * Fixed template for XmatSnackBarComponent
+
+#1.1.21
+* Improved XmatAlertData (optional data)
+* Added missing options in XmatAlertData
+* Improved XmartAlertDialogComponent template
+* Fixed missing *ngIf on "cancelButton"

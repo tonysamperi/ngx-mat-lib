@@ -3,9 +3,12 @@ import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 
 export interface XmatAlertDialogData {
     type: XmatAlertTypes;
-    title: string;
-    cancelText: string;
-    confirmText: string;
+    title?: string;
+    cancelText?: string;
+    confirmText?: string;
+    hideConfirmButton?: boolean;
+    hideCancelButton?: boolean;
+    showCloseButton?: boolean;
 }
 
 export enum XmatAlertTypes {
@@ -32,6 +35,7 @@ const classNameAnimate: string = [classNamePre, "animate", typePlaceHolder, "ico
     template: `
         <div class="swal2-header swal2-show">
             <button type="button"
+                    *ngIf="data.showCloseButton"
                     class="swal2-close"
                     (click)="onActionClick(md.actions.close)"
                     aria-label="Chiudi" style="display: flex;">×
@@ -50,16 +54,21 @@ const classNameAnimate: string = [classNamePre, "animate", typePlaceHolder, "ico
                         class="swal2-x-mark-line-right"></span></span>
             </div>
         </div>
-        <h1 mat-dialog-title>{{data.title || "Messaggio"}}</h1>
+        <h3 *ngIf="!!data.title" mat-dialog-title>{{data.title}}</h3>
 
         <div mat-dialog-content [innerHTML]="data.dialogContent"></div>
 
-        <div mat-dialog-actions>
-            <button mat-button *ngIf="!data.hideCancelButton" mat-raised-button cdkFocusInitial
+        <div mat-dialog-actions *ngIf="!data.hideCancelButton && !data.hideConfirmButton">
+            <button mat-button
+                    mat-raised-button cdkFocusInitial
+                    *ngIf="!data.hideCancelButton"
                     (click)="onActionClick(md.actions.cancel)">
                 {{data.cancelText || "Annulla"}}
             </button>
-            <button mat-button mat-raised-button color="warn"
+            <button mat-button
+                    mat-raised-button
+                    *ngIf="!data.hideConfirmButton"
+                    color="warn"
                     (click)="onActionClick(md.actions.confirm)">
                 {{data.confirmText || "Conferma"}}
             </button>
