@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {MethodsMap} from "../xmat-rest/ts/methods-map.model";
 
 // Const variables
-export const labels = {
+export const XMAT_CONSTANT_LABELS = {
     accept: "Ok",
     cancel: "Annulla",
     confirm: "Sono sicuro",
@@ -43,19 +43,19 @@ export class XmatConstantsService {
 
     public readonly dialogData: any = {
         checkOnSave: {
-            title: labels.warningTitle,
+            title: XMAT_CONSTANT_LABELS.warningTitle,
             dialogContent: "<p>Si è certi di voler proseguire?</p>"
         },
         dataLoss: {
-            title: labels.warningTitle,
-            confirmText: labels.leave,
-            cancelText: labels.stay,
+            title: XMAT_CONSTANT_LABELS.warningTitle,
+            confirmText: XMAT_CONSTANT_LABELS.leave,
+            cancelText: XMAT_CONSTANT_LABELS.stay,
             dialogContent: "<p>Ci sono dati non salvati. Proseguendo andranno persi.</p>\
                 <p>Si è sicuri di voler abbandonare la view attuale?</p>"
         },
         invalidData: {
-            title: labels.warningTitle,
-            confirmText: labels.understood,
+            title: XMAT_CONSTANT_LABELS.warningTitle,
+            confirmText: XMAT_CONSTANT_LABELS.understood,
             hideCancelButton: true,
             dialogContent: "<p>Ci sono degli errori di compilazione. Ricontrollare i campi evidenziati in rosso.</p>"
         }
@@ -70,10 +70,10 @@ export class XmatConstantsService {
 
     public readonly fileNameSpace: string = "-";
 
-    public readonly labels = labels;
+    public readonly labels = XMAT_CONSTANT_LABELS;
 
     public readonly messages: any = {
-        warningTitle: labels.warningTitle,
+        warningTitle: XMAT_CONSTANT_LABELS.warningTitle,
         genericErrorKey: "generic.error"
     };
 

@@ -4,7 +4,6 @@ import {XmatSnackBarData} from "./xmat-snack-bar-data.model";
 
 @Component({
     selector: "xmat-snack-bar",
-    // templateUrl: "../tpl/xmat-snack-bar.component.html",
     template: `
         <div class="xmat-snack-bar mat-simple-snackbar">
             {{data.message}}

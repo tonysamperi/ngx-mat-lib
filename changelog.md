@@ -41,3 +41,8 @@
 * Splitted xmat-library in components
 * Added grid system (bootstrap style) in xmat-library
 * removed useless OnInit from xmat-accordion
+
+#1.1.20
+* Added XmatAlertDialogComponent (based on sweet-alert-2)
+* Fixed templates for XmatDialogModule
+* Fixed template for XmatSnackBarComponent

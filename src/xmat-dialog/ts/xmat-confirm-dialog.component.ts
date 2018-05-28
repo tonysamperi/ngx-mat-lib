@@ -3,7 +3,29 @@ import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 
 @Component({
     selector: "xmat-confirm-dialog",
-    templateUrl: "../tpl/xmat-confirm-dialog.component.html",
+    styles: [
+    ],
+    template: `
+        <h3 mat-dialog-title>{{data.title || "Conferma"}}</h3>
+        <div mat-dialog-content [innerHTML]="data.dialogContent">
+
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button
+                    *ngIf="!data.hideCancelButton"
+                    mat-raised-button
+                    cdkFocusInitial
+                    (click)="onNoClick()">
+                {{data.cancelText || "Annulla"}}
+            </button>
+            <button mat-button
+                    mat-raised-button
+                    color="warn"
+                    (click)="onYesClick()">
+                {{data.confirmText || "Conferma"}}
+            </button>
+        </div>
+    `,
 })
 export class XmatConfirmDialogComponent {
 

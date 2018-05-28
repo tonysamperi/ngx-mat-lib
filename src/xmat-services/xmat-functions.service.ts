@@ -1,8 +1,13 @@
 import {Injectable} from "@angular/core";
 import {MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig, MatSnackBarRef} from "@angular/material";
 import {Observable} from "rxjs/Observable";
-import {XmatConfirmDialogComponent} from "../xmat-dialog/ts/xmat-confirm-dialog.component";
-import {XmatConstantsService} from "./xmat-constants.service";
+import {
+    XmatConfirmDialogComponent,
+    XmatAlertDialogComponent,
+    XmatAlertDialogData,
+    XmatAlertTypes
+} from "../xmat-dialog/index";
+import {XmatConstantsService, XMAT_CONSTANT_LABELS} from "./xmat-constants.service";
 import {XmatSnackBarComponent} from "../xmat-snack-bar/ts/xmat-snack-bar.component";
 import {XmatSnackBarData} from "../xmat-snack-bar/ts/xmat-snack-bar-data.model";
 import * as _ from "lodash";
@@ -41,6 +46,13 @@ export class XmatFunctionsService {
         factor: colorParams.width + colorParams.center,
         frequency: Math.PI * 2 / colorParams.diversity,
         generated: []
+    };
+
+    private _defaultAlertData: XmatAlertDialogData = {
+        type: XmatAlertTypes.warning,
+        title: XMAT_CONSTANT_LABELS.warningTitle,
+        confirmText: XMAT_CONSTANT_LABELS.confirm,
+        cancelText: XMAT_CONSTANT_LABELS.cancel,
     };
 
     constructor(protected _dialog: MatDialog,
@@ -149,6 +161,27 @@ export class XmatFunctionsService {
 
     isValidLength(value: any): boolean {
         return this.isNumeric(value) && value >= 0;
+    }
+
+    openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData, disableClose: boolean = false): Observable<boolean> {
+        let dialogConfig = new MatDialogConfig();
+        _.extend(this._defaultAlertData, data || {});
+        _.extend(dialogConfig, {
+            width: this._xmatConstants.dialogOptions.defaultWidth,
+            data: data,
+            disableClose: disableClose
+        });
+        // Open dialog and pass data plus options
+        let dialogRef = this._dialog.open(XmatAlertDialogComponent, dialogConfig);
+
+        return new Observable(observer => {
+            // Catch result
+            dialogRef.afterClosed().subscribe(result => {
+                observer.next(result);
+                observer.complete();
+            });
+
+        });
     }
 
     openConfirmDialog(data = {}, disableClose: boolean = false): Observable<boolean> {

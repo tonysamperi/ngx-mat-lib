@@ -1,0 +1,226 @@
+@import "./swal2-variables";
+@import "./swal2-animations";
+
+:host {
+  text-align: center;
+  display: block;
+  position: relative;
+  div[mat-dialog-actions] {
+    justify-content: space-between;
+    display: flex;
+  }
+
+  //SWAL START
+  .swal2-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .swal2-close {
+    position: $swal2-close-button-position;
+    top: $swal2-close-button-gap - 16px;
+    right: $swal2-close-button-gap - 16px;
+    justify-content: center;
+    width: $swal2-close-button-width;
+    height: $swal2-close-button-height;
+    padding: 0;
+    transition: $swal2-close-button-transition;
+    border: $swal2-close-button-border;
+    border-radius: $swal2-close-button-border-radius;
+    background: $swal2-close-button-background;
+    color: $swal2-close-button-color;
+    font-family: serif;
+    font-size: $swal2-close-button-font-size;
+    line-height: 1.2;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover {
+      transform: $swal2-close-button-hover-transform;
+      color: $swal2-close-button-hover-color;
+    }
+  }
+}
+
+.swal2-icon {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: $swal2-icon-size;
+  height: $swal2-icon-size;
+  margin: $swal2-icon-margin;
+  border: .25em solid transparent;
+  border-radius: 50%;
+  line-height: $swal2-icon-size;
+  cursor: default;
+  box-sizing: content-box;
+  user-select: none;
+  zoom: $swal2-icon-zoom;
+
+  &-text {
+    font-size: 3.75em;
+  }
+
+  &.swal2-error {
+    border-color: $swal2-error;
+
+    .swal2-x-mark {
+      position: relative;
+      flex-grow: 1;
+    }
+
+    [class^='swal2-x-mark-line'] {
+      display: block;
+      position: absolute;
+      top: 2.3125em;
+      width: 2.9375em;
+      height: .3125em;
+      border-radius: .125em;
+      background-color: $swal2-error;
+
+      &[class$='left'] {
+        left: 1.0625em;
+        transform: rotate(45deg);
+      }
+
+      &[class$='right'] {
+        right: 1em;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &.swal2-warning {
+    border-color: lighten($swal2-warning, 7);
+    color: $swal2-warning;
+  }
+
+  &.swal2-info {
+    border-color: lighten($swal2-info, 20);
+    color: $swal2-info;
+  }
+
+  &.swal2-question {
+    border-color: lighten($swal2-question, 20);
+    color: $swal2-question;
+  }
+
+  &.swal2-success {
+    border-color: $swal2-success;
+
+    [class^='swal2-success-circular-line'] { // Emulate moving circular line
+      position: absolute;
+      width: 3.75em;
+      height: 7.5em;
+      transform: rotate(45deg);
+      border-radius: 50%;
+
+      &[class$='left'] {
+        top: -.4375em;
+        left: -2.0635em;
+        transform: rotate(-45deg);
+        transform-origin: 3.75em 3.75em;
+        border-radius: 7.5em 0 0 7.5em;
+      }
+
+      &[class$='right'] {
+        top: -.6875em;
+        left: 1.875em;
+        transform: rotate(-45deg);
+        transform-origin: 0 3.75em;
+        border-radius: 0 7.5em 7.5em 0;
+      }
+    }
+
+    .swal2-success-ring { // Ring
+      position: absolute;
+      top: -.25em;
+      left: -.25em;
+      width: 100%;
+      height: 100%;
+      border: .25em solid $swal2-success-border;
+      border-radius: 50%;
+      z-index: 2;
+      box-sizing: content-box;
+    }
+
+    .swal2-success-fix { // Hide corners left from animation
+      position: absolute;
+      top: .5em;
+      left: 1.625em;
+      width: .4375em;
+      height: 5.625em;
+      transform: rotate(-45deg);
+      z-index: 1;
+    }
+
+    [class^='swal2-success-line'] {
+      display: block;
+      position: absolute;
+      height: .3125em;
+      border-radius: .125em;
+      background-color: $swal2-success;
+      z-index: 2;
+
+      &[class$='tip'] {
+        top: 2.875em;
+        left: .875em;
+        width: 1.5625em;
+        transform: rotate(45deg);
+      }
+
+      &[class$='long'] {
+        top: 2.375em;
+        right: .5em;
+        width: 2.9375em;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+// github.com/sweetalert2/sweetalert2/issues/268
+[class^='swal2'] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.swal2-show {
+  animation: $swal2-show-animation;
+
+  &.swal2-noanimation {
+    animation: none;
+  }
+}
+
+.swal2-hide {
+  animation: $swal2-hide-animation;
+
+  &.swal2-noanimation {
+    animation: none;
+  }
+}
+
+// Success icon animation
+.swal2-animate-success-icon {
+  .swal2-success-line-tip {
+    animation: $swal2-success-line-tip-animation;
+  }
+
+  .swal2-success-line-long {
+    animation: $swal2-success-line-long-animation;
+  }
+
+  .swal2-success-circular-line-right {
+    animation: $swal2-success-circular-line-animation;
+  }
+}
+
+// Error icon animation
+.swal2-animate-error-icon {
+  animation: $swal2-error-icon-animation;
+
+  .swal2-x-mark {
+    animation: $swal2-error-x-mark-animation;
+  }
+}
