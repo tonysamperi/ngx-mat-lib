@@ -4,6 +4,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 @Component({
     selector: "xmat-confirm-dialog",
     styles: [
+        "div[mat-dialog-actions] {justify-content: space-between; display: flex;}"
     ],
     template: `
         <h3 mat-dialog-title>{{data.title || "Conferma"}}</h3>
