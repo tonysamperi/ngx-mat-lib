@@ -6,8 +6,15 @@
   display: block;
   position: relative;
   div[mat-dialog-actions] {
-    justify-content: space-between;
     display: flex;
+    //const classNameJustifyBetween: string = "xmat-justify-between";
+    &.xmat-justify-between {
+      justify-content: space-between;
+    }
+    //const classNameJustifyCenter: string = "xmat-justify-center";
+    &.xmat-justify-center {
+      justify-content: center;
+    }
   }
 
   //SWAL START

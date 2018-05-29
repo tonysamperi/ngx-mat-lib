@@ -1,4 +1,4 @@
-# xMatLib 1.1.25
+# xMatLib 1.1.26
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -44,7 +44,7 @@ MORE DESCRIPTIONS COMING
 
 ###Other components
 
-* xmat-dialog
+* xmat-dialog (alert + confirm)
 * xmat-global-spinner
 * xmat-menu
 * xmat-mini-chip-list

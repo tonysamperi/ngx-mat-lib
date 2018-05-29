@@ -30,6 +30,8 @@ const dash: string = "-";
 const typePlaceHolder: string = "%type%";
 const classNamePre: string = "swal2";
 const classNameAnimate: string = [classNamePre, "animate", typePlaceHolder, "icon"].join(dash);
+const classNameJustifyCenter: string = "xmat-justify-center";
+const classNameJustifyBetween: string = "xmat-justify-between";
 
 /**
  * TODO: check in ngx-popper how to pass tplRef content
@@ -45,7 +47,7 @@ const classNameAnimate: string = [classNamePre, "animate", typePlaceHolder, "ico
                     (click)="onActionClick(md.actions.close)"
                     aria-label="Chiudi" style="display: flex;">×
             </button>
-            <div class="swal2-icon" [ngClass]="md.classNames">
+            <div class="swal2-icon" [ngClass]="md.iconClassNames">
 		<span class="swal2-icon-text">
         {{md.inner[md.type]}}
     </span>
@@ -63,7 +65,7 @@ const classNameAnimate: string = [classNamePre, "animate", typePlaceHolder, "ico
 
         <div mat-dialog-content [innerHTML]="data.dialogContent"></div>
 
-        <div mat-dialog-actions>
+        <div mat-dialog-actions [ngClass]="md.actionsClassName">
             <button mat-button
                     mat-raised-button cdkFocusInitial
                     *ngIf="!data.hideCancelButton"
@@ -85,7 +87,8 @@ export class XmatAlertDialogComponent implements OnInit {
 
     md: any = {
         actions: XmatAlertDialogActions,
-        classNames: "",
+        actionsCtClassNames: classNameJustifyCenter,
+        iconClassNames: "",
         types: XmatAlertTypes,
         inner: {
             [XmatAlertTypes[XmatAlertTypes.success]]: "",
@@ -109,8 +112,11 @@ export class XmatAlertDialogComponent implements OnInit {
         if (this.data.type !== 0 && !this.data.type) {
             this.data.type = XmatAlertTypes.info;
         }
+        if (!this.data.hideCancelButton && !this.data.hideConfirmButton) {
+            this.md.actionsCtClassNames = classNameJustifyBetween;
+        }
         this.md.type = XmatAlertTypes[this.data.type];
-        this.md.classNames = [
+        this.md.iconClassNames = [
             [classNamePre, this.md.type].join(dash),
             classNameAnimate.replace(typePlaceHolder, this.md.type)
         ];

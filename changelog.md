@@ -64,3 +64,6 @@
 
 #1.1.25
 * Removed useless *ngIf causing XmatAlertDialog actions not to show
+
+#1.1.26
+* Improved actions disposition in XmatAlertDialog (center if one)
