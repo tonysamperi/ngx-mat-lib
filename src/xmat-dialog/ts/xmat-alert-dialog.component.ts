@@ -101,7 +101,7 @@ export class XmatAlertDialogComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.md.type = this.data.type || XmatAlertTypes[XmatAlertTypes.info];
+        this.md.type = XmatAlertTypes[this.data.type || XmatAlertTypes.info];
         this.md.classNames = [
             [classNamePre, this.md.type].join(dash),
             classNameAnimate.replace(typePlaceHolder, this.md.type)

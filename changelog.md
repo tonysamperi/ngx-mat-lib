@@ -52,3 +52,6 @@
 * Added missing options in XmatAlertData
 * Improved XmartAlertDialogComponent template
 * Fixed missing *ngIf on "cancelButton"
+
+#1.1.22
+* Fixed XmatAlertData handling (key)
