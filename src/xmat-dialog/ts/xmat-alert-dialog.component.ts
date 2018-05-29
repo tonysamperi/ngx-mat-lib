@@ -65,7 +65,7 @@ const classNameJustifyBetween: string = "xmat-justify-between";
 
         <div mat-dialog-content [innerHTML]="data.dialogContent"></div>
 
-        <div mat-dialog-actions [ngClass]="md.actionsClassName">
+        <div mat-dialog-actions [ngClass]="md.actionsCtClassNames">
             <button mat-button
                     mat-raised-button cdkFocusInitial
                     *ngIf="!data.hideCancelButton"

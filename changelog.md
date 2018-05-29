@@ -67,3 +67,6 @@
 
 #1.1.26
 * Improved actions disposition in XmatAlertDialog (center if one)
+
+#1.1.27
+* Fixed null-pointer in XmatAlertDialog
