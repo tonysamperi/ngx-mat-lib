@@ -163,13 +163,13 @@ export class XmatFunctionsService {
         return this.isNumeric(value) && value >= 0;
     }
 
-    openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData, disableClose: boolean = false): Observable<boolean> {
+    openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData): Observable<boolean> {
         let dialogConfig = new MatDialogConfig();
         _.extend(this._defaultAlertData, data || {});
         _.extend(dialogConfig, {
             width: this._xmatConstants.dialogOptions.defaultWidth,
             data: data,
-            disableClose: disableClose
+            disableClose: true
         });
         // Open dialog and pass data plus options
         let dialogRef = this._dialog.open(XmatAlertDialogComponent, dialogConfig);

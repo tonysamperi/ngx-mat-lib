@@ -55,3 +55,6 @@
 
 #1.1.22
 * Fixed XmatAlertData handling (key)
+
+#1.1.23
+* Fixed XmatAlertData handling (check for undefined)
