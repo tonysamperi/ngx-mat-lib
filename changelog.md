@@ -61,3 +61,6 @@
 
 #1.1.24
 * Fixed missing dialogContent in XmatAlertData (Modal content)
+
+#1.1.25
+* Removed useless *ngIf causing XmatAlertDialog actions not to show

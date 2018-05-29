@@ -63,7 +63,7 @@ const classNameAnimate: string = [classNamePre, "animate", typePlaceHolder, "ico
 
         <div mat-dialog-content [innerHTML]="data.dialogContent"></div>
 
-        <div mat-dialog-actions *ngIf="!data.hideCancelButton && !data.hideConfirmButton">
+        <div mat-dialog-actions>
             <button mat-button
                     mat-raised-button cdkFocusInitial
                     *ngIf="!data.hideCancelButton"
