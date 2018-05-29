@@ -9,6 +9,7 @@ export interface XmatAlertDialogData {
     hideConfirmButton?: boolean;
     hideCancelButton?: boolean;
     showCloseButton?: boolean;
+    dialogContent?: string | HTMLElement;
 }
 
 export enum XmatAlertTypes {
@@ -29,6 +30,10 @@ const dash: string = "-";
 const typePlaceHolder: string = "%type%";
 const classNamePre: string = "swal2";
 const classNameAnimate: string = [classNamePre, "animate", typePlaceHolder, "icon"].join(dash);
+
+/**
+ * TODO: check in ngx-popper how to pass tplRef content
+ */
 
 @Component({
     selector: "xmat-message-dialog",

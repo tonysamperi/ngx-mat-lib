@@ -58,3 +58,6 @@
 
 #1.1.23
 * Fixed XmatAlertData handling (check for undefined)
+
+#1.1.24
+* Fixed missing dialogContent in XmatAlertData (Modal content)
