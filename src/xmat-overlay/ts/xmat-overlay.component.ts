@@ -1,33 +1,57 @@
-import {Component, ElementRef, AfterViewInit, Input} from "@angular/core";
+import {Component, ElementRef, AfterViewInit, Input, OnDestroy, OnInit} from "@angular/core";
 
 export enum xmatOverlayStyles {
     dark,
     light
 }
 
+const invalidDisplayValues = ["inline", "none"];
+
 @Component({
     selector: "xmat-overlay",
     templateUrl: "../tpl/xmat-overlay.component.html",
     styleUrls: ["../scss/xmat-overlay.component.scss"],
     host: {
+        "[class.xmat-overlay]": "true",
         "[class.xmat-overlay-light]": "isLight"
     }
 })
 
 
-export class XmatOverlayComponent implements AfterViewInit {
+export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
 
-    @Input("overlayStyle") _overlayStyle: string;
+    @Input("overlayStyle") private _overlayStyle: xmatOverlayStyles;
+
+    private _parentStyleBak: { [key: string]: string } = {};
 
     isLight: boolean = false;
 
     constructor(private elementRef: ElementRef) {
     }
 
-    ngAfterViewInit() {
-        const element = this.elementRef.nativeElement;
-        element.parentNode.style.position = "relative";
-        this.isLight = this._overlayStyle === xmatOverlayStyles[xmatOverlayStyles.light];
+    ngOnInit(): void {
+        this.isLight = this._overlayStyle === xmatOverlayStyles.light;
+    }
+
+    ngAfterViewInit(): void {
+
+        const $xmatOverlay = this.elementRef.nativeElement;
+        const xmatOverlayParentComStyle = window.getComputedStyle($xmatOverlay.parentNode);
+        const xmatOverlayParentDisplay = xmatOverlayParentComStyle.getPropertyValue("display");
+        if (invalidDisplayValues.indexOf(xmatOverlayParentDisplay) !== -1) {
+            console.warn(`xmat-overlay cannot apply to ${invalidDisplayValues.join(" or ")} elements`);
+            $xmatOverlay.parentNode.style.display = "block";
+        }
+        this._parentStyleBak.display = xmatOverlayParentDisplay;
+        this._parentStyleBak.position = xmatOverlayParentComStyle.getPropertyValue("position");
+        $xmatOverlay.parentNode.style.position = "relative";
+
+    }
+
+    ngOnDestroy(): void {
+        const $xmatOverlay = this.elementRef.nativeElement;
+        $xmatOverlay.parentNode.style.display = this._parentStyleBak.display;
+        $xmatOverlay.parentNode.style.position = this._parentStyleBak.position;
     }
 
 }

@@ -145,7 +145,7 @@ export class XmatMockService implements HttpInterceptor {
                 .do((event: HttpResponse<any>) => {
                     if (event.type === HttpEventType.Response) {
                         const elapsed = Date.now() - start;
-                        console.log(`Request for ${request.urlWithParams} took ${elapsed} ms.`, event);
+                        console.log(`Request for mocked ${request.urlWithParams} took ${elapsed} ms.`);
                     }
                 });
         };

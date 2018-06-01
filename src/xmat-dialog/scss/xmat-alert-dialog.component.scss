@@ -1,3 +1,4 @@
+@import "../../scss/xmat-vars";
 @import "./swal2-variables";
 @import "./swal2-animations";
 
@@ -5,8 +6,18 @@
   text-align: center;
   display: block;
   position: relative;
+
+  .swal2-palette-spot {
+    display: none;
+  }
+
+  [mat-dialog-title] {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
   div[mat-dialog-actions] {
     display: flex;
+    padding-top: 2 * $xmat-pad;
     //const classNameJustifyBetween: string = "xmat-justify-between";
     &.xmat-justify-between {
       justify-content: space-between;
@@ -17,6 +28,10 @@
     }
   }
 
+  .swal2-bg-white {
+    background-color: $swal2-white;
+  }
+
   //SWAL START
   .swal2-header {
     display: flex;
@@ -25,9 +40,10 @@
   }
 
   .swal2-close {
+    display: flex;
     position: $swal2-close-button-position;
-    top: $swal2-close-button-gap - 16px;
-    right: $swal2-close-button-gap - 16px;
+    top: $swal2-close-button-gap - 2 * $xmat-pad;
+    right: $swal2-close-button-gap - 2 * $xmat-pad;
     justify-content: center;
     width: $swal2-close-button-width;
     height: $swal2-close-button-height;
@@ -42,7 +58,7 @@
     line-height: 1.2;
     cursor: pointer;
     overflow: hidden;
-
+    outline: none;
     &:hover {
       transform: $swal2-close-button-hover-transform;
       color: $swal2-close-button-hover-color;
@@ -56,7 +72,7 @@
   justify-content: center;
   width: $swal2-icon-size;
   height: $swal2-icon-size;
-  margin: $swal2-icon-margin;
+  margin: $xmat-pad auto;
   border: .25em solid transparent;
   border-radius: 50%;
   line-height: $swal2-icon-size;

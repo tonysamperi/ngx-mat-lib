@@ -1,5 +1,6 @@
-import {Component, Inject, OnInit} from "@angular/core";
+import {AfterViewInit, Component, Inject, Input, OnInit, ViewChild} from "@angular/core";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
+import * as _ from "lodash";
 
 export interface XmatAlertDialogData {
     type: XmatAlertTypes;
@@ -26,6 +27,8 @@ export enum XmatAlertDialogActions {
     close
 }
 
+const bgColorKeyKebab: string = "background-color";
+const bgColorKeyCamel: string = "backgroundColor";
 const dash: string = "-";
 const typePlaceHolder: string = "%type%";
 const classNamePre: string = "swal2";
@@ -39,51 +42,14 @@ const classNameJustifyBetween: string = "xmat-justify-between";
 
 @Component({
     selector: "xmat-message-dialog",
-    template: `
-        <div class="swal2-header swal2-show">
-            <button type="button"
-                    *ngIf="data.showCloseButton"
-                    class="swal2-close"
-                    (click)="onActionClick(md.actions.close)"
-                    aria-label="Chiudi" style="display: flex;">×
-            </button>
-            <div class="swal2-icon" [ngClass]="md.iconClassNames">
-		<span class="swal2-icon-text">
-        {{md.inner[md.type]}}
-    </span>
-                <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
-                <span class="swal2-success-line-tip"></span>
-                <span class="swal2-success-line-long"></span>
-                <div class="swal2-success-ring"></div>
-                <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
-                <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
-                <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span
-                        class="swal2-x-mark-line-right"></span></span>
-            </div>
-        </div>
-        <h3 *ngIf="!!data.title" mat-dialog-title>{{data.title}}</h3>
-
-        <div mat-dialog-content [innerHTML]="data.dialogContent"></div>
-
-        <div mat-dialog-actions [ngClass]="md.actionsCtClassNames">
-            <button mat-button
-                    mat-raised-button cdkFocusInitial
-                    *ngIf="!data.hideCancelButton"
-                    (click)="onActionClick(md.actions.cancel)">
-                {{data.cancelText || "Annulla"}}
-            </button>
-            <button mat-button
-                    mat-raised-button
-                    *ngIf="!data.hideConfirmButton"
-                    color="warn"
-                    (click)="onActionClick(md.actions.confirm)">
-                {{data.confirmText || "Conferma"}}
-            </button>
-        </div>
-    `,
+    templateUrl: "../tpl/xmat-alert-dialog.component.html",
     styleUrls: ["../scss/xmat-alert-dialog.component.scss"]
 })
-export class XmatAlertDialogComponent implements OnInit {
+export class XmatAlertDialogComponent implements OnInit, AfterViewInit {
+
+    @ViewChild("xmatAlertPrimary") xmatBtnPrimary;
+    @Input("confirmStyles") private _confirmStyles: Object;
+    @Input("cancelStyles") private _cancelStyles: Object;
 
     md: any = {
         actions: XmatAlertDialogActions,
@@ -97,7 +63,11 @@ export class XmatAlertDialogComponent implements OnInit {
             [XmatAlertTypes[XmatAlertTypes.question]]: "?",
             [XmatAlertTypes[XmatAlertTypes.info]]: "i",
         },
-        type: ""
+        type: "",
+        styles: {
+            cancel: {},
+            confirm: {}
+        }
     };
 
     /**
@@ -109,6 +79,7 @@ export class XmatAlertDialogComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
         if (this.data.type !== 0 && !this.data.type) {
             this.data.type = XmatAlertTypes.info;
         }
@@ -121,6 +92,25 @@ export class XmatAlertDialogComponent implements OnInit {
             classNameAnimate.replace(typePlaceHolder, this.md.type)
         ];
     }
+
+    ngAfterViewInit(): void {
+        // Apply primary bg if color is not set
+        if (!!this._confirmStyles) {
+            _.merge(this.md.styles.confirm, this._confirmStyles);
+        }
+        const hasDefaultColor = !!this.md.styles.confirm[bgColorKeyKebab] || !!this.md.styles.confirm[bgColorKeyCamel];
+
+        if (!hasDefaultColor && !!this.xmatBtnPrimary) {
+            const xmatBtnPrimaryComStyle = window.getComputedStyle(this.xmatBtnPrimary._elementRef.nativeElement);
+            this.md.styles.confirm[bgColorKeyKebab] = xmatBtnPrimaryComStyle.getPropertyValue(bgColorKeyKebab);
+            this.md.styles.confirm.color = xmatBtnPrimaryComStyle.getPropertyValue("color"); // Nuke whatever color and set ThemePalette's
+        }
+
+        if (!!this._cancelStyles) {
+            _.merge(this.md.styles.cancel, this._cancelStyles);
+        }
+    }
+
 
     onActionClick(action): void {
         this._dialogRef.close(XmatAlertDialogActions[action]);

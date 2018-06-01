@@ -2,33 +2,45 @@
     <button type="button"
             class="swal2-close"
             (click)="onActionClick(md.actions.close)"
-            aria-label="Chiudi" style="display: flex;">×
+            aria-label="Chiudi">×
     </button>
-    <div class="swal2-icon" [ngClass]="md.classNames">
+    <div class="swal2-icon" [ngClass]="md.iconClassNames">
 		<span class="swal2-icon-text">
         {{md.inner[md.type]}}
     </span>
-        <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+        <div class="swal2-success-circular-line-left swal2-bg-white"></div>
         <span class="swal2-success-line-tip"></span>
         <span class="swal2-success-line-long"></span>
         <div class="swal2-success-ring"></div>
-        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
-        <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
-        <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span
-                class="swal2-x-mark-line-right"></span></span>
+        <div class="swal2-success-fix swal2-bg-white"></div>
+        <div class="swal2-success-circular-line-right swal2-bg-white"></div>
+        <span class="swal2-x-mark">
+            <span class="swal2-x-mark-line-left"></span>
+            <span class="swal2-x-mark-line-right"></span>
+        </span>
     </div>
 </div>
 <h1 mat-dialog-title>{{data.title || "Messaggio"}}</h1>
 
 <div mat-dialog-content [innerHTML]="data.dialogContent"></div>
 
-<div mat-dialog-actions>
-    <button mat-button *ngIf="!data.hideCancelButton" mat-raised-button cdkFocusInitial
+<div mat-dialog-actions [ngClass]="md.actionsCtClassNames">
+    <button mat-button
+            mat-raised-button
+            *ngIf="!data.hideCancelButton"
+            cdkFocusInitial
+            [ngStyle]="md.styles.cancel"
             (click)="onActionClick(md.actions.cancel)">
         {{data.cancelText || "Annulla"}}
     </button>
-    <button mat-button mat-raised-button color="warn"
+    <button mat-button
+            mat-raised-button
+            *ngIf="!data.hideConfirmButton"
+            [ngStyle]="md.styles.confirm"
             (click)="onActionClick(md.actions.confirm)">
         {{data.confirmText || "Conferma"}}
     </button>
+</div>
+<div class="swal2-palette-spot">
+    <button #xmatAlertPrimary mat-button mat-raised-button color="primary"></button>
 </div>
