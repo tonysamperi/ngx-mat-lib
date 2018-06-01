@@ -70,3 +70,12 @@
 
 #1.1.27
 * Fixed null-pointer in XmatAlertDialog
+
+#1.1.28
+* Moved to generator-ng5-library to support double quotes in templateUrl (damn I'll have to move all the templates back outside)
+* Export of xmat-alert-dialog content
+* Removed response object from mock console
+* Improved xmat-overlay to deal with inline containers and restore when destroied
+* Added buttons style input for alert dialog with default to "primary"
+* Fixed alert actions position
+* General improvements
