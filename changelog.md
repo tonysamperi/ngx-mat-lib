@@ -79,3 +79,6 @@
 * Added buttons style input for alert dialog with default to "primary"
 * Fixed alert actions position
 * General improvements
+
+#1.1.29
+* Fixed success symbol in xmat-alert-dialog

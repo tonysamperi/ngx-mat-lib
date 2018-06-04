@@ -140,6 +140,7 @@
       border-radius: 50%;
 
       &[class$='left'] {
+        background-color: #FFF;
         top: -.4375em;
         left: -2.0635em;
         transform: rotate(-45deg);
@@ -148,6 +149,7 @@
       }
 
       &[class$='right'] {
+        background-color: #FFF;
         top: -.6875em;
         left: 1.875em;
         transform: rotate(-45deg);
