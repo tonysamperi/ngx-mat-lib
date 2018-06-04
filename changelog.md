@@ -85,3 +85,6 @@
 
 #1.1.30
 * Fixed success symbol in xmat-alert-dialog overlapping stuff below
+
+#1.1.31
+* Fixed unused parameter showCloseButon on xmat-alert-dialog

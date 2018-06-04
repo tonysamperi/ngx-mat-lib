@@ -1,6 +1,7 @@
 <div class="swal2-header swal2-show">
     <button type="button"
             class="swal2-close"
+            *ngIf="data.showCloseButton"
             (click)="onActionClick(md.actions.close)"
             aria-label="Chiudi">×
     </button>
