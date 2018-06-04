@@ -82,3 +82,6 @@
 
 #1.1.29
 * Fixed success symbol in xmat-alert-dialog
+
+#1.1.30
+* Fixed success symbol in xmat-alert-dialog overlapping stuff below
