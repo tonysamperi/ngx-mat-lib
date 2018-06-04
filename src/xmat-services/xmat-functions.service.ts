@@ -10,6 +10,7 @@ import {
 import {XmatConstantsService, XMAT_CONSTANT_LABELS} from "./xmat-constants.service";
 import {XmatSnackBarComponent} from "../xmat-snack-bar/ts/xmat-snack-bar.component";
 import {XmatSnackBarData} from "../xmat-snack-bar/ts/xmat-snack-bar-data.model";
+import {XmatAlertDialogActions} from "../xmat-dialog/ts/xmat-alert-dialog.component";
 import * as _ from "lodash";
 
 const colorParams = {
@@ -163,7 +164,7 @@ export class XmatFunctionsService {
         return this.isNumeric(value) && value >= 0;
     }
 
-    openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData): Observable<boolean> {
+    openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData): Observable<XmatAlertDialogActions> {
         let dialogConfig = new MatDialogConfig();
         _.extend(this._defaultAlertData, data || {});
         _.extend(dialogConfig, {

@@ -88,3 +88,6 @@
 
 #1.1.31
 * Fixed unused parameter showCloseButon on xmat-alert-dialog
+
+#1.1.32
+* Fixed returned Observable type of openAlertDialog in xmat-functions-service

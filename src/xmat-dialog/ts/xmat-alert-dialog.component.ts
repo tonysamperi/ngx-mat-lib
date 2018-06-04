@@ -112,7 +112,7 @@ export class XmatAlertDialogComponent implements OnInit, AfterViewInit {
     }
 
 
-    onActionClick(action): void {
-        this._dialogRef.close(XmatAlertDialogActions[action]);
+    onActionClick(action: XmatAlertDialogActions): void {
+        this._dialogRef.close(action);
     }
 }
