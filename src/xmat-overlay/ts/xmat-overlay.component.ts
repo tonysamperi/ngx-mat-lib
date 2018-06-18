@@ -50,8 +50,11 @@ export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
 
     ngOnDestroy(): void {
         const $xmatOverlay = this.elementRef.nativeElement;
-        $xmatOverlay.parentNode.style.display = this._parentStyleBak.display;
-        $xmatOverlay.parentNode.style.position = this._parentStyleBak.position;
+        const $overlayContainer = $xmatOverlay.parentNode;
+        if (!!$overlayContainer && !!$overlayContainer.style) {
+            $overlayContainer.style.display = this._parentStyleBak.display;
+            $overlayContainer.style.position = this._parentStyleBak.position;
+        }
     }
 
 }

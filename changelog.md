@@ -91,3 +91,9 @@
 
 #1.1.32
 * Fixed returned Observable type of openAlertDialog in xmat-functions-service
+
+#1.1.33
+* Fixed destroy function for xmat-spinner
+* Renamed ValidListValidator
+* Moved to outer template for xmat-spinner
+* Removed useless "hidden" attribute from xmat-spinner 

@@ -5,7 +5,7 @@ import * as _ from "lodash";
  * A selection must match
  * one of a given list
  */
-export function xmatValidRadioSelection(sourceOptions: any[], controlKey): ValidatorFn {
+export function xmatValidListSelection(sourceOptions: any[], controlKey): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {
         const value = control.value[controlKey];
         if (!value) {
