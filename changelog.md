@@ -97,3 +97,7 @@
 * Renamed ValidListValidator
 * Moved to outer template for xmat-spinner
 * Removed useless "hidden" attribute from xmat-spinner 
+
+#1.1.34
+* Changed xmat-padding rules to have full box padding with multiples of 8
+* Added xmat-opacity-half

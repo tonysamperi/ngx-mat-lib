@@ -22,6 +22,10 @@
   opacity: 1;
 }
 
+.xmat-opacity-half{
+  opacity: 0.5;
+}
+
 .xmat-cursor-pointer {
   cursor: pointer;
 }
@@ -66,7 +70,14 @@
 
 // Default full margin/padding of 16px
 @each $rule in $space-rules {
-  .xmat-#{$rule}-mat {
-    #{$rule}: $xmat-pad * 2;
+  .xmat-#{$rule}- {
+    $i: 1;
+    @while $i < 5 {
+      $value: $i * $xmat-pad;
+      &#{$i}x {
+        #{$rule}: #{$value};
+      }
+      $i: $i + 1;
+    }
   }
 }
