@@ -121,7 +121,8 @@ export class XmatMockService implements HttpInterceptor {
                 // If params placeholder is in custom URL, params are concat to url with slashes
                 let url = mock.customUrl.replace(this._paramsPlaceholder, params.join(this._ds));
                 mockRequest = request.clone({
-                    url: url + (!!queryString ? this._qm + queryString : "")
+                    url: url + (!!queryString ? this._qm + queryString : ""),
+                    method: mock.customMethod ? mock.customMethod : url.indexOf(".json") >= 0 ? "GET" : request.method
                 });
             }
             else {
@@ -142,12 +143,12 @@ export class XmatMockService implements HttpInterceptor {
             const delay = timer(mock.timeout);
             const start = Date.now();
             return delay.switchMap(() => next.handle(mockRequest))
-                .do((event: HttpResponse<any>) => {
-                    if (event.type === HttpEventType.Response) {
-                        const elapsed = Date.now() - start;
-                        console.log(`Request for mocked ${request.urlWithParams} took ${elapsed} ms.`);
-                    }
-                });
+            .do((event: HttpResponse<any>) => {
+                if (event.type === HttpEventType.Response) {
+                    const elapsed = Date.now() - start;
+                    console.log(`Request for mocked ${request.urlWithParams} took ${elapsed} ms.`);
+                }
+            });
         };
     }
 }

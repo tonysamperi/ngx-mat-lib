@@ -101,3 +101,6 @@
 #1.1.34
 * Changed xmat-padding rules to have full box padding with multiples of 8
 * Added xmat-opacity-half
+
+#1.1.35
+* Added optional override for method, valid only when using customUrl in xmat-mock

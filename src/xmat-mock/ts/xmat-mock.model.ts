@@ -9,6 +9,7 @@
 
 export interface XmatMock {
     body?: object;
+    customMethod?: string;
     customUrl?: string;
     result?: boolean;
     method?: string;
