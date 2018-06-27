@@ -100,7 +100,7 @@ export class XmatRestService {
             case this.httpMethods.del:
                 return this._http.delete<T>(config.url, config.data);
             case this.httpMethods.put:
-                return this._http.put<T>(config.url, void 0, config.data);
+                return this._http.put<T>(config.url, config.data);
 
             default:
                 console.error("Error: [XmatRest:badmethod]", this.$http.arguments);

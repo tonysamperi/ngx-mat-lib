@@ -104,3 +104,6 @@
 
 #1.1.35
 * Added optional override for method, valid only when using customUrl in xmat-mock
+
+#1.1.36
+* Fixed request body creation in put case of xmat-rest
