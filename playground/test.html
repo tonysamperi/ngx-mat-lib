@@ -7,8 +7,8 @@
                      [required]="isUbiTimeInputRequired"></xmat-time-input>
 </mat-form-field>
 <hr/>
-<div style="height: 100px">
-    <span xmatActionText color="accent">MIO TEST</span>
+<div style="height: 100px; background: #e2e2e2">
+    <span xmatActionText color="primary" (click)="showSnackBar()">MIO TEST</span>
 </div>
 <hr/>
 <button (click)="accordionOpened = !accordionOpened">ACCORDION TOGGLE</button> EXPANDED = {{accordionOpened ? "true":"false"}}

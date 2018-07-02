@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, Optional} from "@angular/core";
 import {MethodsMap} from "../xmat-rest/ts/methods-map.model";
 
 // Const variables
@@ -38,7 +38,7 @@ export class XmatConstantsService {
         ko: ".ko.json"
     };
     public readonly mocksBaseUrl: string = "assets/services-mocks/";
-    public readonly restBaseUrl: string = "";
+    public restBaseUrl: string = "";
     // URLS ARE NOT ALPHABETICALLY ORDERED SINCE IT'S LIKELY THAT THEY'LL CHANGE OFTEN AT THIS TIME
 
     public readonly dialogData: any = {
@@ -103,8 +103,7 @@ export class XmatConstantsService {
 
     public readonly showMenu: boolean = true;
 
-    constructor(restBaseUrl: string = "") {
-        this.restBaseUrl = restBaseUrl;
+    constructor() {
     }
 
     /**

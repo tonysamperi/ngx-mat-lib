@@ -111,3 +111,7 @@
 #1.1.37
 * Fixed xmat-snackbar data (duration)
 * Added panelClass handling in xmat-snackbar
+
+#1.1.38
+* Improved xmat-constants behaviour: removed param to avoid creation of extended class
+* Playground updated

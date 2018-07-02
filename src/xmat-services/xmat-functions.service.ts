@@ -61,7 +61,6 @@ export class XmatFunctionsService {
     constructor(protected _dialog: MatDialog,
                 protected  _snackBar: MatSnackBar,
                 protected _xmatConstants: XmatConstantsService) {
-
     }
 
     /**

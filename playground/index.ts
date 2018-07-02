@@ -37,12 +37,21 @@ import {
 import {
     XMAT_DATE_FORMATS,
     XMAT_LOCALE_IT,
+    XmatTime,
+    XmatSnackBarDataTypes,
+    XmatMatDateLocale,
+    XmatSnackBarData,
+    // COMPS
     XmatActionTextModule,
     XmatAccordionModule,
     XmatTimeInputModule,
-    XmatTime,
-    XmatMatDateLocale
+    XmatSnackBarModule,
+    // SERVS
+    XmatConstantsService,
+    XmatFunctionsService,
+    //
 } from "ngx-mat-lib";
+
 
 @NgModule({
     exports: [
@@ -63,11 +72,27 @@ import {
         MatSidenavModule,
         MatStepperModule,
         MatTableModule,
-        MatToolbarModule,
-        XmatAccordionModule
+        MatToolbarModule
     ]
 })
 export class CdkMaterialImportsModule {
+}
+
+@NgModule({
+    exports: [
+        // COMPS
+        XmatActionTextModule,
+        XmatAccordionModule,
+        XmatTimeInputModule,
+        XmatSnackBarModule,
+    ],
+    providers: [
+        // SERVS
+        XmatConstantsService,
+        XmatFunctionsService,
+    ],
+})
+export class XmatImportsModule {
 }
 
 const today = new Date();
@@ -97,6 +122,26 @@ class AppComponent {
     maxDate: Date = today;
 
     accordionOpened: boolean = true;
+
+    constructor(private _functions: XmatFunctionsService) {
+
+    }
+
+    showSnackBar(): void {
+
+        const callback = () => {
+            alert("CANCELLED");
+        };
+        const snackBarData: XmatSnackBarData = {
+            type: XmatSnackBarDataTypes.success,
+            message: "TEST MESSAGE",
+            showAction: true,
+            duration: 50000,
+            actionText: "Annulla",
+            actionCallback: callback
+        };
+        this._functions.showSnackBar(snackBarData);
+    }
 }
 
 @NgModule({
@@ -107,7 +152,7 @@ class AppComponent {
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        XmatTimeInputModule,
+        XmatImportsModule,
         CdkMaterialImportsModule
     ],
     providers: [
