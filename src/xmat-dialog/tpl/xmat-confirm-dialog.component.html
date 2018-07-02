@@ -3,22 +3,17 @@
 
 </div>
 <div mat-dialog-actions>
-    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
-
-        <button mat-button
-                *ngIf="!data.hideCancelButton"
-                mat-raised-button
-                (click)="onNoClick()">
-            {{data.cancelText || "Annulla"}}
-        </button>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="end center" fxFlex="50">
-        <button mat-button
-                mat-raised-button
-                color="warn"
-                cdkFocusInitial
-                (click)="onYesClick()">
-            {{data.confirmText || "Conferma"}}
-        </button>
-    </div>
+    <button mat-button
+            *ngIf="!data.hideCancelButton"
+            mat-raised-button
+            cdkFocusInitial
+            (click)="onNoClick()">
+        {{data.cancelText || "Annulla"}}
+    </button>
+    <button mat-button
+            mat-raised-button
+            color="warn"
+            (click)="onYesClick()">
+        {{data.confirmText || "Conferma"}}
+    </button>
 </div>

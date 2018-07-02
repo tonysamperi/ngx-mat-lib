@@ -6,27 +6,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
     styles: [
         "div[mat-dialog-actions] {justify-content: space-between; display: flex;}"
     ],
-    template: `
-        <h3 mat-dialog-title>{{data.title || "Conferma"}}</h3>
-        <div mat-dialog-content [innerHTML]="data.dialogContent">
-
-        </div>
-        <div mat-dialog-actions>
-            <button mat-button
-                    *ngIf="!data.hideCancelButton"
-                    mat-raised-button
-                    cdkFocusInitial
-                    (click)="onNoClick()">
-                {{data.cancelText || "Annulla"}}
-            </button>
-            <button mat-button
-                    mat-raised-button
-                    color="warn"
-                    (click)="onYesClick()">
-                {{data.confirmText || "Conferma"}}
-            </button>
-        </div>
-    `,
+    templateUrl: "../tpl/xmat-confirm-dialog.component.html"
 })
 export class XmatConfirmDialogComponent {
 

@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-lib",
-  "version": "1.1.41",
+  "version": "1.1.42",
   "repository": {
     "type": "git",
     "url": "https://github.com/tonysamperi/ngx-mat-lib"
@@ -33,7 +33,6 @@
     "@angular/cli": "^1.6.7",
     "@angular/common": "^5.0.0",
     "@angular/core": "^5.0.0",
-    "@angular/flex-layout": "^2.0.0-beta.12",
     "@angular/forms": "^5.0.0",
     "@angular/material": "^5.2.0",
     "@angular/router": "^5.0.0",

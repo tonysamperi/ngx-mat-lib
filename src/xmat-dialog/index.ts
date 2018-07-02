@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule} from "@angular/forms";
 import {
     MatDialogModule,
@@ -30,7 +29,6 @@ export * from "./ts/xmat-alert-dialog.component";
         XmatAlertDialogComponent
     ],
     exports: [
-        FlexLayoutModule,
         XmatConfirmDialogComponent
     ],
     entryComponents: [

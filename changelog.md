@@ -125,3 +125,6 @@
 #1.1.41
 * Fixed "flex-layout" dependency on Xmat Dialog Module
 
+#1.1.42
+* Removed "flex-layout" dependency on Xmat Dialog Module (actually useless)
+

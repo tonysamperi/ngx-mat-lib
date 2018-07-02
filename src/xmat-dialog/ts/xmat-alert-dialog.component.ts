@@ -48,7 +48,9 @@ const classNameJustifyBetween: string = "xmat-justify-between";
 export class XmatAlertDialogComponent implements OnInit, AfterViewInit {
 
     @ViewChild("xmatAlertPrimary") xmatBtnPrimary;
+    // tslint:disable-next-line:no-input-rename
     @Input("confirmStyles") private _confirmStyles: Object;
+    // tslint:disable-next-line:no-input-rename
     @Input("cancelStyles") private _cancelStyles: Object;
 
     md: any = {
