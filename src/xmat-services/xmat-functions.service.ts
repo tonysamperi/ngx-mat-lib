@@ -22,6 +22,7 @@ const colorParams = {
 const hexValues: string = "0123456789ABCDEF";
 
 const byte2Hex = (n) => {
+    // tslint:disable-next-line:no-bitwise
     return String(hexValues.substr((n >> 4) & 0x0F, 1)) + hexValues.substr(n & 0x0F, 1);
 };
 
@@ -30,7 +31,8 @@ const rgb2Hex = (r, g, b) => {
 };
 
 const eachFrom = (array, index, iteratee) => {
-    let _index = index == null ? -1 : index, length = array == null ? 0 : array.length;
+    let _index = index == null ? -1 : index;
+    const length = array == null ? 0 : array.length;
 
     while (++_index < length) {
         if (iteratee(array[_index], _index, array) === false) {
@@ -76,9 +78,9 @@ export class XmatFunctionsService {
             if (Array.isArray(source)) {
                 target = [];
             }
-            let sourceKeys = Object.keys(source);
+            const sourceKeys = Object.keys(source);
             for (let i = 0; i < sourceKeys.length; i++) {
-                let key = sourceKeys[i];
+                const key = sourceKeys[i];
                 // Always create new key on the target, it will eventually be converted to object
                 // For both arrays and objects
                 if (!!source[key] && typeof source[key] === typeof {}) {
@@ -91,13 +93,13 @@ export class XmatFunctionsService {
             return target;
         }
         else {
-            console.info("Cannot create reflection of non object");
+            console.error("Cannot create reflection of non object");
             return void 0;
         }
     }
 
     dateAddMonths(date: Date = new Date(), months: number = 0): Date {
-        let day = date.getDate();
+        const day = date.getDate();
         date.setMonth(date.getMonth() + +months);
         if (date.getDate() !== day) {
             date.setDate(0);
@@ -115,10 +117,11 @@ export class XmatFunctionsService {
      * */
     getRainbow(steps: number = 10, step: number = 0) {
         let r, g, b;
-        let h = step / steps;
-        let i = ~~(h * 6);
-        let f = h * 6 - i;
-        let q = 1 - f;
+        const h = step / steps;
+        // tslint:disable-next-line:no-bitwise
+        const i = ~~(h * 6);
+        const f = h * 6 - i;
+        const q = 1 - f;
         switch (i % 6) {
             case 0:
                 r = 1, g = f, b = 0;
@@ -139,18 +142,21 @@ export class XmatFunctionsService {
                 r = 1, g = 0, b = q;
                 break;
         }
-        let red = ("00" + (~~(r * 255)).toString(16)).slice(-2);
-        let green = ("00" + (~~(g * 255)).toString(16)).slice(-2);
-        let blue = ("00" + (~~(b * 255)).toString(16)).slice(-2);
+        // tslint:disable-next-line:no-bitwise
+        const red = ("00" + (~~(r * 255)).toString(16)).slice(-2);
+        // tslint:disable-next-line:no-bitwise
+        const green = ("00" + (~~(g * 255)).toString(16)).slice(-2);
+        // tslint:disable-next-line:no-bitwise
+        const blue = ("00" + (~~(b * 255)).toString(16)).slice(-2);
         return ("#" + red + green + blue);
     }
 
     getRandomNonConsecutiveHex(phase: number = 10) {
-        let index = this._colorDb.generated.length + 1;
-        let red = Math.sin(this._colorDb.frequency * index + 2 + phase) * this._colorDb.factor;
-        let green = Math.sin(this._colorDb.frequency * index + phase) * this._colorDb.factor;
-        let blue = Math.sin(this._colorDb.frequency * index + 4 + phase) * this._colorDb.factor;
-        let result = rgb2Hex(red, green, blue);
+        const index = this._colorDb.generated.length + 1;
+        const red = Math.sin(this._colorDb.frequency * index + 2 + phase) * this._colorDb.factor;
+        const green = Math.sin(this._colorDb.frequency * index + phase) * this._colorDb.factor;
+        const blue = Math.sin(this._colorDb.frequency * index + 4 + phase) * this._colorDb.factor;
+        const result = rgb2Hex(red, green, blue);
         this._colorDb.generated.push(result);
         return result;
 
@@ -165,7 +171,7 @@ export class XmatFunctionsService {
     }
 
     openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData): Observable<XmatAlertDialogActions> {
-        let dialogConfig = new MatDialogConfig();
+        const dialogConfig = new MatDialogConfig();
         _.extend(this._defaultAlertData, data || {});
         _.extend(dialogConfig, {
             width: this._xmatConstants.dialogOptions.defaultWidth,
@@ -173,7 +179,7 @@ export class XmatFunctionsService {
             disableClose: true
         });
         // Open dialog and pass data plus options
-        let dialogRef = this._dialog.open(XmatAlertDialogComponent, dialogConfig);
+        const dialogRef = this._dialog.open(XmatAlertDialogComponent, dialogConfig);
 
         return new Observable(observer => {
             // Catch result
@@ -186,14 +192,14 @@ export class XmatFunctionsService {
     }
 
     openConfirmDialog(data = {}, disableClose: boolean = false): Observable<boolean> {
-        let dialogConfig = new MatDialogConfig();
+        const dialogConfig = new MatDialogConfig();
         _.extend(dialogConfig, {
             width: this._xmatConstants.dialogOptions.defaultWidth,
             data: data,
             disableClose: disableClose
         });
         // Open dialog and pass data plus options
-        let dialogRef = this._dialog.open(XmatConfirmDialogComponent, dialogConfig);
+        const dialogRef = this._dialog.open(XmatConfirmDialogComponent, dialogConfig);
 
         return new Observable(observer => {
             // Catch result
@@ -206,12 +212,15 @@ export class XmatFunctionsService {
     }
 
     showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}): MatSnackBarRef<XmatSnackBarComponent> {
-
-        let snackBarConfig = new MatSnackBarConfig();
-
+        const snackBarConfig = new MatSnackBarConfig();
+        const panelClassNames = ["xmat-snack"];
+        if (!!data.type) {
+            panelClassNames.push(data.type);
+        }
         _.extend(snackBarConfig, {
             data: data,
-            duration: 5000
+            duration: data.duration || 5000,
+            panelClass: panelClassNames
         });
 
         return this._snackBar.openFromComponent(XmatSnackBarComponent, snackBarConfig);

@@ -20,6 +20,7 @@ const invalidDisplayValues = ["inline", "none"];
 
 export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
 
+    // tslint:disable-next-line:no-input-rename
     @Input("overlayStyle") private _overlayStyle: xmatOverlayStyles;
 
     private _parentStyleBak: { [key: string]: string } = {};

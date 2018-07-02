@@ -29,7 +29,7 @@ export class XmatMockService implements HttpInterceptor {
     constructor(protected _xmatConstants: XmatConstantsService,
                 protected _xmatMocksList: XmatMocksListService) {
 
-        let mocks = this._xmatMocksList.get();
+        const mocks = this._xmatMocksList.get();
         _.each(mocks, (mock) => {
             this.pushMockHandler(mock);
         });
@@ -38,24 +38,24 @@ export class XmatMockService implements HttpInterceptor {
     // Here the magic happens
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (!!(<any>window).times[request.url]) {
-            let startTime = (<any>window).times[request.url];
-            let finalTime = Date.now();
+            const startTime = (<any>window).times[request.url];
+            const finalTime = Date.now();
             console.info(`SECOND INTERCEPTOR after ${(finalTime - startTime)} ms`);
         }
         // Separate query string from the rest
-        let urlParts = request.url.split(this._qm);
+        const urlParts = request.url.split(this._qm);
         let mockKey = this._methodsKeys[request.method] + urlParts[0];
 
         // Checks for non parametric URL
         if (this.mockExists(mockKey)) {
             return this._mocks[mockKey](request, next, urlParts[1]);
         }
-        let urlParams = this.extractUrlParams(urlParts[0]);
+        const urlParams = this.extractUrlParams(urlParts[0]);
         if (Array.isArray(urlParams) && urlParams.length) {
             for (let i = 1; i <= urlParams.length; i++) {
                 mockKey = mockKey.substr(0, mockKey.lastIndexOf(this._ds));
                 if (this.mockExists(mockKey + this._ds + this._paramsPlaceholder)) {
-                    let validParams = urlParams.splice(urlParams.length - i, i);
+                    const validParams = urlParams.splice(urlParams.length - i, i);
                     return this._mocks[mockKey + this._ds + this._paramsPlaceholder](request, next, validParams, urlParts[1]);
                 }
             }
@@ -75,8 +75,8 @@ export class XmatMockService implements HttpInterceptor {
          *      "id"
          * ]
          */
-        let cleanUrl = serviceUrl.replace(this._restBaseUrl, "");
-        let urlParams = cleanUrl.split(this._ds);
+        const cleanUrl = serviceUrl.replace(this._restBaseUrl, "");
+        const urlParams = cleanUrl.split(this._ds);
         urlParams.shift();
         // If true it means there was at least one param
         if (urlParams.length > 0) {
@@ -91,9 +91,9 @@ export class XmatMockService implements HttpInterceptor {
     }
 
     private generateJsonUrl(serviceUrl: string, methodKey: string, fileSuffix: string = "", status: string = this._fileEndings.ok) {
-        let serviceKey = serviceUrl.substr(this._restBaseUrl.length).split(this._ds + this._paramsPlaceholder)[0];
-        let serviceFolder = serviceKey.split(this._ds)[0];
-        let fileName = serviceKey.split(this._ds).join(this._fileNameSpace);
+        const serviceKey = serviceUrl.substr(this._restBaseUrl.length).split(this._ds + this._paramsPlaceholder)[0];
+        const serviceFolder = serviceKey.split(this._ds)[0];
+        const fileName = serviceKey.split(this._ds).join(this._fileNameSpace);
         return this._mocksBaseUrl + serviceFolder + this._ds + methodKey + fileName + fileSuffix + status;
     }
 
@@ -105,11 +105,11 @@ export class XmatMockService implements HttpInterceptor {
         !!mock.status || (mock.status = 200);
         !!mock.body || (mock.body = this._defaultResponseBody);
         typeof mock.timeout === typeof 0 && mock.timeout >= 0 || (mock.timeout = 2500);
-        let mockKey = mock.method + mock.url;
+        const mockKey = mock.method + mock.url;
         this._mocks[mockKey] = (request, next, params: string[] = [], queryString) => {
             if (mock.status !== 200) {
                 return new Observable(observer => {
-                    let customResponse = new HttpResponse({status: mock.status, body: mock.body});
+                    const customResponse = new HttpResponse({status: mock.status, body: mock.body});
                     observer.error(customResponse);
                     observer.complete();
                 });
@@ -119,7 +119,7 @@ export class XmatMockService implements HttpInterceptor {
             if (!!mock.customUrl) {
 
                 // If params placeholder is in custom URL, params are concat to url with slashes
-                let url = mock.customUrl.replace(this._paramsPlaceholder, params.join(this._ds));
+                const url = mock.customUrl.replace(this._paramsPlaceholder, params.join(this._ds));
                 mockRequest = request.clone({
                     url: url + (!!queryString ? this._qm + queryString : ""),
                     method: mock.customMethod ? mock.customMethod : url.indexOf(".json") >= 0 ? "GET" : request.method
@@ -130,10 +130,10 @@ export class XmatMockService implements HttpInterceptor {
                 _.each(params, (param) => {
                     suffix += this._fileNameSpace + param;
                 });
-                let ending = mock.result === false ? this._fileEndings.ko : this._fileEndings.ok;
-                let method = this._methodsKeys[request.method];
-                let url = this.generateJsonUrl(mock.url, method, suffix, ending);
-                let queriedUrl = this.generateJsonUrl(mock.url, method, this._fileNameSpace + this._queryUrlParam, ending);
+                const ending = mock.result === false ? this._fileEndings.ko : this._fileEndings.ok;
+                const method = this._methodsKeys[request.method];
+                const url = this.generateJsonUrl(mock.url, method, suffix, ending);
+                const queriedUrl = this.generateJsonUrl(mock.url, method, this._fileNameSpace + this._queryUrlParam, ending);
                 mockRequest = request.clone({
                     url: request.urlWithParams.indexOf(this._queryUrlParam) > 0 ? queriedUrl : url,
                     method: "GET"

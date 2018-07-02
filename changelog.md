@@ -107,3 +107,7 @@
 
 #1.1.36
 * Fixed request body creation in put case of xmat-rest
+
+#1.1.37
+* Fixed xmat-snackbar data (duration)
+* Added panelClass handling in xmat-snackbar

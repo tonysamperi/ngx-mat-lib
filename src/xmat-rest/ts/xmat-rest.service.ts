@@ -86,7 +86,8 @@ export class XmatRestService {
                 if (!!config.data) {
                     // Accepting 0, null, void 0 as empty params
                     if (this._xmatConstants.isStrictlyObject(config.data)) {
-                        for (let key in config.data) {
+                        let key;
+                        for (key in config.data) {
                             params = params.append(key, config.data[key]);
                         }
                     }

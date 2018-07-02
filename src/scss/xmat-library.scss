@@ -49,6 +49,16 @@ mat-form-field {
     }
   }
 }
+
+snack-bar-container {
+  &.xmat-snack-success {
+    border-top: 5px solid map-get($xmat-colors, green);
+  }
+  &.xmat-snack-fail {
+    border-top: 5px solid map-get($xmat-colors, red);
+  }
+}
+
 /* THEME OVERRIDES - END */
 
 /* TEXT AND COLORS - START */
@@ -69,4 +79,5 @@ mat-form-field {
     background-color: $color-value;
   }
 }
+
 /* TEXT AND COLORS - END */
