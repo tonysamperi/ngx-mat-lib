@@ -120,4 +120,8 @@
 * Actually not an update. Just messed with version number :(
 
 #1.1.40
-* Fixed missing dependency on Xmat Dialog Moudule
+* Fixed missing dependency on Xmat Dialog Module
+
+#1.1.41
+* Fixed "flex-layout" dependency on Xmat Dialog Module
+

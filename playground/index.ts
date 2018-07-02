@@ -42,6 +42,7 @@ import {
     XmatMatDateLocale,
     XmatSnackBarData,
     // COMPS
+    XmatDialogModule,
     XmatActionTextModule,
     XmatAccordionModule,
     XmatTimeInputModule,
@@ -83,6 +84,7 @@ export class CdkMaterialImportsModule {
         // COMPS
         XmatActionTextModule,
         XmatAccordionModule,
+        XmatDialogModule,
         XmatTimeInputModule,
         XmatSnackBarModule,
     ],
@@ -151,7 +153,7 @@ class AppComponent {
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
-        FlexLayoutModule,
+       // FlexLayoutModule,
         XmatImportsModule,
         CdkMaterialImportsModule
     ],
