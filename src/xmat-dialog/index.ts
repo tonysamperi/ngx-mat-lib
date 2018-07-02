@@ -2,11 +2,17 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule} from "@angular/forms";
-import {MatButtonModule, MatDatepickerModule, MatFormFieldModule, MatIconModule} from "@angular/material";
+import {
+    MatDialogModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatIconModule
+} from "@angular/material";
 import {XmatConfirmDialogComponent} from "./ts/xmat-confirm-dialog.component";
 import {XmatAlertDialogComponent} from "./ts/xmat-alert-dialog.component";
 
-export {XmatConfirmDialogComponent} from "./ts/xmat-confirm-dialog.component";
+export * from "./ts/xmat-confirm-dialog.component";
 export * from "./ts/xmat-alert-dialog.component";
 
 @NgModule({
@@ -14,6 +20,7 @@ export * from "./ts/xmat-alert-dialog.component";
         CommonModule,
         FlexLayoutModule,
         FormsModule,
+        MatDialogModule,
         MatButtonModule,
         MatDatepickerModule,
         MatFormFieldModule,

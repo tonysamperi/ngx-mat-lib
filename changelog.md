@@ -118,3 +118,6 @@
 
 #1.1.39
 * Actually not an update. Just messed with version number :(
+
+#1.1.40
+* Fixed missing dependency on Xmat Dialog Moudule
