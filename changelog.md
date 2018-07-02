@@ -115,3 +115,6 @@
 #1.1.38
 * Improved xmat-constants behaviour: removed param to avoid creation of extended class
 * Playground updated
+
+#1.1.39
+* Actually not an update. Just messed with version number :(
