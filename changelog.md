@@ -134,3 +134,5 @@
 * New label for "continue" confirmation
 * Playground scss updated and built
 
+#1.1.44
+* Removed useless dependency to constants

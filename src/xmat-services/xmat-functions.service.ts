@@ -58,11 +58,11 @@ export class XmatFunctionsService {
     };
 
     private _confirmDialogDefaults: XmatConfirmDialogData = {
-        confirmText: this._xmatConstants.labels.confirm,
-        cancelText: this._xmatConstants.labels.cancel,
-        dialogContent: this._xmatConstants.labels.continue,
+        confirmText: XMAT_CONSTANT_LABELS.confirm,
+        cancelText: XMAT_CONSTANT_LABELS.cancel,
+        dialogContent: XMAT_CONSTANT_LABELS.continue,
         hideCancelButton: false,
-        title: this._xmatConstants.labels.warningTitle
+        title: XMAT_CONSTANT_LABELS.warningTitle
     };
 
     private _defaultAlertData: XmatAlertDialogData = {
