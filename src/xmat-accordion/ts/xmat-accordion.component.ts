@@ -50,6 +50,7 @@ export class XmatAccordionComponent extends _XmatAccordionMixinBase implements C
     @Input() color: ThemePalette;
     @Input() disabled: boolean;
 
+    // tslint:disable-next-line:no-input-rename
     @Input("expanded") isExpanded: boolean;
     @ViewChild("xmatAccordionHeader") private _xmatAccordionHeader: any; // TODO find out type
 
@@ -66,8 +67,8 @@ export class XmatAccordionComponent extends _XmatAccordionMixinBase implements C
     }
 
     ngAfterViewInit() {
-        let $header = this._xmatAccordionHeader._element.nativeElement;
-        let $panel = $header.parentElement;
+        const $header = this._xmatAccordionHeader._element.nativeElement;
+        const $panel = $header.parentElement;
         if ($header.querySelectorAll(transcludedHeaderSelector).length === 0) {
             $panel.removeChild($header);
             $panel.classList.add("xmat-accordion-no-header");

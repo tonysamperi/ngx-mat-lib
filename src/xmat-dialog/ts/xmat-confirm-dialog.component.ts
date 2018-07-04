@@ -1,5 +1,6 @@
 import {Component, Inject} from "@angular/core";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
+import {XmatConfirmDialogData} from "./xmat-confirm-dialog.model";
 
 @Component({
     selector: "xmat-confirm-dialog",
@@ -15,7 +16,7 @@ export class XmatConfirmDialogComponent {
      * that would be really cool and reusable
      */
     constructor(private _dialogRef: MatDialogRef<XmatConfirmDialogComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any) {
+                @Inject(MAT_DIALOG_DATA) public data: XmatConfirmDialogData) {
 
     }
 

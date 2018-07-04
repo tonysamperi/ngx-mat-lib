@@ -6,6 +6,7 @@ export const XMAT_CONSTANT_LABELS = {
     accept: "Ok",
     cancel: "Annulla",
     confirm: "Sono sicuro",
+    continue: "Continuare?",
     days: {
         full: ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"],
         short: ["Lun", "Marì", "Mer", "Gio", "Ven", "Sab", "Dom"]

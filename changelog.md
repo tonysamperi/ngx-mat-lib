@@ -128,3 +128,9 @@
 #1.1.42
 * Removed "flex-layout" dependency on Xmat Dialog Module (actually useless)
 
+#1.1.43
+* Refactor: moved models in proper files
+* Added params for confirm dialog
+* New label for "continue" confirmation
+* Playground scss updated and built
+

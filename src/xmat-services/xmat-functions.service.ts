@@ -5,12 +5,18 @@ import {
     XmatConfirmDialogComponent,
     XmatAlertDialogComponent,
     XmatAlertDialogData,
-    XmatAlertTypes
+    XmatAlertTypes,
+    XmatAlertDialogActions,
+    XmatConfirmDialogData
 } from "../xmat-dialog/index";
-import {XmatConstantsService, XMAT_CONSTANT_LABELS} from "./xmat-constants.service";
-import {XmatSnackBarComponent} from "../xmat-snack-bar/ts/xmat-snack-bar.component";
-import {XmatSnackBarData} from "../xmat-snack-bar/ts/xmat-snack-bar-data.model";
-import {XmatAlertDialogActions} from "../xmat-dialog/ts/xmat-alert-dialog.component";
+import {
+    XmatConstantsService,
+    XMAT_CONSTANT_LABELS
+} from "./xmat-constants.service";
+import {
+    XmatSnackBarComponent,
+    XmatSnackBarData
+} from "../xmat-snack-bar/index";
 import * as _ from "lodash";
 
 const colorParams = {
@@ -49,6 +55,14 @@ export class XmatFunctionsService {
         factor: colorParams.width + colorParams.center,
         frequency: Math.PI * 2 / colorParams.diversity,
         generated: []
+    };
+
+    private _confirmDialogDefaults: XmatConfirmDialogData = {
+        confirmText: this._xmatConstants.labels.confirm,
+        cancelText: this._xmatConstants.labels.cancel,
+        dialogContent: this._xmatConstants.labels.continue,
+        hideCancelButton: false,
+        title: this._xmatConstants.labels.warningTitle
     };
 
     private _defaultAlertData: XmatAlertDialogData = {
@@ -182,7 +196,7 @@ export class XmatFunctionsService {
 
         return new Observable(observer => {
             // Catch result
-            dialogRef.afterClosed().subscribe(result => {
+            dialogRef.afterClosed().subscribe((result: XmatAlertDialogActions) => {
                 observer.next(result);
                 observer.complete();
             });
@@ -190,10 +204,13 @@ export class XmatFunctionsService {
         });
     }
 
-    openConfirmDialog(data = {}, disableClose: boolean = false): Observable<boolean> {
+    openConfirmDialog(data: XmatConfirmDialogData = this._confirmDialogDefaults,
+                      disableClose: boolean = false,
+                      width: string = this._xmatConstants.dialogOptions.defaultWidth): Observable<boolean> {
+
         const dialogConfig = new MatDialogConfig();
         _.extend(dialogConfig, {
-            width: this._xmatConstants.dialogOptions.defaultWidth,
+            width: width,
             data: data,
             disableClose: disableClose
         });
@@ -202,7 +219,7 @@ export class XmatFunctionsService {
 
         return new Observable(observer => {
             // Catch result
-            dialogRef.afterClosed().subscribe(result => {
+            dialogRef.afterClosed().subscribe((result: boolean) => {
                 observer.next(result);
                 observer.complete();
             });

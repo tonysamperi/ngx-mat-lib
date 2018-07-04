@@ -1,31 +1,7 @@
 import {AfterViewInit, Component, Inject, Input, OnInit, ViewChild} from "@angular/core";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 import * as _ from "lodash";
-
-export interface XmatAlertDialogData {
-    type: XmatAlertTypes;
-    title?: string;
-    cancelText?: string;
-    confirmText?: string;
-    hideConfirmButton?: boolean;
-    hideCancelButton?: boolean;
-    showCloseButton?: boolean;
-    dialogContent?: string | HTMLElement;
-}
-
-export enum XmatAlertTypes {
-    success,
-    error,
-    question,
-    info,
-    warning
-}
-
-export enum XmatAlertDialogActions {
-    confirm,
-    cancel,
-    close
-}
+import {XmatAlertDialogActions, XmatAlertTypes} from "./xmat-alert-dialog.model";
 
 const bgColorKeyKebab: string = "background-color";
 const bgColorKeyCamel: string = "backgroundColor";
