@@ -85,8 +85,8 @@ export class XmatConstantsService {
         DELETE: "delete-",
     };
 
-    public readonly paramsPlaceholder: string = "params";
-    public readonly queryUrlParam: string = "query";
+    public readonly paramsPlaceholder: string = "@params@";
+    public readonly queryUrlParam: string = "@query@";
 
     public readonly regExps = {
         trailingWhiteSpaces: "\\s+$",

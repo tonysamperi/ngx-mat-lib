@@ -136,3 +136,9 @@
 
 #1.1.44
 * Removed useless dependency to constants
+
+#1.1.45
+* Improved XmatMock to support param inside url
+* Refactor
+* Changed placeholders structure in xmatConstants
+
