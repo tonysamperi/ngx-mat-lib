@@ -36,6 +36,18 @@ const rgb2Hex = (r, g, b) => {
     return "#" + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 };
 
+const eachEnum = (srcEnum, iteratee) => {
+    const target = [];
+    _.each(srcEnum, (key, index) => {
+        // Continue if key is not a number
+        if (typeof srcEnum[key] !== typeof 0) {
+            return true;
+        }
+        target.push(srcEnum[key]);
+    });
+    return _.each(target, iteratee);
+};
+
 const eachFrom = (array, index, iteratee) => {
     let _index = index == null ? -1 : index;
     const length = array == null ? 0 : array.length;
@@ -118,6 +130,10 @@ export class XmatFunctionsService {
             date.setDate(0);
         }
         return date;
+    }
+
+    eachEnum(srcEnum, iteratee) {
+        return eachEnum(srcEnum, iteratee);
     }
 
     eachFrom(collection, index, iteratee) {

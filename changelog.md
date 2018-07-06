@@ -157,3 +157,7 @@
 
 #1.2.2
 * Fixed computed property error
+
+#1.2.3
+* Set image height to a reasonable value in xmat-legend
+* Added util to loop over string enums in xMatFunctions

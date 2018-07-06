@@ -30,6 +30,7 @@ ul.xmat-legend {
     }
     > img.xmat-legend-image {
       flex-shrink: 0;
+      height: 3 * $xmat-pad;
     }
   }
 }
