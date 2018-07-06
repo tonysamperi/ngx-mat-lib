@@ -151,4 +151,8 @@
 #1.2.0
 * Updated deps to latest Angular5 (5.2.11 - July 2018)
 
+#1.2.1
+* Fixed import problem "mixinColor" from @angular/material (xmatAccordion + xmatActionText)
+* Playground updated - Removed useless import of Flex-layout
+
 

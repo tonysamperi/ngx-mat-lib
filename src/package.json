@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-lib",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/tonysamperi/ngx-mat-lib"
@@ -15,8 +15,7 @@
     "Material",
     "Material2",
     "Library",
-    "Angular4",
-    "Angular4+"
+    "Angular5+"
   ],
   "license": "MIT",
   "bugs": {

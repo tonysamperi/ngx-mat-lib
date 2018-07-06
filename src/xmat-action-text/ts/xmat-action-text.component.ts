@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewEncapsulation} from "@angular/core";
-import {CanColor} from "@angular/material/core";
-import {CanDisable, mixinColor, ThemePalette} from "@angular/material";
+import {CanDisable, CanColor, ThemePalette, mixinColor} from "@angular/material";
+import {Constructor} from "@angular/material/typings/core/common-behaviors/constructor";
 
 const DEFAULT_COLOR = "primary";
 
@@ -11,7 +11,7 @@ export class XmatActionTextBase {
     constructor(public _elementRef: ElementRef) {
     }
 }
-export const _XmatActionMixinBase = mixinColor(XmatActionTextBase);
+export const _XmatActionMixinBase: Constructor<CanColor> & typeof XmatActionTextBase = mixinColor(XmatActionTextBase);
 
 @Component({
     selector: "[xmatActionText]",

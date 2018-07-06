@@ -5,7 +5,6 @@ import {BrowserModule} from "@angular/platform-browser";
 import {NgModule, ViewEncapsulation, ViewChild, OnInit} from "@angular/core";
 import {Component} from "@angular/core";
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
-import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
@@ -192,7 +191,6 @@ class AppComponent implements OnInit{
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
-       // FlexLayoutModule,
         XmatImportsModule,
         CdkMaterialImportsModule
     ],

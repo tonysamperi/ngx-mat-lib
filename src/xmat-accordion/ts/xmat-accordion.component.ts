@@ -1,19 +1,18 @@
 import {AfterViewInit, Component, ElementRef, Input, ViewChild, ViewEncapsulation} from "@angular/core";
-import {CanColor} from "@angular/material/core";
-import {CanDisable, mixinColor, ThemePalette} from "@angular/material";
+import {CanDisable, CanColor, ThemePalette, mixinColor} from "@angular/material";
+import {Constructor} from "@angular/material/typings/core/common-behaviors/constructor";
 
 const DEFAULT_COLOR = "accent";
 const transcludedHeaderSelector: string = ".xmat-accordion-title";
 // const transcludedContentSelector: string = ".xmat-accordion-content";
 
-
 // Boilerplate for applying mixins to MatToolbar.
-/** @docs-private */
 export class XmatAccordionBase {
     constructor(public _elementRef: ElementRef) {
     }
 }
-export const _XmatAccordionMixinBase = mixinColor(XmatAccordionBase);
+
+export const _XmatAccordionMixinBase: Constructor<CanColor> & typeof XmatAccordionBase = mixinColor(XmatAccordionBase);
 
 @Component({
     selector: "xmat-accordion",
