@@ -2,7 +2,7 @@
  * This is only for local test
  */
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule, ViewEncapsulation} from "@angular/core";
+import {NgModule, ViewEncapsulation, ViewChild, OnInit} from "@angular/core";
 import {Component} from "@angular/core";
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -41,12 +41,14 @@ import {
     XmatSnackBarDataTypes,
     XmatMatDateLocale,
     XmatSnackBarData,
+    XmatLegendItem,
     // COMPS
     XmatDialogModule,
     XmatActionTextModule,
     XmatAccordionModule,
     XmatTimeInputModule,
     XmatSnackBarModule,
+    XmatLegendModule,
     // SERVS
     XmatConstantsService,
     XmatFunctionsService,
@@ -85,6 +87,7 @@ export class CdkMaterialImportsModule {
         XmatActionTextModule,
         XmatAccordionModule,
         XmatDialogModule,
+        XmatLegendModule,
         XmatTimeInputModule,
         XmatSnackBarModule,
     ],
@@ -107,7 +110,7 @@ minDate.setDate(minDate.getDate() - 90);
     styleUrls: [""],
     encapsulation: ViewEncapsulation.None
 })
-class AppComponent {
+class AppComponent implements OnInit{
 
     title = "Test";
     icons = ["", "note_add", "delete_forever"];
@@ -128,6 +131,42 @@ class AppComponent {
     constructor(private _functions: XmatFunctionsService) {
 
     }
+
+    @ViewChild("myTest1") myTest1: any;
+    @ViewChild("myTest2") myTest2: any;
+
+    myTestList: XmatLegendItem[];
+
+
+    alertPippo() {
+        alert("PIPPO");
+    }
+
+    ngOnInit() {
+        this.myTestList = [
+            {
+                className: "pippo1",
+                content: "<h2>pluto was string</h2>",
+                color: "blue"
+            },
+            {
+                className: "pippo2",
+                content: this.myTest1,
+                color: "red"
+            },
+            {
+                className: "pippo3",
+                content: this.myTest2,
+                color: "rgba(50,100,200)"
+            },
+            {
+                className: "pippo4",
+                content: "Someone else, something else",
+                color: "#006699"
+            }
+        ];
+    }
+
 
     showSnackBar(): void {
 

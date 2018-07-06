@@ -1,0 +1,9 @@
+<ul class="xmat-legend xmat-legend-{{layout}}" *ngIf="items?.length">
+    <li class="{{item.className}}" *ngFor="let item of items">
+        <div class="xmat-legend-color" [style.backgroundColor]="item.color" *ngIf="!!item.color"></div>
+        <img class="xmat-legend-image"  *ngIf="!!item?.image" [src]="item.image" />
+        <div  *ngTemplateOutlet="item.content.xMatLegendItem">
+
+        </div>
+    </li>
+</ul>

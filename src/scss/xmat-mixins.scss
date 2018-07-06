@@ -1,18 +1,6 @@
 @import "xmat-vars";
 
 //MIXINS
-@mixin xmat-states-classes($prefix: "", $suffix: "") {
-  @each $state in $states {
-    #{$prefix}#{$state}#{$suffix} {
-      background-color: map-get($xmat-states, #{$state}-soft);
-      //border: 2px solid map-get($xmat-states, #{$state}-hard);
-    }
-  }
-
-  #{$prefix}toDelete#{$suffix} > div:first-child {
-    text-decoration: line-through;
-  }
-}
 
 @mixin xmat-transform($transforms) {
   -moz-transform: $transforms;

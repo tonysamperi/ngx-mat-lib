@@ -1,0 +1,35 @@
+$xmat-pad: 8px;
+
+ul.xmat-legend {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  &.xmat-legend-grid {
+    display: flex;
+    flex-wrap: wrap;
+    > li {
+      padding: $xmat-pad;
+      margin: 0;
+      width: 33%;
+      box-sizing: border-box;
+    }
+  }
+  > li {
+    line-height: 24px;
+    font-size: 12px;
+    margin: 5px 10px 5px;
+    display: flex;
+    align-items: center;
+    > * {
+      margin-right: $xmat-pad;
+    }
+    > div.xmat-legend-color {
+      width: $xmat-pad;
+      height: $xmat-pad;
+      flex-shrink: 0;
+    }
+    > img.xmat-legend-image {
+      flex-shrink: 0;
+    }
+  }
+}

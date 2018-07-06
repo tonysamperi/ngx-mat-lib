@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-lib",
-  "version": "1.1.45",
+  "version": "1.1.46",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -12,6 +12,8 @@
     "lite": "lite-server",
     "playground:build": "tsc -p playground -w",
     "playground": "concurrently \"npm run build:watch\" \"npm run playground:build\" \"npm run lite\"",
+    "pgbuild": "npm run build && concurrently \"npm run playground:build\" \"npm run lite\"",
+    "pgserve": "concurrently \"npm run playground:build\" \"npm run lite\"",
     "test": "tsc && karma start",
     "test-sass": "node-sass --include-path scss test/style.scss --importer=node_modules/node-sass-tilde-importer test/build/style.css",
     "playground-sass": "node-sass --include-path scss playground/index.scss --importer=node_modules/node-sass-tilde-importer playground/index.css"

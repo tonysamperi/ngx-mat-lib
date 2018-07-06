@@ -185,7 +185,7 @@ export class XmatFunctionsService {
 
     openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData): Observable<XmatAlertDialogActions> {
         const dialogConfig = new MatDialogConfig();
-        _.extend(this._defaultAlertData, data || {});
+        _.extend(this._defaultAlertData, data);
         _.extend(dialogConfig, {
             width: this._xmatConstants.dialogOptions.defaultWidth,
             data: data,

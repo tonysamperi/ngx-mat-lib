@@ -1,0 +1,7 @@
+<ng-template #xMatLegendItem>
+    <div *ngIf="!!content" [innerHTML]="content">
+    </div>
+    <div>
+        <ng-content></ng-content>
+    </div>
+</ng-template>

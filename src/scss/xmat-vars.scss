@@ -37,18 +37,7 @@ $xmat-colors: (
         white: #FFFFFF,
         yellow: mat-color($mat-yellow, 700)
 );
-$xmat-states: (
-        disaligned-soft: rgba(map-get($xmat-colors, yellow), 0.5),
-        disaligned-hard: map-get($xmat-colors, yellow),
-        pending-soft: rgba(map-get($xmat-colors, green), 0.5),
-        pending-hard: map-get($xmat-colors, green),
-        toAdd-soft: rgba(map-get($xmat-colors, blue), 0.5),
-        toAdd-hard: map-get($xmat-colors, blue),
-        toEdit-soft: rgba(map-get($xmat-colors, yellow), 0.5),
-        toEdit-hard: map-get($xmat-colors, yellow),
-        toDelete-soft: rgba(map-get($xmat-colors, red), 0.5),
-        toDelete-hard: map-get($xmat-colors, red),
-);
+
 $xmat-breakpoints: (
         xs: $mat-xsmall, //'max-width: 599px'
         sm: $mat-small //'max-width: 959px'
@@ -64,7 +53,6 @@ $xmat-pad: $mat-toggle-padding;
 $xmat-size: $mat-toggle-size;
 
 //VARS
-$states: toAdd, toEdit, toDelete, pending, disaligned;
 $directions: top, right, bottom, left;
 $text-directions: left, center, right;
 $float-directions: left, none, right;
