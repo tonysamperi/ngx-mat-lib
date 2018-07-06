@@ -142,3 +142,10 @@
 * Refactor
 * Changed placeholders structure in xmatConstants
 
+#1.1.46
+* Removed xmat-states component and SCSS
+* Added xmat-legend component
+* Improved npm commands in package
+* Playground updated with xmat-legend
+
+
