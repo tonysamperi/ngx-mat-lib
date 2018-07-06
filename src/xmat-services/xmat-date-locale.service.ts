@@ -1,26 +1,26 @@
 import {NativeDateAdapter} from "@angular/material";
 
-const xmatSep = "/";
-const xmatDay = "DD";
-const xmatMonth = "MM";
-const xmatYear = "YYYY";
-const xmatCurrentYear = new Date().getFullYear();
-const xmatCentury = Math.round(xmatCurrentYear / 100);
+const xmatSep: string = "/";
+const xmatDay: string = "DD";
+const xmatMonth: string = "MM";
+const xmatYear: string = "YYYY";
+const xmatCurrentYear: number = new Date().getFullYear();
+const xmatCentury: number = Math.round(xmatCurrentYear / 100);
 
-export const XMAT_LOCALE_IT = "it-IT";
-export const XMAT_LOCALE_EN = "en-GB";
-export const XMAT_LOCALE_FR = "fr-FR";
+export const XMAT_LOCALE_IT: string = "it-IT";
+export const XMAT_LOCALE_EN: string = "en-GB";
+export const XMAT_LOCALE_FR: string = "fr-FR";
+
 export const XMAT_FORMATS = {
-    [XMAT_LOCALE_IT]: `${xmatDay}${xmatSep}${xmatMonth}${xmatSep}${xmatYear}`,
-    [XMAT_LOCALE_EN]: `${xmatMonth}${xmatSep}${xmatDay}${xmatSep}${xmatYear}`,
-    [XMAT_LOCALE_FR]: `${xmatDay}${xmatSep}${xmatMonth}${xmatSep}${xmatYear}`
+    "it-IT": `${xmatDay}${xmatSep}${xmatMonth}${xmatSep}${xmatYear}`,
+    "en-GB": `${xmatMonth}${xmatSep}${xmatDay}${xmatSep}${xmatYear}`,
+    "fr-FR": `${xmatDay}${xmatSep}${xmatMonth}${xmatSep}${xmatYear}`
 };
 
 // COPY THIS TO CUSTOMIZE CALENDAR FORMATS!!
 export const XMAT_DATE_FORMATS = {
     parse: {
         dateInput: {month: "numeric", year: "numeric", day: "numeric"}
-        // dateInput: xmatItFormat
     },
     display: {
         dateInput: XMAT_FORMATS[XMAT_LOCALE_IT],
@@ -35,14 +35,13 @@ export class XmatMatDateLocale extends NativeDateAdapter {
     displayFormat: Object | string = XMAT_DATE_FORMATS.display.dateInput;
 
     parse(value: any): Date | null {
-        console.info("DATE PARSE value", value);
         if (this.displayFormat === XMAT_DATE_FORMATS.display.dateInput) {
             if ((typeof value === typeof "") && value.length > 0) {
                 const str = value.split(xmatSep);
                 if (str.length < 3) {
                     return new Date("xmat");
                 }
-                let yearBak = str[2];
+                const yearBak = str[2];
                 if (str[2].length < 4) {
                     str[2] = xmatCentury + str[2];
                 }
@@ -71,9 +70,9 @@ export class XmatMatDateLocale extends NativeDateAdapter {
     format(date: Date, displayFormat: Object): string {
         this.displayFormat = displayFormat;
         if (displayFormat === XMAT_DATE_FORMATS.display.dateInput) {
-            let day = date.getDate();
-            let month = date.getMonth() + 1;
-            let year = date.getFullYear();
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
             return this._addLeadingZeroes(day) + xmatSep + this._addLeadingZeroes(month) + xmatSep + year;
         }
         else {

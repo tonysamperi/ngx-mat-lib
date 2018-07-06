@@ -1,4 +1,4 @@
-# xMatLib 1.2.1
+# xMatLib 1.2.2
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -46,13 +46,13 @@ MORE DESCRIPTIONS COMING
 
 * xmat-dialog (alert + confirm)
 * xmat-global-spinner
+* xmat-legend
 * xmat-menu
 * xmat-mini-chip-list
 * xmat-overlay
 * xmat-pipes
 * xmat-snack-bar
 * xmat-spinner
-* xmat-states-legend (to become xmat-legend)
 * xmat-time-input
 * xmat-validators
 

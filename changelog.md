@@ -155,4 +155,5 @@
 * Fixed import problem "mixinColor" from @angular/material (xmatAccordion + xmatActionText)
 * Playground updated - Removed useless import of Flex-layout
 
-
+#1.2.2
+* Fixed computed property error
