@@ -148,4 +148,7 @@
 * Improved npm commands in package
 * Playground updated with xmat-legend
 
+#1.2.0
+* Updated deps to latest Angular5 (5.2.11 - July 2018)
+
 

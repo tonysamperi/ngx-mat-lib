@@ -58,6 +58,7 @@ Temporary Items
 
 # Others such as NodeJS modules and logs
 *.log
+_node_modules/**
 node_modules/**
 
 # Ngc generated files

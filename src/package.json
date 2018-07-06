@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-lib",
-  "version": "1.1.46",
+  "version": "1.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/tonysamperi/ngx-mat-lib"
@@ -27,17 +27,17 @@
   "jsnext:main": "ngx-mat-lib.js",
   "typings": "ngx-mat-lib.d.ts",
   "dependencies": {
-    "@angular-devkit/core": "^0.4.8",
-    "@angular/animations": "^5.0.0",
-    "@angular/cdk": "^5.0.3",
-    "@angular/cli": "^1.6.7",
-    "@angular/common": "^5.0.0",
-    "@angular/core": "^5.0.0",
-    "@angular/forms": "^5.0.0",
-    "@angular/material": "^5.2.0",
-    "@angular/router": "^5.0.0",
-    "@types/lodash": "^4.14.96",
-    "rxjs": "^5.5.2",
-    "zone.js": "^0.8.4"
+    "@angular-devkit/core": "^0.6.7",
+    "@angular/animations": "^5.2.11",
+    "@angular/cdk": "^5.2.5",
+    "@angular/cli": "^1.7.4",
+    "@angular/common": "^5.2.11",
+    "@angular/core": "^5.2.11",
+    "@angular/forms": "^5.2.11",
+    "@angular/material": "^5.2.4",
+    "@angular/router": "^5.2.11",
+    "@types/lodash": "^4.14.100",
+    "rxjs": "^5.5.11",
+    "zone.js": "^0.8.26"
   }
 }
