@@ -20,6 +20,7 @@ ul.xmat-legend {
     margin: 5px 10px 5px;
     display: flex;
     align-items: center;
+    flex: 1 0 25%; // Can override from outside, but...maybe an input param in component would be more usable?
     > * {
       margin-right: $xmat-pad;
     }

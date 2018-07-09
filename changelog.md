@@ -161,3 +161,6 @@
 #1.2.3
 * Set image height to a reasonable value in xmat-legend
 * Added util to loop over string enums in xMatFunctions
+
+#1.2.4
+* Fixed flex responsive behaviour in xmat-legend
