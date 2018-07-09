@@ -164,3 +164,7 @@
 
 #1.2.4
 * Fixed flex responsive behaviour in xmat-legend
+
+#1.2.5
+* Removed fixed width for 'li' tags
+
