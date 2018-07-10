@@ -4,7 +4,7 @@ import {XmatSelectOptions} from "../xmat-models/xmat-select-options.model";
 import * as _ from "lodash";
 
 // Const variables
-export const XMAT_CONSTANT_LABELS: { [key: string]: string } = {
+export const XMAT_CONSTANT_LABELS: { [key: string]: any } = {
     accept: "Ok",
     cancel: "Annulla",
     confirm: "Sono sicuro",
@@ -73,7 +73,7 @@ export class XmatConstantsService {
 
     public readonly fileNameSpace: string = "-";
 
-    public labels: { [key: string]: string } = _.cloneDeep(XMAT_CONSTANT_LABELS);
+    public labels: { [key: string]: any } = _.cloneDeep(XMAT_CONSTANT_LABELS);
 
     public messages: { [key: string]: string } = {
         warningTitle: XMAT_CONSTANT_LABELS.warningTitle,
@@ -90,7 +90,7 @@ export class XmatConstantsService {
     public readonly paramsPlaceholder: string = "@params@";
     public readonly queryUrlParam: string = "@query@";
 
-    public readonly regExps = {
+    public readonly regExps: { [key: string]: string } = {
         trailingWhiteSpaces: "\\s+$",
         leadingWhiteSpaces: "^\\s+",
         multipleWhiteSpaces: "\\s+(?=\\s)"
