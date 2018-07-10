@@ -171,4 +171,8 @@
 #1.2.6
 * Removed reserved keyword continue from labels
 * Remove read only decorators from props which would be useful to extend
+* Cloned const XMAT_LABELS to allow extension
+* Refactored usage of "xmatConstants.labels.continue"
 
+#1.2.7
+* Refactor: adding types for functions and objects

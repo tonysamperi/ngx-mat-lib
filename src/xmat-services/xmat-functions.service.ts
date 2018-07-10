@@ -72,7 +72,7 @@ export class XmatFunctionsService {
     private _confirmDialogDefaults: XmatConfirmDialogData = {
         confirmText: XMAT_CONSTANT_LABELS.confirm,
         cancelText: XMAT_CONSTANT_LABELS.cancel,
-        dialogContent: XMAT_CONSTANT_LABELS.continue,
+        dialogContent: XMAT_CONSTANT_LABELS.proceed,
         hideCancelButton: false,
         title: XMAT_CONSTANT_LABELS.warningTitle
     };
@@ -92,7 +92,7 @@ export class XmatFunctionsService {
     /**
      * PUBLIC FUNCTIONS
      */
-    addLeadingZeroes(n: number) {
+    addLeadingZeroes(n: number | string): string {
         return ("00" + n).slice(-2);
     }
 
@@ -132,11 +132,11 @@ export class XmatFunctionsService {
         return date;
     }
 
-    eachEnum(srcEnum, iteratee) {
+    eachEnum(srcEnum, iteratee): any[] {
         return eachEnum(srcEnum, iteratee);
     }
 
-    eachFrom(collection, index, iteratee) {
+    eachFrom(collection, index, iteratee): any[] {
         return eachFrom(collection, index, iteratee);
     }
 
@@ -144,7 +144,7 @@ export class XmatFunctionsService {
      * This function generates vibrant, "evenly spaced" colours (i.e. no clustering).
      * This is ideal for creating easily distinguishable vibrant markers in Google Maps and other apps.
      * */
-    getRainbow(steps: number = 10, step: number = 0) {
+    getRainbow(steps: number = 10, step: number = 0): string {
         let r, g, b;
         const h = step / steps;
         // tslint:disable-next-line:no-bitwise
@@ -180,7 +180,7 @@ export class XmatFunctionsService {
         return ("#" + red + green + blue);
     }
 
-    getRandomNonConsecutiveHex(phase: number = 10) {
+    getRandomNonConsecutiveHex(phase: number = 10): string {
         const index = this._colorDb.generated.length + 1;
         const red = Math.sin(this._colorDb.frequency * index + 2 + phase) * this._colorDb.factor;
         const green = Math.sin(this._colorDb.frequency * index + phase) * this._colorDb.factor;

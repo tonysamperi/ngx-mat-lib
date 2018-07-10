@@ -1,8 +1,10 @@
-import {Injectable, Optional} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {MethodsMap} from "../xmat-rest/ts/methods-map.model";
+import {XmatSelectOptions} from "../xmat-models/xmat-select-options.model";
+import * as _ from "lodash";
 
 // Const variables
-export const XMAT_CONSTANT_LABELS = {
+export const XMAT_CONSTANT_LABELS: { [key: string]: string } = {
     accept: "Ok",
     cancel: "Annulla",
     confirm: "Sono sicuro",
@@ -71,9 +73,9 @@ export class XmatConstantsService {
 
     public readonly fileNameSpace: string = "-";
 
-    public labels = XMAT_CONSTANT_LABELS;
+    public labels: { [key: string]: string } = _.cloneDeep(XMAT_CONSTANT_LABELS);
 
-    public messages: any = {
+    public messages: { [key: string]: string } = {
         warningTitle: XMAT_CONSTANT_LABELS.warningTitle,
         genericErrorKey: "generic.error"
     };
@@ -95,7 +97,7 @@ export class XmatConstantsService {
     };
     public readonly routeParams: string = "routeParams";
 
-    public readonly selectOptions = {
+    public readonly selectOptions: { [key: string]: XmatSelectOptions } = {
         empty: {
             desc: "Seleziona...",
             value: void 0
@@ -119,7 +121,7 @@ export class XmatConstantsService {
         return !!entity && entity === Object(entity) && entity.constructor === Object;
     }
 
-    isObjectEmpty(obj: object) {
+    isObjectEmpty(obj: object): boolean {
         return !!obj && Object.keys(obj).length === 0;
     }
 
@@ -127,7 +129,7 @@ export class XmatConstantsService {
         // NOOP: DOES NOTHING
     }
 
-    removeTrailingSlash(target: string) {
+    removeTrailingSlash(target: string): string {
         return target.replace(/\/$/, "");
     }
 }
