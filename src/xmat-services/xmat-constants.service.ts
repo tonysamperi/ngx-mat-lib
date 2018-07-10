@@ -6,7 +6,6 @@ export const XMAT_CONSTANT_LABELS = {
     accept: "Ok",
     cancel: "Annulla",
     confirm: "Sono sicuro",
-    continue: "Continuare?",
     days: {
         full: ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"],
         short: ["Lun", "Marì", "Mer", "Gio", "Ven", "Sab", "Dom"]
@@ -22,6 +21,7 @@ export const XMAT_CONSTANT_LABELS = {
         ],
         short: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]
     },
+    proceed: "Procedere?",
     stay: "Rimango qui",
     understood: "Ho capito",
     warningTitle: "Attenzione"
@@ -71,9 +71,9 @@ export class XmatConstantsService {
 
     public readonly fileNameSpace: string = "-";
 
-    public readonly labels = XMAT_CONSTANT_LABELS;
+    public labels = XMAT_CONSTANT_LABELS;
 
-    public readonly messages: any = {
+    public messages: any = {
         warningTitle: XMAT_CONSTANT_LABELS.warningTitle,
         genericErrorKey: "generic.error"
     };

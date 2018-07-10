@@ -168,3 +168,7 @@
 #1.2.5
 * Removed fixed width for 'li' tags
 
+#1.2.6
+* Removed reserved keyword continue from labels
+* Remove read only decorators from props which would be useful to extend
+
