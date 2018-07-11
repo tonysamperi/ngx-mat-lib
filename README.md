@@ -1,4 +1,4 @@
-# xMatLib 1.2.7
+# xMatLib 1.2.8
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -7,6 +7,13 @@ A bunch of utilities and components to use in your Angular 5+ apps!
 Angular Material is a complete tool. But there are ways to use come components which may come handy.
 For example xMatLib includes an SCSS library which provides common classes and mixins, 
 that you can use in your app to drastically reduce duplicate code!
+
+## Utils
+
+### xmat-mock
+
+This util allow you to mock your frontend calls when developing, by simply creating some json and a list.
+Advanced behaviours can be achieved with custom callbacks and custom mock urls.
 
 ## Included Angular Components
 

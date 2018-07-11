@@ -176,3 +176,6 @@
 
 #1.2.7
 * Refactor: adding types for functions and objects
+
+#1.2.8
+* Fixed mock handling for middle param

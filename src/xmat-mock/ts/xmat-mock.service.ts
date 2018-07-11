@@ -53,16 +53,15 @@ export class XmatMockService implements HttpInterceptor {
         const urlParams = this.extractUrlParams(urlParts[0]);
         if (Array.isArray(urlParams) && urlParams.length) {
             for (let i = 1; i <= urlParams.length; i++) {
-                // const validParams = urlParams.slice(urlParams.length - i, urlParams.length);
-                const validParams = _.slice(urlParams, urlParams.length - i);
+                const validUrlParts = _.slice(urlParams, urlParams.length - i);
                 mockKey = mockKey.substr(0, mockKey.lastIndexOf(this._ds));
                 if (this.mockExists(mockKey + this._ds + this._paramsPlaceholder)) {
-                    return this._mocks[mockKey + this._ds + this._paramsPlaceholder](request, next, validParams, urlParts[1]);
+                    return this._mocks[mockKey + this._ds + this._paramsPlaceholder](request, next, validUrlParts, urlParts[1]);
                 }
                 const middleParam = mockKey.substr(mockKey.lastIndexOf(this._ds) + 1);
-                const middleParamKey = mockKey.replace(middleParam, this._paramsPlaceholder) + this._ds + validParams;
+                const middleParamKey = mockKey.replace(middleParam, this._paramsPlaceholder) + this._ds + validUrlParts;
                 if (this.mockExists(middleParamKey)) {
-                    return this._mocks[middleParamKey](request, next, [middleParam, validParams], urlParts[1]);
+                    return this._mocks[middleParamKey](request, next, [middleParam].concat(validUrlParts), urlParts[1]);
                 }
             }
         }
