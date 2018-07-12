@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {MethodsMap} from "../xmat-rest/ts/methods-map.model";
-import {XmatSelectOptions} from "../xmat-models/xmat-select-options.model";
 import * as _ from "lodash";
 
 // Const variables
@@ -97,7 +96,6 @@ export class XmatConstantsService {
     };
     public readonly routeParams: string = "routeParams";
 
-    public readonly selectOptions: { [key: string]: XmatSelectOptions } = {
         empty: {
             desc: "Seleziona...",
             value: void 0

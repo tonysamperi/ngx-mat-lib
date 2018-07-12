@@ -179,3 +179,7 @@
 
 #1.2.8
 * Fixed mock handling for middle param
+
+#1.2.9
+* Renamed XmatSelectOptions to XmatDescValuePair
+* Generic added for XmatDescValuePair
