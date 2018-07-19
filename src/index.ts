@@ -3,7 +3,6 @@ export * from "./xmat-accordion/index";
 export * from "./xmat-dialog/index";
 export * from "./xmat-global-spinner/index";
 export * from "./xmat-legend/index";
-export * from "./xmat-menu/index";
 export * from "./xmat-mini-chip-list/index";
 export * from "./xmat-mock/index";
 export * from "./xmat-models/index";

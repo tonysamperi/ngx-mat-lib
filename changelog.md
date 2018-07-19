@@ -183,3 +183,6 @@
 #1.2.9
 * Renamed XmatSelectOptions to XmatDescValuePair
 * Generic added for XmatDescValuePair
+
+#1.2.10
+* Removed xmat-menu since it was pretty much pointless

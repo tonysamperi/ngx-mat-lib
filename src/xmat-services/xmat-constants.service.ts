@@ -104,8 +104,6 @@ export class XmatConstantsService {
         }
     };
 
-    public readonly showMenu: boolean = true;
-
     constructor() {
     }
 
