@@ -113,7 +113,6 @@ export class XmatMockService implements HttpInterceptor {
          */
         !!mock.status || (mock.status = 200);
         !!mock.body || (mock.body = this._defaultResponseBody);
-        typeof mock.timeout === typeof 0 && mock.timeout >= 0 || (mock.timeout = this._defaultMockDelay);
         const mockKey = mock.method + mock.url;
         this._mocks[mockKey] = (request, next, params: string[] = [], queryString) => {
             if (mock.status !== 200) {
@@ -148,6 +147,7 @@ export class XmatMockService implements HttpInterceptor {
                     method: "GET"
                 });
             }
+            typeof mock.timeout === typeof 0 && mock.timeout >= 0 || (mock.timeout = this._defaultMockDelay);
             const delay = timer(mock.timeout);
             const start = Date.now();
             return delay.switchMap(() => next.handle(mockRequest))

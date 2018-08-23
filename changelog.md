@@ -191,3 +191,6 @@
 * Improved xmat-mock: you can now disable logging and customize the default delay
 * Removed useless console and ngOnInit from xmat-action
 * Refactor
+
+#1.2.12
+* Fixed cuzomizable default delay in xmat-mock
