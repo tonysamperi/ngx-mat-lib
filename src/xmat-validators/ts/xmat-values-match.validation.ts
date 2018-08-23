@@ -7,7 +7,7 @@ import * as _ from "lodash";
  * are equal
  */
 export function xmatValuesMatchValidation(controlKeys: string[]): ValidatorFn {
-    let errorKey = "valuesMatchValidation";
+    const errorKey = "valuesMatchValidation";
     let error = null;
     let match = false;
     if (!controlKeys.length) {
@@ -37,14 +37,14 @@ export function xmatValuesMatchValidation(controlKeys: string[]): ValidatorFn {
         if (!match) {
             error = {[errorKey]: true};
             _.each(controlKeys, key => {
-                let singleCtrl = control.get(key);
-                let toSet = _.merge(singleCtrl.errors, error);
+                const singleCtrl = control.get(key);
+                const toSet = _.merge(singleCtrl.errors, error);
                 singleCtrl.setErrors(toSet);
             });
         }
         else {
             _.each(controlKeys, key => {
-                let singleCtrl = control.get(key);
+                const singleCtrl = control.get(key);
                 if (!!singleCtrl.errors && "valuesMatchValidation" in singleCtrl.errors) {
                     delete singleCtrl.errors["valuesMatchValidation"];
                     if (!Object.keys(singleCtrl.errors).length) {

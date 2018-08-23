@@ -26,6 +26,10 @@ export class XmatMockService implements HttpInterceptor {
     private readonly _queryUrlParam = this._xmatConstants.queryUrlParam;
     private readonly _restBaseUrl: string = this._xmatConstants.restBaseUrl;
 
+    // Override these from extended class
+    protected _defaultMockDelay: number = 2500;
+    protected _logEnabled: boolean = true;
+
     constructor(protected _xmatConstants: XmatConstantsService,
                 protected _xmatMocksList: XmatMocksListService) {
 
@@ -40,7 +44,7 @@ export class XmatMockService implements HttpInterceptor {
         if (!!(<any>window).times[request.url]) {
             const startTime = (<any>window).times[request.url];
             const finalTime = Date.now();
-            console.info(`SECOND INTERCEPTOR after ${(finalTime - startTime)} ms`);
+            !!this._logEnabled && console.info(`SECOND INTERCEPTOR after ${(finalTime - startTime)} ms`);
         }
         // Separate query string from the rest
         const urlParts = request.url.split(this._qm);
@@ -109,7 +113,7 @@ export class XmatMockService implements HttpInterceptor {
          */
         !!mock.status || (mock.status = 200);
         !!mock.body || (mock.body = this._defaultResponseBody);
-        typeof mock.timeout === typeof 0 && mock.timeout >= 0 || (mock.timeout = 2500);
+        typeof mock.timeout === typeof 0 && mock.timeout >= 0 || (mock.timeout = this._defaultMockDelay);
         const mockKey = mock.method + mock.url;
         this._mocks[mockKey] = (request, next, params: string[] = [], queryString) => {
             if (mock.status !== 200) {
@@ -144,14 +148,13 @@ export class XmatMockService implements HttpInterceptor {
                     method: "GET"
                 });
             }
-            // return next.handle(jsonRequest);
             const delay = timer(mock.timeout);
             const start = Date.now();
             return delay.switchMap(() => next.handle(mockRequest))
             .do((event: HttpResponse<any>) => {
                 if (event.type === HttpEventType.Response) {
                     const elapsed = Date.now() - start;
-                    console.log(`Request for mocked ${request.urlWithParams} took ${elapsed} ms.`);
+                    !!this._logEnabled && console.log(`Request for mocked ${request.urlWithParams} took ${elapsed} ms.`);
                 }
             });
         };

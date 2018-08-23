@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewEncapsulation} from "@angular/core";
+import {Component, ElementRef, Input, ViewEncapsulation} from "@angular/core";
 import {CanDisable, CanColor, ThemePalette, mixinColor} from "@angular/material";
 import {Constructor} from "@angular/material/typings/core/common-behaviors/constructor";
 
@@ -14,6 +14,7 @@ export class XmatActionTextBase {
 export const _XmatActionMixinBase: Constructor<CanColor> & typeof XmatActionTextBase = mixinColor(XmatActionTextBase);
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: "[xmatActionText]",
     styleUrls: ["../scss/xmat-action-text.component.scss"],
     host: {
@@ -28,7 +29,7 @@ export const _XmatActionMixinBase: Constructor<CanColor> & typeof XmatActionText
     `,
     encapsulation: ViewEncapsulation.None,
 })
-export class XmatActionTextComponent extends _XmatActionMixinBase implements CanColor, CanDisable, OnInit {
+export class XmatActionTextComponent extends _XmatActionMixinBase implements CanColor, CanDisable {
 
     @Input() color: ThemePalette;
     disabled: boolean;
@@ -40,7 +41,4 @@ export class XmatActionTextComponent extends _XmatActionMixinBase implements Can
         this.color = DEFAULT_COLOR;
     }
 
-    ngOnInit() {
-        console.info("XmatActionTextComponent COLOR", this.color);
-    }
 }

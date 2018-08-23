@@ -19,7 +19,7 @@ export class XmatSpinnerComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        let spinnerMargin = "-" + this.diameter / 2 + "px";
+        const spinnerMargin = "-" + this.diameter / 2 + "px";
         const $spinner = this.spinner._elementRef.nativeElement;
         const $element = this.elementRef.nativeElement;
         $spinner.style.margin = spinnerMargin;

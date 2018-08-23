@@ -186,3 +186,8 @@
 
 #1.2.10
 * Removed xmat-menu since it was pretty much pointless
+
+#1.2.11
+* Improved xmat-mock: you can now disable logging and customize the default delay
+* Removed useless console and ngOnInit from xmat-action
+* Refactor
