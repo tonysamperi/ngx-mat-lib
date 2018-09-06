@@ -52,6 +52,7 @@ import {
     XmatConstantsService,
     XmatFunctionsService,
     //
+
 } from "ngx-mat-lib";
 
 
@@ -109,7 +110,7 @@ minDate.setDate(minDate.getDate() - 90);
     styleUrls: [""],
     encapsulation: ViewEncapsulation.None
 })
-class AppComponent implements OnInit{
+class AppComponent implements OnInit {
 
     title = "Test";
     icons = ["", "note_add", "delete_forever"];

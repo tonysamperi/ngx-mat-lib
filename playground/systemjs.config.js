@@ -49,7 +49,7 @@
             '@angular/common/http': 'npm:@angular/common/bundles/common-http.umd.js',
             "@angular/material": 'npm:@angular/material/bundles/material.umd.js',
             "@angular/flex-layout": 'npm:@angular/flex-layout/bundles/flex-layout.umd.js',
-            "lodash": "npm:lodash/core.js",
+            "lodash": "npm:lodash/lodash.js",
             '@angular/platform-browser/animations': 'npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js',
             "rxjs": 'npm:rxjs/bundles/Rx.js',
             "rxjs/add": 'npm:rxjs/add/',

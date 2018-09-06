@@ -194,3 +194,6 @@
 
 #1.2.12
 * Fixed cuzomizable default delay in xmat-mock
+
+#1.2.13
+* Fixed playground lodash issue
