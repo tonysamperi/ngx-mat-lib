@@ -8,11 +8,9 @@ import {XmatObjectToArrayPipe} from "./ts/xmat-object-to-array.pipe";
     exports: [
         XmatObjectToArrayPipe
     ],
-    providers: [
-
-    ]
+    providers: []
 })
-export class XmatPipesModule {}
+export class XmatPipesModule {
+}
 
 export {XmatObjectToArrayPipe} from "./ts/xmat-object-to-array.pipe";
-export {ArrayItemToObject} from "./ts/xmat-object-to-array.model";

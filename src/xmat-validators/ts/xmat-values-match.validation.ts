@@ -1,4 +1,5 @@
 import {AbstractControl, ValidatorFn} from "@angular/forms";
+import {XmatGenericObject} from "../../xmat-models/index";
 import * as _ from "lodash";
 
 /**
@@ -16,14 +17,14 @@ export function xmatValuesMatchValidation(controlKeys: string[]): ValidatorFn {
     }
     if (controlKeys.length === 1) {
         console.error("1 arg supplied for valuesMatchValidation. Rule will never comply.", controlKeys);
-        return (control: AbstractControl): { [key: string]: any } => {
+        return (control: AbstractControl): XmatGenericObject => {
             return {
                 [errorKey]: true
             };
         };
     }
 
-    return (control: AbstractControl): { [key: string]: any } => {
+    return (control: AbstractControl): XmatGenericObject => {
         match = false;
         error = null;
 

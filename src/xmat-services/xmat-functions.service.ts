@@ -3,19 +3,21 @@ import {MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig, MatSnackBarR
 import {Observable} from "rxjs/Observable";
 import {
     XmatConfirmDialogComponent,
-    XmatAlertDialogComponent,
+    XmatAlertDialogComponent
+} from "../xmat-dialog/index";
+import {
     XmatAlertDialogData,
     XmatAlertTypes,
     XmatAlertDialogActions,
-    XmatConfirmDialogData
-} from "../xmat-dialog/index";
+    XmatConfirmDialogData,
+    XmatSnackBarData
+} from "../xmat-models/index";
 import {
     XmatConstantsService,
     XMAT_CONSTANT_LABELS
 } from "./xmat-constants.service";
 import {
-    XmatSnackBarComponent,
-    XmatSnackBarData
+    XmatSnackBarComponent
 } from "../xmat-snack-bar/index";
 import * as _ from "lodash";
 

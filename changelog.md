@@ -197,3 +197,10 @@
 
 #1.2.13
 * Fixed playground lodash issue
+
+#1.3.1
+* Fixed xmat-accordion disabled
+* Implemented xmat-action disabled
+* Moved templates in HTML files (with ng5-library, we can use double quotes :D )
+* Deleted useless stuff such as RouteGuard
+* Improved folders structure

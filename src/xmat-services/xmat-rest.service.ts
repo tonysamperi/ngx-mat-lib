@@ -2,8 +2,8 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
-import {XmatConstantsService} from "../../xmat-services/xmat-constants.service";
-import {XmatHttpConfig} from "../../xmat-services/xmat-http-config.model";
+import {XmatConstantsService} from "./xmat-constants.service";
+import {XmatHttpConfig} from "../xmat-models/index";
 
 /**
  * UBI REST BY TONY SAMPERI

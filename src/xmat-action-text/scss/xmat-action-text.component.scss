@@ -8,7 +8,9 @@ $palette: (
 
 .xmat-action {
   cursor: pointer;
-
+  &.disabled {
+    opacity: 0.5;
+  }
   @each $mat-key, $mat-color in $palette {
     &.mat-#{$mat-key} {
       color: $mat-color;

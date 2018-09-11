@@ -1,19 +1,10 @@
 import {Component, Inject} from "@angular/core";
 import {MatSnackBarRef, MAT_SNACK_BAR_DATA} from "@angular/material";
-import {XmatSnackBarData} from "./xmat-snack-bar-data.model";
+import {XmatSnackBarData} from "../../xmat-models/index";
 
 @Component({
     selector: "xmat-snack-bar",
-    template: `
-        <div class="xmat-snack-bar mat-simple-snackbar">
-            {{data.message}}
-            <button mat-button class="mat-simple-snackbar-action"
-                    *ngIf="data.showAction"
-                    (click)="closeSnack()">
-                {{data.actionText}}
-            </button>
-        </div>
-    `,
+    templateUrl: "../tpl/xmat-snack-bar.component.html",
     styleUrls: ["../scss/xmat-snack-bar.component.scss"]
 })
 export class XmatSnackBarComponent {

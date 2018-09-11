@@ -1,15 +1,15 @@
 import {Component, ElementRef, AfterViewInit, Input, OnDestroy, OnInit} from "@angular/core";
 
-export enum xmatOverlayStyles {
-    dark,
-    light
+export enum XmatOverlayStyles {
+    DARK = "DARK",
+    LIGHT = "LIGHT"
 }
 
 const invalidDisplayValues = ["inline", "none"];
 
 @Component({
     selector: "xmat-overlay",
-    templateUrl: "../tpl/xmat-overlay.component.html",
+    template: `<ng-content></ng-content>`,
     styleUrls: ["../scss/xmat-overlay.component.scss"],
     host: {
         "[class.xmat-overlay]": "true",
@@ -21,7 +21,7 @@ const invalidDisplayValues = ["inline", "none"];
 export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
 
     // tslint:disable-next-line:no-input-rename
-    @Input("overlayStyle") private _overlayStyle: xmatOverlayStyles;
+    @Input("overlayStyle") private _overlayStyle: XmatOverlayStyles;
 
     private _parentStyleBak: { [key: string]: string } = {};
 
@@ -31,7 +31,7 @@ export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
     }
 
     ngOnInit(): void {
-        this.isLight = this._overlayStyle === xmatOverlayStyles.light;
+        this.isLight = this._overlayStyle === XmatOverlayStyles.LIGHT;
     }
 
     ngAfterViewInit(): void {

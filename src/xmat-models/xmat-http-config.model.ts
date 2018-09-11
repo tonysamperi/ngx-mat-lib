@@ -1,5 +1,5 @@
 import {HttpParams} from "@angular/common/http";
-import {XmatDelayedHttpParams} from "../xmat-models/xmat-delayed-http-params.model";
+import {XmatDelayedHttpParams} from "./xmat-delayed-http-params.model";
 
 export interface XmatHttpConfig {
     method: string;

@@ -8,12 +8,29 @@
 </mat-form-field>
 <hr />
 <div style="height: 100px; background: #e2e2e2">
-    <span xmatActionText color="primary" (click)="showSnackBar()">MIO TEST</span>
+    <button (click)="actionDisabled = !actionDisabled">
+        ACTION TOGGLE DISABLED
+    </button>
+    <p>DISABLED = {{actionDisabled ? "true":"false"}}</p>
+    <span xmatActionText color="primary"
+          [disabled]="actionDisabled"
+          (click)="showSnackBar($event)">MIO TEST</span>
 </div>
 <hr />
-<button (click)="accordionOpened = !accordionOpened">ACCORDION TOGGLE
-</button> EXPANDED = {{accordionOpened ? "true":"false"}}
-<xmat-accordion [expanded]="accordionOpened" color="primary">
+<button (click)="accordionOpened = !accordionOpened">
+    ACCORDION TOGGLE OPEN
+</button>
+<p>EXPANDED = {{accordionOpened ? "true":"false"}}</p>
+<button (click)="accordionDisabled = !accordionDisabled">
+    ACCORDION TOGGLE DISABLED
+</button>
+<p>DISABLED = {{accordionDisabled ? "true":"false"}}</p>
+<xmat-accordion [expanded]="accordionOpened"
+                [disabled]="accordionDisabled"
+                color="primary">
+    <div class="xmat-accordion-title">
+        ACCORDION TITLE
+    </div>
     <div class="xmat-accordion-content">
         <div style="width: 50%; margin: 0 auto; padding: 16px; background: #e2e2e2">
             <h2>MY ACCORDION CONTENT</h2>

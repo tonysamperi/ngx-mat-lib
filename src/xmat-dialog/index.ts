@@ -11,10 +11,8 @@ import {
 import {XmatConfirmDialogComponent} from "./ts/xmat-confirm-dialog.component";
 import {XmatAlertDialogComponent} from "./ts/xmat-alert-dialog.component";
 
-export * from "./ts/xmat-confirm-dialog.component";
-export * from "./ts/xmat-confirm-dialog.model";
 export * from "./ts/xmat-alert-dialog.component";
-export * from "./ts/xmat-alert-dialog.model";
+export * from "./ts/xmat-confirm-dialog.component";
 
 @NgModule({
     imports: [

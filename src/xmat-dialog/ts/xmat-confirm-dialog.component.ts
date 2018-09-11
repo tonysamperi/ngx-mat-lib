@@ -1,6 +1,6 @@
 import {Component, Inject} from "@angular/core";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
-import {XmatConfirmDialogData} from "./xmat-confirm-dialog.model";
+import {XmatConfirmDialogData} from "../../xmat-models/xmat-confirm-dialog.model";
 
 @Component({
     selector: "xmat-confirm-dialog",

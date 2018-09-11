@@ -1,8 +1,8 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {XmatSnackBarComponent} from "./ts/xmat-snack-bar.component";
+
 export * from "./ts/xmat-snack-bar.component";
-export * from "./ts/xmat-snack-bar-data.model";
 
 @NgModule({
     imports: [

@@ -127,6 +127,8 @@ class AppComponent implements OnInit {
     maxDate: Date = today;
 
     accordionOpened: boolean = true;
+    accordionDisabled: boolean = true;
+    actionDisabled: boolean = true;
 
     constructor(private _functions: XmatFunctionsService) {
 
@@ -168,8 +170,8 @@ class AppComponent implements OnInit {
     }
 
 
-    showSnackBar(): void {
-
+    showSnackBar($event: any): void {
+        console.info("COMPONENT: ACTION CLICKED", $event);
         const callback = () => {
             alert("CANCELLED");
         };
@@ -177,7 +179,7 @@ class AppComponent implements OnInit {
             type: XmatSnackBarDataTypes.success,
             message: "TEST MESSAGE",
             showAction: true,
-            duration: 50000,
+            duration: 1000,
             actionText: "Annulla",
             actionCallback: callback
         };

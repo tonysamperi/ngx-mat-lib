@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
-import {MethodsMap} from "../xmat-rest/ts/methods-map.model";
-import {XmatDescValuePair} from "../xmat-models/xmat-desc-value.model";
+import {XmatRestVerbs, XmatDescValuePair} from "../xmat-models/index";
 import * as _ from "lodash";
 
 // Const variables
@@ -80,7 +79,7 @@ export class XmatConstantsService {
         genericErrorKey: "generic.error"
     };
 
-    public readonly methodsKeys: MethodsMap = {
+    public readonly methodsKeys: XmatRestVerbs = {
         GET: "get-",
         PUT: "put-",
         POST: "post-",

@@ -23,5 +23,3 @@ import {XmatGlobalSpinnerService} from "./ts/xmat-global-spinner.service";
 })
 export class XmatGlobalSpinnerModule {
 }
-
-export {XmatGlobalSpinnerService} from "./ts/xmat-global-spinner.service";

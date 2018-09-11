@@ -1,10 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpEventType} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import {timer} from "rxjs/observable/timer";
-import {XmatConstantsService} from "../../xmat-services/xmat-constants.service";
-import {XmatMock} from "./xmat-mock.model";
-import {XmatMocksListService} from "./xmat-mocks-list.service";
+import {Observable, timer} from "rxjs/Observable";
+import {XmatMock} from "../xmat-models/index";
+import {XmatMocksListService, XmatConstantsService} from "./index";
 import "rxjs/add/operator/switchMap";
 import "rxjs/add/operator/do";
 import * as _ from "lodash";
@@ -93,7 +91,6 @@ export class XmatMockService implements HttpInterceptor {
         }
         return void 0;
     }
-
 
     private mockExists(mockKey) {
         return !!this._mocks[mockKey] && typeof this._mocks[mockKey] === typeof this._xmatConstants.noop;

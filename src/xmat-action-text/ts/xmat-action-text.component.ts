@@ -1,4 +1,6 @@
-import {Component, ElementRef, Input, ViewEncapsulation} from "@angular/core";
+import {
+    Component, ElementRef, Input, ViewEncapsulation
+} from "@angular/core";
 import {CanDisable, CanColor, ThemePalette, mixinColor} from "@angular/material";
 import {Constructor} from "@angular/material/typings/core/common-behaviors/constructor";
 
@@ -18,8 +20,8 @@ export const _XmatActionMixinBase: Constructor<CanColor> & typeof XmatActionText
     selector: "[xmatActionText]",
     styleUrls: ["../scss/xmat-action-text.component.scss"],
     host: {
-        "[attr.disabled]": "disabled || null",
         "class": "xmat-action",
+        "[class.disabled]": "disabled || null",
         "[class.mat-primary]": "color == 'primary'",
         "[class.mat-accent]": "color == 'accent'",
         "[class.mat-warn]": "color == 'warn'"
@@ -31,14 +33,12 @@ export const _XmatActionMixinBase: Constructor<CanColor> & typeof XmatActionText
 })
 export class XmatActionTextComponent extends _XmatActionMixinBase implements CanColor, CanDisable {
 
-    @Input() color: ThemePalette;
-    disabled: boolean;
+    @Input() color: ThemePalette = DEFAULT_COLOR;
 
-    constructor(elementRef: ElementRef) {
+    @Input() disabled: boolean;
 
-        super(elementRef);
-
-        this.color = DEFAULT_COLOR;
+    constructor(public _elementRef: ElementRef) {
+        super(_elementRef);
     }
 
 }

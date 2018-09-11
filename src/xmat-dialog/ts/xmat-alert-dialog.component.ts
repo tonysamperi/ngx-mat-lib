@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Inject, Input, OnInit, ViewChild} from "@angular/core";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 import * as _ from "lodash";
-import {XmatAlertDialogActions, XmatAlertTypes} from "./xmat-alert-dialog.model";
+import {XmatAlertDialogActions, XmatAlertTypes} from "../../xmat-models/xmat-alert-dialog.model";
 
 const bgColorKeyKebab: string = "background-color";
 const bgColorKeyCamel: string = "backgroundColor";

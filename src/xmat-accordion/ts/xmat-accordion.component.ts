@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Input, ViewChild, ViewEncapsulation} from "@angular/core";
 import {CanDisable, CanColor, ThemePalette, mixinColor} from "@angular/material";
 import {Constructor} from "@angular/material/typings/core/common-behaviors/constructor";
+import {coerceBooleanProperty} from "@angular/cdk/coercion";
 
 const DEFAULT_COLOR = "accent";
 const transcludedHeaderSelector: string = ".xmat-accordion-title";
@@ -22,42 +23,30 @@ export const _XmatAccordionMixinBase: Constructor<CanColor> & typeof XmatAccordi
         "class": "xmat-accordion",
         "[class.mat-primary]": "color == 'primary'",
         "[class.mat-accent]": "color == 'accent'",
-        "[class.mat-warn]": "color == 'warn'",
-        "(click)": "onContainerClick($event)"
+        "[class.mat-warn]": "color == 'warn'"
     },
-    template: `
-        <mat-accordion>
-            <mat-expansion-panel [expanded]="isExpanded">
-                <mat-expansion-panel-header #xmatAccordionHeader>
-                    <mat-panel-title>
-                        <ng-content select=".xmat-accordion-title"></ng-content>
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        <ng-content select=".xmat-accordion-desc"></ng-content>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <ng-content select=".xmat-accordion-content"></ng-content>
-            </mat-expansion-panel>
-        </mat-accordion>
-    `,
+    templateUrl: "../tpl/xmat-accordion.component.html",
     encapsulation: ViewEncapsulation.None
 })
 
 
 export class XmatAccordionComponent extends _XmatAccordionMixinBase implements CanColor, CanDisable, AfterViewInit {
 
+    @ViewChild("xmatAccordionHeader") private _xmatAccordionHeader: any; // TODO find out type
+
     @Input() color: ThemePalette;
     @Input() disabled: boolean;
 
-    // tslint:disable-next-line:no-input-rename
-    @Input("expanded") isExpanded: boolean;
-    @ViewChild("xmatAccordionHeader") private _xmatAccordionHeader: any; // TODO find out type
+    @Input()
+    set expanded(value: boolean) {
+        this._expanded = coerceBooleanProperty(value);
+    }
 
-    /**
-     * ua = viewModel
-     * this is meant to contain data used from the view
-     */
-    public ua = {};
+    get expanded(): boolean {
+        return this._expanded;
+    }
+
+    private _expanded: boolean = false;
 
     constructor(elementRef: ElementRef) {
         super(elementRef);
@@ -66,15 +55,13 @@ export class XmatAccordionComponent extends _XmatAccordionMixinBase implements C
     }
 
     ngAfterViewInit() {
-        const $header = this._xmatAccordionHeader._element.nativeElement;
-        const $panel = $header.parentElement;
-        if ($header.querySelectorAll(transcludedHeaderSelector).length === 0) {
-            $panel.removeChild($header);
-            $panel.classList.add("xmat-accordion-no-header");
+        if (!!this._xmatAccordionHeader) {
+            const $header = this._xmatAccordionHeader._element.nativeElement;
+            const $panel = $header.parentElement;
+            if ($header.querySelectorAll(transcludedHeaderSelector).length === 0) {
+                $panel.removeChild($header);
+                $panel.classList.add("xmat-accordion-no-header");
+            }
         }
-    }
-
-    onContainerClick($event: any) {
-        !this.disabled || $event.stopPropagation();
     }
 }
