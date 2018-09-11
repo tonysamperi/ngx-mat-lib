@@ -215,3 +215,4 @@
 #1.3.3
 * Added XmatRestVerbs and XmatDynamicRestVerbsRef to better handle rest verbs and refs
 * Used XmatGenericObject in XmatConstantsService
+* Refactor
