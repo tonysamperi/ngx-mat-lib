@@ -204,3 +204,10 @@
 * Moved templates in HTML files (with ng5-library, we can use double quotes :D )
 * Deleted useless stuff such as RouteGuard
 * Improved folders structure
+* Renamed xmatOverlayStyles to XmatOverlayStyles (consistent code style)
+
+#1.3.2
+* Fixed timer dependency in xmat-mock
+* Fixed missing exports
+* Added missing log above (xmatOverlayStyles)
+* Updated lodash version in package.json

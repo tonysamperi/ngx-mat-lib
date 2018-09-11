@@ -1,9 +1,5 @@
 import {Component, ElementRef, AfterViewInit, Input, OnDestroy, OnInit} from "@angular/core";
-
-export enum XmatOverlayStyles {
-    DARK = "DARK",
-    LIGHT = "LIGHT"
-}
+import {XmatOverlayStyles} from "../../xmat-models/index";
 
 const invalidDisplayValues = ["inline", "none"];
 

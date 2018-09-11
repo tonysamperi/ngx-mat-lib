@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpEventType} from "@angular/common/http";
-import {Observable, timer} from "rxjs/Observable";
+import {Observable} from "rxjs/Observable";
+import {timer} from "rxjs/observable/timer";
 import {XmatMock} from "../xmat-models/index";
 import {XmatMocksListService, XmatConstantsService} from "./index";
 import "rxjs/add/operator/switchMap";
