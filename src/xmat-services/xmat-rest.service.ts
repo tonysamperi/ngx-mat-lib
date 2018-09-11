@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {XmatConstantsService} from "./xmat-constants.service";
-import {XmatHttpConfig} from "../xmat-models/index";
+import {XmatHttpConfig, XmatDynamicRestVerbsRef, XmatRestVerbs} from "../xmat-models/index";
 
 /**
  * UBI REST BY TONY SAMPERI
@@ -23,13 +23,6 @@ export class XmatRestService {
     protected _restBaseUrl = this._xmatConstants.restBaseUrl;
     protected _ds = this._xmatConstants.ds;
 
-    protected readonly httpMethods = {
-        get: "GET",
-        post: "POST",
-        del: "DELETE",
-        put: "PUT"
-    };
-
     // Sample data
     public readonly servicesUrls = {
         /**
@@ -42,14 +35,14 @@ export class XmatRestService {
         /**
          * myServiceA: {
          *     get: (): XmatHttpConfig => {
-         *         return this._generateHttpConfig(this.httpMethods.get, this.servicesUrls.myServiceA, true);
+         *         return this._generateHttpConfig(XmatRestVerbs.GET, this.servicesUrls.myServiceA, true);
          *     },
          *     post: (): XmatHttpConfig => {
-         *         return this._generateHttpConfig(this.httpMethods.post, this.servicesUrls.myServiceA);
+         *         return this._generateHttpConfig(XmatRestVerbs.POST, this.servicesUrls.myServiceA);
          *     }
          * },
          * myServiceB: (): XmatHttpConfig => {
-         *     return this._generateHttpConfig(this.httpMethods.get, this.servicesUrls.myServiceA, true);
+         *     return this._generateHttpConfig(XmatRestVerbs.GET, this.servicesUrls.myServiceA, true);
          * }
          */
     };
@@ -59,9 +52,9 @@ export class XmatRestService {
 
     }
 
-    protected _generateHttpConfig(method: string = this.httpMethods.get, url: string = "", queryable: boolean = false): XmatHttpConfig {
+    protected _generateHttpConfig(method: XmatRestVerbs = XmatRestVerbs.GET, url: string = "", queryable: boolean = false): XmatHttpConfig {
         url = this._xmatConstants.removeTrailingSlash(url);
-        return {
+        return <XmatHttpConfig>{
             method: method,
             url: url,
             data: void 0,
@@ -71,14 +64,14 @@ export class XmatRestService {
 
     $http<T>(config: XmatHttpConfig = this._generateHttpConfig()): Observable<T> {
         if (!config.method) {
-            config.method = this.httpMethods.get;
+            config.method = XmatRestVerbs.GET;
         }
         if (!config.url) {
             console.error("Error: [$http:badconfig]", config);
             return new Observable();
         }
         switch (config.method) {
-            case this.httpMethods.get:
+            case XmatRestVerbs.GET:
                 let params = new HttpParams();
                 /**
                  * Transform data in query params
@@ -96,11 +89,11 @@ export class XmatRestService {
                     }
                 }
                 return this._http.get<T>(config.url, {params: params});
-            case this.httpMethods.post:
+            case XmatRestVerbs.POST:
                 return this._http.post<T>(config.url, config.data);
-            case this.httpMethods.del:
+            case XmatRestVerbs.DELETE:
                 return this._http.delete<T>(config.url, config.data);
-            case this.httpMethods.put:
+            case XmatRestVerbs.PUT:
                 return this._http.put<T>(config.url, config.data);
 
             default:

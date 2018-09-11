@@ -211,3 +211,7 @@
 * Fixed missing exports
 * Added missing log above (xmatOverlayStyles)
 * Updated lodash version in package.json
+
+#1.3.3
+* Added XmatRestVerbs and XmatDynamicRestVerbsRef to better handle rest verbs and refs
+* Used XmatGenericObject in XmatConstantsService

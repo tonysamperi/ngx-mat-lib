@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {XmatRestVerbs, XmatDescValuePair} from "../xmat-models/index";
+import {XmatDynamicRestVerbsRef, XmatDescValuePair, XmatGenericObject} from "../xmat-models/index";
 import * as _ from "lodash";
 
 // Const variables
@@ -72,14 +72,14 @@ export class XmatConstantsService {
 
     public readonly fileNameSpace: string = "-";
 
-    public labels: { [key: string]: any } = _.cloneDeep(XMAT_CONSTANT_LABELS);
+    public labels: XmatGenericObject = _.cloneDeep(XMAT_CONSTANT_LABELS);
 
-    public messages: { [key: string]: string } = {
+    public messages: XmatGenericObject<string> = {
         warningTitle: XMAT_CONSTANT_LABELS.warningTitle,
         genericErrorKey: "generic.error"
     };
 
-    public readonly methodsKeys: XmatRestVerbs = {
+    public readonly methodsKeys: XmatDynamicRestVerbsRef<string> = {
         GET: "get-",
         PUT: "put-",
         POST: "post-",
@@ -89,14 +89,14 @@ export class XmatConstantsService {
     public readonly paramsPlaceholder: string = "@params@";
     public readonly queryUrlParam: string = "@query@";
 
-    public readonly regExps: { [key: string]: string } = {
+    public readonly regExps: XmatGenericObject<string> = {
         trailingWhiteSpaces: "\\s+$",
         leadingWhiteSpaces: "^\\s+",
         multipleWhiteSpaces: "\\s+(?=\\s)"
     };
     public readonly routeParams: string = "routeParams";
 
-    public readonly selectOptions: { [key: string]: XmatDescValuePair<any> } = {
+    public readonly selectOptions: XmatGenericObject<XmatDescValuePair<any>> = {
         empty: {
             desc: "Seleziona...",
             value: void 0
