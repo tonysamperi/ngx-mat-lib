@@ -217,7 +217,7 @@
 * Used XmatGenericObject in XmatConstantsService
 * Refactor
 
-#1.3.4b
+#1.3.4-b
 * Beta to test peerDependencies (solving services injection issue)
 * Added module to import XmatFunctionsService
 * Added missing export in XmatDialogModule
@@ -228,3 +228,11 @@
 
 #1.3.4-beta.3
 * Adjusting peerDependencies
+
+#1.3.5
+* Stable version with 'emitDecoratorMetadata'@true
+* Fixed gulp tasks sync
+* Removed warnings from rollup
+* Improved rollup tasks
+* Removed XmatServicesModule - Useless now
+* Misc
