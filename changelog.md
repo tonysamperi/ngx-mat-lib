@@ -222,3 +222,9 @@
 * Added module to import XmatFunctionsService
 * Added missing export in XmatDialogModule
 * New package & gulp tasks to build locally
+
+#1.3.4-beta.2
+* Adjusting peerDependencies
+
+#1.3.4-beta.3
+* Adjusting peerDependencies

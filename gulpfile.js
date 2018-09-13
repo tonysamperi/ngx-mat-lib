@@ -206,7 +206,7 @@ gulp.task('copy:readme', function () {
 gulp.task('copy:scss', function () {
     console.log("Copy:SCSS");
     return gulp.src([`${scssFolder}/**/*`])
-    .pipe(gulp.dest(scssDistFolder));
+    .pipe(gulp.dest(scssDistFolder))
 });
 
 /**
@@ -237,7 +237,7 @@ gulp.task('clean:build', function () {
     return deleteFolder(buildFolder);
 });
 
-gulp.task('compile', function () {
+gulp.task('compile', function (callback) {
     runSequence(
         'clean:dist',
         'copy:source',
@@ -260,6 +260,7 @@ gulp.task('compile', function () {
                 deleteFolder(buildFolder);
             } else {
                 console.log('Compilation finished succesfully');
+                callback();
             }
         });
 });
@@ -285,6 +286,7 @@ gulp.task('build:watch', function (callback) {
 
 gulp.task('delete:dist', function (callback) {
     deleteFolder(distFolder);
+    callback();
 });
 
 gulp.task('default', ['build:watch']);
