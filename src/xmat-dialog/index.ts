@@ -29,7 +29,8 @@ export * from "./ts/xmat-confirm-dialog.component";
         XmatAlertDialogComponent
     ],
     exports: [
-        XmatConfirmDialogComponent
+        XmatConfirmDialogComponent,
+        XmatAlertDialogComponent
     ],
     entryComponents: [
         XmatConfirmDialogComponent,

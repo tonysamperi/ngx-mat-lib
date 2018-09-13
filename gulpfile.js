@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     fs = require('fs-extra'),
     runSequence = require('run-sequence'),
+    exec = require('gulp-exec'),
     inlineResources = require('./tools/gulp/inline-resources');
 var sass = require('gulp-sass');
 var tildeImporter = require('node-sass-tilde-importer');
@@ -38,7 +39,7 @@ gulp.task('clean:dist', function () {
  */
 gulp.task('copy:source', function () {
     return gulp.src([`${srcFolder}/**/*`, `!${srcFolder}/node_modules`])
-        .pipe(gulp.dest(tmpFolder));
+    .pipe(gulp.dest(tmpFolder));
 });
 
 /**
@@ -47,7 +48,7 @@ gulp.task('copy:source', function () {
  */
 gulp.task('inline-resources', function () {
     return Promise.resolve()
-        .then(() => inlineResources(tmpFolder));
+    .then(() => inlineResources(tmpFolder));
 });
 
 
@@ -69,44 +70,44 @@ gulp.task('ngc', function () {
 gulp.task('rollup:fesm', function () {
     return gulp.src(`${buildFolder}/**/*.js`)
     // transform the files here.
-        .pipe(rollup({
+    .pipe(rollup({
 
-            // Bundle's entry point
-            // See "input" in https://rollupjs.org/#core-functionality
-            input: `${buildFolder}/index.js`,
+        // Bundle's entry point
+        // See "input" in https://rollupjs.org/#core-functionality
+        input: `${buildFolder}/index.js`,
 
-            // Allow mixing of hypothetical and actual files. "Actual" files can be files
-            // accessed by Rollup or produced by plugins further down the chain.
-            // This prevents errors like: 'path/file' does not exist in the hypothetical file system
-            // when subdirectories are used in the `src` directory.
-            allowRealFiles: true,
+        // Allow mixing of hypothetical and actual files. "Actual" files can be files
+        // accessed by Rollup or produced by plugins further down the chain.
+        // This prevents errors like: 'path/file' does not exist in the hypothetical file system
+        // when subdirectories are used in the `src` directory.
+        allowRealFiles: true,
 
-            // A list of IDs of modules that should remain external to the bundle
-            // See "external" in https://rollupjs.org/#core-functionality
-            external: [
-                '@angular/animations',
-                '@angular/cdk',
-                '@angular/cli',
-                '@angular/common',
-                '@angular/compiler',
-                '@angular/compiler-cli',
-                '@angular/core',
-                '@angular/flex-layout',
-                '@angular/forms',
-                '@angular/material',
-                '@angular/platform-browser',
-                '@angular/platform-browser-dynamic',
-                '@angular/router',
-                'rxjs'
-            ],
+        // A list of IDs of modules that should remain external to the bundle
+        // See "external" in https://rollupjs.org/#core-functionality
+        external: [
+            '@angular/animations',
+            '@angular/cdk',
+            '@angular/cli',
+            '@angular/common',
+            '@angular/compiler',
+            '@angular/compiler-cli',
+            '@angular/core',
+            '@angular/flex-layout',
+            '@angular/forms',
+            '@angular/material',
+            '@angular/platform-browser',
+            '@angular/platform-browser-dynamic',
+            '@angular/router',
+            'rxjs'
+        ],
 
-            output: {
-                // Format of generated bundle
-                // See "format" in https://rollupjs.org/#core-functionality
-                format: 'es'
-            }
-        }))
-        .pipe(gulp.dest(distFolder));
+        output: {
+            // Format of generated bundle
+            // See "format" in https://rollupjs.org/#core-functionality
+            format: 'es'
+        }
+    }))
+    .pipe(gulp.dest(distFolder));
 });
 
 /**
@@ -116,60 +117,60 @@ gulp.task('rollup:fesm', function () {
 gulp.task('rollup:umd', function () {
     return gulp.src(`${buildFolder}/**/*.js`)
     // transform the files here.
-        .pipe(rollup({
+    .pipe(rollup({
 
-            // Bundle's entry point
-            // See "input" in https://rollupjs.org/#core-functionality
-            input: `${buildFolder}/index.js`,
+        // Bundle's entry point
+        // See "input" in https://rollupjs.org/#core-functionality
+        input: `${buildFolder}/index.js`,
 
-            // Allow mixing of hypothetical and actual files. "Actual" files can be files
-            // accessed by Rollup or produced by plugins further down the chain.
-            // This prevents errors like: 'path/file' does not exist in the hypothetical file system
-            // when subdirectories are used in the `src` directory.
-            allowRealFiles: true,
+        // Allow mixing of hypothetical and actual files. "Actual" files can be files
+        // accessed by Rollup or produced by plugins further down the chain.
+        // This prevents errors like: 'path/file' does not exist in the hypothetical file system
+        // when subdirectories are used in the `src` directory.
+        allowRealFiles: true,
 
-            // A list of IDs of modules that should remain external to the bundle
-            // See "external" in https://rollupjs.org/#core-functionality
-            external: [
-                '@angular/animations',
-                '@angular/cdk',
-                '@angular/cli',
-                '@angular/common',
-                '@angular/compiler',
-                '@angular/compiler-cli',
-                '@angular/core',
-                '@angular/flex-layout',
-                '@angular/forms',
-                '@angular/material',
-                '@angular/platform-browser',
-                '@angular/platform-browser-dynamic',
-                '@angular/router',
-                'rxjs'
-            ],
+        // A list of IDs of modules that should remain external to the bundle
+        // See "external" in https://rollupjs.org/#core-functionality
+        external: [
+            '@angular/animations',
+            '@angular/cdk',
+            '@angular/cli',
+            '@angular/common',
+            '@angular/compiler',
+            '@angular/compiler-cli',
+            '@angular/core',
+            '@angular/flex-layout',
+            '@angular/forms',
+            '@angular/material',
+            '@angular/platform-browser',
+            '@angular/platform-browser-dynamic',
+            '@angular/router',
+            'rxjs'
+        ],
 
-            output: {
-                // The name to use for the module for UMD/IIFE bundles
-                // (required for bundles with exports)
-                // See "name" in https://rollupjs.org/#core-functionality
-                name: 'ngx-mat-lib',
+        output: {
+            // The name to use for the module for UMD/IIFE bundles
+            // (required for bundles with exports)
+            // See "name" in https://rollupjs.org/#core-functionality
+            name: 'ngx-mat-lib',
 
-                // See "globals" in https://rollupjs.org/#core-functionality
-                globals: {
-                    typescript: 'ts'
-                },
+            // See "globals" in https://rollupjs.org/#core-functionality
+            globals: {
+                typescript: 'ts'
+            },
 
-                // Format of generated bundle
-                // See "format" in https://rollupjs.org/#core-functionality
-                format: 'umd',
+            // Format of generated bundle
+            // See "format" in https://rollupjs.org/#core-functionality
+            format: 'umd',
 
-                // Export mode to use
-                // See "exports" in https://rollupjs.org/#danger-zone
-                exports: 'named'
-            }
+            // Export mode to use
+            // See "exports" in https://rollupjs.org/#danger-zone
+            exports: 'named'
+        }
 
-        }))
-        .pipe(rename('ngx-mat-lib.umd.js'))
-        .pipe(gulp.dest(distFolder));
+    }))
+    .pipe(rename('ngx-mat-lib.umd.js'))
+    .pipe(gulp.dest(distFolder));
 });
 
 /**
@@ -179,7 +180,7 @@ gulp.task('rollup:umd', function () {
  */
 gulp.task('copy:build', function () {
     return gulp.src([`${buildFolder}/**/*`, `!${buildFolder}/**/*.js`])
-        .pipe(gulp.dest(distFolder));
+    .pipe(gulp.dest(distFolder));
 });
 
 /**
@@ -187,7 +188,7 @@ gulp.task('copy:build', function () {
  */
 gulp.task('copy:manifest', function () {
     return gulp.src([`${srcFolder}/package.json`])
-        .pipe(gulp.dest(distFolder));
+    .pipe(gulp.dest(distFolder));
 });
 
 /**
@@ -196,7 +197,7 @@ gulp.task('copy:manifest', function () {
  */
 gulp.task('copy:readme', function () {
     return gulp.src([path.join(rootFolder, 'README.MD')])
-        .pipe(gulp.dest(distFolder));
+    .pipe(gulp.dest(distFolder));
 });
 
 /**
@@ -205,7 +206,7 @@ gulp.task('copy:readme', function () {
 gulp.task('copy:scss', function () {
     console.log("Copy:SCSS");
     return gulp.src([`${scssFolder}/**/*`])
-        .pipe(gulp.dest(scssDistFolder));
+    .pipe(gulp.dest(scssDistFolder));
 });
 
 /**
@@ -216,11 +217,10 @@ gulp.task('build:scss', function () {
     return gulp.src([
         `${scssDistFolder}/xmat-library.scss`,
     ]).pipe(sass({
-            importer: tildeImporter
-        }))
-        .pipe(gulp.dest(cssDistFolder));
+        importer: tildeImporter
+    }))
+    .pipe(gulp.dest(cssDistFolder));
 });
-
 
 
 /**
@@ -281,6 +281,10 @@ gulp.task('build', function (callback) {
 
 gulp.task('build:watch', function (callback) {
     runSequence('build', 'watch', callback);
+});
+
+gulp.task('delete:dist', function (callback) {
+    deleteFolder(distFolder);
 });
 
 gulp.task('default', ['build:watch']);

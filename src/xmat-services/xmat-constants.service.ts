@@ -3,7 +3,7 @@ import {XmatDynamicRestVerbsRef, XmatDescValuePair, XmatGenericObject} from "../
 import * as _ from "lodash";
 
 // Const variables
-export const XMAT_CONSTANT_LABELS: { [key: string]: any } = {
+export const XMAT_CONSTANT_LABELS: XmatGenericObject<any> = {
     accept: "Ok",
     cancel: "Annulla",
     confirm: "Sono sicuro",

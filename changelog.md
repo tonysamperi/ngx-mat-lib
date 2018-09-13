@@ -216,3 +216,9 @@
 * Added XmatRestVerbs and XmatDynamicRestVerbsRef to better handle rest verbs and refs
 * Used XmatGenericObject in XmatConstantsService
 * Refactor
+
+#1.3.4b
+* Beta to test peerDependencies (solving services injection issue)
+* Added module to import XmatFunctionsService
+* Added missing export in XmatDialogModule
+* New package & gulp tasks to build locally
