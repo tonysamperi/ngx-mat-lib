@@ -201,6 +201,12 @@ export class XmatFunctionsService {
         return this.isNumeric(value) && value >= 0;
     }
 
+    logWithStyle(title: string, msg: string, color: string, content: any) {
+        console.group(title || "");
+        console.log("%c" + msg, `color: ${color}`, content);
+        console.groupEnd();
+    }
+
     openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData): Observable<XmatAlertDialogActions> {
         const dialogConfig = new MatDialogConfig();
         _.extend(this._defaultAlertData, data);

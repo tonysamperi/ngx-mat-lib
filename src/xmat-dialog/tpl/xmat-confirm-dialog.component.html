@@ -1,6 +1,8 @@
-<h3 mat-dialog-title>{{data.title || "Conferma"}}</h3>
-<div mat-dialog-content [innerHTML]="data.dialogContent">
+<h3 mat-dialog-title>{{data.title}}</h3>
+<div mat-dialog-content>
+    <ng-container *ngTemplateOutlet="data.dialogContent.xMatDialogContent">
 
+    </ng-container>
 </div>
 <div mat-dialog-actions>
     <button mat-button
@@ -8,12 +10,12 @@
             mat-raised-button
             cdkFocusInitial
             (click)="onNoClick()">
-        {{data.cancelText || "Annulla"}}
+        {{data.cancelText}}
     </button>
     <button mat-button
             mat-raised-button
             color="warn"
             (click)="onYesClick()">
-        {{data.confirmText || "Conferma"}}
+        {{data.confirmText}}
     </button>
 </div>

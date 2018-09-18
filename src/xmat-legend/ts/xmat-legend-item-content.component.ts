@@ -8,7 +8,7 @@ import { Component, ViewChild, TemplateRef, ViewEncapsulation } from "@angular/c
 
 export class XmatLegendItemContentComponent {
 
-  @ViewChild("xMatLegendItem") xMatLegendItem: TemplateRef<any>;
+  @ViewChild("xMatLegendItemContent") xMatLegendItemContent: TemplateRef<any>;
   content: string;
 
 }

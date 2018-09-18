@@ -139,8 +139,32 @@ $ npm run lint
 
 ##Thanks to
 
-jvandemo with his generator-angular2-library
+jvandemo with his generator-angular2-library (now using generator-ng5-library)
+
+Versioning
+Font Awesome will be maintained under the Semantic Versioning guidelines as much as possible. Releases will be numbered with the following format:
+
+<major>.<minor>.<patch>
+
+And constructed with the following guidelines:
+
+Breaking backward compatibility bumps the major (and resets the minor and patch)
+New additions, including new icons, without breaking backward compatibility bumps the minor (and resets the patch)
+Bug fixes, changes to brand logos, and misc changes bumps the patch
+For more information on SemVer, please visit http://semver.org.
 
 ## License
 
 MIT © [Tony Samperi](mailto:github@tonysamperi.it)
+
+Font Awesome Free is free, open source, and GPL friendly. You can use it for
+commercial projects, open source projects, or really almost whatever you want.
+
+Attribution is required by MIT, SIL OLF, and CC BY licenses. Downloaded files already
+contain embedded comments with sufficient
+attribution, so you shouldn't need to do anything additional when using these
+files normally.
+
+#TODOS
+* Add dynamic template to xmat-alert-dialog (as of xmat-confirm-dialog)
+* Create dictionary for labels

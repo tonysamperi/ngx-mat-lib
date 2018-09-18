@@ -43,11 +43,13 @@ import {
     XmatLegendItem,
     // COMPS
     XmatDialogModule,
+    XmatDialogContentComponent,
     XmatActionTextModule,
     XmatAccordionModule,
     XmatTimeInputModule,
     XmatSnackBarModule,
     XmatLegendModule,
+    XmatLegendItemContentComponent,
     // SERVS
     XmatConstantsService,
     XmatFunctionsService,
@@ -112,6 +114,7 @@ minDate.setDate(minDate.getDate() - 90);
 })
 class AppComponent implements OnInit {
 
+    figataSpaziale: string = "";
     title = "Test";
     icons = ["", "note_add", "delete_forever"];
     pippo = false;
@@ -134,8 +137,9 @@ class AppComponent implements OnInit {
 
     }
 
-    @ViewChild("myTest1") myTest1: any;
-    @ViewChild("myTest2") myTest2: any;
+    @ViewChild("myTest1") myTest1: XmatLegendItemContentComponent;
+    @ViewChild("myTest2") myTest2: XmatLegendItemContentComponent;
+    @ViewChild("myDialogContent") myDialogContent: XmatDialogContentComponent;
 
     myTestList: XmatLegendItem[];
 
@@ -169,6 +173,18 @@ class AppComponent implements OnInit {
         ];
     }
 
+    showDialog(): void {
+        console.info("SHOW DIALOG CALLED", this.myDialogContent);
+        this._functions.openConfirmDialog({
+            cancelText: "UNDO",
+            confirmText: "ALRIGHT!",
+            dialogContent: this.myDialogContent,
+            hideCancelButton: false,
+            title: "MY AWESOME TITLE"
+        });
+
+
+    }
 
     showSnackBar($event: any): void {
         console.info("COMPONENT: ACTION CLICKED", $event);

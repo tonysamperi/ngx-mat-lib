@@ -10,9 +10,11 @@ import {
 } from "@angular/material";
 import {XmatConfirmDialogComponent} from "./ts/xmat-confirm-dialog.component";
 import {XmatAlertDialogComponent} from "./ts/xmat-alert-dialog.component";
+import {XmatDialogContentComponent} from "./ts/xmat-dialog-content.component";
 
 export * from "./ts/xmat-alert-dialog.component";
 export * from "./ts/xmat-confirm-dialog.component";
+export * from "./ts/xmat-dialog-content.component";
 
 @NgModule({
     imports: [
@@ -26,15 +28,18 @@ export * from "./ts/xmat-confirm-dialog.component";
     ],
     declarations: [
         XmatConfirmDialogComponent,
-        XmatAlertDialogComponent
+        XmatAlertDialogComponent,
+        XmatDialogContentComponent
     ],
     exports: [
         XmatConfirmDialogComponent,
-        XmatAlertDialogComponent
+        XmatAlertDialogComponent,
+        XmatDialogContentComponent
     ],
     entryComponents: [
         XmatConfirmDialogComponent,
-        XmatAlertDialogComponent
+        XmatAlertDialogComponent,
+        XmatDialogContentComponent
     ]
 })
 export class XmatDialogModule {

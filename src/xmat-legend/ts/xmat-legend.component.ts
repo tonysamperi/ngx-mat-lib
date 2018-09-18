@@ -3,7 +3,6 @@ import {
     ComponentRef,
     ComponentFactoryResolver,
     Input,
-    OnInit,
     ViewContainerRef,
     ViewEncapsulation
 } from "@angular/core";
@@ -18,12 +17,21 @@ import * as _ from "lodash";
     encapsulation: ViewEncapsulation.None
 })
 
-export class XmatLegendComponent implements OnInit {
+export class XmatLegendComponent {
 
-    @Input() items: XmatLegendItem[];
+    @Input()
+    get items(): XmatLegendItem[] {
+        return this._items;
+    }
+
+    set items(newValue: XmatLegendItem[]) {
+        this._items = newValue;
+        this._legendInit();
+    }
 
     @Input() layout: XmatLegendLayout = XmatLegendLayouts.GRID;
 
+    private _items: XmatLegendItem[];
     private _itemContentClass = XmatLegendItemContentComponent;
     private _itemContentRef: ComponentRef<XmatLegendItemContentComponent>;
 
@@ -32,29 +40,30 @@ export class XmatLegendComponent implements OnInit {
 
     }
 
-    ngOnInit() {
-        _.each(this.items, (item: XmatLegendItem) => {
-            if (typeof item.content === "string") {
-                const tmpComp = this._constructContent();
-                const old = item.content;
-                item.content = tmpComp;
-                item.content.content = old;
-            }
-            else if (item.content instanceof XmatLegendItemContentComponent) {
-                // Valid
-            }
-            else {
-                // Hide broken ones?
-            }
-
-        });
-    }
-
-
     private _constructContent(): XmatLegendItemContentComponent {
         const factory = this._resolver.resolveComponentFactory(this._itemContentClass);
         this._itemContentRef = this._viewContainerRef.createComponent(factory);
         return this._itemContentRef.instance as XmatLegendItemContentComponent;
+    }
+
+    private _legendInit() {
+        _.each(this.items, (item: XmatLegendItem) => {
+            if (typeof item.content === "string") {
+                const tmpCompInstance = this._constructContent();
+                // this._xmatFunctions.logWithStyle("XmatLegend", "Was String Content", "#006699", item.content);
+                tmpCompInstance.content = item.content;
+                item.content = tmpCompInstance;
+            }
+            else if (item.content instanceof XmatLegendItemContentComponent) {
+                // Valid
+                // this._xmatFunctions.logWithStyle("XmatLegend", "Was Instance Content", "#336699", item.content);
+            }
+            else {
+                // this._xmatFunctions.logWithStyle("XmatLegend", "Was INVALID Content", "#CC0000", item.content);
+                // Hide broken ones?
+            }
+
+        });
     }
 
 }

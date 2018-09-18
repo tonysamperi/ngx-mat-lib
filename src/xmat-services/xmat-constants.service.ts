@@ -6,6 +6,8 @@ import * as _ from "lodash";
 export const XMAT_CONSTANT_LABELS: XmatGenericObject<any> = {
     accept: "Ok",
     cancel: "Annulla",
+    changedMind: "Ci ho ripensato",
+    close: "Chiudi",
     confirm: "Sono sicuro",
     days: {
         full: ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"],

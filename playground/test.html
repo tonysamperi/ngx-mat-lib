@@ -1,3 +1,14 @@
+<h2>DIALOG TEMPLATE REF</h2>
+<p>FIGATA SPAZIALE: {{figataSpaziale || 'empty'}}</p>
+<button (click)="showDialog()">
+    SHOW DIALOG
+</button>
+
+<xmat-dialog-content #myDialogContent>
+    <input type="text" [(ngModel)]="figataSpaziale" />
+    <p>My static content</p>
+</xmat-dialog-content>
+<hr />
 <h2>TIME INPUT</h2>
 <mat-form-field class="autoWidth">
     <xmat-time-input name="ubiTimeInputTest"
@@ -6,6 +17,7 @@
                      [disabled]="isUbiTimeInputDisabled"
                      [required]="isUbiTimeInputRequired"></xmat-time-input>
 </mat-form-field>
+
 <hr />
 <div style="height: 100px; background: #e2e2e2">
     <button (click)="actionDisabled = !actionDisabled">

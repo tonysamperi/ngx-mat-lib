@@ -1,0 +1,6 @@
+<ng-template #xMatDialogContent>
+    <div *ngIf="!!content"
+                  [innerHTML]="content">
+    </div>
+    <ng-content></ng-content>
+</ng-template>
