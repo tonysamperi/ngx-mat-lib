@@ -12,6 +12,8 @@ export class XmatSpinnerComponent implements AfterViewInit {
 
     @Input("diameter") diameter: number = defaultDiameter;
 
+    @Input("customParent") customParent: string;
+
     @ViewChild(MatSpinner) spinner: MatSpinner;
 
     constructor(private elementRef: ElementRef) {
@@ -23,7 +25,14 @@ export class XmatSpinnerComponent implements AfterViewInit {
         const $spinner = this.spinner._elementRef.nativeElement;
         const $element = this.elementRef.nativeElement;
         $spinner.style.margin = spinnerMargin;
-        $element.parentNode.style.position = "relative";
+        if (!this.customParent) {
+            const $parent = $element.parentNode;
+            !!$parent && ($parent.style.position = "relative");
+        }
+        else {
+            const $container = $element.closest(this.customParent);
+            !!$container && ($container.style.position = "relative");
+        }
     }
 
 }

@@ -236,3 +236,15 @@
 * Improved rollup tasks
 * Removed XmatServicesModule - Useless now
 * Misc
+
+#1.3.6
+* Added logWithStyle in xmat-functions
+* Dynamic content for xmat-confirm-dialog
+* Changed style of xmat-confirm-dialog
+* New labels in xmat-constants-service
+* Fixed xmat-legend async content issue
+* Improved readme, added todos
+
+#1.3.7
+* Added customParent to xmat-spinner
+* Fixed xmat-spinner style (explicit top and left positions)
