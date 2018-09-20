@@ -253,3 +253,6 @@
 * Improved XmatTime 
 * Fixed XmatTime label styling (no css required outside)
 * Fixed legend-item content bug (wrong ref))
+
+#1.3.9
+* Temp fix for ngc compile error (not when packaging this)
