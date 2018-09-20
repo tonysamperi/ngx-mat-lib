@@ -1,4 +1,6 @@
-<div [ngClass]="dynamicClassList" class="xmat-time-input-wrap" [formGroup]="parts">
+<div [ngClass]="{'xmat-time-invalid': invalid, 'xmat-time-focused' : focused}"
+     class="xmat-time-input-wrap"
+     [formGroup]="parts">
     <input class="hours"
            formControlName="hours"
            (focus)="setTouched()"

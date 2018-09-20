@@ -248,3 +248,8 @@
 #1.3.7
 * Added customParent to xmat-spinner
 * Fixed xmat-spinner style (explicit top and left positions)
+
+#1.3.8
+* Improved XmatTime 
+* Fixed XmatTime label styling (no css required outside)
+* Fixed legend-item content bug (wrong ref))

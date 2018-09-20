@@ -1,5 +1,5 @@
 import {AbstractControl, ValidatorFn} from "@angular/forms";
-import {XmatGenericObject} from "../../xmat-models/index";
+import {XmatGenericObject} from "../xmat-models/index";
 import * as _ from "lodash";
 
 /**

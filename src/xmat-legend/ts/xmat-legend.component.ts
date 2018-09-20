@@ -47,6 +47,13 @@ export class XmatLegendComponent {
     }
 
     private _legendInit() {
+
+        _.each(new Array(this.items.length % 4), () => {
+            this.items.push({
+                content: `<span style="display: none"></span>`
+            } as XmatLegendItem);
+        });
+
         _.each(this.items, (item: XmatLegendItem) => {
             if (typeof item.content === "string") {
                 const tmpCompInstance = this._constructContent();

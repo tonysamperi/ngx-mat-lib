@@ -1,2 +1,2 @@
-export * from "./ts/xmat-valid-list-selection.validation";
-export * from "./ts/xmat-values-match.validation";
+export * from "./xmat-valid-list-selection.validation";
+export * from "./xmat-values-match.validation";

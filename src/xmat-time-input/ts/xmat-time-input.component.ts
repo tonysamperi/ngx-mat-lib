@@ -6,14 +6,13 @@ import {
 } from "@angular/forms";
 import {Component, ElementRef, forwardRef, Input, OnDestroy, AfterViewInit, ViewEncapsulation} from "@angular/core";
 import {MatFormFieldControl} from "@angular/material";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 import {XmatTime} from "../../xmat-models/index";
+import {xmatTimeInputValidation} from "../../xmat-validators/xmat-time-input.validator";
 
 const controlType = "xmat-time-input";
 const elementType = "input";
-const classNames = {
-    invalid: "xmat-time-invalid"
-};
+
 const hoursPattern = new RegExp("^([01][0-9]|2[0-3])");
 const minutesPattern = new RegExp("^([0-5][0-9])$");
 
@@ -106,7 +105,6 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
         this.stateChanges.next();
     }
 
-
     static nextId = 0;
     private _deniedChars = /[^0-9]+/;
     private _$matFormField = null;
@@ -120,11 +118,12 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
 
     controlType: string = controlType;
     describedBy = "";
-    dynamicClassList: object = {};
+
     errorState = false;
     focused = false;
     id = `${controlType}-${XmatMatTimeInputComponent.nextId++}`;
     inputPlaceholder: string;
+    invalid: boolean = false;
     model: XmatTime = new XmatTime();
     ngControl = null;
     parts: FormGroup;
@@ -139,7 +138,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
         this.parts = _formBuilder.group({
             "hours": ["", Validators.pattern(hoursPattern)],
             "minutes": ["", Validators.pattern(minutesPattern)],
-        });
+        }, {validator: xmatTimeInputValidation});
 
         _focusMonitor.monitor(_elRef.nativeElement, true).subscribe(origin => {
             this.focused = !!origin;
@@ -203,9 +202,13 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
             inputChar = String.fromCharCode(keyCode);
         } else {
             inputChar = event.key;
+            if (inputChar.indexOf('Arrow') > -1) {
+                return true;
+            }
             switch (inputChar) {
-                case "Enter":
+                case "Delete":
                 case "Backspace":
+                case "Enter":
                 case "Tab":
                 case "Left":
                 case "Right":
@@ -216,6 +219,10 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
                         return true;
                     }
                     break;
+                case "X":			// Ctrl + X / Cmd + x
+                case "x":
+                case "C":			// Ctrl + C / Cmd + c
+                case "c":
                 case "V":			// Ctrl + V / Cmd + V
                 case "v":			// Ctrl + v / Cmd + v
                     if (event.ctrlKey || event.metaKey) {
@@ -230,19 +237,21 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
             return false;
         }
 
-        if (isHours && this.parts.value.hours.length === 1) {
-            this._elRef.nativeElement.querySelectorAll(elementType)[1].focus();
-        }
+        // TODO: HANDLE THE COOL WAY
+        /*if (isHours && this.parts.value.hours.length === 2) {
+         this._elRef.nativeElement.querySelectorAll(elementType)[1].focus();
+         }*/
+
     }
 
     validate(c: FormControl | FormGroup): ValidationErrors | null {
         if (!!this._$matFormField) {
-            const addClass = this.parts.invalid && this.parts.touched;
-            this._$matFormField.classList.toggle("mat-form-field-invalid", addClass);
-            this.dynamicClassList[classNames.invalid] = addClass;
+            this.invalid = this.parts.invalid && this.parts.touched;
+            this._$matFormField.classList.toggle("mat-form-field-invalid", this.invalid);
         }
         const value = this.parts.value;
-        const addFormatError = this.parts.invalid && value.hours.length + value.minutes.length > 0;
+        const charsCount = value.hours.length + value.minutes.length;
+        const addFormatError = this.parts.invalid && (charsCount > 0 || charsCount < 4);
 
         return addFormatError ? {timeFormatError: true} : null;
     }
@@ -250,7 +259,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
     // this is the initial value and reset are updated to the component
     writeValue(value: XmatTime): void {
         this.parts.reset();
-        let newValue = {hours: "", minutes: ""};
+        let newValue = {hours: "", minutes: ""} as XmatTime;
         if (!!value && value instanceof XmatTime) {
             newValue = value;
         }
@@ -263,7 +272,12 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
         let toPropagate = void 0;
         if (this.parts.valid) {
             const value = this.parts.value;
-            toPropagate = new XmatTime(value.hours, value.minutes);
+            if (!value.hours && !value.minutes) {
+                toPropagate = void 0;
+            }
+            else {
+                toPropagate = new XmatTime(value.hours, value.minutes);
+            }
         }
         this._propagateChange(toPropagate);
         // Emit stateChange to update value in mat-groupCtrl-field

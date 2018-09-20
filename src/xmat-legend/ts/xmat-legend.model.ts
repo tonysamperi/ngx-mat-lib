@@ -3,7 +3,7 @@ import {XmatLegendItemContentComponent} from "./xmat-legend-item-content.compone
 export interface XmatLegendItem {
     image?: string;
     color?: string;
-    className: string | string[];
+    className?: string | string[];
     content: string | XmatLegendItemContentComponent;
 }
 
