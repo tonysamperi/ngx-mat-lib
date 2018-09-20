@@ -256,3 +256,6 @@
 
 #1.3.9
 * Temp fix for ngc compile error (not when packaging this)
+
+#1.3.10
+* Final fix for ngc compile error (not when packaging this) on XmatConfirmDialog

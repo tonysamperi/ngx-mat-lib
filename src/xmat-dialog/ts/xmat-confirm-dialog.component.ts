@@ -10,6 +10,8 @@ import {XmatDialogContentComponent} from "./xmat-dialog-content.component";
 })
 export class XmatConfirmDialogComponent implements OnInit {
 
+    public dialogContentOutlet: XmatDialogContentComponent;
+
     protected _dialogContentClass = XmatDialogContentComponent;
     protected _dialogContentRef: ComponentRef<XmatDialogContentComponent>;
 
@@ -22,11 +24,14 @@ export class XmatConfirmDialogComponent implements OnInit {
 
     ngOnInit(): void {
         console.info("CONFIRM DIALOG INIT", this.data.dialogContent);
+        if (!this.data.dialogContent) {
+            this.data.dialogContent = "";
+        }
         if (typeof this.data.dialogContent === "string") {
-            const tmpCompInstance = this._constructContent();
             // this._xmatFunctions.logWithStyle("XmatDialog", "Was String Content", "#006699", this.data.dialogContent);
+            const tmpCompInstance = this._constructContent();
             tmpCompInstance.content = this.data.dialogContent;
-            this.data.dialogContent = tmpCompInstance;
+            this.dialogContentOutlet = tmpCompInstance;
         }
         else if (this.data.dialogContent instanceof XmatDialogContentComponent) {
             // Valid
