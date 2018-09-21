@@ -26,7 +26,7 @@ export class XmatLegendComponent {
 
     set items(newValue: XmatLegendItem[]) {
         this._items = newValue;
-        this._legendInit();
+        Array.isArray(this.items) && this._legendInit();
     }
 
     @Input() layout: XmatLegendLayout = XmatLegendLayouts.GRID;
@@ -47,7 +47,6 @@ export class XmatLegendComponent {
     }
 
     private _legendInit() {
-
         _.each(new Array(this.items.length % 4), () => {
             this.items.push({
                 content: `<span style="display: none"></span>`

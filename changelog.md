@@ -259,3 +259,6 @@
 
 #1.3.10
 * Final fix for ngc compile error (not when packaging this) on XmatConfirmDialog
+
+#1.3.11
+* Added check on undefined input in xmat-legend

@@ -23,7 +23,6 @@ export class XmatConfirmDialogComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.info("CONFIRM DIALOG INIT", this.data.dialogContent);
         if (!this.data.dialogContent) {
             this.data.dialogContent = "";
         }
