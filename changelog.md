@@ -262,3 +262,6 @@
 
 #1.3.11
 * Added check on undefined input in xmat-legend
+
+#1.3.12
+* Added new validations
