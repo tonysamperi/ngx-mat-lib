@@ -1,6 +1,12 @@
 @import "./xmat-vars";
 @import "./xmat-layout";
 @import "./xmat-grid";
+@import "../xmat-action-text/scss/xmat-action-text.directive";
+@import "../xmat-badge/scss/xmat-badge.directive";
+
+@include xmat-action-text-theme($xmat-theme);
+@include xmat-badge-theme($xmat-theme);
+@include xmat-badge-typography($xmat-typography-config);
 
 /* THEME OVERRIDES - START */
 mat-table {

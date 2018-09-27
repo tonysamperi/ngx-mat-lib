@@ -1,13 +1,13 @@
-/* eslint-disable */
 // https://github.com/filipesilva/angular-quickstart-lib/blob/master/inline-resources.js
-'use strict';
+"use strict";
 
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
-const sass = require('node-sass');
-const tildeImporter = require('node-sass-tilde-importer');
-
+const fs = require("fs");
+const path = require("path");
+const glob = require("glob");
+const sass = require("node-sass");
+const tildeImporter = require("node-sass-tilde-importer");
+const directiveSlug = "@Directive";
+const tsFolderRegex = /([\/\\])(ts)([\/\\])/g;
 /**
  * Simple Promiseify function that takes a Node API and return a version that supports promises.
  * We use promises instead of synchronized functions to make the process less I/O bound and
@@ -36,23 +36,32 @@ const writeFile = promiseify(fs.writeFile);
  * @param projectPath {string} Path to the project.
  */
 function inlineResources(projectPath) {
-
     // Match only TypeScript files in projectPath.
-    const files = glob.sync('**/*.ts', {cwd: projectPath});
-
+    const files = glob.sync("**/*.ts", {cwd: projectPath});
     // For each file, inline the templates and styles under it and write the new file.
-    return Promise.all(files.map(filePath => {
-        const fullFilePath = path.join(projectPath, filePath);
-        return readFile(fullFilePath, 'utf-8')
-        .then(content => inlineResourcesFromString(content, url => {
-            // Resolve the template url.
-            return path.join(path.dirname(fullFilePath), url);
-        }))
-        .then(content => writeFile(fullFilePath, content))
-        .catch(err => {
-            console.error('An error occured: ', err);
-        });
-    }));
+    return Promise.all(
+        files.map(filePath => {
+            const fullFilePath = path.join(projectPath, filePath);
+            return readFile(fullFilePath, "utf-8").then(content => {
+                return inlineResourcesFromString(content, url => {
+                    // Resolve the template url.
+                    return path.join(path.dirname(fullFilePath), url);
+                })
+            })
+            .then(content => {
+                let result = writeFile(fullFilePath, content);
+                if (content.indexOf(directiveSlug) > -1) {
+                    let directiveStylePath = filePath.replace(".ts", ".scss");
+                    directiveStylePath = directiveStylePath.replace(tsFolderRegex, "$1scss$3");
+                    result = directiveStylePath;
+                }
+                return result;
+            })
+            .catch(err => {
+                console.error("An error occured: ", err);
+            });
+
+        }));
 }
 
 /**

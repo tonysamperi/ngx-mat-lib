@@ -1,12 +1,12 @@
 import {NgModule} from "@angular/core";
-import {XmatActionTextComponent} from "./ts/xmat-action-text.component";
+import {XmatActionTextDirective} from "./ts/xmat-action-text.directive";
 
 @NgModule({
     declarations: [
-        XmatActionTextComponent
+        XmatActionTextDirective
     ],
     exports: [
-        XmatActionTextComponent
+        XmatActionTextDirective
     ]
 })
 export class XmatActionTextModule {

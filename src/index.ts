@@ -1,5 +1,6 @@
 export * from "./xmat-action-text/index";
 export * from "./xmat-accordion/index";
+export * from "./xmat-badge/index";
 export * from "./xmat-dialog/index";
 export * from "./xmat-global-spinner/index";
 export * from "./xmat-legend/index";

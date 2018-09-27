@@ -1,6 +1,20 @@
-# xMatLib 1.3.12
+# xMatLib 1.3.13
 
 A bunch of utilities and components to use in your Angular 5+ apps!
+
+# Before starting
+
+As you may know directives don't have a "Styles" property.
+So it's impossible to let them style your markup,
+**unless** you include an external CSS.
+
+For this purpose the style of directives is compiled in
+
+* /css/xmat-library.css
+* /scss/xmat-library.scss
+
+Be sure of including at least one of these in your styles.css / styles.scss
+to get xmatDirectives properly working
 
 ## Motivation
 

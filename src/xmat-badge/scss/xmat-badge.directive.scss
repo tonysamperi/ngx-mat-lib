@@ -1,0 +1,168 @@
+@import '~@angular/material/theming';
+
+$mat-badge-font-size: 12px;
+$mat-badge-font-weight: 600;
+$mat-badge-default-size: 22px !default;
+$mat-badge-small-size: $mat-badge-default-size - 6;
+$mat-badge-large-size: $mat-badge-default-size + 6;
+
+// Mixin for building offset given different sizes
+@mixin _xmat-badge-size($size) {
+  .xmat-badge-content {
+    width: $size;
+    height: $size;
+    line-height: $size;
+
+    @include cdk-high-contrast {
+      outline: solid 1px;
+      border-radius: 0;
+    }
+  }
+
+  &.xmat-badge-above {
+    .xmat-badge-content {
+      top: -$size / 2;
+    }
+  }
+
+  &.xmat-badge-below {
+    .xmat-badge-content {
+      bottom: -$size / 2;
+    }
+  }
+
+  &.xmat-badge-before {
+    .xmat-badge-content {
+      left: -$size;
+    }
+  }
+
+  [dir='rtl'] &.xmat-badge-before {
+    .xmat-badge-content {
+      left: auto;
+      right: -$size;
+    }
+  }
+
+  &.xmat-badge-after {
+    .xmat-badge-content {
+      right: -$size;
+    }
+  }
+
+  [dir='rtl'] &.xmat-badge-after {
+    .xmat-badge-content {
+      right: auto;
+      left: -$size;
+    }
+  }
+
+  &.xmat-badge-overlap {
+    &.xmat-badge-before {
+      .xmat-badge-content {
+        left: -$size / 2;
+      }
+    }
+
+    [dir='rtl'] &.xmat-badge-before {
+      .xmat-badge-content {
+        left: auto;
+        right: -$size / 2;
+      }
+    }
+
+    &.xmat-badge-after {
+      .xmat-badge-content {
+        right: -$size / 2;
+      }
+    }
+
+    [dir='rtl'] &.xmat-badge-after {
+      .xmat-badge-content {
+        right: auto;
+        left: -$size / 2;
+      }
+    }
+  }
+}
+
+@mixin xmat-badge-theme($theme) {
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $primary: map-get($theme, primary);
+
+  .xmat-badge-content {
+    color: mat-color($primary, default-contrast);
+    background: mat-color($primary);
+  }
+
+  .xmat-badge-accent {
+    .xmat-badge-content {
+      background: mat-color($accent);
+      color: mat-color($accent, default-contrast);
+    }
+  }
+
+  .xmat-badge-warn {
+    .xmat-badge-content {
+      color: mat-color($warn, default-contrast);
+      background: mat-color($warn);
+    }
+  }
+
+  .xmat-badge {
+    position: relative;
+  }
+
+  .xmat-badge-hidden {
+    .xmat-badge-content {
+      display: none;
+    }
+  }
+
+  .xmat-badge-content {
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    transition: transform 200ms ease-in-out;
+    transform: scale(0.6);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    pointer-events: none;
+  }
+
+  // The active class is added after the element is added
+  // so it can animate scale to default
+  .xmat-badge-content.xmat-badge-active {
+    // Scale to `none` instead of `1` to avoid blurry text in some browsers.
+    transform: none;
+  }
+
+  .xmat-badge-small {
+    @include _xmat-badge-size($mat-badge-small-size);
+  }
+  .xmat-badge-medium {
+    @include _xmat-badge-size($mat-badge-default-size);
+  }
+  .xmat-badge-large {
+    @include _xmat-badge-size($mat-badge-large-size);
+  }
+}
+
+@mixin xmat-badge-typography($config) {
+  .xmat-badge-content {
+    font-weight: $mat-badge-font-weight;
+    font-size: $mat-badge-font-size;
+    font-family: mat-font-family($config);
+  }
+
+  .xmat-badge-small .xmat-badge-content {
+    font-size: $mat-badge-font-size / 2;
+  }
+
+  .xmat-badge-large .xmat-badge-content {
+    font-size: $mat-badge-font-size * 2;
+  }
+}

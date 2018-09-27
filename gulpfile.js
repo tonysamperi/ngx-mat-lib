@@ -66,9 +66,17 @@ gulp.task("copy:source", function () {
  */
 gulp.task("inline-resources", function (cb) {
     // return Promise.resolve().then(() => inlineResources(tmpFolder));
-    inlineResources(tmpFolder).then(() => {
+    inlineResources(tmpFolder).then((result) => {
+        const directiveStyles = result.filter(value => !!value);
+        directiveStyles.forEach((srcFolder) => {
+            // console.info("DIRECTIVE STYLE ==> ", srcFolder);
+            const directiveDest = path.join(distFolder, srcFolder.replace(/([\\\/].*[\\\/])(.*?)$/g, "$1"));
+            // console.info("DIRECTIVE STYLE TO ==> ", directiveDest);
+            gulp.src(path.join(tmpFolder, srcFolder))
+            .pipe(gulp.dest(directiveDest));
+        });
         cb();
-    })
+    });
 });
 
 
@@ -161,25 +169,30 @@ gulp.task("copy:readme", function () {
 });
 
 /**
- * 9b. [TS] Copy scss folder from / to /dist
+ * 9b. [TS] Copy scss folder from /src/scss to /dist
  */
-gulp.task("copy:scss", function () {
+gulp.task("copy:scss", function (cb) {
     console.info("Copy:SCSS");
-    return gulp.src([`${scssFolder}/**/*`])
-    .pipe(gulp.dest(scssDistFolder))
+    gulp.src([
+        `${scssFolder}/**/*`,
+    ])
+    .pipe(gulp.dest(scssDistFolder));
+    cb();
 });
 
 /**
  * 9c. [TS] Build scss folder from /dist/scss to /dist/css
  */
-gulp.task("build:scss", function () {
+gulp.task("build:scss", function (cb) {
     console.info("Build:SCSS");
-    return gulp.src([
-        `${scssDistFolder}/xmat-library.scss`,
+    gulp.src([
+        `${scssFolder}/xmat-library.scss`,
+        //`${scssDistFolder}/xmat-library.scss`,
     ]).pipe(sass({
         importer: tildeImporter
     }))
     .pipe(gulp.dest(cssDistFolder));
+    cb();
 });
 
 
@@ -247,12 +260,12 @@ gulp.task("pack", function (cb) {
     });
 });
 
-gulp.task("delete:dist", function (callback) {
+gulp.task("clean:dist", function (callback) {
     deleteFolder(distFolder, callback);
 });
 
 gulp.task("build:pack", function (callback) {
-    runSequence("build", "pack", "delete:dist", callback);
+    runSequence("build", "pack", "clean:dist", callback);
 });
 
 gulp.task("build:watch", function (callback) {
