@@ -11,19 +11,19 @@ import * as _ from "lodash";
 @Injectable()
 export class XmatMockService implements HttpInterceptor {
 
-    private _defaultResponseBody = {data: void 0, message: "forbidden"};
-    private readonly _ds = this._xmatConstants.ds;
-    private _fileEndings = this._xmatConstants.mocksEndings;
-    private readonly _fileNameSpace = this._xmatConstants.fileNameSpace;
-    private readonly _mocksBaseUrl: string = this._xmatConstants.mocksBaseUrl;
-    private readonly _methodsKeys: object = this._xmatConstants.methodsKeys;
+    protected _defaultResponseBody = {data: void 0, message: "forbidden"};
+    protected readonly _ds = this._xmatConstants.ds;
+    protected _fileEndings = this._xmatConstants.mocksEndings;
+    protected readonly _fileNameSpace = this._xmatConstants.fileNameSpace;
+    protected readonly _mocksBaseUrl: string = this._xmatConstants.mocksBaseUrl;
+    protected readonly _methodsKeys: object = this._xmatConstants.methodsKeys;
 
-    private _mocks: object = {};
+    protected _mocks: object = {};
 
-    private readonly _paramsPlaceholder = this._xmatConstants.paramsPlaceholder;
-    private readonly _qm: string = "?";
-    private readonly _queryUrlParam = this._xmatConstants.queryUrlParam;
-    private readonly _restBaseUrl: string = this._xmatConstants.restBaseUrl;
+    protected readonly _paramsPlaceholder = this._xmatConstants.paramsPlaceholder;
+    protected readonly _qm: string = "?";
+    protected readonly _queryUrlParam = this._xmatConstants.queryUrlParam;
+    protected readonly _restBaseUrl: string = this._xmatConstants.restBaseUrl;
 
     // Override these from extended class
     protected _defaultMockDelay: number = 2500;
@@ -43,7 +43,7 @@ export class XmatMockService implements HttpInterceptor {
         if (!!(<any>window).times[request.url]) {
             const startTime = (<any>window).times[request.url];
             const finalTime = Date.now();
-            !!this._logEnabled && console.info(`SECOND INTERCEPTOR after ${(finalTime - startTime)} ms`);
+            !!this._logEnabled && console.info(`INTERCEPTOR after ${(finalTime - startTime)} ms`);
         }
         // Separate query string from the rest
         const urlParts = request.url.split(this._qm);
@@ -73,7 +73,7 @@ export class XmatMockService implements HttpInterceptor {
     }
 
     // Private methods
-    private extractUrlParams(serviceUrl: string) {
+    protected extractUrlParams(serviceUrl: string) {
         /**
          * E.G. serviceUrl = "/rest/cd/property-store/5/id";
          * cleanUrl = "property-store/5/id"
@@ -93,18 +93,18 @@ export class XmatMockService implements HttpInterceptor {
         return void 0;
     }
 
-    private mockExists(mockKey) {
+    protected mockExists(mockKey) {
         return !!this._mocks[mockKey] && typeof this._mocks[mockKey] === typeof this._xmatConstants.noop;
     }
 
-    private generateJsonUrl(serviceUrl: string, methodKey: string, fileSuffix: string = "", status: string = this._fileEndings.ok) {
+    protected generateJsonUrl(serviceUrl: string, methodKey: string, fileSuffix: string = "", status: string = this._fileEndings.ok) {
         const serviceKey = serviceUrl.substr(this._restBaseUrl.length).split(this._ds + this._paramsPlaceholder)[0];
         const serviceFolder = serviceKey.split(this._ds)[0];
         const fileName = serviceKey.split(this._ds).join(this._fileNameSpace);
         return this._mocksBaseUrl + serviceFolder + this._ds + methodKey + fileName + fileSuffix + status;
     }
 
-    private pushMockHandler(mock: XmatMock) {
+    protected pushMockHandler(mock: XmatMock) {
         /**
          * TODO
          * Possible evolution: custom callback in mock object

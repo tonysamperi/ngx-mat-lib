@@ -1,4 +1,4 @@
-# xMatLib 1.3.13
+# xMatLib 1.3.14
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -182,3 +182,4 @@ files normally.
 #TODOS
 * Add dynamic template to xmat-alert-dialog (as of xmat-confirm-dialog)
 * Create dictionary for labels
+* Switch to new library-generator, to remove playground (it really sucks)

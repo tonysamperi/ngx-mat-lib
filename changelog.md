@@ -270,3 +270,7 @@
 * New xmat-badge directive, cloned from material 6
 * Copy directives SCSS files to output allowing the use of xmat-library.scss
 * Changed xmat-action-text to directive, to allow using on components
+
+#1.3.14
+* Switched to protected for xmat-mock members
+*
