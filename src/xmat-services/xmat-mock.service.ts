@@ -34,7 +34,7 @@ export class XmatMockService implements HttpInterceptor {
 
         const mocks = this._xmatMocksList.get();
         _.each(mocks, (mock) => {
-            this.pushMockHandler(mock);
+            this._pushMockHandler(mock);
         });
     }
 
@@ -50,20 +50,20 @@ export class XmatMockService implements HttpInterceptor {
         let mockKey = this._methodsKeys[request.method] + urlParts[0];
 
         // Checks for non parametric URL
-        if (this.mockExists(mockKey)) {
+        if (this._mockExists(mockKey)) {
             return this._mocks[mockKey](request, next, urlParts[1]);
         }
-        const urlParams = this.extractUrlParams(urlParts[0]);
+        const urlParams = this._extractUrlParams(urlParts[0]);
         if (Array.isArray(urlParams) && urlParams.length) {
             for (let i = 1; i <= urlParams.length; i++) {
                 const validUrlParts = _.slice(urlParams, urlParams.length - i);
                 mockKey = mockKey.substr(0, mockKey.lastIndexOf(this._ds));
-                if (this.mockExists(mockKey + this._ds + this._paramsPlaceholder)) {
+                if (this._mockExists(mockKey + this._ds + this._paramsPlaceholder)) {
                     return this._mocks[mockKey + this._ds + this._paramsPlaceholder](request, next, validUrlParts, urlParts[1]);
                 }
                 const middleParam = mockKey.substr(mockKey.lastIndexOf(this._ds) + 1);
                 const middleParamKey = mockKey.replace(middleParam, this._paramsPlaceholder) + this._ds + validUrlParts;
-                if (this.mockExists(middleParamKey)) {
+                if (this._mockExists(middleParamKey)) {
                     return this._mocks[middleParamKey](request, next, [middleParam].concat(validUrlParts), urlParts[1]);
                 }
             }
@@ -73,7 +73,7 @@ export class XmatMockService implements HttpInterceptor {
     }
 
     // Private methods
-    protected extractUrlParams(serviceUrl: string) {
+    protected _extractUrlParams(serviceUrl: string) {
         /**
          * E.G. serviceUrl = "/rest/cd/property-store/5/id";
          * cleanUrl = "property-store/5/id"
@@ -93,18 +93,18 @@ export class XmatMockService implements HttpInterceptor {
         return void 0;
     }
 
-    protected mockExists(mockKey) {
+    protected _mockExists(mockKey) {
         return !!this._mocks[mockKey] && typeof this._mocks[mockKey] === typeof this._xmatConstants.noop;
     }
 
-    protected generateJsonUrl(serviceUrl: string, methodKey: string, fileSuffix: string = "", status: string = this._fileEndings.ok) {
+    protected _generateJsonUrl(serviceUrl: string, methodKey: string, fileSuffix: string = "", status: string = this._fileEndings.ok) {
         const serviceKey = serviceUrl.substr(this._restBaseUrl.length).split(this._ds + this._paramsPlaceholder)[0];
         const serviceFolder = serviceKey.split(this._ds)[0];
         const fileName = serviceKey.split(this._ds).join(this._fileNameSpace);
         return this._mocksBaseUrl + serviceFolder + this._ds + methodKey + fileName + fileSuffix + status;
     }
 
-    protected pushMockHandler(mock: XmatMock) {
+    protected _pushMockHandler(mock: XmatMock) {
         /**
          * TODO
          * Possible evolution: custom callback in mock object
@@ -138,8 +138,8 @@ export class XmatMockService implements HttpInterceptor {
                 });
                 const ending = mock.result === false ? this._fileEndings.ko : this._fileEndings.ok;
                 const method = this._methodsKeys[request.method];
-                const url = this.generateJsonUrl(mock.url, method, suffix, ending);
-                const queriedUrl = this.generateJsonUrl(mock.url, method, this._fileNameSpace + this._queryUrlParam, ending);
+                const url = this._generateJsonUrl(mock.url, method, suffix, ending);
+                const queriedUrl = this._generateJsonUrl(mock.url, method, this._fileNameSpace + this._queryUrlParam, ending);
                 mockRequest = request.clone({
                     url: request.urlWithParams.indexOf(this._queryUrlParam) > 0 ? queriedUrl : url,
                     method: "GET"

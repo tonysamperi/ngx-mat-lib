@@ -273,4 +273,8 @@
 
 #1.3.14
 * Switched to protected for xmat-mock members
-*
+
+#1.3.15
+* Consistent code style
+* Added option to return DialogRef in XmatFunctions
+* Added transparent mode to XmatOverlay

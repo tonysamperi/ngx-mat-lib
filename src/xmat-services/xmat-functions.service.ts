@@ -20,6 +20,7 @@ import {
     XmatSnackBarComponent
 } from "../xmat-snack-bar/index";
 import * as _ from "lodash";
+import {MatDialogRef} from "@angular/material";
 
 const colorParams = {
     center: 128,
@@ -230,7 +231,8 @@ export class XmatFunctionsService {
 
     openConfirmDialog(data: XmatConfirmDialogData = this._confirmDialogDefaults,
                       disableClose: boolean = false,
-                      width: string = this._xmatConstants.dialogOptions.defaultWidth): Observable<boolean> {
+                      width: string = this._xmatConstants.dialogOptions.defaultWidth,
+                      returnRef: boolean = false): Observable<boolean> | MatDialogRef<XmatConfirmDialogComponent, any> {
 
         const dialogConfig = new MatDialogConfig();
         _.extend(dialogConfig, {
@@ -241,14 +243,18 @@ export class XmatFunctionsService {
         // Open dialog and pass data plus options
         const dialogRef = this._dialog.open(XmatConfirmDialogComponent, dialogConfig);
 
-        return new Observable(observer => {
-            // Catch result
-            dialogRef.afterClosed().subscribe((result: boolean) => {
-                observer.next(result);
-                observer.complete();
+        if (returnRef) {
+            return dialogRef;
+        }
+        else {
+            return new Observable(observer => {
+                // Catch result
+                dialogRef.afterClosed().subscribe((result: boolean) => {
+                    observer.next(result);
+                    observer.complete();
+                });
             });
-
-        });
+        }
     }
 
     showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}): MatSnackBarRef<XmatSnackBarComponent> {

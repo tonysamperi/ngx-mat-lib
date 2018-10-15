@@ -1,4 +1,4 @@
-# xMatLib 1.3.14
+# xMatLib 1.3.15
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -171,7 +171,7 @@ For more information on SemVer, please visit http://semver.org.
 
 MIT © [Tony Samperi](mailto:github@tonysamperi.it)
 
-Font Awesome Free is free, open source, and GPL friendly. You can use it for
+ngx-mat-lib is free, open source, and GPL friendly. You can use it for
 commercial projects, open source projects, or really almost whatever you want.
 
 Attribution is required by MIT, SIL OLF, and CC BY licenses. Downloaded files already

@@ -5,11 +5,13 @@ const invalidDisplayValues = ["inline", "none"];
 
 @Component({
     selector: "xmat-overlay",
-    template: `<ng-content></ng-content>`,
+    template: `
+        <ng-content></ng-content>`,
     styleUrls: ["../scss/xmat-overlay.component.scss"],
     host: {
         "[class.xmat-overlay]": "true",
-        "[class.xmat-overlay-light]": "isLight"
+        "[class.xmat-overlay-light]": "isLight",
+        "[class.xmat-overlay-dark]": "isDark"
     }
 })
 
@@ -22,12 +24,14 @@ export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
     private _parentStyleBak: { [key: string]: string } = {};
 
     isLight: boolean = false;
+    isDark: boolean = false;
 
     constructor(private elementRef: ElementRef) {
     }
 
     ngOnInit(): void {
         this.isLight = this._overlayStyle === XmatOverlayStyles.LIGHT;
+        this.isDark = this._overlayStyle === XmatOverlayStyles.DARK;
     }
 
     ngAfterViewInit(): void {

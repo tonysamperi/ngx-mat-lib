@@ -1,4 +1,5 @@
 export enum XmatOverlayStyles {
     DARK = "DARK",
-    LIGHT = "LIGHT"
+    LIGHT = "LIGHT",
+    TRANSPARENT = "TRANSPARENT"
 }
