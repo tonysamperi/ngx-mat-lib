@@ -284,3 +284,6 @@
 
 #1.3.17
 * Fixed DialogRef option in XmatFunctions using overload
+
+#1.3.18
+* Fixed backwards compatibility (optional params) in XmatFunctions.openConfirmDialog

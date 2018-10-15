@@ -230,13 +230,13 @@ export class XmatFunctionsService {
     }
 
     openConfirmDialog(data: XmatConfirmDialogData,
-                      disableClose: boolean,
-                      width: string,
-                      returnRef: true): MatDialogRef<XmatConfirmDialogComponent, any>;
+                      disableClose?: boolean,
+                      width?: string,
+                      returnRef?: true): MatDialogRef<XmatConfirmDialogComponent, any>;
     openConfirmDialog(data: XmatConfirmDialogData,
-                      disableClose: boolean,
-                      width: string,
-                      returnRef: false): Observable<boolean>;
+                      disableClose?: boolean,
+                      width?: string,
+                      returnRef?: false): Observable<boolean>;
     openConfirmDialog(data: XmatConfirmDialogData = this._confirmDialogDefaults,
                       disableClose: boolean = false,
                       width: string = this._xmatConstants.dialogOptions.defaultWidth,
