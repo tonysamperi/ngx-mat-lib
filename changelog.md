@@ -276,5 +276,8 @@
 
 #1.3.15
 * Consistent code style
+
+#1.3.16
 * Added option to return DialogRef in XmatFunctions
 * Added transparent mode to XmatOverlay
+* Fixed version
