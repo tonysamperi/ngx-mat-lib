@@ -35,10 +35,12 @@ export class XmatConfirmDialogComponent implements OnInit {
         else if (this.data.dialogContent instanceof XmatDialogContentComponent) {
             // Valid
             // this._xmatFunctions.logWithStyle("XmatDialog", "Was Instance Content", "#336699", this.data.dialogContent);
+            this.dialogContentOutlet = this.data.dialogContent;
         }
         else {
             // this._xmatFunctions.logWithStyle("XmatDialog", "Was INVALID Content", "#CC0000", this.data.dialogContent);
-            // Hide broken ones?
+            console.error(`xmat-confirm-dialog error: invalid content for dialogContent.
+            Expected string|XmatDialogContentComponent, found '${typeof this.data.dialogContent}'`, this.data.dialogContent);
         }
     }
 

@@ -282,8 +282,14 @@
 * Added transparent mode to XmatOverlay
 * Fixed version
 
-#1.3.17
+#1.3.17 (removed)
 * Fixed DialogRef option in XmatFunctions using overload
 
-#1.3.18
+#1.3.18 (removed)
 * Fixed backwards compatibility (optional params) in XmatFunctions.openConfirmDialog
+
+#1.3.19
+* Fixed backwards compatibility (FOR REAL) in XmatFunctions.openConfirmDialog
+
+#1.3.20
+* Fixed component instance in xmat-confirm-dialog
