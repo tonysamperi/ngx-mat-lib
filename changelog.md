@@ -281,3 +281,6 @@
 * Added option to return DialogRef in XmatFunctions
 * Added transparent mode to XmatOverlay
 * Fixed version
+
+#1.3.17
+* Fixed DialogRef option in XmatFunctions using overload
