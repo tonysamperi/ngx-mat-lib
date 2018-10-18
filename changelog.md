@@ -293,3 +293,6 @@
 
 #1.3.20
 * Fixed component instance in xmat-confirm-dialog
+
+#1.3.21
+* Fixed missing class breaking xmat-time placeholder graphics
