@@ -296,3 +296,6 @@
 
 #1.3.21
 * Fixed missing class breaking xmat-time placeholder graphics
+
+#1.3.22
+* Min width on xmat-time-input avoids graphic issues on responsive layouts

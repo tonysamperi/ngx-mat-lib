@@ -3,20 +3,19 @@
 
 $error-color: map-get($xmat-colors, red);
 
-mat-form-field[floatLabel="never"]{
-  .xmat-time-empty span.xmat-time-colon{
+mat-form-field[floatLabel="never"] {
+  .xmat-time-empty span.xmat-time-colon {
     opacity: 0;
     cursor: default;
     @include xmat-transition("transition: opacity 0.25s");
   }
 }
 
-
 div.xmat-time-input-wrap {
+  min-width: 90px;
   div {
     display: flex;
   }
-
   input {
     border: none;
     background: none;
