@@ -303,3 +303,6 @@
 #1.3.23
 * Updated node-sass, fixed to 4.9.3
 * gitignore improved
+
+#1.3.24
+* Fixed package.json
