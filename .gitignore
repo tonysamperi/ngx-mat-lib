@@ -66,6 +66,7 @@ node_modules/**
 
 # Build files
 dist/*
+build/*
 
 # Old dev
 _libtest/*

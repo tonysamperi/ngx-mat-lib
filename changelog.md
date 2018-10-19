@@ -299,3 +299,7 @@
 
 #1.3.22
 * Min width on xmat-time-input avoids graphic issues on responsive layouts
+
+#1.3.23
+* Updated node-sass, fixed to 4.9.3
+* gitignore improved
