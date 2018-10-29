@@ -77,6 +77,7 @@ export class XmatFunctionsService {
         cancelText: XMAT_CONSTANT_LABELS.cancel,
         dialogContent: XMAT_CONSTANT_LABELS.proceed,
         hideCancelButton: false,
+        confirmColor: "warn",
         title: XMAT_CONSTANT_LABELS.warningTitle
     };
 
@@ -237,17 +238,16 @@ export class XmatFunctionsService {
                       disableClose: boolean,
                       width: string,
                       returnRef: true): MatDialogRef<XmatConfirmDialogComponent, any>;
-    openConfirmDialog(data: XmatConfirmDialogData = this._confirmDialogDefaults,
+    openConfirmDialog(data?: XmatConfirmDialogData,
                       disableClose: boolean = false,
                       width: string = this._xmatConstants.dialogOptions.defaultWidth,
                       returnRef: boolean = false): MatDialogRef<XmatConfirmDialogComponent, any> | Observable<boolean> {
 
-        const dialogConfig = new MatDialogConfig();
-        _.extend(dialogConfig, {
-            width: width,
-            data: data,
-            disableClose: disableClose
-        });
+        const dialogConfig = new MatDialogConfig<XmatConfirmDialogData>();
+        dialogConfig.width = width;
+        dialogConfig.data = <XmatConfirmDialogData>_.merge({}, this._confirmDialogDefaults, data);
+        dialogConfig.disableClose = disableClose;
+
         // Open dialog and pass data plus options
         const dialogRef = this._dialog.open(XmatConfirmDialogComponent, dialogConfig);
 

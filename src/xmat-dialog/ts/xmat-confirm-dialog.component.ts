@@ -16,10 +16,9 @@ export class XmatConfirmDialogComponent implements OnInit {
     protected _dialogContentRef: ComponentRef<XmatDialogContentComponent>;
 
     constructor(protected _dialogRef: MatDialogRef<XmatConfirmDialogComponent>,
-                private _resolver: ComponentFactoryResolver,
-                private _viewContainerRef: ViewContainerRef,
+                protected _resolver: ComponentFactoryResolver,
+                protected _viewContainerRef: ViewContainerRef,
                 @Inject(MAT_DIALOG_DATA) public data: XmatConfirmDialogData) {
-
     }
 
     ngOnInit(): void {

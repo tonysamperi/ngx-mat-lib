@@ -6,8 +6,8 @@
 </div>
 <div mat-dialog-actions>
     <button mat-button
-            *ngIf="!data.hideCancelButton"
             mat-raised-button
+            *ngIf="!data.hideCancelButton"
             cdkFocusInitial
             (click)="onNoClick()">
         {{data.cancelText}}

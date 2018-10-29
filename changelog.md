@@ -306,3 +306,7 @@
 
 #1.3.24
 * Fixed package.json
+
+#1.3.25
+* Added "confirmColor" (ThemePalette) to XmatDialogData model
+* Better handling of XmatDialogData defaults: optional params + merge defaults 
