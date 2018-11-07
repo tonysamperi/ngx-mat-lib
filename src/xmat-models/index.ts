@@ -6,6 +6,7 @@ export * from "./xmat-desc-value.model";
 export * from "./xmat-element-ref.model";
 export * from "./xmat-generic-object";
 export * from "./xmat-http-config.model";
+export * from "./xmat-lib.model";
 export * from "./xmat-mock.model";
 export * from "./xmat-overlay-styles.model";
 export * from "./xmat-rest-verbs.model";

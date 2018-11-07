@@ -10,19 +10,25 @@
   display: none !important;
 }
 
+.xmat-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .xmat-fade {
   opacity: 0;
   -webkit-transition: opacity .15s linear;
   -o-transition: opacity .15s linear;
   transition: opacity .15s linear;
-
 }
 
 .xmat-fade.xmat-fade-in {
   opacity: 1;
 }
 
-.xmat-opacity-half{
+.xmat-opacity-half {
   opacity: 0.5;
 }
 

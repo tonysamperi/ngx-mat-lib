@@ -310,3 +310,8 @@
 #1.3.25
 * Added "confirmColor" (ThemePalette) to XmatDialogData model
 * Better handling of XmatDialogData defaults: optional params + merge defaults 
+
+#1.3.26
+* added xmat-text-ellipsis in xmat-library css/scss
+* improved elapsed time calcs (fixes undefined error when using XmatMock if not declared window.times)
+* added new global XmatLib

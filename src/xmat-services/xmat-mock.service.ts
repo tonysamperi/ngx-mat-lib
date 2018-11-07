@@ -1,17 +1,31 @@
 import {Injectable} from "@angular/core";
-import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpEventType} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {timer} from "rxjs/observable/timer";
-import {XmatMock} from "../xmat-models/index";
-import {XmatMocksListService, XmatConstantsService} from "./index";
+import {
+    HttpEvent,
+    HttpInterceptor,
+    HttpHandler,
+    HttpRequest,
+    HttpResponse,
+    HttpEventType
+} from "@angular/common/http";
+import {
+    XmatMocksListService,
+    XmatConstantsService
+} from "./index";
+import {
+    XmatGenericObject,
+    XmatLib,
+    XmatMock
+} from "../xmat-models/index";
+import * as _ from "lodash";
 import "rxjs/add/operator/switchMap";
 import "rxjs/add/operator/do";
-import * as _ from "lodash";
 
 @Injectable()
 export class XmatMockService implements HttpInterceptor {
 
-    protected _defaultResponseBody = {data: void 0, message: "forbidden"};
+    protected _defaultResponseBody: XmatGenericObject = {data: void 0, message: "forbidden"};
     protected readonly _ds = this._xmatConstants.ds;
     protected _fileEndings = this._xmatConstants.mocksEndings;
     protected readonly _fileNameSpace = this._xmatConstants.fileNameSpace;
@@ -40,10 +54,13 @@ export class XmatMockService implements HttpInterceptor {
 
     // Here the magic happens
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (!!(<any>window).times[request.url]) {
-            const startTime = (<any>window).times[request.url];
+        if (!!XmatLib.restTimes[request.url]) {
+            const startTime = XmatLib.restTimes[request.url];
             const finalTime = Date.now();
-            !!this._logEnabled && console.info(`INTERCEPTOR after ${(finalTime - startTime)} ms`);
+            if (this._logEnabled) {
+                console.info(`XmatMock: interceptor fired after ${(finalTime - startTime)} ms`);
+                XmatLib.restTimes[request.url] = startTime;
+            }
         }
         // Separate query string from the rest
         const urlParts = request.url.split(this._qm);
@@ -147,30 +164,14 @@ export class XmatMockService implements HttpInterceptor {
             }
             typeof mock.timeout === typeof 0 && mock.timeout >= 0 || (mock.timeout = this._defaultMockDelay);
             const delay = timer(mock.timeout);
-            const start = Date.now();
+            const start = XmatLib.restTimes[request.url] || Date.now();
             return delay.switchMap(() => next.handle(mockRequest))
             .do((event: HttpResponse<any>) => {
                 if (event.type === HttpEventType.Response) {
                     const elapsed = Date.now() - start;
-                    !!this._logEnabled && console.log(`Request for mocked ${request.urlWithParams} took ${elapsed} ms.`);
+                    !!this._logEnabled && console.log(`XmatMock: request for mocked ${request.urlWithParams} took ${elapsed} ms.`);
                 }
             });
         };
     }
 }
-
-/**
- * TODO: ERROR INTERCEPTOR
- * @Injectable()
- * export class ErrorInterceptor implements HttpInterceptor {
- *
- *    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
- *        return next.handle(req).do(event => {
- *        }, err => {
- *           if (err instanceof HttpErrorResponse && err.status == 401) {
- *               // handle 401 errors
- *          }
- *     });
- *    }
- * }
- */
