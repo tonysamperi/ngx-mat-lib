@@ -6,7 +6,7 @@ import {
 } from "@angular/forms";
 import {Component, ElementRef, forwardRef, Input, OnDestroy, AfterViewInit, ViewEncapsulation} from "@angular/core";
 import {MatFormFieldControl} from "@angular/material";
-import {Subject} from "rxjs";
+import {Subject} from "rxjs/Subject";
 import {XmatTime} from "../../xmat-models/index";
 import {xmatTimeInputValidation} from "../../xmat-validators/xmat-time-input.validator";
 
@@ -202,7 +202,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
             inputChar = String.fromCharCode(keyCode);
         } else {
             inputChar = event.key;
-            if (inputChar.indexOf('Arrow') > -1) {
+            if (inputChar.indexOf("Arrow") > -1) {
                 return true;
             }
             switch (inputChar) {
