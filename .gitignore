@@ -86,3 +86,4 @@ src/*.d.ts
 
 
 *.tgz
+*.bak
