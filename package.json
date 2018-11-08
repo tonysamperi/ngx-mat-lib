@@ -2,7 +2,7 @@
   "name": "ngx-mat-lib",
   "version": "2.0.0",
   "scripts": {
-    "build:lib": "gulp build && npm pack dist",
+    "build:lib": "gulp build",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
