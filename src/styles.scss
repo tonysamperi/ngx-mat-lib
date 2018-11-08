@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../dist/scss/xmat-library.scss";
-@import "../dist/scss/xmat-vars.scss";
+@import "../lib/scss/xmat-library";
+@import "../lib/scss/xmat-vars";
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($xmat-theme);
+
 
 
 

@@ -58,6 +58,9 @@ Temporary Items
 
 # Others such as NodeJS modules and logs
 *.log
+# Saved data before breaking change or huge change
+_old
+# Node Modules folders and temp folder to delete while installing
 _node_modules/**
 node_modules/**
 

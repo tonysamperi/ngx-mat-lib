@@ -9,10 +9,8 @@ import {
     HttpResponse,
     HttpEventType
 } from "@angular/common/http";
-import {
-    XmatMocksListService,
-    XmatConstantsService
-} from "./index";
+import {XmatConstantsService} from "./xmat-constants.service";
+import {XmatMocksListService} from "./xmat-mocks-list.service";
 import {
     XmatGenericObject,
     XmatLib,

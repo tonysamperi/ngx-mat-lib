@@ -4,6 +4,8 @@ import {XmatLegendItemContentComponent} from "./ts/xmat-legend-item-content.comp
 import {XmatLegendComponent} from "./ts/xmat-legend.component";
 
 export * from "./ts/xmat-legend.model";
+export * from "./ts/xmat-legend-item-content.component";
+export * from "./ts/xmat-legend.component";
 
 @NgModule({
     imports: [
