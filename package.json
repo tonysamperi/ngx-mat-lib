@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "scripts": {
     "build:lib": "gulp build",
+    "copy:scss": "gulp copy:scss",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

@@ -23,21 +23,29 @@ gulp.task("build:scss", function (cb) {
         importer: tildeImporter
     }))
     .pipe(gulp.dest(distCssFolder));
+
+    cb();
+});
+
+gulp.task("copy:scss", function (cb) {
+    console.info("Copy:SCSS");
     gulp.src([
-        `${srcFolder}/xmat-library.scss`
+        `${srcFolder}/**/*.scss`,
     ])
-    .pipe(gulp.dest(distScssFolder));
+    .pipe(gulp.dest(distFolder));
+
     cb();
 });
 
 gulp.task("packagr", function (cb) {
     exec("ng-packagr -p ng-package.json", function (err, stdout, stderr) {
         console.info("packed");
+
         cb(err);
     });
 });
 
 gulp.task("build", function (callback) {
-    runSequence("packagr", "build:scss", callback);
+    runSequence("packagr", "build:scss", "copy:scss", callback);
 });
 
