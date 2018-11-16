@@ -324,3 +324,5 @@
 * Removed that horrible playground.
 * Added display.scss with display utils: bootstrap4 adaptation in @angular/flex style
 * Fixed XmatMock not detecting mocks urls with multiple params
+* Fixed SCSS vars
+* Changed $xmat-breakpoints not to hold media queries
