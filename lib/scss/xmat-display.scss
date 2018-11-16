@@ -16,9 +16,9 @@
 // Utilities for common `display` values
 //
 
-@each $breakpoint in map-keys($xmat-screens) {
+@each $breakpoint in map-keys($xmat-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $xmat-screens);
+    $infix: breakpoint-infix($breakpoint, $xmat-breakpoints);
 
     .xmat-d#{$infix}-none         { display: none !important; }
     .xmat-d#{$infix}-inline       { display: inline !important; }

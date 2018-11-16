@@ -38,13 +38,13 @@ $xmat-colors: (
         yellow: mat-color($mat-yellow, 700)
 );
 
-$xmat-breakpoints: (
-        xs: $mat-xsmall, // 'max-width: 599px'
-        sm: $mat-small // 'max-width: 959px'
-);
+//$xmat-breakpoints: (
+//        xs: $mat-xsmall, // 'max-width: 599px'
+//        sm: $mat-small // 'max-width: 959px'
+//);
 
 // Based on @angular/flex-layout breakpoints
-$xmat-screens: (
+$xmat-breakpoints: (
         xs: 0,
         sm: 599px,
         md: 959px,
