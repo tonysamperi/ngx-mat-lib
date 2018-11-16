@@ -16,7 +16,7 @@ $xmat-accent-light: mat-palette($xmat-blue-accent-light);
 $xmat-warn: mat-palette($mat-red);
 $xmat-theme: mat-light-theme($xmat-primary, $xmat-accent, $xmat-warn);
 
-//MAPS: to get an item use map-get(map-name, map-key)
+// MAPS: to get an item use map-get(map-name, map-key)
 $xmat-colors: (
         accent: mat-color($xmat-accent),
         accent-light: mat-color($xmat-accent-light),
@@ -28,7 +28,7 @@ $xmat-colors: (
         grey-light: mat-color($mat-grey, A200),
         orange: #ffa500,
         primary: mat-color($xmat-primary),
-  //Example: use this on primary background
+  // Example: use this on primary background
         primary-contrast: $light-primary-text,
         primary-highlight: rgba(mat-color($xmat-primary), 0.2),
         primary-text: $dark-primary-text,
@@ -39,20 +39,29 @@ $xmat-colors: (
 );
 
 $xmat-breakpoints: (
-        xs: $mat-xsmall, //'max-width: 599px'
-        sm: $mat-small //'max-width: 959px'
+        xs: $mat-xsmall, // 'max-width: 599px'
+        sm: $mat-small // 'max-width: 959px'
 );
 
-//FONTS
+// Based on @angular/flex-layout breakpoints
+$xmat-screens: (
+        xs: 0,
+        sm: 599px,
+        md: 959px,
+        lg: 1279px,
+        xl: 5000px
+) !default;
+
+// FONTS
 // Create a config with the default typography levels.
 $xmat-typography-config: mat-typography-config();
 $xmat-font-family: mat-font-family($xmat-typography-config);
 
-//LAYOUTS
+// LAYOUTS
 $xmat-pad: $mat-toggle-padding;
 $xmat-size: $mat-toggle-size;
 
-//VARS
+// VARS
 $directions: top, right, bottom, left;
 $text-directions: left, center, right;
 $float-directions: left, none, right;

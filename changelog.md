@@ -315,3 +315,12 @@
 * added xmat-text-ellipsis in xmat-library css/scss
 * improved elapsed time calcs (fixes undefined error when using XmatMock if not declared window.times)
 * added new global XmatLib
+
+#2.0.0
+* Fixed to canonical angular library architecture
+
+#2.0.1
+* Fixed conflicts between mat-label and placeholder in xmat-time-input
+* Removed that horrible playground.
+* Added display.scss with display utils: bootstrap4 adaptation in @angular/flex style
+* Fixed XmatMock not detecting mocks urls with multiple params

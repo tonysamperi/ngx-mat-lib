@@ -14,7 +14,8 @@ import {XmatMocksListService} from "./xmat-mocks-list.service";
 import {
     XmatGenericObject,
     XmatLib,
-    XmatMock
+    XmatMock,
+    XmatRestVerbs
 } from "../xmat-models/index";
 import * as _ from "lodash";
 import "rxjs/add/operator/switchMap";
@@ -62,27 +63,32 @@ export class XmatMockService implements HttpInterceptor {
         }
         // Separate query string from the rest
         const urlParts = request.url.split(this._qm);
-        let mockKey = this._methodsKeys[request.method] + urlParts[0];
+        const mockKey = this._methodsKeys[request.method] + urlParts[0];
 
         // Checks for non parametric URL
         if (this._mockExists(mockKey)) {
             return this._mocks[mockKey](request, next, urlParts[1]);
         }
         const urlParams = this._extractUrlParams(urlParts[0]);
-        if (Array.isArray(urlParams) && urlParams.length) {
-            for (let i = 1; i <= urlParams.length; i++) {
-                const validUrlParts = _.slice(urlParams, urlParams.length - i);
-                mockKey = mockKey.substr(0, mockKey.lastIndexOf(this._ds));
-                if (this._mockExists(mockKey + this._ds + this._paramsPlaceholder)) {
-                    return this._mocks[mockKey + this._ds + this._paramsPlaceholder](request, next, validUrlParts, urlParts[1]);
+        if (Array.isArray(urlParams)) {
+            const serviceName = mockKey.split(this._ds).shift() + this._ds;
+            for (let j = urlParams.length - 1; j >= 0; j--) {
+                const paramsBak = urlParams.slice();
+                paramsBak[j] = this._paramsPlaceholder;
+                let finalKey = serviceName + paramsBak.join(this._ds);
+                if (this._mockExists(finalKey)) {
+                    return this._mocks[finalKey](request, next, urlParams, urlParts[1]);
                 }
-                const middleParam = mockKey.substr(mockKey.lastIndexOf(this._ds) + 1);
-                const middleParamKey = mockKey.replace(middleParam, this._paramsPlaceholder) + this._ds + validUrlParts;
-                if (this._mockExists(middleParamKey)) {
-                    return this._mocks[middleParamKey](request, next, [middleParam].concat(validUrlParts), urlParts[1]);
+                if (!!paramsBak[j + 1]) {
+                    paramsBak[j + 1] = this._paramsPlaceholder;
+                    finalKey = serviceName + paramsBak.join(this._ds);
+                    if (this._mockExists(finalKey)) {
+                        return this._mocks[finalKey](request, next, urlParams, urlParts[1]);
+                    }
                 }
             }
         }
+
         return next.handle(request);
 
     }
@@ -92,18 +98,18 @@ export class XmatMockService implements HttpInterceptor {
         /**
          * E.G. serviceUrl = "/rest/cd/property-store/5/id";
          * cleanUrl = "property-store/5/id"
-         * urlParams = [
+         * urlParamsList = [
          *      "property-store",
          *      "5",
          *      "id"
          * ]
          */
         const cleanUrl = serviceUrl.replace(this._restBaseUrl, "");
-        const urlParams = cleanUrl.split(this._ds);
-        urlParams.shift();
+        const urlParamsList = cleanUrl.split(this._ds);
+        urlParamsList.shift();
         // If true it means there was at least one param
-        if (urlParams.length > 0) {
-            return urlParams;
+        if (urlParamsList.length > 0) {
+            return urlParamsList;
         }
         return void 0;
     }
@@ -143,7 +149,7 @@ export class XmatMockService implements HttpInterceptor {
                 const url = mock.customUrl.replace(this._paramsPlaceholder, params.join(this._ds));
                 mockRequest = request.clone({
                     url: url + (!!queryString ? this._qm + queryString : ""),
-                    method: mock.customMethod ? mock.customMethod : url.indexOf(".json") >= 0 ? "GET" : request.method
+                    method: mock.customMethod ? mock.customMethod : url.indexOf(".json") >= 0 ? XmatRestVerbs.GET : request.method
                 });
             }
             else {
@@ -157,7 +163,7 @@ export class XmatMockService implements HttpInterceptor {
                 const queriedUrl = this._generateJsonUrl(mock.url, method, this._fileNameSpace + this._queryUrlParam, ending);
                 mockRequest = request.clone({
                     url: request.urlWithParams.indexOf(this._queryUrlParam) > 0 ? queriedUrl : url,
-                    method: "GET"
+                    method: XmatRestVerbs.GET
                 });
             }
             typeof mock.timeout === typeof 0 && mock.timeout >= 0 || (mock.timeout = this._defaultMockDelay);

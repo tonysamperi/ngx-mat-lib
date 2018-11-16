@@ -1,4 +1,4 @@
-# xMatLib 2.0.0
+# xMatLib 2.0.1
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -139,6 +139,12 @@ Once your library is imported, you can use its components, directives and pipes 
 
 ## Development
 
+You can now (v 2.0.0 and later) test all of the stuff, by running
+
+```npm run start```
+
+In the `src` folder there's an app test, you can use to test everything you need!
+
 To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
 
 ```bash
@@ -152,8 +158,6 @@ $ npm run lint
 ```
 
 ##Thanks to
-
-jvandemo with his generator-angular2-library (now using generator-ng5-library)
 
 Versioning
 Font Awesome will be maintained under the Semantic Versioning guidelines as much as possible. Releases will be numbered with the following format:
@@ -182,4 +186,3 @@ files normally.
 #TODOS
 * Add dynamic template to xmat-alert-dialog (as of xmat-confirm-dialog)
 * Create dictionary for labels
-* Switch to new library-generator, to remove playground (it really sucks)
