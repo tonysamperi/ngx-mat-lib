@@ -39,7 +39,7 @@ gulp.task("copy:scss", function (cb) {
 
 gulp.task("packagr", function (cb) {
     exec("ng-packagr -p ng-package.json", function (err, stdout, stderr) {
-        console.info("packed");
+        console.info("packagred");
 
         cb(err);
     });
@@ -47,5 +47,12 @@ gulp.task("packagr", function (cb) {
 
 gulp.task("build", function (callback) {
     runSequence("packagr", "build:scss", "copy:scss", callback);
+});
+
+gulp.task("pack", function (cb) {
+    exec("npm pack ./dist", function (err, stdout, stderr) {
+        console.info("packed.");
+        cb(err);
+    });
 });
 

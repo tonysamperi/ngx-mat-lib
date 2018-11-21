@@ -330,3 +330,7 @@
 #2.0.2
 * Fixed mock search system (bad key creation issue)
 * New test files
+
+#2.0.3
+* Deleted package-lock
+* Added pack task in gulpfile and package.json
