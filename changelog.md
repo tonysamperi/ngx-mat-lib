@@ -334,3 +334,6 @@
 #2.0.3
 * Deleted package-lock
 * Added pack task in gulpfile and package.json
+
+#2.0.4
+* Replaced carets (^) in package with tildes (~)
