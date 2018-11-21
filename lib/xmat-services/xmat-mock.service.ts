@@ -63,27 +63,38 @@ export class XmatMockService implements HttpInterceptor {
         }
         // Separate query string from the rest
         const urlParts = request.url.split(this._qm);
-        const mockKey = this._methodsKeys[request.method] + urlParts[0];
+        const methodKey = this._methodsKeys[request.method];
+        const mockKey = methodKey + urlParts[0];
 
         // Checks for non parametric URL
         if (this._mockExists(mockKey)) {
+            if (this._logEnabled) {
+                console.info(`XmatMock: found mock with key ${mockKey}`);
+            }
             return this._mocks[mockKey](request, next, urlParts[1]);
         }
         const urlParams = this._extractUrlParams(urlParts[0]);
         if (Array.isArray(urlParams)) {
-            const serviceName = mockKey.split(this._ds).shift() + this._ds;
+            const serviceName = urlParts[0].substr(this._restBaseUrl.length).split(this._ds).shift();
+            const serviceBase = methodKey + this._restBaseUrl + serviceName;
             for (let j = urlParams.length - 1; j >= 0; j--) {
                 const paramsBak = urlParams.slice();
                 paramsBak[j] = this._paramsPlaceholder;
-                let finalKey = serviceName + paramsBak.join(this._ds);
-                if (this._mockExists(finalKey)) {
-                    return this._mocks[finalKey](request, next, urlParams, urlParts[1]);
+                let mixedKey = [serviceBase].concat(paramsBak).join(this._ds);
+                if (this._mockExists(mixedKey)) {
+                    if (this._logEnabled) {
+                        console.info(`XmatMock: found mock with key ${mixedKey}`);
+                    }
+                    return this._mocks[mixedKey](request, next, urlParams.slice(j), urlParts[1]);
                 }
                 if (!!paramsBak[j + 1]) {
                     paramsBak[j + 1] = this._paramsPlaceholder;
-                    finalKey = serviceName + paramsBak.join(this._ds);
-                    if (this._mockExists(finalKey)) {
-                        return this._mocks[finalKey](request, next, urlParams, urlParts[1]);
+                    mixedKey = [serviceBase].concat(paramsBak).join(this._ds);
+                    if (this._mockExists(mixedKey)) {
+                        if (this._logEnabled) {
+                            console.info(`XmatMock: found mock with key ${mixedKey}`);
+                        }
+                        return this._mocks[mixedKey](request, next, urlParams.slice(j), urlParts[1]);
                     }
                 }
             }
@@ -144,7 +155,9 @@ export class XmatMockService implements HttpInterceptor {
             }
             let mockRequest;
             if (!!mock.customUrl) {
-
+                if (this._logEnabled) {
+                    console.info(`XmatMock: calling ${mock.customUrl}`);
+                }
                 // If params placeholder is in custom URL, params are concat to url with slashes
                 const url = mock.customUrl.replace(this._paramsPlaceholder, params.join(this._ds));
                 mockRequest = request.clone({
@@ -153,18 +166,21 @@ export class XmatMockService implements HttpInterceptor {
                 });
             }
             else {
-                let suffix = "";
+                let fileNameSuffix = "";
                 _.each(params, (param) => {
-                    suffix += this._fileNameSpace + param;
+                    fileNameSuffix += this._fileNameSpace + param;
                 });
                 const ending = mock.result === false ? this._fileEndings.ko : this._fileEndings.ok;
-                const method = this._methodsKeys[request.method];
-                const url = this._generateJsonUrl(mock.url, method, suffix, ending);
-                const queriedUrl = this._generateJsonUrl(mock.url, method, this._fileNameSpace + this._queryUrlParam, ending);
+                const methodKey = this._methodsKeys[request.method];
+                const url = this._generateJsonUrl(mock.url, methodKey, fileNameSuffix, ending);
+                const queriedUrl = this._generateJsonUrl(mock.url, methodKey, this._fileNameSpace + this._queryUrlParam, ending);
                 mockRequest = request.clone({
                     url: request.urlWithParams.indexOf(this._queryUrlParam) > 0 ? queriedUrl : url,
                     method: XmatRestVerbs.GET
                 });
+            }
+            if (this._logEnabled) {
+                console.info(`XmatMock: calling ${mockRequest.url}`);
             }
             typeof mock.timeout === typeof 0 && mock.timeout >= 0 || (mock.timeout = this._defaultMockDelay);
             const delay = timer(mock.timeout);

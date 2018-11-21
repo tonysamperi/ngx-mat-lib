@@ -1,9 +1,9 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {AppComponent} from "./app.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 
 import {
     DateAdapter,
@@ -52,6 +52,13 @@ import {
     //
 
 } from "ngx-mat-lib";
+
+// TEST APP IMPORTS
+import {AppComponent} from "./app.component";
+import {XmatTestMocksListService} from "./services/xmat-test-mocks-list.service";
+import {XmatTestMockService} from "./services/xmat-test-mock.service";
+import {XmatTestRestService} from "./services/xmat-test-rest.service";
+import {XmatTestComponent} from "./views/xmat-test/xmat-test.component";
 
 @NgModule({
     exports: [
@@ -102,6 +109,7 @@ export class XmatImportsModule {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         XmatImportsModule,
@@ -110,10 +118,18 @@ export class XmatImportsModule {
     providers: [
         {provide: DateAdapter, useClass: XmatMatDateLocale},
         {provide: MAT_DATE_FORMATS, useValue: XMAT_DATE_FORMATS},
-        {provide: MAT_DATE_LOCALE, useValue: XMAT_LOCALE_IT}
+        {provide: MAT_DATE_LOCALE, useValue: XMAT_LOCALE_IT},
+        {provide: HTTP_INTERCEPTORS, useClass: XmatTestMockService, multi: true},
+        XmatConstantsService,
+        XmatFunctionsService,
+        XmatTestMocksListService,
+        XmatTestRestService,
     ],
     entryComponents: [AppComponent],
-    declarations: [AppComponent],
+    declarations: [
+        AppComponent,
+        XmatTestComponent
+    ],
     bootstrap: [AppComponent],
 })
 export class XmatLibTestModule {

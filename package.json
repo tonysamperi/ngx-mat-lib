@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-lib",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
     "build:lib": "gulp build",
     "copy:scss": "gulp copy:scss",
@@ -29,7 +29,7 @@
     "@angular/core": "^5.2.11",
     "@angular/forms": "^5.2.11",
     "@angular/http": "^5.2.11",
-    "@angular/material": "^5.2.4",
+    "@angular/material": "5.2.4",
 	"@angular/platform-browser": "^5.2.11",
     "@angular/platform-browser-dynamic": "^5.2.11",
     "@angular/router": "^5.2.11",

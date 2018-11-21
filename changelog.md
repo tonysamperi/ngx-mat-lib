@@ -326,3 +326,7 @@
 * Fixed XmatMock not detecting mocks urls with multiple params
 * Fixed SCSS vars
 * Changed $xmat-breakpoints not to hold media queries
+
+#2.0.2
+* Fixed mock search system (bad key creation issue)
+* New test files
