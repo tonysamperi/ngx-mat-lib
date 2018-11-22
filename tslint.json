@@ -1,8 +1,17 @@
 {
+  "extends": [
+    "tslint-consistent-codestyle"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "gulp-tasks/**/*.ts"
+    ]
+  },
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
   "rules": {
+    "no-use-before-declare": true,
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
@@ -37,10 +46,18 @@
       true,
       {
         "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
+          "public-static-field",
+          "protected-static-field",
+          "private-static-field",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "public-static-method",
+          "protected-static-method",
+          "private-static-method",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
         ]
       }
     ],
@@ -74,7 +91,6 @@
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
     "no-unused-expression": false,
-    "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
     "one-line": [
@@ -126,7 +142,7 @@
     "component-selector": [
       true,
       "element",
-      "",
+      "xmat",
       "kebab-case"
     ],
     "no-output-on-prefix": true,
@@ -138,6 +154,114 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "no-unused-css": false,
+    // disabling this since not working
+    "no-var-before-return": true,
+    "naming-convention": [
+      true,
+      // forbid leading and trailing underscores and enforce camelCase on EVERY name. will be overridden by subtypes if needed
+      {
+        "type": "default",
+        "format": "camelCase",
+        "leadingUnderscore": "forbid",
+        "trailingUnderscore": "forbid"
+      },
+      // require all global constants to be camelCase or UPPER_CASE
+      // all other variables and functions still need to be camelCase
+      {
+        "type": "variable",
+        "modifiers": [
+          "global",
+          "const"
+        ],
+        "format": [
+          "camelCase",
+          "UPPER_CASE"
+        ]
+      },
+      // override the above format option for exported constants to allow only UPPER_CASE
+      {
+        "type": "variable",
+        "modifiers": [
+          "export",
+          "const"
+        ],
+        "format": "PascalCase",
+        "prefix": "xmat"
+      },
+      // require exported constant variables that are initialized with functions to be camelCase
+      {
+        "type": "functionVariable",
+        "modifiers": [
+          "export",
+          "const"
+        ],
+        "format": "camelCase"
+      },
+      // require leading and trailing underscores for unused parameters, to promote code tidiness
+      // all other rules (trailingUnderscore: forbid, format: camelCase) still apply
+      {
+        "type": "parameter",
+        "modifiers": "unused",
+        "leadingUnderscore": "require",
+        "trailingUnderscore": "require"
+      },
+      // require leading underscores for private properties and methods, all other rules still apply
+      {
+        "type": "member",
+        "modifiers": "private",
+        "leadingUnderscore": "require"
+      },
+      // same for protected
+      {
+        "type": "member",
+        "modifiers": "protected",
+        "leadingUnderscore": "require"
+      },
+      // exclicitly disable the format check only for method toJSON
+      {
+        "type": "method",
+        "filter": "^toJSON$",
+        "format": null
+      },
+      // enforce UPPER_CASE for all public static readonly(!) properties
+      {
+        "type": "property",
+        "modifiers": [
+          "public",
+          "static",
+          "const"
+        ],
+        "format": "UPPER_CASE"
+      },
+      // enforce PascalCase for classes, interfaces, enums, etc. Remember, there are still no underscores allowed.
+      {
+        "type": "type",
+        "format": "PascalCase",
+        "prefix": "Xmat"
+      },
+      // abstract classes must have the prefix "Abstract". The following part of the name must be valid PascalCase
+      {
+        "type": "class",
+        "modifiers": "export",
+        "prefix": "Xmat"
+      },
+      // enum members must be in camelCase. Without this config, enumMember would inherit UPPER_CASE from public static const property
+      {
+        "type": "enumMember",
+        "format": [
+          "camelCase",
+          "UPPER_CASE"
+        ]
+      },
+      {
+        "type": "genericTypeParameter",
+        "format": [
+          "UPPER_CASE"
+        ],
+        "prefix": ""
+      }
+    ]
   }
 }

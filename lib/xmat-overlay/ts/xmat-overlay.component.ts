@@ -1,5 +1,5 @@
 import {Component, ElementRef, AfterViewInit, Input, OnDestroy, OnInit} from "@angular/core";
-import {XmatOverlayStyles} from "../../xmat-models/index";
+import {XmatOverlayStyles, XmatGenericObject} from "../../xmat-models/index";
 
 const invalidDisplayValues = ["inline", "none"];
 
@@ -11,22 +11,32 @@ const invalidDisplayValues = ["inline", "none"];
     host: {
         "[class.xmat-overlay]": "true",
         "[class.xmat-overlay-light]": "isLight",
-        "[class.xmat-overlay-dark]": "isDark"
+        "[class.xmat-overlay-dark]": "isDark",
+        "[style.zIndex]": "zIndex"
     }
 })
-
-
 export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
 
-    // tslint:disable-next-line:no-input-rename
-    @Input("overlayStyle") private _overlayStyle: XmatOverlayStyles;
 
-    private _parentStyleBak: { [key: string]: string } = {};
+    @Input("zIndex")
+    set zIndex(newValue: number) {
+        this._zIndex = newValue === void 0 ? 1 : newValue;
+    }
+
+    get zIndex(): number {
+        return this._zIndex;
+    }
 
     isLight: boolean = false;
     isDark: boolean = false;
 
-    constructor(private elementRef: ElementRef) {
+    // tslint:disable-next-line:no-input-rename
+    @Input("overlayStyle") private _overlayStyle: XmatOverlayStyles;
+
+    private _parentStyleBak: XmatGenericObject = {};
+    private _zIndex: number;
+
+    constructor(private _elRef: ElementRef) {
     }
 
     ngOnInit(): void {
@@ -36,7 +46,7 @@ export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
 
     ngAfterViewInit(): void {
 
-        const $xmatOverlay = this.elementRef.nativeElement;
+        const $xmatOverlay = this._elRef.nativeElement;
         const xmatOverlayParentComStyle = window.getComputedStyle($xmatOverlay.parentNode);
         const xmatOverlayParentDisplay = xmatOverlayParentComStyle.getPropertyValue("display");
         if (invalidDisplayValues.indexOf(xmatOverlayParentDisplay) !== -1) {
@@ -50,7 +60,7 @@ export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
     }
 
     ngOnDestroy(): void {
-        const $xmatOverlay = this.elementRef.nativeElement;
+        const $xmatOverlay = this._elRef.nativeElement;
         const $overlayContainer = $xmatOverlay.parentNode;
         if (!!$overlayContainer && !!$overlayContainer.style) {
             $overlayContainer.style.display = this._parentStyleBak.display;

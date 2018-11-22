@@ -1,4 +1,4 @@
-# xMatLib 2.0.4
+# xMatLib 2.0.5
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 

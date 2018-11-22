@@ -337,3 +337,8 @@
 
 #2.0.4
 * Replaced carets (^) in package with tildes (~)
+
+#2.0.5
+* Fixed xmat-overlay styling
+* Added custom z-index via @Input()
+* Added rules for consistent code style
