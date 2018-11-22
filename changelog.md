@@ -342,3 +342,6 @@
 * Fixed xmat-overlay styling
 * Added custom z-index via @Input()
 * Added rules for consistent code style
+
+#2.0.6
+* Removed useless "position: relative" and "z-index" from xmat-accordion

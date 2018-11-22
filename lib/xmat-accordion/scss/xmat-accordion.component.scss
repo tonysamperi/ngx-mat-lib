@@ -13,8 +13,6 @@ $palette: (
   @each $mat-key, $mat-color in $palette {
     &.mat-#{$mat-key} {
       mat-expansion-panel.mat-expansion-panel {
-        position: relative;
-        z-index: 1;
         background-color: $mat-color;
       }
     }
