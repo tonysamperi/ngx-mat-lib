@@ -24,10 +24,6 @@ const classNameJustifyBetween: string = "xmat-justify-between";
 export class XmatAlertDialogComponent implements OnInit, AfterViewInit {
 
     @ViewChild("xmatAlertPrimary") xmatBtnPrimary;
-    // tslint:disable-next-line:no-input-rename
-    @Input("confirmStyles") private _confirmStyles: Object;
-    // tslint:disable-next-line:no-input-rename
-    @Input("cancelStyles") private _cancelStyles: Object;
 
     md: any = {
         actions: XmatAlertDialogActions,
@@ -47,6 +43,11 @@ export class XmatAlertDialogComponent implements OnInit, AfterViewInit {
             confirm: {}
         }
     };
+
+    // tslint:disable-next-line:no-input-rename
+    @Input("confirmStyles") private _confirmStyles: Object;
+    // tslint:disable-next-line:no-input-rename
+    @Input("cancelStyles") private _cancelStyles: Object;
 
     /**
      * TODO: add dynamic template binding, that would be really cool and reusable
@@ -81,7 +82,7 @@ export class XmatAlertDialogComponent implements OnInit, AfterViewInit {
         if (!hasDefaultColor && !!this.xmatBtnPrimary) {
             const xmatBtnPrimaryComStyle = window.getComputedStyle(this.xmatBtnPrimary._elementRef.nativeElement);
             this.md.styles.confirm[bgColorKeyKebab] = xmatBtnPrimaryComStyle.getPropertyValue(bgColorKeyKebab);
-            this.md.styles.confirm.color = xmatBtnPrimaryComStyle.getPropertyValue("color"); // Nuke whatever color and set ThemePalette's
+            this.md.styles.confirm.color = xmatBtnPrimaryComStyle.getPropertyValue("color"); // Nuke whatever color and set ThemePalette's one
         }
 
         if (!!this._cancelStyles) {

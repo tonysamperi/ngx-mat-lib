@@ -345,3 +345,7 @@
 
 #2.0.6
 * Removed useless "position: relative" and "z-index" from xmat-accordion
+
+#2.0.7
+* Improved XmatTime model to add leading zeroes
+* Consistent style for gulpfile

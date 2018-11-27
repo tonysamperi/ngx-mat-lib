@@ -1,30 +1,49 @@
+export const xmatTimeSeparator: string = ":";
+
+export const xmatDoubleO: string = "00";
+
+export type XmatTimeUnitFormat = "number" | "string";
+
 export class XmatTime {
 
-    // private hoursValidationPattern = new RegExp("^([01]\\d?|2[0-3])");
-    // private minutesValidationPattern = new RegExp("^([0-5]\\d)$");
+    hours: string;
+    minutes: string;
 
-    constructor(public hours = "00", public minutes = "00") {
+    constructor(hours: string | number = xmatDoubleO, minutes: string | number = xmatDoubleO) {
+        !isNaN(+hours) || (hours = xmatDoubleO);
+        !isNaN(+minutes) || (minutes = xmatDoubleO);
+        this.hours = this._addLeadingZeroes(hours);
+        this.minutes = this._addLeadingZeroes(minutes);
     }
 
-    getFullTime(sep = ":") {
-
-        // if (this.isTimeValid()) {
-        return this.hours + sep + this.minutes;
-        // }
+    getFullTime(sep = xmatTimeSeparator) {
+        return [this.hours, this.minutes].join(sep);
     }
 
-    getHours(): number {
-        return parseInt(this.hours, 10);
+    getHours(format: XmatTimeUnitFormat = "number"): number | string {
+        if (format === "string") {
+            return this.hours;
+        }
+        if (format === "number") {
+            return +this.hours;
+        }
+        console.error("XmatTime: invalid format provided. Please choose a valid XmatTimeUnitFormat");
     }
 
-    getMinutes(): number {
-        return parseInt(this.minutes, 10);
+    getMinutes(format: XmatTimeUnitFormat = "number"): number | string {
+        if (format === "string") {
+            return this.minutes;
+        }
+        if (format === "number") {
+            return +this.minutes;
+        }
+        console.error("XmatTime: invalid format provided. Please choose a valid XmatTimeUnitFormat");
     }
 
     // Private methods
-    /*
-     isTimeValid() {
-     return this.hoursValidationPattern.test(this.hours) && this.minutesValidationPattern.test(this.minutes);
-     }
-     */
+
+    private _addLeadingZeroes(n: number | string) {
+        return (xmatDoubleO + n).slice(-2);
+    }
+
 }

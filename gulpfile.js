@@ -10,12 +10,17 @@ const rootFolder = path.join(__dirname);
 const srcFolder = path.join(rootFolder, "lib");
 const distFolder = path.join(rootFolder, "dist");
 
-//TS
-const distScssFolder = path.join(distFolder, "scss");
 const distCssFolder = path.join(distFolder, "css");
+const tasks = {
+    compile: "packagr",
+    main: "build",
+    pack: "pack",
+    stylesCopy: "copy:scss",
+    stylesBuild: "build:scss"
+};
 
-gulp.task("build:scss", function (cb) {
-    console.info("Build:SCSS");
+gulp.task(tasks.stylesBuild, function (cb) {
+    console.info("***** Task '" + tasks.stylesBuild + "' started *****");
     gulp.src([
         `${srcFolder}/scss/xmat-library.scss`,
     ])
@@ -23,35 +28,44 @@ gulp.task("build:scss", function (cb) {
         importer: tildeImporter
     }))
     .pipe(gulp.dest(distCssFolder));
-
+    console.info("***** Task '" + tasks.stylesBuild + "' finished *****");
     cb();
 });
 
-gulp.task("copy:scss", function (cb) {
-    console.info("Copy:SCSS");
+gulp.task(tasks.stylesCopy, function (cb) {
+    console.info("***** Task '" + tasks.stylesCopy + "' started *****");
     gulp.src([
         `${srcFolder}/**/*.scss`,
     ])
     .pipe(gulp.dest(distFolder));
-
+    console.info("***** Task '" + tasks.stylesCopy + "' finished *****");
     cb();
 });
 
-gulp.task("packagr", function (cb) {
+gulp.task(tasks.compile, function (cb) {
+    console.info("***** Task '" + tasks.compile + "' started *****");
     exec("ng-packagr -p ng-package.json", function (err, stdout, stderr) {
-        console.info("packagred");
-
+        console.log(stdout);
+        console.log(stderr);
+        console.info("***** Task '" + tasks.compile + "' finished *****");
         cb(err);
     });
 });
 
-gulp.task("build", function (callback) {
-    runSequence("packagr", "build:scss", "copy:scss", callback);
+gulp.task(tasks.main, function (cb) {
+    console.info("***** Task '" + tasks.compile + "' started *****");
+    runSequence(tasks.compile, tasks.stylesBuild, tasks.stylesCopy, function (err) {
+        console.info("***** Task '" + tasks.main + "' finished *****");
+        cb(err)
+    });
 });
 
-gulp.task("pack", function (cb) {
+gulp.task(tasks.pack, function (cb) {
+    console.info("***** Task '" + tasks.pack + "' started *****");
     exec("npm pack ./dist", function (err, stdout, stderr) {
-        console.info("packed.");
+        console.log(stdout);
+        console.log(stderr);
+        console.info("***** Task '" + tasks.pack + "' finished *****");
         cb(err);
     });
 });
