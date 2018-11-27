@@ -349,3 +349,6 @@
 #2.0.7
 * Improved XmatTime model to add leading zeroes
 * Consistent style for gulpfile
+
+#2.0.8
+* Removed multiple typing for XmatTime getHours and getMinutes

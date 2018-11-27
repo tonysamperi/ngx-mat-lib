@@ -2,8 +2,6 @@ export const xmatTimeSeparator: string = ":";
 
 export const xmatDoubleO: string = "00";
 
-export type XmatTimeUnitFormat = "number" | "string";
-
 export class XmatTime {
 
     hours: string;
@@ -16,28 +14,16 @@ export class XmatTime {
         this.minutes = this._addLeadingZeroes(minutes);
     }
 
-    getFullTime(sep = xmatTimeSeparator) {
+    getFullTime(sep = xmatTimeSeparator): string {
         return [this.hours, this.minutes].join(sep);
     }
 
-    getHours(format: XmatTimeUnitFormat = "number"): number | string {
-        if (format === "string") {
-            return this.hours;
-        }
-        if (format === "number") {
-            return +this.hours;
-        }
-        console.error("XmatTime: invalid format provided. Please choose a valid XmatTimeUnitFormat");
+    getHours(): number {
+        return +this.hours;
     }
 
-    getMinutes(format: XmatTimeUnitFormat = "number"): number | string {
-        if (format === "string") {
-            return this.minutes;
-        }
-        if (format === "number") {
-            return +this.minutes;
-        }
-        console.error("XmatTime: invalid format provided. Please choose a valid XmatTimeUnitFormat");
+    getMinutes(): number {
+        return +this.minutes;
     }
 
     // Private methods
