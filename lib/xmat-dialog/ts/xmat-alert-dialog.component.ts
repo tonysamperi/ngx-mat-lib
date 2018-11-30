@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, Inject, Input, OnInit, ViewChild} from "@angular/core";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
-import * as _ from "lodash";
 import {XmatAlertDialogActions, XmatAlertTypes} from "../../xmat-models/xmat-alert-dialog.model";
+import {XmatAlertDialogData} from "../../xmat-models/xmat-alert-dialog.model";
+import * as _ from "lodash";
 
 const bgColorKeyKebab: string = "background-color";
 const bgColorKeyCamel: string = "backgroundColor";
@@ -53,7 +54,7 @@ export class XmatAlertDialogComponent implements OnInit, AfterViewInit {
      * TODO: add dynamic template binding, that would be really cool and reusable
      */
     constructor(private _dialogRef: MatDialogRef<XmatAlertDialogComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any) {
+                @Inject(MAT_DIALOG_DATA) public data: XmatAlertDialogData) {
 
     }
 

@@ -1,12 +1,13 @@
 export interface XmatAlertDialogData {
-    type: XmatAlertTypes;
-    title?: string;
     cancelText?: string;
     confirmText?: string;
-    hideConfirmButton?: boolean;
-    hideCancelButton?: boolean;
-    showCloseButton?: boolean;
     dialogContent?: string | HTMLElement;
+    dialogId?: string;
+    hideCancelButton?: boolean;
+    hideConfirmButton?: boolean;
+    showCloseButton?: boolean;
+    title?: string;
+    type: XmatAlertTypes;
 }
 
 export enum XmatAlertTypes {

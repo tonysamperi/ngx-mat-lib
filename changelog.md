@@ -352,3 +352,9 @@
 
 #2.0.8
 * Removed multiple typing for XmatTime getHours and getMinutes
+
+#2.0.9
+* Added "returnRef" option for XmatAlertDialog
+* Added "dialogId" option for XmatAlertDialog (useful to retrieve ref)
+* Added "dialogId" option for XmatConfirmDialog (useful to retrieve ref)
+* Refactor

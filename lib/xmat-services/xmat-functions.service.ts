@@ -41,7 +41,7 @@ const rgb2Hex = (r, g, b) => {
 
 const eachEnum = (srcEnum, iteratee) => {
     const target = [];
-    _.each(srcEnum, (key, index) => {
+    _.each(srcEnum, (key) => {
         // Continue if key is not a number
         if (typeof srcEnum[key] !== typeof 0) {
             return true;
@@ -52,6 +52,7 @@ const eachEnum = (srcEnum, iteratee) => {
 };
 
 const eachFrom = (array, index, iteratee) => {
+    // tslint:disable-next-line:naming-convention
     let _index = index == null ? -1 : index;
     const length = array == null ? 0 : array.length;
 
@@ -209,25 +210,36 @@ export class XmatFunctionsService {
         console.groupEnd();
     }
 
-    openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData): Observable<XmatAlertDialogActions> {
-        const dialogConfig = new MatDialogConfig();
-        _.extend(this._defaultAlertData, data);
+    openAlertDialog(data: XmatAlertDialogData,
+                    returnRef?: false): Observable<XmatAlertDialogActions>;
+    openAlertDialog(data: XmatAlertDialogData,
+                    returnRef: true): MatDialogRef<XmatAlertDialogComponent, MatDialogConfig<XmatAlertDialogData>>;
+    openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData,
+                    // tslint:disable-next-line:max-line-length
+                    returnRef: boolean = false): Observable<XmatAlertDialogActions> | MatDialogRef<XmatAlertDialogComponent, MatDialogConfig<XmatAlertDialogData>> {
+        data = _.extend({}, this._defaultAlertData, data);
+        const dialogConfig = new MatDialogConfig<XmatAlertDialogData>();
         _.extend(dialogConfig, {
+            id: data.dialogId,
             width: this._xmatConstants.dialogOptions.defaultWidth,
             data: data,
             disableClose: true
         });
         // Open dialog and pass data plus options
         const dialogRef = this._dialog.open(XmatAlertDialogComponent, dialogConfig);
+        if (returnRef) {
+            return dialogRef;
+        }
+        else {
+            return new Observable(observer => {
+                // Catch result
+                dialogRef.afterClosed().subscribe((result: XmatAlertDialogActions) => {
+                    observer.next(result);
+                    observer.complete();
+                });
 
-        return new Observable(observer => {
-            // Catch result
-            dialogRef.afterClosed().subscribe((result: XmatAlertDialogActions) => {
-                observer.next(result);
-                observer.complete();
             });
-
-        });
+        }
     }
 
     openConfirmDialog(data: XmatConfirmDialogData,
@@ -237,16 +249,20 @@ export class XmatFunctionsService {
     openConfirmDialog(data: XmatConfirmDialogData,
                       disableClose: boolean,
                       width: string,
-                      returnRef: true): MatDialogRef<XmatConfirmDialogComponent, any>;
+                      returnRef: true): MatDialogRef<XmatConfirmDialogComponent, MatDialogConfig<XmatConfirmDialogData>>;
     openConfirmDialog(data?: XmatConfirmDialogData,
                       disableClose: boolean = false,
                       width: string = this._xmatConstants.dialogOptions.defaultWidth,
-                      returnRef: boolean = false): MatDialogRef<XmatConfirmDialogComponent, any> | Observable<boolean> {
+                      // tslint:disable-next-line:max-line-length
+                      returnRef: boolean = false): MatDialogRef<XmatConfirmDialogComponent, MatDialogConfig<XmatConfirmDialogData>> | Observable<boolean> {
 
         const dialogConfig = new MatDialogConfig<XmatConfirmDialogData>();
-        dialogConfig.width = width;
-        dialogConfig.data = <XmatConfirmDialogData>_.merge({}, this._confirmDialogDefaults, data);
-        dialogConfig.disableClose = disableClose;
+        _.extend(dialogConfig, {
+            id: data.dialogId,
+            width: width,
+            data: <XmatConfirmDialogData>_.merge({}, this._confirmDialogDefaults, data),
+            disableClose: disableClose
+        });
 
         // Open dialog and pass data plus options
         const dialogRef = this._dialog.open(XmatConfirmDialogComponent, dialogConfig);
