@@ -27,8 +27,8 @@ export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
         return this._zIndex;
     }
 
-    isLight: boolean = false;
-    isDark: boolean = false;
+    isLight: boolean = !1;
+    isDark: boolean = !1;
 
     // tslint:disable-next-line:no-input-rename
     @Input("overlayStyle") private _overlayStyle: XmatOverlayStyles;

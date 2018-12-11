@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {XmatDynamicRestVerbsRef, XmatDescValuePair, XmatGenericObject} from "../xmat-models/index";
 import * as _ from "lodash";
 
-// Const variables
+// tslint:disable-next-line:naming-convention
 export const XMAT_CONSTANT_LABELS: XmatGenericObject<any> = {
     accept: "Ok",
     cancel: "Annulla",

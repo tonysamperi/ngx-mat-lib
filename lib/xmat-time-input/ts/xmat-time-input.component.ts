@@ -38,6 +38,8 @@ const minutesPattern = new RegExp("^([0-5][0-9])$");
 
 export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>, AfterViewInit, OnDestroy {
 
+    static nextId = 0;
+
     get empty() {
         const value = this.parts.value;
         return !value.hours && !value.minutes;
@@ -105,16 +107,6 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
         this.stateChanges.next();
     }
 
-    static nextId = 0;
-    private _deniedChars = /[^0-9]+/;
-    private _$matFormField = null;
-    private _required: boolean = false;
-    private _disabled: boolean = false;
-    private _validators = {
-        hours: [Validators.minLength(2), Validators.maxLength(2), Validators.pattern(hoursPattern)],
-        minutes: [Validators.minLength(2), Validators.maxLength(2), Validators.pattern(minutesPattern)],
-    };
-
 
     controlType: string = controlType;
     describedBy = "";
@@ -130,6 +122,15 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
     placeholderM: string = "";
     placeholderH: string = "";
     stateChanges = new Subject<void>();
+
+    private _deniedChars = /[^0-9]+/;
+    private _$matFormField: HTMLElement = null;
+    private _required: boolean = false;
+    private _disabled: boolean = false;
+    private _validators = {
+        hours: [Validators.minLength(2), Validators.maxLength(2), Validators.pattern(hoursPattern)],
+        minutes: [Validators.minLength(2), Validators.maxLength(2), Validators.pattern(minutesPattern)],
+    };
 
     constructor(private _formBuilder: FormBuilder,
                 private _focusMonitor: FocusMonitor,
@@ -147,7 +148,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
 
     }
 
-    inputChange(event: any): void {
+    inputChange(_e_: any): void {
         this._handlePropagation();
     }
 
@@ -195,7 +196,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
 
     }
 
-    typingValidation(event: any, isHours: boolean = false): boolean {
+    typingValidation(event: any, _ishours_: boolean = false): boolean {
         let keyCode, inputChar;
         if (event.key === void 0) {
             keyCode = event.keyCode || event.charCode;
@@ -285,7 +286,7 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
     }
 
     // the method set in registerOnChange to emit changes back to the groupCtrl
-    private _propagateChange(_: any) {
+    private _propagateChange(_e_: any) {
     }
 
     // If disable or required change, updates validation rules
