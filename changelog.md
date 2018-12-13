@@ -362,3 +362,7 @@
 #2.0.10
 * Refactor
 * Fixed missing background transparent in XmatOverlay
+
+#2.0.11
+* Refactor
+* Enabled polyfills in test app

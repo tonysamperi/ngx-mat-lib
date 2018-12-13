@@ -7,17 +7,22 @@ const xmatYear: string = "YYYY";
 const xmatCurrentYear: number = new Date().getFullYear();
 const xmatCentury: number = Math.round(xmatCurrentYear / 100);
 
+// tslint:disable-next-line:naming-convention
 export const XMAT_LOCALE_IT: string = "it-IT";
+// tslint:disable-next-line:naming-convention
 export const XMAT_LOCALE_EN: string = "en-GB";
+// tslint:disable-next-line:naming-convention
 export const XMAT_LOCALE_FR: string = "fr-FR";
 
+// tslint:disable-next-line:naming-convention
 export const XMAT_FORMATS = {
     "it-IT": `${xmatDay}${xmatSep}${xmatMonth}${xmatSep}${xmatYear}`,
     "en-GB": `${xmatMonth}${xmatSep}${xmatDay}${xmatSep}${xmatYear}`,
     "fr-FR": `${xmatDay}${xmatSep}${xmatMonth}${xmatSep}${xmatYear}`
 };
 
-// COPY THIS TO CUSTOMIZE CALENDAR FORMATS!!
+// TIP: COPY THIS TO CUSTOMIZE CALENDAR FORMATS!!
+// tslint:disable-next-line:naming-convention
 export const XMAT_DATE_FORMATS = {
     parse: {
         dateInput: {month: "numeric", year: "numeric", day: "numeric"}

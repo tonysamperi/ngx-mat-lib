@@ -9,6 +9,7 @@ export * from "./xmat-http-config.model";
 export * from "./xmat-lib.model";
 export * from "./xmat-mock.model";
 export * from "./xmat-overlay-styles.model";
+export * from "./xmat-reponse-types.model";
 export * from "./xmat-rest-verbs.model";
 export * from "./xmat-snack-bar-data.model";
 export * from "./xmat-time.model";

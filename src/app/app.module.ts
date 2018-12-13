@@ -48,13 +48,13 @@ import {
     XmatLegendItemContentComponent,
     // SERVS
     XmatConstantsService,
-    XmatFunctionsService,
+    XmatFunctionsService
     //
 
 } from "ngx-mat-lib";
 
 // TEST APP IMPORTS
-import {AppComponent} from "./app.component";
+import {XmatAppComponent} from "./xmat-app.component";
 import {XmatTestMocksListService} from "./services/xmat-test-mocks-list.service";
 import {XmatTestMockService} from "./services/xmat-test-mock.service";
 import {XmatTestRestService} from "./services/xmat-test-rest.service";
@@ -82,7 +82,7 @@ import {XmatTestComponent} from "./views/xmat-test/xmat-test.component";
         MatToolbarModule
     ]
 })
-export class CdkMaterialImportsModule {
+export class XmatCdkMatImportsModule {
 }
 
 @NgModule({
@@ -98,7 +98,7 @@ export class CdkMaterialImportsModule {
     providers: [
         // SERVS
         XmatConstantsService,
-        XmatFunctionsService,
+        XmatFunctionsService
     ],
 })
 export class XmatImportsModule {
@@ -113,7 +113,7 @@ export class XmatImportsModule {
         FormsModule,
         ReactiveFormsModule,
         XmatImportsModule,
-        CdkMaterialImportsModule
+        XmatCdkMatImportsModule
     ],
     providers: [
         {provide: DateAdapter, useClass: XmatMatDateLocale},
@@ -123,14 +123,14 @@ export class XmatImportsModule {
         XmatConstantsService,
         XmatFunctionsService,
         XmatTestMocksListService,
-        XmatTestRestService,
+        XmatTestRestService
     ],
-    entryComponents: [AppComponent],
+    entryComponents: [XmatAppComponent],
     declarations: [
-        AppComponent,
+        XmatAppComponent,
         XmatTestComponent
     ],
-    bootstrap: [AppComponent],
+    bootstrap: [XmatAppComponent]
 })
 export class XmatLibTestModule {
 }

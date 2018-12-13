@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-lib",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "scripts": {
     "build:lib": "gulp build",
     "sass:lib": "gulp build:scss && gulp copy:scss",
@@ -35,6 +35,7 @@
     "@angular/platform-browser-dynamic": "~5.2.11",
     "@angular/router": "~5.2.11",
     "@types/lodash": "4.14.106",
+    "classlist.js": "^1.1.20150312",
     "lodash": "~4.17.11",
     "rxjs": "~5.5.11",
     "zone.js": "0.8.20"
@@ -71,8 +72,7 @@
     "Material",
     "Material2",
     "Library",
-    "Angular4",
-    "Angular4+",
+    "Angular2+",
     "Extended",
     "Framework"
   ],

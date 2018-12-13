@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {XmatConstantsService} from "./xmat-constants.service";
-import {XmatHttpConfig, XmatDynamicRestVerbsRef, XmatRestVerbs} from "../xmat-models/index";
+import {XmatHttpConfig, XmatRestVerbs} from "../xmat-models/index";
 
 /**
  * UBI REST BY TONY SAMPERI
@@ -20,18 +20,15 @@ import {XmatHttpConfig, XmatDynamicRestVerbsRef, XmatRestVerbs} from "../xmat-mo
 @Injectable()
 export class XmatRestService {
 
-    protected _restBaseUrl = this._xmatConstants.restBaseUrl;
-    protected _ds = this._xmatConstants.ds;
-
     // Sample data
-    public readonly servicesUrls = {
+    readonly servicesUrls = {
         /**
          *  myServiceA: "my-service-a"
          *  myServiceA: "my-service-b"
          */
     };
 
-    public readonly servicesConfigs = {
+    readonly servicesConfigs = {
         /**
          * myServiceA: {
          *     get: (): XmatHttpConfig => {
@@ -47,20 +44,14 @@ export class XmatRestService {
          */
     };
 
+    protected _restBaseUrl = this._xmatConstants.restBaseUrl;
+    protected _ds = this._xmatConstants.ds;
+
     constructor(protected _http: HttpClient,
                 protected _xmatConstants: XmatConstantsService) {
 
     }
 
-    protected _generateHttpConfig(method: XmatRestVerbs = XmatRestVerbs.GET, url: string = "", queryable: boolean = false): XmatHttpConfig {
-        url = this._xmatConstants.removeTrailingSlash(url);
-        return <XmatHttpConfig>{
-            method: method,
-            url: url,
-            data: void 0,
-            queryable: queryable
-        };
-    }
 
     $http<T>(config: XmatHttpConfig = this._generateHttpConfig()): Observable<T> {
         if (!config.method) {
@@ -100,6 +91,16 @@ export class XmatRestService {
                 console.error("Error: [XmatRest:badmethod]", this.$http.arguments);
                 return new Observable();
         }
+    }
+
+    protected _generateHttpConfig(method: XmatRestVerbs = XmatRestVerbs.GET, url: string = "", queryable: boolean = false): XmatHttpConfig {
+        url = this._xmatConstants.removeTrailingSlash(url);
+        return <XmatHttpConfig>{
+            method: method,
+            url: url,
+            data: void 0,
+            queryable: queryable
+        };
     }
 }
 

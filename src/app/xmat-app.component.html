@@ -1,7 +1,7 @@
 <h1>CUSTOM LIB TEST</h1>
 <xmat-test></xmat-test>
 <h2>DIALOG TEMPLATE REF</h2>
-<p>FIGATA SPAZIALE: {{figataSpaziale || 'empty'}}</p>
+<p>FIGATA SPAZIALE: {{figataSpaziale || "empty"}}</p>
 <button (click)="showDialog()">
     SHOW DIALOG
 </button>
@@ -10,6 +10,20 @@
     <input type="text" [(ngModel)]="figataSpaziale" />
     <p>My static content</p>
 </xmat-dialog-content>
+<hr />
+<h2>FRONTEND DOWNLOAD</h2>
+<select [(ngModel)]="fileName">
+    <option value="text.txt" selected="selected">text</option>
+    <option value="pdf.pdf">pdf</option>
+    <option value="nofile.nofile">404</option>
+</select>
+<button (click)="doDownload(fileName)">DOWNLOAD!!</button>
+
+<a *ngIf="downloadLink" target="_blank" [href]="downloadLink">CLICK HERE TO DOWNLOAD</a>
+<iframe class="xmat-pdf-iframe"
+        type="application/pdf"
+        *ngIf="!!downloadResource"
+        [src]="downloadResource"></iframe>
 <hr />
 <h2>TIME INPUT</h2>
 <mat-form-field class="autoWidth">
@@ -61,7 +75,7 @@
            [min]="minDate"
            [max]="maxDate"
            name="rh_filter_date"
-           required="true"
+           required
            placeholder="Data richiesta da">
     <mat-datepicker-toggle matSuffix [for]="rhMinPicker"></mat-datepicker-toggle>
     <mat-datepicker #rhMinPicker></mat-datepicker>
