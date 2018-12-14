@@ -6,13 +6,13 @@ import {
     XmatDialogContentComponent,
     XmatSnackBarData,
     XmatLegendItem,
-    XmatSnackBarDataTypes
+    XmatSnackBarDataTypes,
+    XmatFile,
+    XmatRestService
 } from "ngx-mat-lib";
 import {HttpClient} from "@angular/common/http";
-import {XmatResponseTypes} from "ngx-mat-lib";
-import {DomSanitizer} from "@angular/platform-browser";
-import {SafeUrl} from "@angular/platform-browser";
 import {SafeResourceUrl} from "@angular/platform-browser";
+import {DomSanitizer} from "@angular/platform-browser";
 
 const today = new Date();
 const minDate = new Date();
@@ -29,30 +29,29 @@ export class XmatAppComponent implements OnInit {
     @ViewChild("myTest2") myTest2: XmatLegendItemContentComponent;
     @ViewChild("myDialogContent") myDialogContent: XmatDialogContentComponent;
 
-    downloadLink: SafeUrl;
-    downloadResource: SafeResourceUrl;
-    figataSpaziale: string = "";
-    fileName: string = "pdf.pdf";
-    title = "Test";
-    icons = ["", "note_add", "delete_forever"];
-    pippo = false;
-    isUbiTimeInputRequired = !0;
-    isUbiTimeInputDisabled = !1;
-    account: any;
-    textDisabled: boolean = !1;
-    textValue: string = "";
-    testTimeModel = new XmatTime(12, 15);
-    dpModel = new Date();
-
-    minDate: Date = minDate;
-    maxDate: Date = today;
-
     accordionOpened: boolean = !0;
     accordionDisabled: boolean = !0;
     actionDisabled: boolean = !0;
+    downloadResource: SafeResourceUrl;
+    dpModel = new Date();
+    figataSpaziale: string = "";
+    files: XmatFile[] = [
+        {fileName: "sample-pdf.pdf", url: "./assets/sample-pdf.pdf", desc: "Lorem ipsum dolor PDF"},
+        {fileName: "sample-text.txt", url: "./assets/sample-text.txt", desc: "Lorem ipsum dolor TXT"}
+    ];
+    icons = ["", "note_add", "delete_forever"];
+    minDate: Date = minDate;
+    maxDate: Date = today;
+    isUbiTimeInputDisabled = !1;
+    isUbiTimeInputRequired = !0;
+    selectedFile: File;
+    testTimeModel = new XmatTime(12, 15);
+    title = "Test";
+
 
     constructor(private _functions: XmatFunctionsService,
                 private _http: HttpClient,
+                private _rest: XmatRestService,
                 private _sce: DomSanitizer) {
 
     }
@@ -63,22 +62,17 @@ export class XmatAppComponent implements OnInit {
         alert("PIPPO");
     }
 
-    doDownload(filename: string) {
-        this.downloadLink = void 0;
+    doDownload(file: XmatFile) {
+    }
+
+    loadBlob(file: XmatFile) {
+        if (!file) {
+            return false;
+        }
         this.downloadResource = void 0;
-        this._http.get("assets/" + filename, {responseType: XmatResponseTypes.blob})
-        .subscribe(results => {
-            // IE DOESN'T SUPPORT VIEWING BLOB IN IFRAME SO WE START DOWNLOADING INSTEAD
-            if (window.navigator.msSaveOrOpenBlob) {
-                window.navigator.msSaveOrOpenBlob(results, filename);
-            } else {
-                console.info("DOWNLOAD SUCCESS", results);
-                const unsafeLink = URL.createObjectURL(results);
-                this.downloadLink = this._sce.bypassSecurityTrustUrl(unsafeLink);
-                this.downloadResource = this._sce.bypassSecurityTrustResourceUrl(unsafeLink);
-            }
-        }, (error) => {
-            console.warn("DOWNLOAD ERROR", error);
+        this._rest.getBlobFromUrl(file).subscribe((results: Blob) => {
+            const unsafeLink = URL.createObjectURL(results);
+            this.downloadResource = this._sce.bypassSecurityTrustResourceUrl(unsafeLink);
         });
     }
 

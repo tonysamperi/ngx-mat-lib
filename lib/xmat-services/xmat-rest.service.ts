@@ -1,9 +1,8 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {XmatConstantsService} from "./xmat-constants.service";
-import {XmatHttpConfig, XmatRestVerbs} from "../xmat-models/index";
+import {XmatHttpConfig, XmatRestVerbs, XmatFile, XmatResponseTypes} from "../xmat-models/index";
 
 /**
  * UBI REST BY TONY SAMPERI
@@ -52,6 +51,40 @@ export class XmatRestService {
 
     }
 
+    downloadBlobFromUrl(file: XmatFile): void {
+        this.getBlobFromUrl(file).subscribe((results: Blob) => {
+            // IE DOESN'T SUPPORT TRIGGERING SO WE START DOWNLOADING WITH THIS PORKAROUND
+            if (window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveOrOpenBlob(results, file.fileName);
+            }
+            else {
+                const unsafeUrl = URL.createObjectURL(results);
+                const linkEl = document.createElement("a");
+                linkEl.href = unsafeUrl;
+                linkEl.download = file.fileName;
+
+                document.body.appendChild(linkEl);
+                linkEl.click();
+                document.body.removeChild(linkEl);
+            }
+        });
+    }
+
+    getBlobFromUrl(file: XmatFile): Observable<Blob> {
+        if (!file || !file.url) {
+            console.error("XmatRest: invalid XmatFile provided!", file);
+            return void 0;
+        }
+        // Use a default fileName if not set
+        if (!file.fileName || !file.fileName.length) {
+            const ext = file.url.substr(file.url.lastIndexOf("."));
+            file.fileName = `xmat-document${ext}`;
+        }
+
+        return this._http.get(file.url, {
+            responseType: XmatResponseTypes.blob
+        });
+    }
 
     $http<T>(config: XmatHttpConfig = this._generateHttpConfig()): Observable<T> {
         if (!config.method) {

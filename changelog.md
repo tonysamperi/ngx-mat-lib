@@ -366,3 +366,5 @@
 #2.0.11
 * Refactor
 * Enabled polyfills in test app
+* Added getBlobFromUrl method in XmatRest
+* Added downloadBlobFromUrl

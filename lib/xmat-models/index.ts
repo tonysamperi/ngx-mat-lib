@@ -4,6 +4,7 @@ export * from "./xmat-confirm-dialog.model";
 export * from "./xmat-delayed-http-params.model";
 export * from "./xmat-desc-value.model";
 export * from "./xmat-element-ref.model";
+export * from "./xmat-file.model";
 export * from "./xmat-generic-object";
 export * from "./xmat-http-config.model";
 export * from "./xmat-lib.model";

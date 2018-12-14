@@ -9,7 +9,6 @@ import {
     DateAdapter,
     MAT_DATE_FORMATS,
     MAT_DATE_LOCALE,
-    MAT_LABEL_GLOBAL_OPTIONS,
     MatButtonModule,
     MatCardModule,
     MatDatepickerModule,
@@ -48,7 +47,8 @@ import {
     XmatLegendItemContentComponent,
     // SERVS
     XmatConstantsService,
-    XmatFunctionsService
+    XmatFunctionsService,
+    XmatRestService
     //
 
 } from "ngx-mat-lib";
@@ -98,7 +98,10 @@ export class XmatCdkMatImportsModule {
     providers: [
         // SERVS
         XmatConstantsService,
-        XmatFunctionsService
+        XmatFunctionsService,
+        XmatTestMocksListService,
+        XmatTestRestService,
+        XmatRestService
     ],
 })
 export class XmatImportsModule {
@@ -119,11 +122,7 @@ export class XmatImportsModule {
         {provide: DateAdapter, useClass: XmatMatDateLocale},
         {provide: MAT_DATE_FORMATS, useValue: XMAT_DATE_FORMATS},
         {provide: MAT_DATE_LOCALE, useValue: XMAT_LOCALE_IT},
-        {provide: HTTP_INTERCEPTORS, useClass: XmatTestMockService, multi: true},
-        XmatConstantsService,
-        XmatFunctionsService,
-        XmatTestMocksListService,
-        XmatTestRestService
+        {provide: HTTP_INTERCEPTORS, useClass: XmatTestMockService, multi: true}
     ],
     entryComponents: [XmatAppComponent],
     declarations: [
