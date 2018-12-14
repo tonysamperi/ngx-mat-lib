@@ -63,6 +63,7 @@ export class XmatAppComponent implements OnInit {
     }
 
     doDownload(file: XmatFile) {
+        return this._rest.downloadBlobFromUrl(file);
     }
 
     loadBlob(file: XmatFile) {
