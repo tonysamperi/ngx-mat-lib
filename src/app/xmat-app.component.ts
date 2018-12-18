@@ -34,7 +34,7 @@ export class XmatAppComponent implements OnInit {
     actionDisabled: boolean = !0;
     downloadResource: SafeResourceUrl;
     dpModel = new Date();
-    figataSpaziale: string = "";
+    twoWayText: string = "";
     files: XmatFile[] = [
         {fileName: "sample-pdf.pdf", url: "./assets/sample-pdf.pdf", desc: "Lorem ipsum dolor PDF"},
         {fileName: "sample-text.txt", url: "./assets/sample-text.txt", desc: "Lorem ipsum dolor TXT"}

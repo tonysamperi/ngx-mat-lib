@@ -374,3 +374,10 @@
 #2.0.12
 * Added missing dependency in XmatSnackBarModule
 * Added new XmatFunctionsModule which allows a seamless import of XmatFunctionsService
+
+#2.0.13
+* Fixed docs
+
+#2.0.14
+* Removed FormsModule from XmatDialogModule (useless)
+* Refactor

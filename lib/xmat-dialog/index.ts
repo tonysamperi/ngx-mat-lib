@@ -19,7 +19,6 @@ export * from "./ts/xmat-dialog-content.component";
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
         MatDialogModule,
         MatButtonModule,
         MatDatepickerModule,

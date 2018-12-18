@@ -12,7 +12,6 @@ import {
     MatButtonModule,
     MatCardModule,
     MatDatepickerModule,
-    MatDialogModule,
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
@@ -22,7 +21,6 @@ import {
     MatProgressSpinnerModule,
     MatRadioModule,
     MatSidenavModule,
-    // MatSnackBarModule,
     MatStepperModule,
     MatTableModule,
     MatToolbarModule,
@@ -31,20 +29,14 @@ import {
 import {
     XMAT_DATE_FORMATS,
     XMAT_LOCALE_IT,
-    // XmatTime,
-    // XmatSnackBarDataTypes,
     XmatMatDateLocale,
-    // XmatSnackBarData,
-    // XmatLegendItem,
-    // COMPS
+    // COMPS MODULES
     XmatDialogModule,
-    // XmatDialogContentComponent,
     XmatActionTextModule,
     XmatAccordionModule,
     XmatTimeInputModule,
     XmatSnackBarModule,
     XmatLegendModule,
-    // XmatLegendItemContentComponent,
     // SERVS
     XmatConstantsService,
     XmatFunctionsService,
@@ -65,8 +57,7 @@ import {XmatTestComponent} from "./views/xmat-test/xmat-test.component";
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,
-        MatDatepickerModule,
-        MatDialogModule,
+        // MatDatepickerModule,
         MatGridListModule,
         MatIconModule,
         MatInputModule,
@@ -118,9 +109,9 @@ export class XmatImportsModule {
         XmatCdkMatImportsModule
     ],
     providers: [
-        {provide: DateAdapter, useClass: XmatMatDateLocale},
-        {provide: MAT_DATE_FORMATS, useValue: XMAT_DATE_FORMATS},
-        {provide: MAT_DATE_LOCALE, useValue: XMAT_LOCALE_IT},
+        // {provide: DateAdapter, useClass: XmatMatDateLocale},
+        // {provide: MAT_DATE_FORMATS, useValue: XMAT_DATE_FORMATS},
+        // {provide: MAT_DATE_LOCALE, useValue: XMAT_LOCALE_IT},
         {provide: HTTP_INTERCEPTORS, useClass: XmatTestMockService, multi: true}
     ],
     entryComponents: [XmatAppComponent],
