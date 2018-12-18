@@ -41,8 +41,6 @@ import {
     XmatConstantsService,
     XmatFunctionsService,
     XmatRestService
-    //
-
 } from "ngx-mat-lib";
 
 // TEST APP IMPORTS

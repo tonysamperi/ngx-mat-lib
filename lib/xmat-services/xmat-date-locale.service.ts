@@ -1,3 +1,4 @@
+import {Injectable} from "@angular/core";
 import {NativeDateAdapter} from "@angular/material";
 
 const xmatSep: string = "/";
@@ -35,6 +36,7 @@ export const XMAT_DATE_FORMATS = {
     }
 };
 
+@Injectable()
 export class XmatMatDateLocale extends NativeDateAdapter {
 
     displayFormat: Object | string = XMAT_DATE_FORMATS.display.dateInput;

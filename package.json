@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-lib",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "scripts": {
     "build:lib": "gulp build",
     "sass:lib": "gulp build:scss && gulp copy:scss",

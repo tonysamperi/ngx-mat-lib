@@ -1,8 +1,7 @@
-import {NgModule} from "@angular/core";
-import {XmatSnackBarModule} from "../xmat-snack-bar";
-import {XmatDialogModule} from "../xmat-dialog";
+import {NgModule, ModuleWithProviders} from "@angular/core";
 import {XmatFunctionsService} from "./xmat-functions.service";
-import {ModuleWithProviders} from "@angular/core";
+import {XmatSnackBarModule} from "../xmat-snack-bar/index";
+import {XmatDialogModule} from "../xmat-dialog/index";
 
 export * from "./xmat-date-locale.service";
 export * from "./xmat-constants.service";

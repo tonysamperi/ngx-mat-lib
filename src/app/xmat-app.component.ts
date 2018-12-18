@@ -44,7 +44,7 @@ export class XmatAppComponent implements OnInit {
     maxDate: Date = today;
     isUbiTimeInputDisabled = !1;
     isUbiTimeInputRequired = !0;
-    selectedFile: File;
+    selectedFile: XmatFile;
     testTimeModel = new XmatTime(12, 15);
     title = "Test";
 

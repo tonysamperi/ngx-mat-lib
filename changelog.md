@@ -384,3 +384,9 @@
 
 #2.0.15
 * Export MatDialogModule from XmatDialogModule to make it accessible from outside
+
+#2.0.16
+* Fixed missing @Injectable deoorator in XmatDateLocaleService
+* Fixed missing "index" in imports in xmat-services/index
+* Fixed wrong type in xmat-app.component
+* Refactor
