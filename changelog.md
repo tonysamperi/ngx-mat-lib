@@ -370,3 +370,7 @@
 * Added downloadBlobFromUrl in XmatRestService
 * New model XmatFile
 * Test App updated
+
+#2.0.12
+* Added missing dependency in XmatSnackBarModule
+* Added new XmatFunctionsModule which allows a seamless import of XmatFunctionsService

@@ -64,6 +64,9 @@ const eachFrom = (array, index, iteratee) => {
     return array;
 };
 
+/**
+ * THIS SERVICE REQUIRES 2 DEPENDENCIES: XmatSnackBarModule and XmatDialogModule
+ */
 @Injectable()
 export class XmatFunctionsService {
 

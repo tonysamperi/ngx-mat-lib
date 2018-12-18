@@ -10,7 +10,7 @@ export class XmatTestMockService extends XmatMockService {
 
 
     // Overriding XmatMockService vars
-    protected _logEnabled: boolean = !0;
+    protected _logEnabled: boolean = !1;
     protected _defaultMockDelay: number = 500;
 
     constructor(protected _sfcConstants: XmatConstantsService,

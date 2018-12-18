@@ -9,7 +9,7 @@ import {XmatSnackBarData} from "../../xmat-models/index";
 })
 export class XmatSnackBarComponent {
 
-    constructor(private snackBarRef: MatSnackBarRef<XmatSnackBarComponent>,
+    constructor(public snackBarRef: MatSnackBarRef<XmatSnackBarComponent>,
                 @Inject(MAT_SNACK_BAR_DATA) public data: XmatSnackBarData) {
         this.data.showAction = this.data.showAction && !!this.data.actionText;
     }
