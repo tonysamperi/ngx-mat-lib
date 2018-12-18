@@ -381,3 +381,6 @@
 #2.0.14
 * Removed FormsModule from XmatDialogModule (useless)
 * Refactor
+
+#2.0.15
+* Export MatDialogModule from XmatDialogModule to make it accessible from outside
