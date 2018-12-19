@@ -390,3 +390,6 @@
 * Fixed missing "index" in imports in xmat-services/index
 * Fixed wrong type in xmat-app.component
 * Refactor
+
+#2.0.17
+* Definite fix for using XmatFunctions.

@@ -1,4 +1,5 @@
 import {NgModule, ModuleWithProviders} from "@angular/core";
+import {XmatConstantsService} from "./xmat-constants.service";
 import {XmatFunctionsService} from "./xmat-functions.service";
 import {XmatSnackBarModule} from "../xmat-snack-bar/index";
 import {XmatDialogModule} from "../xmat-dialog/index";
@@ -12,6 +13,10 @@ export * from "./xmat-rest.service";
 export * from "./xmat-shared-data.service";
 
 @NgModule({
+    imports: [
+        XmatDialogModule,
+        XmatSnackBarModule
+    ],
     exports: [
         XmatDialogModule,
         XmatSnackBarModule
@@ -23,6 +28,7 @@ export class XmatFunctionsModule {
         return {
             ngModule: XmatFunctionsModule,
             providers: [
+                XmatConstantsService,
                 XmatFunctionsService
             ]
         };
