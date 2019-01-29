@@ -393,3 +393,7 @@
 
 #2.0.17
 * Definite fix for using XmatFunctions.
+
+#2.0.18
+* Fixed xmat-legend behaviour when filling cols
+* Refactor

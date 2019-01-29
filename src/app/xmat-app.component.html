@@ -96,12 +96,17 @@
 <hr />
 <xmat-legend-item-content #myTest1>
     XMAT LEGEND CONTENT 1
-    <button (click)="alertPippo()">PIPPO</button>
+    <button (click)="alert('Hello')">PIPPO</button>
 </xmat-legend-item-content>
 <xmat-legend-item-content #myTest2>
     <strong>XMAT LC2</strong>
 </xmat-legend-item-content>
+<xmat-legend-item-content #myTest3>
+    XMAT LEGEND CONTENT ICNOMPLETE
+    <button (click)="alert('Goodbye')">PLUTO</button>
+</xmat-legend-item-content>
 
 
-<xmat-legend [items]="myTestList" layout="grid">
-</xmat-legend>
+<xmat-legend [items]="myTestList" layout="grid"></xmat-legend>
+
+<xmat-legend [items]="myTestListB" layout="grid" columns="4" fillColumns="true" ></xmat-legend>

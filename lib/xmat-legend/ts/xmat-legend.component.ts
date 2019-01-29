@@ -8,7 +8,11 @@ import {
 } from "@angular/core";
 import {XmatLegendItemContentComponent} from "./xmat-legend-item-content.component";
 import {XmatLegendItem, XmatLegendLayout, XmatLegendLayouts} from "./xmat-legend.model";
+import {coerceBooleanProperty} from "@angular/cdk/coercion";
+import {XmatLegendItemStyle} from "./xmat-legend.model";
 import * as _ from "lodash";
+
+const xmatLegendDefaultCols: number = 4;
 
 @Component({
     selector: "xmat-legend",
@@ -19,6 +23,34 @@ import * as _ from "lodash";
 
 export class XmatLegendComponent {
 
+
+    @Input()
+    get fillColumns(): boolean {
+        return this._fillColumns;
+    }
+
+    set fillColumns(newValue: boolean) {
+        this._fillColumns = coerceBooleanProperty(newValue);
+    }
+
+    @Input()
+    get columns(): number {
+        return this._columns;
+    }
+
+    set columns(newValue: number) {
+        console.info("columns", newValue);
+        if (!isNaN(+newValue) && +newValue > 0) {
+            this._columns = Math.floor(+newValue);
+            this._updateItemStyle();
+            this._legendInit();
+        }
+        else {
+            this._columns = xmatLegendDefaultCols;
+            console.error("XmatLegend invalid length provided, setting to default", newValue);
+        }
+    }
+
     @Input()
     get items(): XmatLegendItem[] {
         return this._items;
@@ -26,11 +58,17 @@ export class XmatLegendComponent {
 
     set items(newValue: XmatLegendItem[]) {
         this._items = newValue;
-        Array.isArray(this.items) && this._legendInit();
+        this._legendInit();
     }
 
     @Input() layout: XmatLegendLayout = XmatLegendLayouts.GRID;
 
+    itemStyle: XmatLegendItemStyle = {
+        "flex": `1 0 ${100 / xmatLegendDefaultCols}%`
+    };
+
+    private _columns: number = xmatLegendDefaultCols;
+    private _fillColumns: boolean = !0;
     private _items: XmatLegendItem[];
     private _itemContentClass = XmatLegendItemContentComponent;
     private _itemContentRef: ComponentRef<XmatLegendItemContentComponent>;
@@ -47,11 +85,20 @@ export class XmatLegendComponent {
     }
 
     private _legendInit() {
-        _.each(new Array(this.items.length % 4), () => {
-            this.items.push({
-                content: `<span style="display: none"></span>`
-            } as XmatLegendItem);
-        });
+        if (!Array.isArray(this.items)) {
+            console.warn("XmatLegend list was not ready. Init prevented.");
+            return !1;
+        }
+        if (this._fillColumns) {
+            const fillerCount = (this._columns - (this.items.length % this._columns)) % this._columns;
+            _.each(new Array(fillerCount), () => {
+                    this.items.push({
+                        content: `<span style="display: none"></span>`,
+                        className: "xmat-grid-fill"
+                    } as XmatLegendItem);
+                }
+            );
+        }
 
         _.each(this.items, (item: XmatLegendItem) => {
             if (typeof item.content === "string") {
@@ -70,6 +117,15 @@ export class XmatLegendComponent {
             }
 
         });
+    }
+
+    private _updateItemStyle(): XmatLegendItemStyle {
+        console.info("updating item style...", this._columns);
+        this.itemStyle = {
+            "flex": `1 0 ${100 / this._columns}%`
+        };
+        console.info("item style updated", this.itemStyle);
+        return this.itemStyle;
     }
 
 }

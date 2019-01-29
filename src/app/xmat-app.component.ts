@@ -27,6 +27,7 @@ export class XmatAppComponent implements OnInit {
 
     @ViewChild("myTest1") myTest1: XmatLegendItemContentComponent;
     @ViewChild("myTest2") myTest2: XmatLegendItemContentComponent;
+    @ViewChild("myTest3") myTest3: XmatLegendItemContentComponent;
     @ViewChild("myDialogContent") myDialogContent: XmatDialogContentComponent;
 
     accordionOpened: boolean = !0;
@@ -57,9 +58,10 @@ export class XmatAppComponent implements OnInit {
     }
 
     myTestList: XmatLegendItem[];
+    myTestListB: XmatLegendItem[];
 
-    alertPippo() {
-        alert("PIPPO");
+    alert(text: string): void {
+        alert(`Message: ${text}`);
     }
 
     doDownload(file: XmatFile) {
@@ -98,6 +100,24 @@ export class XmatAppComponent implements OnInit {
                 className: "pippo4",
                 content: "Someone else, something else",
                 color: "#006699"
+            }
+        ];
+
+        this.myTestListB = [
+            {
+                className: "incomplete",
+                content: "<h2>Incomplete list</h2>",
+                color: "violet"
+            },
+            {
+                className: "incomplete",
+                content: this.myTest3,
+                color: "orange"
+            },
+            {
+                className: "incomplete",
+                content: "Some other content",
+                color: "rgba(135,190,25)"
             }
         ];
     }

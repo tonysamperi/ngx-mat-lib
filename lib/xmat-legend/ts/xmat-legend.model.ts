@@ -15,3 +15,7 @@ export class XmatLegendLayouts {
     static GRID: XmatLegendLayout = "grid";
     static LIST: XmatLegendLayout = "list";
 }
+
+export interface XmatLegendItemStyle {
+    flex: string;
+}
