@@ -39,7 +39,6 @@ export class XmatLegendComponent {
     }
 
     set columns(newValue: number) {
-        console.info("columns", newValue);
         if (!isNaN(+newValue) && +newValue > 0) {
             this._columns = Math.floor(+newValue);
             this._updateItemStyle();
@@ -120,11 +119,9 @@ export class XmatLegendComponent {
     }
 
     private _updateItemStyle(): XmatLegendItemStyle {
-        console.info("updating item style...", this._columns);
         this.itemStyle = {
             "flex": `1 0 ${100 / this._columns}%`
         };
-        console.info("item style updated", this.itemStyle);
         return this.itemStyle;
     }
 
