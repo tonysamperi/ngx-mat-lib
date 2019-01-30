@@ -397,3 +397,8 @@
 #2.0.18
 * Fixed xmat-legend behaviour when filling cols
 * Refactor
+
+#2.1.0
+* Gulpfile refactored
+* Names for XmatBadge models fixed
+* XmatBadge Directive refactored

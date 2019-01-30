@@ -10,10 +10,8 @@ import {
 import {ThemePalette} from "@angular/material/core";
 import {XmatElementRef} from "../../xmat-models/index";
 
-let nextId = 0;
-
-export type MatBadgePosition = "above after" | "above before" | "below before" | "below after";
-export type MatBadgeSize = "small" | "medium" | "large";
+export type XmatBadgePosition = "above after" | "above before" | "below before" | "below after";
+export type XmatBadgeSize = "small" | "medium" | "large";
 
 /** Directive to display a text badge. */
 @Directive({
@@ -28,25 +26,36 @@ export type MatBadgeSize = "small" | "medium" | "large";
         "[class.xmat-badge-small]": "size === 'small'",
         "[class.xmat-badge-medium]": "size === 'medium'",
         "[class.xmat-badge-large]": "size === 'large'",
-        "[class.xmat-badge-hidden]": "hidden || !_hasContent",
+        "[class.xmat-badge-hidden]": "hidden || !hasContent",
     },
 })
 export class XmatBadgeDirective implements OnDestroy {
-    /** Whether the badge has any content. */
-    _hasContent = false;
+
+    static nextId: number = 0;
+
+    /*
+     * Size of the badge. Can be "small", "medium", or "large".
+     */
+    // tslint:disable-next-line:no-input-rename
+    @Input("xmatBadgeSize") size: XmatBadgeSize = "medium";
+
+    /*
+     * Position the badge should reside.
+     * Accepts any combination of "above"|"below" and "before"|"after"
+     */
+    // tslint:disable-next-line:no-input-rename
+    @Input("xmatBadgePosition") position: XmatBadgePosition = "below after";
 
     /** The color of the badge. Can be `primary`, `accent`, or `warn`. */
     @Input("xmatBadgeColor")
-    get color(): ThemePalette {
-        return this._color;
-    }
-
     set color(value: ThemePalette) {
         this._setColor(value);
         this._color = value;
     }
 
-    private _color: ThemePalette = "primary";
+    get color(): ThemePalette {
+        return this._color;
+    }
 
     /** Whether the badge should overlap its contents or not */
     @Input("xmatBadgeOverlap")
@@ -58,35 +67,20 @@ export class XmatBadgeDirective implements OnDestroy {
         this._overlap = coerceBooleanProperty(val);
     }
 
-    private _overlap: boolean = true;
-
-    /**
-     * Position the badge should reside.
-     * Accepts any combination of "above"|"below" and "before"|"after"
-     */
-    // tslint:disable-next-line:no-input-rename
-    @Input("xmatBadgePosition") position: MatBadgePosition = "below after";
-
     /** The content for the badge */
     @Input("xmatBadge")
+    set content(value: string) {
+        this._content = value;
+        this.hasContent = value != null && `${value}`.trim().length > 0;
+        this._updateTextContent();
+    }
+
     get content(): string {
         return this._content;
     }
 
-    set content(value: string) {
-        this._content = value;
-        this._hasContent = value != null && `${value}`.trim().length > 0;
-        this._updateTextContent();
-    }
-
-    private _content: string;
-
     /** Message used to describe the decorated element via aria-describedby */
     @Input("xmatBadgeDescription")
-    get description(): string {
-        return this._description;
-    }
-
     set description(newDescription: string) {
         if (newDescription !== this._description) {
             this._updateHostAriaDescription(newDescription, this._description);
@@ -94,11 +88,9 @@ export class XmatBadgeDirective implements OnDestroy {
         }
     }
 
-    private _description: string;
-
-    /** Size of the badge. Can be "small", "medium", or "large". */
-        // tslint:disable-next-line:no-input-rename
-    @Input("xmatBadgeSize") size: MatBadgeSize = "medium";
+    get description(): string {
+        return this._description;
+    }
 
     /** Whether the badge is hidden. */
     @Input("xmatBadgeHidden")
@@ -110,21 +102,27 @@ export class XmatBadgeDirective implements OnDestroy {
         this._hidden = coerceBooleanProperty(val);
     }
 
-    private _elementRef: XmatElementRef<HTMLElement>;
-    private _hidden: boolean;
-
+    /** Whether the badge has any content. */
+    hasContent = false;
     /** Unique id for the badge */
-    _id: number = nextId++;
+    id: number = XmatBadgeDirective.nextId++;
 
     private _badgeElement: HTMLElement;
+    private _color: ThemePalette = "primary";
+    private _content: string;
+    private _description: string;
+    private _elementRef: XmatElementRef<HTMLElement>;
+    private _hidden: boolean;
+    private _overlap: boolean = true;
+
 
     constructor(private _ngZone: NgZone,
                 private _ariaDescriber: AriaDescriber,
                 private _renderer: Renderer2,
-                _elementRef: ElementRef) {
+                elementRef: ElementRef) {
 
         // Bridge to the new Angular6 typed ElementRef
-        this._elementRef = new XmatElementRef<HTMLElement>(_elementRef.nativeElement);
+        this._elementRef = new XmatElementRef<HTMLElement>(elementRef.nativeElement);
     }
 
     /** Whether the badge is above the host or not */
@@ -159,7 +157,7 @@ export class XmatBadgeDirective implements OnDestroy {
         const badgeElement = document.createElement("span");
         const activeClass = "xmat-badge-active";
 
-        badgeElement.setAttribute("id", `xmat-badge-content-${this._id}`);
+        badgeElement.setAttribute("id", `xmat-badge-content-${this.id}`);
         badgeElement.classList.add("xmat-badge-content");
         badgeElement.textContent = this.content;
 
@@ -183,6 +181,18 @@ export class XmatBadgeDirective implements OnDestroy {
         return badgeElement;
     }
 
+    /** Adds css theme class given the color to the component host */
+    private _setColor(colorPalette: ThemePalette) {
+        if (colorPalette !== this._color) {
+            if (this._color) {
+                this._elementRef.nativeElement.classList.remove(`xmat-badge-${this._color}`);
+            }
+            if (colorPalette) {
+                this._elementRef.nativeElement.classList.add(`xmat-badge-${colorPalette}`);
+            }
+        }
+    }
+
     /** Sets the aria-label property on the element */
     private _updateHostAriaDescription(newDescription: string, oldDescription: string): void {
         // ensure content available before setting label
@@ -194,18 +204,6 @@ export class XmatBadgeDirective implements OnDestroy {
 
         if (newDescription) {
             this._ariaDescriber.describe(content, newDescription);
-        }
-    }
-
-    /** Adds css theme class given the color to the component host */
-    private _setColor(colorPalette: ThemePalette) {
-        if (colorPalette !== this._color) {
-            if (this._color) {
-                this._elementRef.nativeElement.classList.remove(`xmat-badge-${this._color}`);
-            }
-            if (colorPalette) {
-                this._elementRef.nativeElement.classList.add(`xmat-badge-${colorPalette}`);
-            }
         }
     }
 

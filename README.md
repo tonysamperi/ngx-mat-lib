@@ -1,4 +1,4 @@
-# xMatLib 2.0.18
+# xMatLib 2.1.0
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -186,3 +186,6 @@ files normally.
 #TODOS
 * Add dynamic template to xmat-alert-dialog (as of xmat-confirm-dialog)
 * Create dictionary for labels
+* Add xmat-countdown component
+* Add xmat-password component
+* Add xmat-request-state component

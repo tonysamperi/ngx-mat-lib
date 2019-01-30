@@ -2,11 +2,6 @@
   "extends": [
     "tslint-consistent-codestyle"
   ],
-  "linterOptions": {
-    "exclude": [
-      "gulp-tasks/**/*.ts"
-    ]
-  },
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
