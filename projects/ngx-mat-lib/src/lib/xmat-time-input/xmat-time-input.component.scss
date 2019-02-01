@@ -1,0 +1,64 @@
+@import "../scss/xmat-vars";
+@import "../scss/xmat-mixins";
+
+$error-color: map-get($xmat-colors, red);
+
+mat-form-field {
+  &[floatLabel="never"] {
+    .xmat-time-empty span.xmat-time-colon{
+      opacity: 0;
+      cursor: default;
+      @include xmat-transition("transition: opacity 0.25s");
+    }
+  }
+  &[floatLabel="auto"].mat-form-field-hide-placeholder{
+    xmat-time-input {
+      &[placeholder] {
+        + span.mat-form-field-label-wrapper label {
+          @include xmat-transition("transition: opacity 0.25s");
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+
+div.xmat-time-input-wrap {
+  div {
+    display: flex;
+  }
+
+  input {
+    border: none;
+    background: none;
+    padding: 0;
+    outline: none;
+    font: inherit;
+    text-align: center;
+  }
+
+  &.xmat-time-invalid {
+    span.xmat-time-colon,
+    span.xmat-time-required {
+      color: $error-color;
+    }
+    //Firefox fix opacity
+    ::placeholder {
+      opacity: 1;
+    }
+    //Microsoft Edge
+    ::-ms-input-placeholder {
+      color: $error-color
+    }
+    // Microsoft IE 10-11
+    :-ms-input-placeholder {
+      color: $error-color
+    }
+    //Chrome, Firefox, Opera, Safari 10.1+
+    ::placeholder {
+      color: $error-color
+    }
+  }
+
+}

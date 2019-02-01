@@ -189,3 +189,4 @@ files normally.
 * Add xmat-countdown component
 * Add xmat-password component
 * Add xmat-request-state component
+* Add xmat-datepicker component

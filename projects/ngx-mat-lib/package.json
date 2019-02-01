@@ -1,0 +1,33 @@
+{
+  "name": "ngx-mat-lib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonysamperi/ngx-mat-lib"
+  },
+  "author": {
+    "name": "Tony Samperi",
+    "email": "tonysamperibg89@gmail.com"
+  },
+  "version": "6.1.10",
+  "peerDependencies": {
+    "@angular/common": "~6.1.10",
+    "@angular/core": "~6.1.10",
+    "@angular/cdk": "~6.4.7",
+    "@angular/forms": "~6.1.10",
+    "@angular/material": "~6.4.7"
+  },
+  "keywords": [
+    "Angular",
+    "Angular6",
+    "Material",
+    "Material6",
+    "Library",
+    "Angular6+",
+    "Extended",
+    "Framework"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tonysamperi/ngx-mat-lib/issues"
+  }
+}

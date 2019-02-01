@@ -51,10 +51,10 @@ export class XmatTestRestService extends XmatRestService {
         },
     };
 
-    constructor(protected _http: HttpClient,
+    constructor(http: HttpClient,
                 sfcConstants: XmatConstantsService) {
 
-        super(_http, sfcConstants);
+        super(http, sfcConstants);
 
     }
 

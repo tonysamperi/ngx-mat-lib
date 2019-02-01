@@ -1,0 +1,17 @@
+@import "../scss/xmat-vars";
+
+:host {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  &.xmat-overlay-dark {
+    background-color: rgba(map-get($xmat-colors, black), 0.25);
+  }
+  &.xmat-overlay-light {
+    background-color: rgba(map-get($xmat-colors, white), 0.25);
+  }
+}
