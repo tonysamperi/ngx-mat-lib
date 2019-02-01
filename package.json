@@ -20,7 +20,8 @@
     "build:lib": "gulp build",
     "sass:lib": "gulp build:scss && gulp copy:scss",
     "pack:lib": "gulp pack",
-    "test-sass": "node-sass --include-path scss test/style.scss --importer=node_modules/node-sass-tilde-importer test/build/style.css"
+    "test-sass": "node-sass --include-path scss test/style.scss --importer=node_modules/node-sass-tilde-importer test/build/style.css",
+    "publish:lib": "npm publish ./dist/ngx-mat-lib"
   },
   "dependencies": {
     "@angular/animations": "~6.1.10",

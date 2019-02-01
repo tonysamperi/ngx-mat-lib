@@ -404,4 +404,4 @@
 * XmatBadge Directive refactored
 
 #6.1.10
-* Update to Angular 6
+* Update to Angular 6.1.10

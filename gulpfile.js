@@ -24,6 +24,7 @@ const distCssFolder = path.join(distFolder, "css");
 const taskNames = {
     ngBuild: "ngBuild",
     main: "build",
+    mdsCopy: "mdsCopy",
     pack: "pack",
     stylesCopy: "copy:scss",
     stylesBuild: "build:scss"
@@ -62,6 +63,17 @@ gulp.task(taskNames.stylesCopy, (cb) => {
     cb();
 });
 
+gulp.task(taskNames.mdsCopy, (cb) => {
+    logStart(taskNames.mdsCopy);
+    gulp.src([
+        `${rootFolder}/changelog.md`,
+        `${rootFolder}/README.md`,
+    ])
+    .pipe(gulp.dest(distFolder));
+    logEnd(taskNames.mdsCopy);
+    cb();
+});
+
 // PACK
 gulp.task(taskNames.pack, (cb) => {
     logStart(taskNames.pack);
@@ -76,7 +88,7 @@ gulp.task(taskNames.pack, (cb) => {
 // MAIN
 gulp.task(taskNames.main, function (cb) {
     logStart(taskNames.main);
-    runSequence(taskNames.ngBuild, taskNames.stylesBuild, taskNames.stylesCopy, (err) => {
+    runSequence(taskNames.ngBuild, taskNames.stylesBuild, [taskNames.stylesCopy, taskNames.mdsCopy], (err) => {
         logEnd(taskNames.main);
         cb(err)
     });
