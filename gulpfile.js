@@ -17,8 +17,8 @@ const gulp = require("gulp"),
 ;
 
 const rootFolder = path.join(__dirname);
-const srcFolder = path.join(rootFolder, "lib");
-const distFolder = path.join(rootFolder, "dist");
+const srcFolder = path.join(rootFolder, "projects/ngx-mat-lib/src/lib");
+const distFolder = path.join(rootFolder, "dist/ngx-mat-lib");
 const distCssFolder = path.join(distFolder, "css");
 
 const taskNames = {
@@ -31,7 +31,7 @@ const taskNames = {
 
 gulp.task(taskNames.ngBuild, (cb) => {
     logStart(taskNames.ngBuild);
-    exec("ng-packagr -p ng-package.json", (err, stdout, stderr) => {
+    exec("ng build ngx-mat-lib", (err, stdout, stderr) => {
         console.log(stdout);
         console.log(stderr);
         logEnd(taskNames.ngBuild);

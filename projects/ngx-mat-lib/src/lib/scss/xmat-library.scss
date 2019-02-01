@@ -1,0 +1,90 @@
+@import "./xmat-display";
+@import "./xmat-vars";
+@import "./xmat-layout";
+@import "./xmat-grid";
+@import "../xmat-action-text/xmat-action-text.directive";
+@import "../xmat-badge/xmat-badge.directive";
+
+@include xmat-action-text-theme($xmat-theme);
+@include xmat-badge-theme($xmat-theme);
+@include xmat-badge-typography($xmat-typography-config);
+
+/* THEME OVERRIDES - START */
+mat-table {
+  &.debug {
+    mat-header-cell.mat-header-cell, mat-cell.mat-cell {
+      border: 1px solid map-get($xmat-colors, red);
+    }
+  }
+  // Bug fix for mat-checkbox inside a mat-cell
+  mat-cell.mat-cell, mat-header-cell.mat-header-cell {
+    overflow: visible;
+  }
+}
+
+mat-form-field {
+  &.autoWidth {
+    min-width: 140px;
+    > div.mat-input-wrapper {
+      > div.mat-input-flex {
+        > div.mat-input-infix {
+          width: auto;
+        }
+      }
+    }
+  }
+  &.invert {
+    .mat-form-field-underline {
+      background-color: rgba(map-get($xmat-colors, white), 0.75);
+    }
+    input.mat-input-element, label.mat-form-field-placeholder {
+      color: map-get($xmat-colors, white);
+    }
+    &.mat-form-field-disabled {
+      opacity: 0.2;
+      input.mat-input-element {
+        cursor: not-allowed;
+      }
+    }
+  }
+  .mat-form-field-prefix {
+    mat-icon.mat-icon {
+      &.matPrefixSmall {
+        font-size: 100%;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+snack-bar-container {
+  &.xmat-snack-success {
+    border-top: 5px solid map-get($xmat-colors, green);
+  }
+  &.xmat-snack-fail {
+    border-top: 5px solid map-get($xmat-colors, red);
+  }
+}
+
+/* THEME OVERRIDES - END */
+
+/* TEXT AND COLORS - START */
+@each $direction in $text-directions {
+  .xmat-text-#{$direction} {
+    text-align: $direction;
+  }
+}
+
+@each $color-name, $color-value in $xmat-colors {
+  .xmat-color-#{$color-name} {
+    color: $color-value;
+  }
+}
+
+@each $color-name, $color-value in $xmat-colors {
+  .xmat-bg-#{$color-name} {
+    background-color: $color-value;
+  }
+}
+
+/* TEXT AND COLORS - END */
