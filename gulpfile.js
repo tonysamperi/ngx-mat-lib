@@ -66,8 +66,8 @@ gulp.task(taskNames.stylesCopy, (cb) => {
 gulp.task(taskNames.mdsCopy, (cb) => {
     logStart(taskNames.mdsCopy);
     gulp.src([
-        `${rootFolder}/changelog.md`,
-        `${rootFolder}/README.md`,
+        path.join(rootFolder, "changelog.md"),
+        path.join(rootFolder, "README.md")
     ])
     .pipe(gulp.dest(distFolder));
     logEnd(taskNames.mdsCopy);
