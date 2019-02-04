@@ -410,3 +410,7 @@
 * Improved error handling in xmat-time component using errorState
 * README improved
 * Refactor
+
+#7.2.0
+* Update to Angular 7.2.0
+* Added .xmat-uppercase, .xmat-lowercase, .xmat-capitalize in xmat-library
