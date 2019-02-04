@@ -16,6 +16,25 @@ For this purpose the style of directives is compiled in
 Be sure of including at least one of these in your styles.css / styles.scss
 to get xmatDirectives properly working
 
+## Theme
+
+Xmat includes a Material Theme you can activate by using
+
+```scss
+@import "~ngx-mat-lib/scss/xmat-vars";
+@import angular-material-theme($xmat-theme);
+```
+
+You can of course override all of theme colors by overriding the following variables:
+
+```scss
+// xmat-vars.scss
+$xmat-primary: mat-palette($xmat-blue) !default;
+$xmat-accent: mat-palette($xmat-blue-accent) !default;
+$xmat-accent-light: mat-palette($xmat-blue-accent-light) !default;
+$xmat-warn: mat-palette($mat-red) !default;
+$xmat-theme: mat-light-theme($xmat-primary, $xmat-accent, $xmat-warn) !default;
+```
 ## Motivation
 
 Angular Material is a complete tool. But there are ways to use come components which may come handy.
@@ -65,6 +84,7 @@ MORE DESCRIPTIONS COMING
 
 ###Other components
 
+* xmat-badge
 * xmat-dialog (alert + confirm)
 * xmat-global-spinner
 * xmat-legend
@@ -83,6 +103,11 @@ To install this library, run:
 ```bash
 $ npm install ngx-mat-lib --save-dev
 ```
+
+Be sure to have peerDependencies installed, especially:
+
+* `@angular/material`
+* `@angular/cdk`
 
 ## Development
 
@@ -103,13 +128,14 @@ $ npm install ngx-mat-lib@latest
 and then from your Angular `AppModule`:
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 
 // Import what you need from ngx-mat-lib
-import { SampleModule } from 'ngx-mat-lib';
+import { XmatTimeModule } from "ngx-mat-lib";
 
 @NgModule({
   declarations: [
@@ -117,9 +143,9 @@ import { SampleModule } from 'ngx-mat-lib';
   ],
   imports: [
     BrowserModule,
-
+    BrowserAnimationsModule,
     // Specify the import
-    SampleModule
+    XmatTimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

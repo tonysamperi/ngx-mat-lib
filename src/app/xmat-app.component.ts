@@ -46,6 +46,7 @@ export class XmatAppComponent implements OnInit {
     isUbiTimeInputDisabled = !1;
     isUbiTimeInputRequired = !0;
     selectedFile: XmatFile;
+    snackBarDuration: number = 5000;
     testTimeModel = new XmatTime(12, 15);
     title = "Test";
 
@@ -144,7 +145,7 @@ export class XmatAppComponent implements OnInit {
             type: XmatSnackBarDataTypes.success,
             message: "TEST MESSAGE",
             showAction: true,
-            duration: 1000,
+            duration: this.snackBarDuration,
             actionText: "Annulla",
             actionCallback: callback
         };

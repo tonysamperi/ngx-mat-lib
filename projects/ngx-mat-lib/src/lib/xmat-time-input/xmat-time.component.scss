@@ -5,14 +5,14 @@ $error-color: map-get($xmat-colors, red);
 
 mat-form-field {
   &[floatLabel="never"] {
-    .xmat-time-empty span.xmat-time-colon{
+    .xmat-time-empty span.xmat-time-colon {
       opacity: 0;
       cursor: default;
       @include xmat-transition("transition: opacity 0.25s");
     }
   }
-  &[floatLabel="auto"].mat-form-field-hide-placeholder{
-    xmat-time-input {
+  &:not(.mat-form-field-should-float).mat-form-field-hide-placeholder {
+    xmat-time {
       &[placeholder] {
         + span.mat-form-field-label-wrapper label {
           @include xmat-transition("transition: opacity 0.25s");
@@ -23,8 +23,7 @@ mat-form-field {
   }
 }
 
-
-div.xmat-time-input-wrap {
+div.xmat-time-wrap {
   div {
     display: flex;
   }

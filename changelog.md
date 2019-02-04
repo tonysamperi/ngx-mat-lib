@@ -405,3 +405,8 @@
 
 #6.1.10
 * Update to Angular 6.1.10
+* Renamed xmat-time-input to xmat-time
+* Removed xmat-element-ref model, since core now supports type in ElementRef (Angular 6+)
+* Improved error handling in xmat-time component using errorState
+* README improved
+* Refactor

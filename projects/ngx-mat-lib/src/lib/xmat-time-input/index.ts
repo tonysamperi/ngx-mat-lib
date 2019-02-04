@@ -1,20 +1,21 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {XmatMatTimeInputComponent} from "./xmat-time-input.component";
+import {XmatMatTimeComponent} from "./xmat-time.component";
+
+const XMAT_TIME_INPUT_DEPS = [CommonModule, FormsModule, ReactiveFormsModule];
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule
-    ],
     declarations: [
-        XmatMatTimeInputComponent
+        XmatMatTimeComponent
+    ],
+    imports: [
+        XMAT_TIME_INPUT_DEPS
     ],
     exports: [
-        XmatMatTimeInputComponent
+        XMAT_TIME_INPUT_DEPS,
+        XmatMatTimeComponent
     ]
 })
-export class XmatTimeInputModule {
+export class XmatTimeModule {
 }

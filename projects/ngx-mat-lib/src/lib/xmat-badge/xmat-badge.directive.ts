@@ -8,7 +8,6 @@ import {
     Renderer2
 } from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
-import {XmatElementRef} from "../xmat-models/index";
 
 export type XmatBadgePosition = "above after" | "above before" | "below before" | "below after";
 export type XmatBadgeSize = "small" | "medium" | "large";
@@ -111,7 +110,7 @@ export class XmatBadgeDirective implements OnDestroy {
     private _color: ThemePalette = "primary";
     private _content: string;
     private _description: string;
-    private _elementRef: XmatElementRef<HTMLElement>;
+    private _elementRef: ElementRef<HTMLElement>;
     private _hidden: boolean;
     private _overlap: boolean = true;
 
@@ -122,7 +121,7 @@ export class XmatBadgeDirective implements OnDestroy {
                 elementRef: ElementRef) {
 
         // Bridge to the new Angular6 typed ElementRef
-        this._elementRef = new XmatElementRef<HTMLElement>(elementRef.nativeElement);
+        this._elementRef = new ElementRef<HTMLElement>(elementRef.nativeElement);
     }
 
     /** Whether the badge is above the host or not */

@@ -27,11 +27,11 @@
 <hr />
 <h2>TIME INPUT</h2>
 <mat-form-field class="autoWidth">
-    <xmat-time-input name="ubiTimeInputTest"
-                     placeholder="hh:mm"
-                     [(ngModel)]="testTimeModel"
-                     [disabled]="isUbiTimeInputDisabled"
-                     [required]="isUbiTimeInputRequired"></xmat-time-input>
+    <xmat-time name="xmatTimeInputTest"
+               placeholder="hh:mm"
+               [(ngModel)]="testTimeModel"
+               [disabled]="isUbiTimeInputDisabled"
+               [required]="isUbiTimeInputRequired"></xmat-time>
 </mat-form-field>
 
 <hr />
@@ -43,6 +43,9 @@
     <span xmatActionText color="primary"
           [disabled]="actionDisabled"
           (click)="showSnackBar($event)">SHOW SNACKBAR</span>
+    <input [(ngModel)]="snackBarDuration"
+           type="number"
+           class="xmat-d-inline-block xmat-margin-left-2x" />
 </div>
 <hr />
 <button (click)="accordionOpened = !accordionOpened">
@@ -80,4 +83,4 @@
 
 <xmat-legend [items]="myTestList" layout="grid"></xmat-legend>
 
-<xmat-legend [items]="myTestListB" layout="grid" columns="4" fillColumns="true" ></xmat-legend>
+<xmat-legend [items]="myTestListB" layout="grid" columns="4" fillColumns="true"></xmat-legend>

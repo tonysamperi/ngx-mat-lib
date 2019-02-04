@@ -1,7 +1,13 @@
 import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {FocusMonitor} from "@angular/cdk/a11y";
 import {
-    FormBuilder, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors,
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    NgControl,
+    NG_VALIDATORS,
+    NG_VALUE_ACCESSOR,
+    ValidationErrors,
     Validators
 } from "@angular/forms";
 import {Component, ElementRef, forwardRef, Input, OnDestroy, AfterViewInit, ViewEncapsulation} from "@angular/core";
@@ -10,24 +16,23 @@ import {Subject} from "rxjs";
 import {XmatTime} from "../xmat-models/index";
 import {xmatTimeInputValidation} from "../xmat-validators/xmat-time-input.validator";
 
-const controlType = "xmat-time-input";
+const controlType = "xmat-time";
 const elementType = "input";
 
 const hoursPattern = new RegExp("^([01][0-9]|2[0-3])");
 const minutesPattern = new RegExp("^([0-5][0-9])$");
 
-//noinspection JSAnnotator
 @Component({
     selector: controlType,
-    templateUrl: "./xmat-time-input.component.html",
-    styleUrls: ["./xmat-time-input.component.scss"],
+    templateUrl: "./xmat-time.component.html",
+    styleUrls: ["./xmat-time.component.scss"],
     providers: [
-        {provide: MatFormFieldControl, useExisting: XmatMatTimeInputComponent},
-        {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => XmatMatTimeInputComponent), multi: true},
-        {provide: NG_VALIDATORS, useExisting: forwardRef(() => XmatMatTimeInputComponent), multi: true}
+        {provide: MatFormFieldControl, useExisting: XmatMatTimeComponent},
+        {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => XmatMatTimeComponent), multi: true},
+        {provide: NG_VALIDATORS, useExisting: forwardRef(() => XmatMatTimeComponent), multi: true}
     ],
     host: {
-        "[class.xmat-mat-time-input]": "true",
+        "[class.xmat-mat-time]": "true",
         "[class.floating]": "shouldLabelFloat",
         "[class.filled]": "isFilled",
         "[id]": "id",
@@ -36,9 +41,9 @@ const minutesPattern = new RegExp("^([0-5][0-9])$");
     encapsulation: ViewEncapsulation.None
 })
 
-export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>, AfterViewInit, OnDestroy {
+export class XmatMatTimeComponent implements MatFormFieldControl<XmatTime>, OnDestroy {
 
-    static nextId = 0;
+    static nextId: number = 0;
 
     get empty() {
         const value = this.parts.value;
@@ -113,11 +118,11 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
 
     errorState = false;
     focused = false;
-    id = `${controlType}-${XmatMatTimeInputComponent.nextId++}`;
+    id = `${controlType}-${XmatMatTimeComponent.nextId++}`;
     inputPlaceholder: string;
     invalid: boolean = false;
     model: XmatTime = new XmatTime();
-    ngControl = null;
+    ngControl: NgControl = null;
     parts: FormGroup;
     placeholderM: string = "";
     placeholderH: string = "";
@@ -155,15 +160,6 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
     ngOnDestroy(): void {
         this.stateChanges.complete();
         this._focusMonitor.stopMonitoring(this._elRef.nativeElement);
-    }
-
-    ngAfterViewInit(): void {
-        const xmatInput = this._elRef.nativeElement;
-        const container = xmatInput.closest("mat-form-field");
-        const isContainerValid = !!container && container.classList.contains("mat-form-field-type-xmat-time-input");
-        if (isContainerValid && container.contains(xmatInput)) {
-            this._$matFormField = container;
-        }
     }
 
     onContainerClick(event: MouseEvent): void {
@@ -245,16 +241,13 @@ export class XmatMatTimeInputComponent implements MatFormFieldControl<XmatTime>,
 
     }
 
-    validate(c: FormControl | FormGroup): ValidationErrors | null {
-        if (!!this._$matFormField) {
-            this.invalid = this.parts.invalid && this.parts.touched;
-            this._$matFormField.classList.toggle("mat-form-field-invalid", this.invalid);
-        }
+    validate(_c_: FormControl | FormGroup): ValidationErrors | null {
         const value = this.parts.value;
         const charsCount = value.hours.length + value.minutes.length;
         const addFormatError = this.parts.invalid && (charsCount > 0 || charsCount < 4);
-
+        this.errorState = addFormatError;
         return addFormatError ? {timeFormatError: true} : null;
+
     }
 
     // this is the initial value and reset are updated to the component
