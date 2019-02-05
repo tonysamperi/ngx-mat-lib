@@ -16,9 +16,10 @@ const gulp = require("gulp"),
     tildeImporter = require("node-sass-tilde-importer")
 ;
 
+const libName = "ngx-mat-lib";
 const rootFolder = path.join(__dirname);
-const srcFolder = path.join(rootFolder, "projects/ngx-mat-lib/src/lib");
-const distFolder = path.join(rootFolder, "dist/ngx-mat-lib");
+const srcFolder = path.join(rootFolder, `projects/${libName}/src/lib`);
+const distFolder = path.join(rootFolder, `dist/${libName}`);
 const distCssFolder = path.join(distFolder, "css");
 
 const taskNames = {
@@ -32,7 +33,7 @@ const taskNames = {
 
 gulp.task(taskNames.ngBuild, (cb) => {
     logStart(taskNames.ngBuild);
-    exec("ng build ngx-mat-lib", (err, stdout, stderr) => {
+    exec(`ng build ${libName}`, (err, stdout, stderr) => {
         console.log(stdout);
         console.log(stderr);
         logEnd(taskNames.ngBuild);
@@ -77,7 +78,7 @@ gulp.task(taskNames.mdsCopy, (cb) => {
 // PACK
 gulp.task(taskNames.pack, (cb) => {
     logStart(taskNames.pack);
-    exec("npm pack ./dist/ngx-mat-lib", (err, stdout, stderr) => {
+    exec(`npm pack ./dist/${libName}`, (err, stdout, stderr) => {
         console.log(stdout);
         console.log(stderr);
         logEnd(taskNames.pack);
