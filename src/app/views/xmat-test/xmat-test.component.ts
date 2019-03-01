@@ -29,7 +29,6 @@ export class XmatTestComponent implements OnInit {
         const getUserConfig = this._rest.servicesConfigs.getUser();
 
         this._rest.$http(getUserConfig).subscribe(response => {
-            console.info("USER", response);
             this.user = response;
         }, (error: HttpErrorResponse) => {
             console.warn("test.component => getUser call failed", error);

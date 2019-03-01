@@ -66,9 +66,8 @@ export class XmatMockService implements HttpInterceptor {
 
         // Checks for non parametric URL
         if (this._mockExists(mockKey)) {
-            if (this._logEnabled) {
-                console.info(`XmatMock: found mock with key ${mockKey}`);
-            }
+            this._logEnabled && console.info(`XmatMock: found mock with key ${mockKey}`);
+
             return this._mocks[mockKey](request, next, [], urlParts[1]);
         }
         const urlParams = this._extractUrlParams(urlParts[0]);
@@ -80,18 +79,14 @@ export class XmatMockService implements HttpInterceptor {
                 paramsBak[j] = this._paramsPlaceholder;
                 let mixedKey = [serviceBase].concat(paramsBak).join(this._ds);
                 if (this._mockExists(mixedKey)) {
-                    if (this._logEnabled) {
-                        console.info(`XmatMock: found mock with key ${mixedKey}`);
-                    }
+                    this._logEnabled && console.info(`XmatMock: found mock with key ${mixedKey}`);
                     return this._mocks[mixedKey](request, next, urlParams.slice(j), urlParts[1]);
                 }
                 if (!!paramsBak[j + 1]) {
                     paramsBak[j + 1] = this._paramsPlaceholder;
                     mixedKey = [serviceBase].concat(paramsBak).join(this._ds);
                     if (this._mockExists(mixedKey)) {
-                        if (this._logEnabled) {
-                            console.info(`XmatMock: found mock with key ${mixedKey}`);
-                        }
+                        this._logEnabled && console.info(`XmatMock: found mock with key ${mixedKey}`);
                         return this._mocks[mixedKey](request, next, urlParams.slice(j), urlParts[1]);
                     }
                 }
@@ -142,7 +137,6 @@ export class XmatMockService implements HttpInterceptor {
         !!mock.body || (mock.body = this._defaultResponseBody);
         const mockKey = mock.method + mock.url;
         this._mocks[mockKey] = (request: HttpRequest<any>, next: HttpHandler, params: string[] = [], queryString?: string): Observable<any> => {
-            console.info("MOCK CALLBACK", params);
             if (mock.status !== 200) {
                 return new Observable(observer => {
                     const customResponse = new HttpResponse({status: mock.status, body: mock.body});
