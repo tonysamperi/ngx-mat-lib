@@ -414,3 +414,8 @@
 #7.2.0
 * Update to Angular 7.2.0
 * Added .xmat-uppercase, .xmat-lowercase, .xmat-capitalize in xmat-library
+
+#7.2.1
+* Types for XmatMock Callbacks
+* Fixed simple mock callback params in XmatMock
+* Refactor

@@ -12,15 +12,10 @@ import {
     XmatConfirmDialogData,
     XmatSnackBarData
 } from "../xmat-models/index";
-import {
-    XmatConstantsService,
-    XMAT_CONSTANT_LABELS
-} from "./xmat-constants.service";
-import {
-    XmatSnackBarComponent
-} from "../xmat-snack-bar/index";
-import * as _ from "lodash";
+import {XmatConstantsService, XMAT_CONSTANT_LABELS} from "./xmat-constants.service";
+import {XmatSnackBarComponent} from "../xmat-snack-bar/index";
 import {MatDialogRef} from "@angular/material";
+import * as _ from "lodash";
 
 const colorParams = {
     center: 128,

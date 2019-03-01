@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {tap, switchMap} from "rxjs/operators";
 import {
     HttpEvent,
     HttpInterceptor,
@@ -8,14 +7,16 @@ import {
     HttpResponse,
     HttpEventType
 } from "@angular/common/http";
-import {XmatConstantsService} from "./xmat-constants.service";
-import {XmatMocksListService} from "./xmat-mocks-list.service";
 import {
     XmatGenericObject,
     XmatLib,
     XmatMock,
+    XmatMocksCallbacks,
     XmatRestVerbs
 } from "../xmat-models/index";
+import {XmatConstantsService} from "./xmat-constants.service";
+import {XmatMocksListService} from "./xmat-mocks-list.service";
+import {tap, switchMap} from "rxjs/operators";
 import {Observable, timer} from "rxjs";
 import * as _ from "lodash";
 
@@ -24,7 +25,7 @@ export class XmatMockService implements HttpInterceptor {
 
     protected _defaultResponseBody: XmatGenericObject = {data: void 0, message: "forbidden"};
     protected _fileEndings = this._xmatConstants.mocksEndings;
-    protected _mocks: object = {};
+    protected _mocks: XmatMocksCallbacks = {};
 
     protected readonly _ds = this._xmatConstants.ds;
     protected readonly _fileNameSpace = this._xmatConstants.fileNameSpace;
@@ -68,7 +69,7 @@ export class XmatMockService implements HttpInterceptor {
             if (this._logEnabled) {
                 console.info(`XmatMock: found mock with key ${mockKey}`);
             }
-            return this._mocks[mockKey](request, next, urlParts[1]);
+            return this._mocks[mockKey](request, next, [], urlParts[1]);
         }
         const urlParams = this._extractUrlParams(urlParts[0]);
         if (Array.isArray(urlParams)) {
@@ -140,7 +141,8 @@ export class XmatMockService implements HttpInterceptor {
         !!mock.status || (mock.status = 200);
         !!mock.body || (mock.body = this._defaultResponseBody);
         const mockKey = mock.method + mock.url;
-        this._mocks[mockKey] = (request, next, params: string[] = [], queryString) => {
+        this._mocks[mockKey] = (request: HttpRequest<any>, next: HttpHandler, params: string[] = [], queryString?: string): Observable<any> => {
+            console.info("MOCK CALLBACK", params);
             if (mock.status !== 200) {
                 return new Observable(observer => {
                     const customResponse = new HttpResponse({status: mock.status, body: mock.body});

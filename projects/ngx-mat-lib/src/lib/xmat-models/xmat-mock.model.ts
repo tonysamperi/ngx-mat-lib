@@ -1,3 +1,6 @@
+import {Observable} from "rxjs";
+import {HttpRequest, HttpHandler} from "@angular/common/http";
+
 /**
  * HOW TO
  *
@@ -16,4 +19,11 @@ export interface XmatMock {
     status?: number;
     timeout?: number;
     url: string;
+}
+
+export type XmatMockCallback<T = any, U = any> =
+    (request: HttpRequest<U>, next: HttpHandler, params: string[], queryString?: string) => Observable<T>;
+
+export interface XmatMocksCallbacks<T = any> {
+    [key: string]: XmatMockCallback<T>;
 }

@@ -22,7 +22,8 @@ export class XmatTestRestService extends XmatRestService {
         accountsByGid: `${this._restBaseUrl}people/${_param}/accounts`,
         getOuUsers: `${this._restBaseUrl}ou/${_param}/${_param}/people`,
         getOuRoles: `${this._restBaseUrl}ou/${_param}/${_param}/roles`,
-        getRequestsByUid: `${this._restBaseUrl}requests/subject/${_param}`
+        getRequestsByUid: `${this._restBaseUrl}requests/subject/${_param}`,
+        getUser: `${this._restBaseUrl}user`
     };
 
     readonly servicesConfigs = {
@@ -49,6 +50,9 @@ export class XmatTestRestService extends XmatRestService {
         getRequestsByUid: (uid: string): XmatHttpConfig => {
             return this._generateHttpConfig(XmatRestVerbs.GET, this.servicesUrls.getRequestsByUid.replace(_param, uid));
         },
+        getUser: (): XmatHttpConfig => {
+            return this._generateHttpConfig(XmatRestVerbs.GET, this.servicesUrls.getUser);
+        }
     };
 
     constructor(http: HttpClient,

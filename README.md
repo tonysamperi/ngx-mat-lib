@@ -216,3 +216,4 @@ files normally.
 * Add xmat-password component
 * Add xmat-request-state component
 * Add xmat-datepicker component
+* Add $q.all in XmatRest, see https://www.learnrxjs.io/operators/combination/forkjoin.html
