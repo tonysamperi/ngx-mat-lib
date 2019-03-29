@@ -1,0 +1,72 @@
+<h2>TIME INPUT</h2>
+<mat-form-field class="autoWidth">
+    <mat-icon matSuffix>alarm</mat-icon>
+    <xmat-time-input name="ubiTimeInputTest"
+                     placeholder="hh:mm"
+                     [(ngModel)]="testTimeModel"
+                     [disabled]="isUbiTimeInputDisabled"
+                     [required]="isUbiTimeInputRequired"></xmat-time-input>
+</mat-form-field>
+<mat-form-field class="autoWidth">
+    <mat-label>HH:MM</mat-label>
+    <mat-icon matSuffix>alarm</mat-icon>
+    <xmat-time-input name="ubiTimeInputTest"
+                     [(ngModel)]="testTimeModel2"></xmat-time-input>
+</mat-form-field>
+
+<hr />
+<div style="height: 100px; background: #e2e2e2">
+    <button (click)="actionDisabled = !actionDisabled">
+        ACTION TOGGLE DISABLED
+    </button>
+    <p>DISABLED = {{actionDisabled ? "true":"false"}}</p>
+    <span xmatActionText color="primary"
+          [disabled]="actionDisabled"
+          (click)="showSnackBar($event)">SHOW SNACKBAR</span>
+</div>
+
+
+<h2>DATEPICKER</h2>
+
+<mat-form-field>
+    <input matInput [matDatepicker]="rhMinPicker"
+           #rhMinDate="ngModel"
+           [(ngModel)]="dpModel"
+           [min]="minDate"
+           [max]="maxDate"
+           name="rh_filter_date"
+           required
+           placeholder="Data richiesta da">
+    <mat-datepicker-toggle matSuffix [for]="rhMinPicker"></mat-datepicker-toggle>
+    <mat-datepicker #rhMinPicker></mat-datepicker>
+    <mat-error *ngIf="rhMinDate.hasError('required')">
+        Campo obbligatorio
+    </mat-error>
+    <mat-error *ngIf="rhMinDate.hasError('matDatepickerParse')">
+        Il formato della data non è corretto
+    </mat-error>
+    <mat-error *ngIf="rhMinDate.hasError('matDatepickerMin')">
+        La minima data consentita è {{minDate | date:'dd/MM/yyyy'}}
+    </mat-error>
+    <mat-error *ngIf="rhMinDate.hasError('matDatepickerMax')">
+        La massima data consentita è {{maxDate | date:'dd/MM/yyyy'}}
+    </mat-error>
+</mat-form-field>
+
+<hr />
+<xmat-legend-item-content #myTest1>
+    XMAT LEGEND CONTENT 1
+    <button (click)="alert('Hello')">PIPPO</button>
+</xmat-legend-item-content>
+<xmat-legend-item-content #myTest2>
+    <strong>XMAT LC2</strong>
+</xmat-legend-item-content>
+<xmat-legend-item-content #myTest3>
+    XMAT LEGEND CONTENT ICNOMPLETE
+    <button (click)="alert('Goodbye')">PLUTO</button>
+</xmat-legend-item-content>
+
+
+<xmat-legend [items]="myTestList" layout="grid"></xmat-legend>
+
+<xmat-legend [items]="myTestListB" layout="grid" columns="4" fillColumns="true"></xmat-legend>

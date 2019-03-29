@@ -1,0 +1,13 @@
+<select [(ngModel)]="selectedFile">
+    <option *ngFor="let file of files" [ngValue]="file">{{file.fileName}}</option>
+</select>
+<br />
+<button [disabled]="!selectedFile" (click)="doDownload(selectedFile)">DOWNLOAD!!</button>
+<br />
+<span xmatActionText (click)="loadBlob(selectedFile)" [disabled]="!selectedFile">
+    LOAD BLOB IN IFRAME
+</span>
+<br />
+<iframe class="xmat-pdf-iframe"
+        *ngIf="!!downloadResource"
+        [src]="downloadResource"></iframe>

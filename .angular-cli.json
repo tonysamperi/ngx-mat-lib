@@ -32,7 +32,7 @@
       ],
       "stylePreprocessorOptions": {
         "includePaths": [
-          "./lib"
+          "../lib/scss"
         ]
       },
       "scripts": [],

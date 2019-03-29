@@ -1,0 +1,12 @@
+@import "xmat-vars";
+
+button, button.mat-button {
+  width: 100%;
+  text-align: left;
+  color: #FFF;
+  font-size: mat-font-size($xmat-typography-config, button) + 2;
+  i {
+    margin-right: 1.5 * $xmat-pad;
+  }
+}
+

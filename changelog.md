@@ -402,3 +402,7 @@
 * Gulpfile refactored
 * Names for XmatBadge models fixed
 * XmatBadge Directive refactored
+
+#2.1.1
+* fixed xmat-time placeholder behaviour
+* fixed .angular-cli (solves scss paths issue)

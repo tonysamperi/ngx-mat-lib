@@ -1,0 +1,20 @@
+<button (click)="accordionOpened = !accordionOpened">
+    ACCORDION TOGGLE OPEN
+</button>
+<p>EXPANDED = {{accordionOpened ? "true":"false"}}</p>
+<button (click)="accordionDisabled = !accordionDisabled">
+    ACCORDION TOGGLE DISABLED
+</button>
+<p>DISABLED = {{accordionDisabled ? "true":"false"}}</p>
+<xmat-accordion [expanded]="accordionOpened"
+                [disabled]="accordionDisabled"
+                color="primary">
+    <div class="xmat-accordion-title">
+        ACCORDION TITLE
+    </div>
+    <div class="xmat-accordion-content">
+        <div style="width: 50%; margin: 0 auto; padding: 16px; background: #e2e2e2">
+            <h2>MY ACCORDION CONTENT</h2>
+        </div>
+    </div>
+</xmat-accordion>
