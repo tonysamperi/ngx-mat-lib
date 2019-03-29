@@ -217,3 +217,4 @@ files normally.
 * Add xmat-request-state component
 * Add xmat-datepicker component
 * Add $q.all in XmatRest, see https://www.learnrxjs.io/operators/combination/forkjoin.html
+* Allow to change the color of the confirm button in xmat-confirm-dialog

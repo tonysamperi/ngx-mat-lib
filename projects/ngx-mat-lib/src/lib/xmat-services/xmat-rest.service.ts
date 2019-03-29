@@ -3,6 +3,9 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {XmatConstantsService} from "./xmat-constants.service";
 import {XmatHttpConfig, XmatRestVerbs, XmatFile, XmatResponseTypes} from "../xmat-models/index";
+import {forkJoin} from "rxjs";
+import * as _ from "lodash";
+import {XmatGenericObject} from "../xmat-models/index";
 
 /**
  * UBI REST BY TONY SAMPERI
@@ -84,6 +87,10 @@ export class XmatRestService {
         return this._http.get(file.url, {
             responseType: XmatResponseTypes.blob
         });
+    }
+
+    $all<T = any>(configs: XmatHttpConfig[]): Observable<T[]> {
+        return forkJoin<T>(_.each(configs, (c) => c.push(this.$http(c))));
     }
 
     $http<T>(config: XmatHttpConfig = this._generateHttpConfig()): Observable<T> {
