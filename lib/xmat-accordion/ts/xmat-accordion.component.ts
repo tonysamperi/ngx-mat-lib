@@ -13,6 +13,7 @@ export class XmatAccordionBase {
     }
 }
 
+// tslint:disable-next-line:naming-convention
 export const _XmatAccordionMixinBase: Constructor<CanColor> & typeof XmatAccordionBase = mixinColor(XmatAccordionBase);
 
 @Component({
@@ -32,10 +33,12 @@ export const _XmatAccordionMixinBase: Constructor<CanColor> & typeof XmatAccordi
 
 export class XmatAccordionComponent extends _XmatAccordionMixinBase implements CanColor, CanDisable, AfterViewInit {
 
-    @ViewChild("xmatAccordionHeader") private _xmatAccordionHeader: any; // TODO find out type
+    @ViewChild("xmatAccordionHeader", {read: ElementRef}) xmatAccordionHeader: ElementRef;
 
     @Input() color: ThemePalette;
     @Input() disabled: boolean;
+    @Input() headerCollapsedHeight: string;
+    @Input() headerExpandedHeight: string;
 
     @Input()
     set expanded(value: boolean) {
@@ -55,8 +58,8 @@ export class XmatAccordionComponent extends _XmatAccordionMixinBase implements C
     }
 
     ngAfterViewInit() {
-        if (!!this._xmatAccordionHeader) {
-            const $header = this._xmatAccordionHeader._element.nativeElement;
+        if (!!this.xmatAccordionHeader) {
+            const $header = this.xmatAccordionHeader.nativeElement;
             const $panel = $header.parentElement;
             if ($header.querySelectorAll(transcludedHeaderSelector).length === 0) {
                 $panel.removeChild($header);

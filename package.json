@@ -1,10 +1,11 @@
 {
   "name": "ngx-mat-lib",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "scripts": {
     "build:lib": "gulp build",
     "sass:lib": "gulp build:scss && gulp copy:scss",
     "pack:lib": "gulp pack",
+    "publish:lib": "npm publish ./dist --tag latest-ng5",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

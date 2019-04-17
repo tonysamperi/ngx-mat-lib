@@ -96,7 +96,7 @@ export class XmatRestService {
         }
         switch (config.method) {
             case XmatRestVerbs.GET:
-                let params = new HttpParams();
+                let params = config.params || new HttpParams();
                 /**
                  * Transform data in query params
                  */
@@ -114,11 +114,11 @@ export class XmatRestService {
                 }
                 return this._http.get<T>(config.url, {params: params});
             case XmatRestVerbs.POST:
-                return this._http.post<T>(config.url, config.data);
+                return this._http.post<T>(config.url, config.data, {params: config.params});
             case XmatRestVerbs.DELETE:
-                return this._http.delete<T>(config.url, config.data);
+                return this._http.delete<T>(config.url, {params: config.params});
             case XmatRestVerbs.PUT:
-                return this._http.put<T>(config.url, config.data);
+                return this._http.put<T>(config.url, config.data, {params: config.params});
 
             default:
                 console.error("Error: [XmatRest:badmethod]", this.$http.arguments);

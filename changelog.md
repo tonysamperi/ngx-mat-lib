@@ -406,3 +406,7 @@
 #2.1.1
 * fixed xmat-time placeholder behaviour
 * fixed .angular-cli (solves scss paths issue)
+
+#2.2.1
+* fixed http delay mechanism (pre/post delay)
+* added collapsed/expanded height input in XmatAccordion

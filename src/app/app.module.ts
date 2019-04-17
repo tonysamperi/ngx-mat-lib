@@ -54,6 +54,7 @@ import {
 // SRVS
 import {
     XmatRoutesService,
+    XmatTestInterceptorService,
     XmatTestMockService,
     XmatTestMocksListService,
     XmatTestRestService,
@@ -114,6 +115,7 @@ export class XmatCdkMatImportsModule {
     ],
     providers: [
         // SERVS
+        {provide: HTTP_INTERCEPTORS, useClass: XmatTestInterceptorService, multi: true},
         XmatConstantsService,
         XmatFunctionsService,
         XmatTestMocksListService,
@@ -155,7 +157,7 @@ export class XmatImportsModule {
 })
 export class XmatLibTestModule {
 
-    constructor(routesSrv: XmatRoutesService){
+    constructor(routesSrv: XmatRoutesService) {
         routesSrv.routes = xmatRoutes;
     }
 }

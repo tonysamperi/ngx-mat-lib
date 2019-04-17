@@ -34,6 +34,16 @@ export const xmatRoutes: Routes = [
         }
     },
     {
+        path: XmatRoutesUrlsMap.dialog,
+        canActivate: [],
+        component: XmatDialogExamplesComponent,
+        data: {
+            key: XmatRoutesUrlsMap.dialog,
+            label: "Dialog examples",
+            mainMenu: !0,
+        }
+    },
+    {
         path: XmatRoutesUrlsMap.download,
         canActivate: [],
         component: XmatDownloadComponent,
@@ -44,12 +54,12 @@ export const xmatRoutes: Routes = [
         }
     },
     {
-        path: XmatRoutesUrlsMap.dialog,
+        path: XmatRoutesUrlsMap.rest,
         canActivate: [],
-        component: XmatDialogExamplesComponent,
+        component: XmatRestExamplesComponent,
         data: {
-            key: XmatRoutesUrlsMap.dialog,
-            label: "Dialog examples",
+            key: XmatRoutesUrlsMap.rest,
+            label: "Rest tools",
             mainMenu: !0,
         }
     },
