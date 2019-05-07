@@ -1,14 +1,19 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {XmatConstantsService} from "./xmat-constants.service";
-import {XmatHttpConfig, XmatRestVerbs, XmatFile, XmatResponseTypes} from "../xmat-models/index";
 import {forkJoin} from "rxjs";
+import {XmatConstantsService} from "./xmat-constants.service";
+import {
+    XmatFile,
+    XmatHttpConfig,
+    XmatResponseTypes,
+    XmatRestVerbs
+} from "../xmat-models/index";
 import * as _ from "lodash";
 import {XmatGenericObject} from "../xmat-models/index";
 
 /**
- * UBI REST BY TONY SAMPERI
+ * XMAT REST BY TONY SAMPERI
  * extend this file by adding a public "serviceUrls" variable
  * and optionally servicesConfigs
  *
@@ -89,8 +94,20 @@ export class XmatRestService {
         });
     }
 
-    $all<T = any>(configs: XmatHttpConfig[]): Observable<T[]> {
-        return forkJoin<T>(_.each(configs, (c) => c.push(this.$http(c))));
+    $all(configs: XmatHttpConfig[]): Observable<any[]> {
+        const queue = [];
+        _.each(configs, (c: XmatHttpConfig) => {
+            queue.push(this.$http(c));
+        });
+        return forkJoin(queue);
+    }
+
+    $all(configs: XmatGenericObject<XmatHttpConfig>): Observable<XmatGenericObject<XmatHttpConfig>> {
+        const queue = [];
+        _.each(configs, (c: XmatHttpConfig) => {
+            queue.push(this.$http(c));
+        });
+        return forkJoin(queue);
     }
 
     $http<T>(config: XmatHttpConfig = this._generateHttpConfig()): Observable<T> {
@@ -121,12 +138,11 @@ export class XmatRestService {
                 }
                 return this._http.get<T>(config.url, {params: params});
             case XmatRestVerbs.POST:
-                return this._http.post<T>(config.url, config.data);
+                return this._http.post<T>(config.url, config.data, {params: config.params});
             case XmatRestVerbs.DELETE:
-                return this._http.delete<T>(config.url, config.data);
+                return this._http.delete<T>(config.url, {params: config.params});
             case XmatRestVerbs.PUT:
-                return this._http.put<T>(config.url, config.data);
-
+                return this._http.put<T>(config.url, config.data, {params: config.params});
             default:
                 console.error("Error: [XmatRest:badmethod]", arguments);
                 return new Observable();
