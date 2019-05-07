@@ -41,10 +41,6 @@ export class XmatTestMocksListService extends XmatMocksListService {
         {
             method: this._methodsKeys.GET,
             url: this._servicesUrls.getRequestsByUid
-        },
-        {
-            method: this._methodsKeys.GET,
-            url: this._servicesUrls.getUser
         }
     ];
 

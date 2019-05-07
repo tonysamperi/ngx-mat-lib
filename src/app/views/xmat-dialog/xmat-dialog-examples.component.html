@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<hr />
+<p>REF TEXT: {{twoWayText || "empty"}}</p>
+<button (click)="showDialog()">
+    SHOW DIALOG
+</button>
+
+<xmat-dialog-content #myDialogContent>
+    <input type="text" [(ngModel)]="twoWayText" />
+    <p>My static content</p>
+</xmat-dialog-content>

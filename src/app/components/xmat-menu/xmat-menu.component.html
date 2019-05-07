@@ -1,0 +1,6 @@
+<ng-container *ngFor="let item of menuItems">
+    <button mat-button
+            [routerLink]="[item.href]">
+        <i [ngClass]="item.icon"></i> {{item.title}}
+    </button>
+</ng-container>

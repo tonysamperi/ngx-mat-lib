@@ -1,4 +1,5 @@
 import {NgModule} from "@angular/core";
+import {RouterModule} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -34,7 +35,7 @@ import {
     XmatDialogModule,
     XmatActionTextModule,
     XmatAccordionModule,
-    XmatTimeModule,
+    XmatTimeInputModule,
     XmatSnackBarModule,
     XmatLegendModule,
     // SERVS
@@ -45,17 +46,46 @@ import {
 
 // TEST APP IMPORTS
 import {XmatAppComponent} from "./xmat-app.component";
-import {XmatTestMocksListService} from "./services/xmat-test-mocks-list.service";
-import {XmatTestMockService} from "./services/xmat-test-mock.service";
-import {XmatTestRestService} from "./services/xmat-test-rest.service";
-import {XmatTestComponent} from "./views/xmat-test/xmat-test.component";
+
+// COMPS
+import {
+    XmatMenuComponent
+} from "./components/public";
+// SRVS
+import {
+    XmatRoutesService,
+    XmatTestInterceptorService,
+    XmatTestMockService,
+    XmatTestMocksListService,
+    XmatTestRestService,
+} from "./services/public";
+
+// VIEWS
+import {
+    XmatDialogExamplesComponent,
+    XmatDownloadComponent,
+    XmatHomeComponent,
+    XmatRestExamplesComponent
+} from "./views/public";
+import {xmatRoutes} from "./models/xmat-routes";
+
+
+const XMAT_DECLARATIONS = [
+    // COMPS
+    XmatMenuComponent,
+    // VIEWS
+    XmatDialogExamplesComponent,
+    XmatDownloadComponent,
+    XmatHomeComponent,
+    XmatRestExamplesComponent
+];
 
 @NgModule({
     exports: [
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,
-        // MatDatepickerModule,
+        MatDatepickerModule,
         MatGridListModule,
         MatIconModule,
         MatInputModule,
@@ -80,11 +110,12 @@ export class XmatCdkMatImportsModule {
         XmatAccordionModule,
         XmatDialogModule,
         XmatLegendModule,
-        XmatTimeModule,
+        XmatTimeInputModule,
         XmatSnackBarModule,
     ],
     providers: [
         // SERVS
+        {provide: HTTP_INTERCEPTORS, useClass: XmatTestInterceptorService, multi: true},
         XmatConstantsService,
         XmatFunctionsService,
         XmatTestMocksListService,
@@ -100,6 +131,10 @@ export class XmatImportsModule {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        RouterModule.forRoot(xmatRoutes, {
+            useHash: true,
+            enableTracing: false
+        }),
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
@@ -107,17 +142,22 @@ export class XmatImportsModule {
         XmatCdkMatImportsModule
     ],
     providers: [
-        // {provide: DateAdapter, useClass: XmatMatDateLocale},
-        // {provide: MAT_DATE_FORMATS, useValue: XMAT_DATE_FORMATS},
-        // {provide: MAT_DATE_LOCALE, useValue: XMAT_LOCALE_IT},
-        {provide: HTTP_INTERCEPTORS, useClass: XmatTestMockService, multi: true}
+        {provide: DateAdapter, useClass: XmatMatDateLocale},
+        {provide: MAT_DATE_FORMATS, useValue: XMAT_DATE_FORMATS},
+        {provide: MAT_DATE_LOCALE, useValue: XMAT_LOCALE_IT},
+        {provide: HTTP_INTERCEPTORS, useClass: XmatTestMockService, multi: true},
+        XmatRoutesService
     ],
-    entryComponents: [XmatAppComponent],
     declarations: [
         XmatAppComponent,
-        XmatTestComponent
+        XMAT_DECLARATIONS
     ],
+    entryComponents: [XmatAppComponent],
     bootstrap: [XmatAppComponent]
 })
 export class XmatLibTestModule {
+
+    constructor(routesSrv: XmatRoutesService) {
+        routesSrv.routes = xmatRoutes;
+    }
 }

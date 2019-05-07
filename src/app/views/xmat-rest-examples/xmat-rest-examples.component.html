@@ -1,0 +1,15 @@
+<h1>TEST COMPONENT</h1>
+<div>
+    <p>
+        <button (click)="reloadA()">RELOAD Call A</button>
+    </p>
+    <p><strong>call A:</strong> {{statusA}}, data: {{(dataA | json) || "empty"}}</p>
+    <!--<hr />-->
+    <!--<p><strong>call B:</strong> {{statusB}}, data: {{(dataB | json) || "empty"}}</p>-->
+    <!--<hr />-->
+    <!--<p><strong>call C:</strong> {{statusC}}, data: {{(dataC | json) || "empty"}}</p>-->
+</div>
+<hr />
+<div>
+    <p *ngIf="timeA">got call A response after {{timeA}} ms</p>
+</div>

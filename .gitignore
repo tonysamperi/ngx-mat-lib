@@ -61,6 +61,7 @@ Temporary Items
 # Saved data before breaking change or huge change
 _old
 # Node Modules folders and temp folder to delete while installing
+_src/**
 _node_modules/**
 node_modules/**
 

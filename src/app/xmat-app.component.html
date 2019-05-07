@@ -1,86 +1,17 @@
-<h1>NGX-MAT-LIB TEST</h1>
-<xmat-test></xmat-test>
-<h2>DIALOG TEMPLATE REF</h2>
-<p>REF TEXT: {{twoWayText || "empty"}}</p>
-<button (click)="showDialog()">
-    SHOW DIALOG
-</button>
-
-<xmat-dialog-content #myDialogContent>
-    <input type="text" [(ngModel)]="twoWayText" />
-    <p>My static content</p>
-</xmat-dialog-content>
-<hr />
-<h2>FRONTEND DOWNLOAD</h2>
-<select [(ngModel)]="selectedFile">
-    <option *ngFor="let file of files" [ngValue]="file">{{file.fileName}}</option>
-</select>
-<button [disabled]="!selectedFile" (click)="doDownload(selectedFile)">DOWNLOAD!!</button>
-
-<hr />
-<span xmatActionText (click)="loadBlob(selectedFile)">
-    LOAD BLOB IN IFRAME
-</span>
-<iframe class="xmat-pdf-iframe"
-        *ngIf="!!downloadResource"
-        [src]="downloadResource"></iframe>
-<hr />
-<h2>TIME INPUT</h2>
-<mat-form-field class="autoWidth">
-    <xmat-time name="xmatTimeInputTest"
-               placeholder="hh:mm"
-               [(ngModel)]="testTimeModel"
-               [disabled]="isUbiTimeInputDisabled"
-               [required]="isUbiTimeInputRequired"></xmat-time>
-</mat-form-field>
-
-<hr />
-<div style="height: 100px; background: #e2e2e2">
-    <button (click)="actionDisabled = !actionDisabled">
-        ACTION TOGGLE DISABLED
-    </button>
-    <p>DISABLED = {{actionDisabled ? "true":"false"}}</p>
-    <span xmatActionText color="primary"
-          [disabled]="actionDisabled"
-          (click)="showSnackBar($event)">SHOW SNACKBAR</span>
-    <input [(ngModel)]="snackBarDuration"
-           type="number"
-           class="xmat-d-inline-block xmat-margin-left-2x" />
-</div>
-<hr />
-<button (click)="accordionOpened = !accordionOpened">
-    ACCORDION TOGGLE OPEN
-</button>
-<p>EXPANDED = {{accordionOpened ? "true":"false"}}</p>
-<button (click)="accordionDisabled = !accordionDisabled">
-    ACCORDION TOGGLE DISABLED
-</button>
-<p>DISABLED = {{accordionDisabled ? "true":"false"}}</p>
-<xmat-accordion [expanded]="accordionOpened"
-                [disabled]="accordionDisabled"
-                color="primary">
-
-    <div class="xmat-accordion-content">
-        <div style="width: 50%; margin: 0 auto; padding: 16px; background: #e2e2e2">
-            <h2>MY ACCORDION CONTENT</h2>
+<mat-sidenav-container fullscreen>
+    <mat-sidenav class="xmat-sidenav" #sidenav mode="push">
+        <h2>FEATURES</h2>
+        <xmat-menu (click)="sidenav.toggle()"></xmat-menu>
+    </mat-sidenav>
+    <mat-sidenav-content class="xmat-main">
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <h1>ngx-mat-lib 2.1.0</h1>
+        </mat-toolbar>
+        <div class="xmat-router-outlet-wrap">
+            <router-outlet></router-outlet>
         </div>
-    </div>
-</xmat-accordion>
-
-<hr />
-<xmat-legend-item-content #myTest1>
-    XMAT LEGEND CONTENT 1
-    <button (click)="alert('Hello')">PIPPO</button>
-</xmat-legend-item-content>
-<xmat-legend-item-content #myTest2>
-    <strong>XMAT LC2</strong>
-</xmat-legend-item-content>
-<xmat-legend-item-content #myTest3>
-    XMAT LEGEND CONTENT INCOMPLETE
-    <button (click)="alert('Goodbye')">PLUTO</button>
-</xmat-legend-item-content>
-
-
-<xmat-legend [items]="myTestList" layout="grid"></xmat-legend>
-
-<xmat-legend [items]="myTestListB" layout="grid" columns="4" fillColumns="true"></xmat-legend>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -30,3 +30,19 @@
   font-feature-settings: 'liga';
   -moz-osx-font-smoothing: grayscale;
 }
+
+xmat-app {
+  > mat-sidenav-container {
+    > mat-sidenav.mat-drawer.xmat-sidenav {
+      width: 250px;
+      background-color: map-get($xmat-colors, primary);
+      color: map-get($xmat-colors, primary-contrast);
+      text-align: center;
+    }
+
+    div.xmat-router-outlet-wrap {
+      padding: 2 * $xmat-pad;
+    }
+  }
+}
+
