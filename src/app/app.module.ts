@@ -35,7 +35,7 @@ import {
     XmatDialogModule,
     XmatActionTextModule,
     XmatAccordionModule,
-    XmatTimeInputModule,
+    XmatTimeModule,
     XmatSnackBarModule,
     XmatLegendModule,
     // SERVS
@@ -110,7 +110,7 @@ export class XmatCdkMatImportsModule {
         XmatAccordionModule,
         XmatDialogModule,
         XmatLegendModule,
-        XmatTimeInputModule,
+        XmatTimeModule,
         XmatSnackBarModule,
     ],
     providers: [

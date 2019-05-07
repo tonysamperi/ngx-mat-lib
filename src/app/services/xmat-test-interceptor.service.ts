@@ -2,10 +2,9 @@ import {Injectable} from "@angular/core";
 import {HttpRequest} from "@angular/common/http";
 import {HttpEvent} from "@angular/common/http";
 import {HttpHandler} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import {timer} from "rxjs/observable/timer";
+import {Observable, timer} from "rxjs";
+import {switchMap, tap, delay} from "rxjs/operators";
 import {XmatHttpParams} from "ngx-mat-lib";
-
 
 @Injectable()
 export class XmatTestInterceptorService {
@@ -33,12 +32,13 @@ export class XmatTestInterceptorService {
             }
         }
 
-        return timer(preDelay).switchMap(() => {
-            return next.handle(request).delay(postDelay)
-            .do((event: any) => {
+        return timer(preDelay).pipe(switchMap(() => {
+            return next.handle(request)
+            .pipe(delay(postDelay))
+            .pipe(tap((event: any) => {
                 console.info("RESPONSE EVENT?", event);
-            });
-        });
+            }));
+        }));
 
     }
 }

@@ -1,17 +1,17 @@
 <h2>TIME INPUT</h2>
 <mat-form-field class="autoWidth">
     <mat-icon matSuffix>alarm</mat-icon>
-    <xmat-time-input name="ubiTimeInputTest"
-                     placeholder="hh:mm"
-                     [(ngModel)]="testTimeModel"
-                     [disabled]="isUbiTimeInputDisabled"
-                     [required]="isUbiTimeInputRequired"></xmat-time-input>
+    <xmat-time name="ubiTimeInputTest"
+               placeholder="hh:mm"
+               [(ngModel)]="testTimeModel"
+               [disabled]="isUbiTimeInputDisabled"
+               [required]="isUbiTimeInputRequired"></xmat-time>
 </mat-form-field>
 <mat-form-field class="autoWidth">
     <mat-label>HH:MM</mat-label>
     <mat-icon matSuffix>alarm</mat-icon>
-    <xmat-time-input name="ubiTimeInputTest"
-                     [(ngModel)]="testTimeModel2"></xmat-time-input>
+    <xmat-time name="ubiTimeInputTest"
+                     [(ngModel)]="testTimeModel2"></xmat-time>
 </mat-form-field>
 
 <hr />

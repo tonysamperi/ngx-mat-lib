@@ -2,21 +2,34 @@
 @import "../scss/xmat-mixins";
 
 $error-color: map-get($xmat-colors, red);
+$easing: cubic-bezier(.25, .8, .25, 1);
 
 mat-form-field {
+  span.mat-form-field-label-wrapper label,
+  span.xmat-time-colon {
+    @include xmat-transition(transform .4s $easing, color .4s $easing, width .4s $easing, opacity .2s $easing);
+  }
   &[floatLabel="never"] {
     .xmat-time-empty span.xmat-time-colon {
       opacity: 0;
       cursor: default;
-      @include xmat-transition("transition: opacity 0.25s");
     }
   }
-  &:not(.mat-form-field-should-float).mat-form-field-hide-placeholder {
-    xmat-time {
-      &[placeholder] {
-        + span.mat-form-field-label-wrapper label {
-          @include xmat-transition("transition: opacity 0.25s");
-          opacity: 0;
+  &.mat-form-field-hide-placeholder {
+    &[floatLabel="auto"],
+    &:not([floatLabel]) {
+      xmat-time {
+        &:not(.floating):not(.empty-placeholder) {
+          + span.mat-form-field-label-wrapper {
+            label {
+              opacity: 0;
+            }
+          }
+        }
+        &.empty-placeholder:not(.floating) {
+          span.xmat-time-colon {
+            opacity: 0;
+          }
         }
       }
     }

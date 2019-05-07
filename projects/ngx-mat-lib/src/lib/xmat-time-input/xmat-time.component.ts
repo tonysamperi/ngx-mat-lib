@@ -10,7 +10,7 @@ import {
     ValidationErrors,
     Validators
 } from "@angular/forms";
-import {Component, ElementRef, forwardRef, Input, OnDestroy, AfterViewInit, ViewEncapsulation} from "@angular/core";
+import {Component, ElementRef, forwardRef, Input, OnDestroy, ViewEncapsulation} from "@angular/core";
 import {MatFormFieldControl} from "@angular/material";
 import {Subject} from "rxjs";
 import {XmatTime} from "../xmat-models/index";

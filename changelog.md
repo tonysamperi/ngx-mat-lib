@@ -419,3 +419,10 @@
 * Types for XmatMock Callbacks
 * Fixed simple mock callback params in XmatMock
 * Refactor
+
+#7.2.2
+* Changed XmatDelayedHttpParams according to v 5-latest
+* Fixed XmatTime appearance according to v 5-latest
+* Updated demo app according to v 5-latest
+* Added $all and $allMap in XmatRestService
+* Misc and refactor

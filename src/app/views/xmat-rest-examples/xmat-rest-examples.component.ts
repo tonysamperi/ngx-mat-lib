@@ -1,7 +1,9 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {XmatTestRestService} from "../../services/xmat-test-rest.service";
 import {HttpErrorResponse} from "@angular/common/http";
-import {XmatHttpParams} from "ngx-mat-lib";
+import {XmatHttpParams, XmatHttpConfig} from "ngx-mat-lib";
+import {of} from "rxjs";
+import {delay} from "rxjs/operators";
 
 @Component({
     selector: "xmat-test",
@@ -21,6 +23,8 @@ export class XmatRestExamplesComponent implements OnInit, OnDestroy {
     timeA: number;
 
     //
+    protected _configB: XmatHttpConfig = this._rest.servicesConfigs.accountsByGid.get("5");
+    protected _configC: XmatHttpConfig = this._rest.servicesConfigs.getRequestsByUid("ABCDEF1");
 
     constructor(private _rest: XmatTestRestService) {
 
@@ -30,6 +34,7 @@ export class XmatRestExamplesComponent implements OnInit, OnDestroy {
         this._callA();
         // this._callB();
         // this._callC();
+        this._testQueueObj();
     }
 
     ngOnDestroy(): void {
@@ -60,10 +65,9 @@ export class XmatRestExamplesComponent implements OnInit, OnDestroy {
     }
 
     protected _callB(): void {
-        const myConfigB = this._rest.servicesConfigs.accountsByGid.get("5");
         this.statusB = "processing...";
         this.dataB = void 0;
-        this._rest.$http(myConfigB).subscribe(response => {
+        this._rest.$http(this._configB).subscribe(response => {
             this.dataB = response;
             this.statusB = "success";
         }, (error: HttpErrorResponse) => {
@@ -72,14 +76,24 @@ export class XmatRestExamplesComponent implements OnInit, OnDestroy {
     }
 
     protected _callC(): void {
-        const myConfigC = this._rest.servicesConfigs.getRequestsByUid("ABCDEF1");
         this.statusC = "processing...";
         this.dataC = void 0;
-        this._rest.$http(myConfigC).subscribe(response => {
+        this._rest.$http(this._configC).subscribe(response => {
             this.dataC = response;
             this.statusC = "success";
         }, (error: HttpErrorResponse) => {
             this.statusC = `fail ${error.status}`;
+        });
+    }
+
+    protected _testQueueObj(): void {
+
+        this._rest.$allMap({
+            first: this._configB,
+            second: this._configC
+        })
+        .subscribe((response: any) => {
+            console.info("$all response", response);
         });
     }
 
