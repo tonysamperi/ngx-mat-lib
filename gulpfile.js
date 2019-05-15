@@ -18,11 +18,12 @@ const gulp = require("gulp"),
 
 const libName = "ngx-mat-lib";
 const rootFolder = path.join(__dirname);
-const scssTestFolder = path.join(rootFolder, "scss-test");
 const libFolder = path.join(rootFolder, `projects/${libName}/src/lib`);
 const distFolder = path.join(rootFolder, `dist/${libName}`);
 const distCssFolder = path.join(distFolder, "css");
+
 // SASS TEST VARS
+const scssTestFolder = path.join(rootFolder, "scss-test");
 const libStylesFolder = path.join(libFolder, "scss");
 const testStylesFolder = path.join(rootFolder, "src");
 
