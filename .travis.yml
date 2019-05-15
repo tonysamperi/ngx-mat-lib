@@ -1,4 +1,4 @@
 language: node_js
-sudo: false
+script: npm run build:lib
 node_js:
-- '4.2.1'
+  - v10
