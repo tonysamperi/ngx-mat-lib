@@ -20,7 +20,6 @@
     "build:lib": "gulp build",
     "sass:lib": "gulp build:scss && gulp copy:scss",
     "pack:lib": "gulp pack",
-    "test-sass": "node-sass --include-path scss src/styles.scss --importer=node_modules/node-sass-tilde-importer sass-test/build/styles.css",
     "test:scss": "gulp test:scss",
     "publish:lib": "npm publish ./dist/ngx-mat-lib"
   },
