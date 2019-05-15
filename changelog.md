@@ -410,3 +410,12 @@
 #2.2.1
 * fixed http delay mechanism (pre/post delay)
 * added collapsed/expanded height input in XmatAccordion
+
+#2.2.2
+* xmat-library.scss aligned to v 7.2.3
+* Added custom optional body class in xmat-library
+* Fixed test:scss
+* Now grid columns number can be overridden
+* Styles refactor using @mixin
+* Moved xmat-overrides to new file
+* xmat-grid classnames can now be overridden

@@ -15,6 +15,7 @@ $xmat-accent: mat-palette($xmat-blue-accent) !default;
 $xmat-accent-light: mat-palette($xmat-blue-accent-light) !default;
 $xmat-warn: mat-palette($mat-red) !default;
 $xmat-theme: mat-light-theme($xmat-primary, $xmat-accent, $xmat-warn) !default;
+$xmat-body-class: "" !default;
 
 // MAPS: to get an item use map-get(map-name, map-key)
 $xmat-colors: (
@@ -36,7 +37,7 @@ $xmat-colors: (
         warn: mat-color($xmat-warn),
         white: #FFFFFF,
         yellow: mat-color($mat-yellow, 700)
-) !default;
+);
 
 //$xmat-breakpoints: (
 //        xs: $mat-xsmall, // 'max-width: 599px'
@@ -60,6 +61,11 @@ $xmat-font-family: mat-font-family($xmat-typography-config);
 // LAYOUTS
 $xmat-pad: $mat-toggle-padding;
 $xmat-size: $mat-toggle-size;
+
+// GRID
+$xmat-grid-cols: 12 !default;
+$xmat-row-class: ".xmat-row" !default;
+$xmat-col-class: ".xmat-col-" !default;
 
 // VARS
 $directions: top, right, bottom, left;
