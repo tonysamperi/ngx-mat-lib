@@ -1,6 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+// XMAT VARS OVERRIDES
+$xmat-body-class: "pippo";
+//
 @import "xmat-library";
 @import "xmat-vars";
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.

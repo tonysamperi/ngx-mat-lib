@@ -18,9 +18,13 @@ const gulp = require("gulp"),
 
 const libName = "ngx-mat-lib";
 const rootFolder = path.join(__dirname);
-const srcFolder = path.join(rootFolder, `projects/${libName}/src/lib`);
+const scssTestFolder = path.join(rootFolder, "scss-test");
+const libFolder = path.join(rootFolder, `projects/${libName}/src/lib`);
 const distFolder = path.join(rootFolder, `dist/${libName}`);
 const distCssFolder = path.join(distFolder, "css");
+// SASS TEST VARS
+const libStylesFolder = path.join(libFolder, "scss");
+const testStylesFolder = path.join(rootFolder, "src");
 
 const taskNames = {
     ngBuild: "ngBuild",
@@ -28,7 +32,8 @@ const taskNames = {
     mdsCopy: "mdsCopy",
     pack: "pack",
     stylesCopy: "copy:scss",
-    stylesBuild: "build:scss"
+    stylesBuild: "build:scss",
+    stylesTest: "test:scss"
 };
 
 gulp.task(taskNames.ngBuild, (cb) => {
@@ -44,7 +49,7 @@ gulp.task(taskNames.ngBuild, (cb) => {
 gulp.task(taskNames.stylesBuild, (cb) => {
     logStart(taskNames.stylesBuild);
     gulp.src([
-        `${srcFolder}/scss/xmat-library.scss`,
+        `${libFolder}/scss/xmat-library.scss`,
     ])
     .pipe(sass({
         importer: tildeImporter
@@ -57,7 +62,7 @@ gulp.task(taskNames.stylesBuild, (cb) => {
 gulp.task(taskNames.stylesCopy, (cb) => {
     logStart(taskNames.stylesCopy);
     gulp.src([
-        `${srcFolder}/**/*.scss`,
+        `${libFolder}/**/*.scss`,
     ])
     .pipe(gulp.dest(distFolder));
     logEnd(taskNames.stylesCopy);
@@ -87,10 +92,25 @@ gulp.task(taskNames.pack, (cb) => {
 });
 
 // MAIN
-gulp.task(taskNames.main, function (cb) {
+gulp.task(taskNames.main, (cb) => {
     logStart(taskNames.main);
     runSequence(taskNames.ngBuild, taskNames.stylesBuild, [taskNames.stylesCopy, taskNames.mdsCopy], (err) => {
         logEnd(taskNames.main);
         cb(err)
     });
+});
+
+// TEST SASS
+gulp.task(taskNames.stylesTest, (cb) => {
+    logStart(taskNames.stylesBuild);
+    gulp.src([
+        `${testStylesFolder}/styles.scss`,
+    ])
+    .pipe(sass({
+        importer: tildeImporter,
+        includePaths: [libStylesFolder]
+    }))
+    .pipe(gulp.dest(scssTestFolder));
+    logEnd(taskNames.stylesBuild);
+    cb();
 });

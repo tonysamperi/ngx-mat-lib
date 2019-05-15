@@ -426,3 +426,11 @@
 * Updated demo app according to v 5-latest
 * Added $all and $allMap in XmatRestService
 * Misc and refactor
+
+#7.2.3
+* Added custom optional body class in xmat-library
+* Fixed test:scss
+* Now grid columns number can be overridden
+* Styles refactor using @mixin
+* Moved xmat-overrides to new file
+* xmat-grid classnames can now be overridden

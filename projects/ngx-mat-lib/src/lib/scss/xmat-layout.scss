@@ -1,74 +1,77 @@
-.xmat-position-relative {
-  position: relative;
-}
-
-.xmat-debug {
-  display: none !important;
-}
-
-.xmat-ellipsis {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-.xmat-opacity-half {
-  opacity: 0.5;
-}
-
-.xmat-cursor-pointer {
-  cursor: pointer;
-}
-
-.xmat-required:after {
-  content: "*";
-  margin-left: 5px;
-  color: red;
-}
-
-@each $direction in $float-directions {
-  .xmat-float-#{$direction} {
-    float: $direction;
+@mixin xmat-layout() {
+  .xmat-position-relative {
+    position: relative;
   }
-}
 
-@each $rule in $space-rules {
+  .xmat-debug {
+    display: none !important;
+  }
 
-  .xmat-#{$rule}- {
-    @each $direction in $directions {
-      &#{$direction}- {
-        $i: 0;
-        @while $i < 51 {
-          &#{$i} {
-            #{$rule}-#{$direction}: #{$i}px;
+  .xmat-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .xmat-opacity-half {
+    opacity: 0.5;
+  }
+
+  .xmat-cursor-pointer {
+    cursor: pointer;
+  }
+
+  .xmat-required:after {
+    content: "*";
+    margin-left: 5px;
+    color: red;
+  }
+
+  @each $direction in $float-directions {
+    .xmat-float-#{$direction} {
+      float: $direction;
+    }
+  }
+
+  @each $rule in $space-rules {
+
+    .xmat-#{$rule}- {
+      @each $direction in $directions {
+        &#{$direction}- {
+          $i: 0;
+          @while $i < 51 {
+            &#{$i} {
+              #{$rule}-#{$direction}: #{$i}px;
+            }
+            $i: $i + 10;
           }
-          $i: $i + 10;
-        }
 
-        $i: 1;
-        @while $i < 5 {
-          $value: $i * $xmat-pad;
-          &#{$i}x {
-            #{$rule}-#{$direction}: #{$value};
+          $i: 1;
+          @while $i < 5 {
+            $value: $i * $xmat-pad;
+            &#{$i}x {
+              #{$rule}-#{$direction}: #{$value};
+            }
+            $i: $i + 1;
           }
-          $i: $i + 1;
         }
       }
     }
   }
-}
 
-// Default full margin/padding of 16px
-@each $rule in $space-rules {
-  .xmat-#{$rule}- {
-    $i: 1;
-    @while $i < 5 {
-      $value: $i * $xmat-pad;
-      &#{$i}x {
-        #{$rule}: #{$value};
+  // Default full margin/padding of 16px
+  @each $rule in $space-rules {
+    .xmat-#{$rule}- {
+      $i: 1;
+      @while $i < 5 {
+        $value: $i * $xmat-pad;
+        &#{$i}x {
+          #{$rule}: #{$value};
+        }
+        $i: $i + 1;
       }
-      $i: $i + 1;
     }
   }
+
 }

@@ -1,0 +1,31 @@
+@mixin xmat-typography() {
+  @each $direction in $text-directions {
+    .xmat-text-#{$direction} {
+      text-align: $direction;
+    }
+  }
+
+  @each $color-name, $color-value in $xmat-colors {
+    .xmat-color-#{$color-name} {
+      color: $color-value;
+    }
+  }
+
+  @each $color-name, $color-value in $xmat-colors {
+    .xmat-bg-#{$color-name} {
+      background-color: $color-value;
+    }
+  }
+
+  .xmat-uppercase {
+    text-transform: uppercase;
+  }
+
+  .xmat-lowercase {
+    text-transform: lowercase;
+  }
+
+  .xmat-capitalize {
+    text-transform: capitalize;
+  }
+}
