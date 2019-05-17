@@ -434,3 +434,8 @@
 * Styles refactor using @mixin
 * Moved xmat-overrides to new file
 * xmat-grid classnames can now be overridden
+
+#7.2.4
+* Fixed XmatHttpParams delay 
+* Improved test app
+* Misc and refactor
