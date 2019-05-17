@@ -15,16 +15,6 @@
 </mat-form-field>
 
 <hr />
-<div style="height: 100px; background: #e2e2e2">
-    <button (click)="actionDisabled = !actionDisabled">
-        ACTION TOGGLE DISABLED
-    </button>
-    <p>DISABLED = {{actionDisabled ? "true":"false"}}</p>
-    <span xmatActionText color="primary"
-          [disabled]="actionDisabled"
-          (click)="showSnackBar($event)">SHOW SNACKBAR</span>
-</div>
-
 
 <h2>DATEPICKER</h2>
 
@@ -70,3 +60,14 @@
 <xmat-legend [items]="myTestList" layout="grid"></xmat-legend>
 
 <xmat-legend [items]="myTestListB" layout="grid" columns="4" fillColumns="true"></xmat-legend>
+
+<!--<div style="height: 100px; background: #e2e2e2">-->
+<!--<button (click)="actionDisabled = !actionDisabled">-->
+<!--ACTION TOGGLE DISABLED-->
+<!--</button>-->
+<!--<p>DISABLED = {{actionDisabled ? "true":"false"}}</p>-->
+<!--<span xmatActionText color="primary"-->
+<!--[disabled]="actionDisabled"-->
+<!--(click)="showSnackBar($event)">SHOW SNACKBAR</span>-->
+<!--</div>-->
+

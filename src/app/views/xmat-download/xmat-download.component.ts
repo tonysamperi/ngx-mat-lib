@@ -18,6 +18,7 @@ export class XmatDownloadComponent {
         {fileName: "sample-pdf.pdf", url: "./assets/sample-pdf.pdf", desc: "Lorem ipsum dolor PDF"},
         {fileName: "sample-text.txt", url: "./assets/sample-text.txt", desc: "Lorem ipsum dolor TXT"}
     ];
+    selectedFile: XmatFile;
 
     constructor(private _http: HttpClient,
                 private _rest: XmatRestService,

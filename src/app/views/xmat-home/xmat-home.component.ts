@@ -27,17 +27,14 @@ export class XmatHomeComponent implements OnInit {
 
     actionDisabled: boolean = !0;
     dpModel = new Date();
-    twoWayText: string = "";
 
     icons = ["", "note_add", "delete_forever"];
     minDate: Date = minDate;
     maxDate: Date = today;
     isUbiTimeInputDisabled = !1;
     isUbiTimeInputRequired = !0;
-    selectedFile: XmatFile;
     testTimeModel: XmatTime = new XmatTime(12, 15);
     testTimeModel2: XmatTime;
-    title = "Test";
 
 
     constructor(private _functions: XmatFunctionsService) {

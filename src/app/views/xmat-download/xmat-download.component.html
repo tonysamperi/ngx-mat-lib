@@ -1,9 +1,16 @@
+<h1>Misc</h1>
+<p>Select one option from the dropdown and hit the download button</p>
 <select [(ngModel)]="selectedFile">
-    <option *ngFor="let file of files" [ngValue]="file">{{file.fileName}}</option>
+    <option *ngFor="let file of files"
+            [ngValue]="file">{{file.fileName}}</option>
 </select>
+<button [disabled]="!selectedFile"
+        class="xmat-margin-left-1x"
+        (click)="doDownload(selectedFile)">
+    DOWNLOAD!!
+</button>
 <br />
-<button [disabled]="!selectedFile" (click)="doDownload(selectedFile)">DOWNLOAD!!</button>
-<br />
+<p>You can also load a blob (select from the dropdown first)</p>
 <span xmatActionText (click)="loadBlob(selectedFile)" [disabled]="!selectedFile">
     LOAD BLOB IN IFRAME
 </span>

@@ -27,6 +27,7 @@ import {
     MatToolbarModule,
 } from "@angular/material";
 
+import {NgxJsonViewModule} from "ng-json-view";
 import {
     XMAT_DATE_FORMATS,
     XMAT_LOCALE_IT,
@@ -62,6 +63,7 @@ import {
 
 // VIEWS
 import {
+    XmatAccordionExamplesComponent,
     XmatDialogExamplesComponent,
     XmatDownloadComponent,
     XmatHomeComponent,
@@ -74,6 +76,7 @@ const XMAT_DECLARATIONS = [
     // COMPS
     XmatMenuComponent,
     // VIEWS
+    XmatAccordionExamplesComponent,
     XmatDialogExamplesComponent,
     XmatDownloadComponent,
     XmatHomeComponent,
@@ -138,8 +141,10 @@ export class XmatImportsModule {
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        // LIBS
+        NgxJsonViewModule,
         XmatImportsModule,
-        XmatCdkMatImportsModule
+        XmatCdkMatImportsModule,
     ],
     providers: [
         {provide: DateAdapter, useClass: XmatMatDateLocale},

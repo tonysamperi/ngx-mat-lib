@@ -12,6 +12,9 @@ import {delay} from "rxjs/operators";
 
 export class XmatRestExamplesComponent implements OnInit, OnDestroy {
 
+    preDelay: number = 2000;
+    postDelay: number = 3000;
+    //
     statusA: string = "idle";
     statusB: string = "idle";
     statusC: string = "idle";
@@ -26,6 +29,7 @@ export class XmatRestExamplesComponent implements OnInit, OnDestroy {
     protected _configB: XmatHttpConfig = this._rest.servicesConfigs.accountsByGid.get("5");
     protected _configC: XmatHttpConfig = this._rest.servicesConfigs.getRequestsByUid("ABCDEF1");
 
+
     constructor(private _rest: XmatTestRestService) {
 
     }
@@ -34,7 +38,7 @@ export class XmatRestExamplesComponent implements OnInit, OnDestroy {
         this._callA();
         // this._callB();
         // this._callC();
-        this._testQueueObj();
+        // this._testQueueObj();
     }
 
     ngOnDestroy(): void {
@@ -48,11 +52,10 @@ export class XmatRestExamplesComponent implements OnInit, OnDestroy {
     // Private
 
     protected _callA(): void {
-        // const myConfigA = this._rest.servicesConfigs.getOuRoles("abc", "def");
         const myConfigA = this._rest.servicesConfigs.postUsers();
-        myConfigA.params = new XmatHttpParams(5000, 5000);
+        myConfigA.params = new XmatHttpParams(this.preDelay, this.postDelay);
         this.statusA = "processing...";
-        this.dataA = void 0;
+        this.dataA = this.timeA = void 0;
         const startA = +new Date();
         this._rest.$http(myConfigA).subscribe(response => {
             console.info("GOT RESPONSE A", response);

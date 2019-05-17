@@ -10,6 +10,9 @@ export class XmatDialogExamplesComponent {
 
     @ViewChild("myDialogContent") myDialogContent: XmatDialogContentComponent;
 
+    title: string = "Dialog examples";
+    twoWayText: string = "";
+
     constructor(private _functions: XmatFunctionsService) {
 
     }

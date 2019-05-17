@@ -1,9 +1,14 @@
-<h1>TEST COMPONENT</h1>
+<h1>REST UTILS</h1>
 <div>
-    <p>
-        <button (click)="reloadA()">RELOAD Call A</button>
-    </p>
-    <p><strong>call A:</strong> {{statusA}}, data: {{(dataA | json) || "empty"}}</p>
+
+    <button (click)="reloadA()">RELOAD Call A</button>
+    <br />
+    <p><strong>call A state:</strong> {{statusA}}</p>
+    <ng-container *ngIf="!!dataA">
+        <h2>Call A response</h2>
+        <ngx-json-view [data]="dataA"></ngx-json-view>
+    </ng-container>
+
     <!--<hr />-->
     <!--<p><strong>call B:</strong> {{statusB}}, data: {{(dataB | json) || "empty"}}</p>-->
     <!--<hr />-->
@@ -11,5 +16,6 @@
 </div>
 <hr />
 <div>
-    <p *ngIf="timeA">got call A response after {{timeA}} ms</p>
+    <p *ngIf="timeA">got call A response after {{timeA}} ms. Pre delay was {{preDelay}}, post delay was
+        {{postDelay}}</p>
 </div>

@@ -1,8 +1,9 @@
 import {Routes} from "@angular/router";
 import {
-    XmatHomeComponent,
+    XmatAccordionExamplesComponent,
     XmatDialogExamplesComponent,
     XmatDownloadComponent,
+    XmatHomeComponent,
     XmatRestExamplesComponent,
 } from "../views/public";
 
@@ -16,9 +17,10 @@ export interface XmatRoute {
 }
 
 export enum XmatRoutesUrlsMap {
-    home = "home",
+    accordion = "accordion",
     download = "download",
     dialog = "dialog",
+    home = "home",
     rest = "rest"
 }
 
@@ -30,6 +32,16 @@ export const xmatRoutes: Routes = [
         data: {
             key: XmatRoutesUrlsMap.home,
             label: "Home",
+            mainMenu: !0,
+        }
+    },
+    {
+        path: XmatRoutesUrlsMap.accordion,
+        canActivate: [],
+        component: XmatAccordionExamplesComponent,
+        data: {
+            key: XmatRoutesUrlsMap.accordion,
+            label: "Accordion examples",
             mainMenu: !0,
         }
     },

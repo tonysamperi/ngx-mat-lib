@@ -13,7 +13,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration=production --aot=true --buildOptimizer=false --base-href= --outputHashing=all",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -38,6 +38,7 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.6.3",
     "lodash": "^4.17.11",
+    "ng-json-view": "^2.2.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

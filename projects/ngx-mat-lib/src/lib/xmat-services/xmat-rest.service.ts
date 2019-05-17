@@ -131,7 +131,7 @@ export class XmatRestService {
         }
         switch (config.method) {
             case XmatRestVerbs.GET:
-                let params = new HttpParams();
+                let params = config.params || new HttpParams();
                 /**
                  * Transform data in query params
                  */
