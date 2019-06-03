@@ -212,10 +212,10 @@ export class XmatFunctionsService {
     openAlertDialog(data: XmatAlertDialogData,
                     returnRef?: false): Observable<XmatAlertDialogActions>;
     openAlertDialog(data: XmatAlertDialogData,
-                    returnRef: true): MatDialogRef<XmatAlertDialogComponent, MatDialogConfig<XmatAlertDialogData>>;
+                    returnRef: true): MatDialogRef<XmatAlertDialogComponent, XmatAlertDialogActions>;
     openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData,
                     // tslint:disable-next-line:max-line-length
-                    returnRef: boolean = false): Observable<XmatAlertDialogActions> | MatDialogRef<XmatAlertDialogComponent, MatDialogConfig<XmatAlertDialogData>> {
+                    returnRef: boolean = false): Observable<XmatAlertDialogActions> | MatDialogRef<XmatAlertDialogComponent, XmatAlertDialogActions> {
         data = _.extend({}, this._defaultAlertData, data);
         const dialogConfig = new MatDialogConfig<XmatAlertDialogData>();
         _.extend(dialogConfig, {
@@ -248,12 +248,12 @@ export class XmatFunctionsService {
     openConfirmDialog(data: XmatConfirmDialogData,
                       disableClose: boolean,
                       width: string,
-                      returnRef: true): MatDialogRef<XmatConfirmDialogComponent, MatDialogConfig<XmatConfirmDialogData>>;
+                      returnRef: true): MatDialogRef<XmatConfirmDialogComponent, boolean>;
     openConfirmDialog(data?: XmatConfirmDialogData,
                       disableClose: boolean = false,
                       width: string = this._xmatConstants.dialogOptions.defaultWidth,
                       // tslint:disable-next-line:max-line-length
-                      returnRef: boolean = false): MatDialogRef<XmatConfirmDialogComponent, MatDialogConfig<XmatConfirmDialogData>> | Observable<boolean> {
+                      returnRef: boolean = false): MatDialogRef<XmatConfirmDialogComponent, boolean> | Observable<boolean> {
 
         const dialogConfig = new MatDialogConfig<XmatConfirmDialogData>();
         _.extend(dialogConfig, {

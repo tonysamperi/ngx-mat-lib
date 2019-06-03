@@ -439,3 +439,7 @@
 * Fixed XmatHttpParams delay 
 * Improved test app
 * Misc and refactor
+
+#7.2.5
+* Fixed types for MatDialogRef returned in openConfirmDialog
+* Fixed types for MatDialogRef returned in openAlertDialog
