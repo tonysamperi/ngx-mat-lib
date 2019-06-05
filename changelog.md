@@ -443,3 +443,6 @@
 #7.2.5
 * Fixed types for MatDialogRef returned in openConfirmDialog
 * Fixed types for MatDialogRef returned in openAlertDialog
+
+#7.2.6
+* SASS refactor: added xmat-functions to generate base palettes
