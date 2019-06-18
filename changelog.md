@@ -446,3 +446,6 @@
 
 #7.2.6
 * SASS refactor: added xmat-functions to generate base palettes
+
+#7.2.7
+* Fix XmatTime style, solves icon position on IE
