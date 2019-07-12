@@ -449,3 +449,7 @@
 
 #7.2.7
 * Fix XmatTime style, solves icon position on IE
+
+#7.2.8
+* Added xmatFillAtLeast validation (checks for 1 valid field in group)
+* Misc and refactor

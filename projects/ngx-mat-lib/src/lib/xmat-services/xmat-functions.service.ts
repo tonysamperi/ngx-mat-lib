@@ -1,6 +1,12 @@
 import {Injectable} from "@angular/core";
-import {MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig, MatSnackBarRef} from "@angular/material";
-import {Observable} from "rxjs";
+import {
+    MatDialog,
+    MatDialogConfig,
+    MatSnackBar,
+    MatSnackBarConfig,
+    MatSnackBarRef,
+    MatDialogRef
+} from "@angular/material";
 import {
     XmatConfirmDialogComponent,
     XmatAlertDialogComponent
@@ -10,12 +16,16 @@ import {
     XmatAlertTypes,
     XmatAlertDialogActions,
     XmatConfirmDialogData,
-    XmatSnackBarData
+    XmatSnackBarData,
+    XmatFileReaderEvent
 } from "../xmat-models/index";
 import {XmatConstantsService, XMAT_CONSTANT_LABELS} from "./xmat-constants.service";
 import {XmatSnackBarComponent} from "../xmat-snack-bar/index";
-import {MatDialogRef} from "@angular/material";
+import {Observable} from "rxjs";
+import * as moment_ from "moment";
 import * as _ from "lodash";
+
+const moment = moment_;
 
 const colorParams = {
     center: 128,
@@ -85,7 +95,7 @@ export class XmatFunctionsService {
         type: XmatAlertTypes.warning,
         title: XMAT_CONSTANT_LABELS.warningTitle,
         confirmText: XMAT_CONSTANT_LABELS.confirm,
-        cancelText: XMAT_CONSTANT_LABELS.cancel,
+        cancelText: XMAT_CONSTANT_LABELS.cancel
     };
 
     constructor(protected _dialog: MatDialog,
@@ -114,14 +124,12 @@ export class XmatFunctionsService {
                 // For both arrays and objects
                 if (!!source[key] && typeof source[key] === typeof {}) {
                     target[key] = this.createReflectionModel(source[key], level + 1);
-                }
-                else {
+                } else {
                     target[key] = void 0;
                 }
             }
             return target;
-        }
-        else {
+        } else {
             console.error("Cannot create reflection of non object");
             return void 0;
         }
@@ -228,8 +236,7 @@ export class XmatFunctionsService {
         const dialogRef = this._dialog.open(XmatAlertDialogComponent, dialogConfig);
         if (returnRef) {
             return dialogRef;
-        }
-        else {
+        } else {
             return new Observable(observer => {
                 // Catch result
                 dialogRef.afterClosed().subscribe((result: XmatAlertDialogActions) => {
@@ -268,8 +275,7 @@ export class XmatFunctionsService {
 
         if (returnRef) {
             return dialogRef;
-        }
-        else {
+        } else {
             return new Observable(observer => {
                 // Catch result
                 dialogRef.afterClosed().subscribe((result: boolean) => {
@@ -278,6 +284,32 @@ export class XmatFunctionsService {
                 });
             });
         }
+    }
+
+    parseDate(value: string | number): Date {
+        if (!value) {
+            return void 0;
+        }
+        const momentDate = moment(value);
+        if (!momentDate.isValid()) {
+            return this._parseDateFallback(value);
+        }
+        return moment(momentDate).toDate();
+    }
+
+
+    readAsUrl(source: Blob | File): Observable<XmatFileReaderEvent> {
+        return new Observable<XmatFileReaderEvent>(observer => {
+            const reader: FileReader = new FileReader();
+            reader.onload = (event: XmatFileReaderEvent) => {
+                observer.next(event);
+                observer.complete();
+            };
+            reader.onerror = reader.onabort = () => {
+                observer.error(!1);
+            };
+            reader.readAsDataURL(source);
+        });
     }
 
     showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}): MatSnackBarRef<XmatSnackBarComponent> {
@@ -293,6 +325,45 @@ export class XmatFunctionsService {
         });
 
         return this._snackBar.openFromComponent(XmatSnackBarComponent, snackBarConfig);
+    }
+
+    /**
+     * Returns a formatted string using the first argument as a printf-like format.
+     *
+     * The first argument is a string that contains zero or more placeholders.
+     * Each placeholder is replaced with the converted value from its corresponding argument.
+     *
+     * Supported placeholders are:
+     *
+     * %s - String.
+     * %d - Number (both integer and float).
+     * %% - single percent sign ('%'). This does not consume an argument.
+     */
+    sprintf(...args) {
+        let index = 1;
+        return (args[0] + "").replace(/%((\d)\$)?([sd%])/g, function (match, _group_, pos, _format_) {
+            if (match === "%%") {
+                return "%";
+            }
+            if (typeof pos === "undefined") {
+                pos = index++;
+            }
+            if (pos in args && pos > 0) {
+                return args[pos];
+            } else {
+                return match;
+            }
+        });
+    }
+
+    // Private methods
+
+    private _parseDateFallback(value: string | number) {
+        if (typeof value === typeof 0 || !isNaN(+value)) {
+            return new Date(+value);
+        } else {
+            return new Date(<string>value);
+        }
     }
 
 }

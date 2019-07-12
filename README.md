@@ -1,4 +1,4 @@
-# xMatLib 7.2.6
+# xMatLib 7.2.8
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -214,7 +214,6 @@ files normally.
 * Create dictionary for labels
 * Add xmat-countdown component
 * Add xmat-password component
-* Add xmat-request-state component
+* Add xmat-progress-state component
 * Add xmat-datepicker component
-* Add $q.all in XmatRest, see https://www.learnrxjs.io/operators/combination/forkjoin.html
 * Allow to change the color of the confirm button in xmat-confirm-dialog

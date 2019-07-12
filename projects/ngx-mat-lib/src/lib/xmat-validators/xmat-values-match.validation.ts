@@ -1,5 +1,4 @@
-import {AbstractControl, ValidatorFn} from "@angular/forms";
-import {XmatGenericObject} from "../xmat-models/index";
+import {AbstractControl, ValidatorFn, ValidationErrors} from "@angular/forms";
 import * as _ from "lodash";
 
 /**
@@ -12,19 +11,19 @@ export function xmatValuesMatchValidation(controlKeys: string[]): ValidatorFn {
     let error = null;
     let match = false;
     if (!controlKeys.length) {
-        console.warn("Invalid args supplied for valuesMatchValidation. Rule will not apply.");
+        console.warn("Invalid args supplied for valuesMatchValidation. Rule will not apply.", controlKeys);
         return error;
     }
     if (controlKeys.length === 1) {
         console.error("1 arg supplied for valuesMatchValidation. Rule will never comply.", controlKeys);
-        return (control: AbstractControl): XmatGenericObject => {
+        return (control: AbstractControl): ValidationErrors => {
             return {
                 [errorKey]: true
             };
         };
     }
 
-    return (control: AbstractControl): XmatGenericObject => {
+    return (control: AbstractControl): ValidationErrors => {
         match = false;
         error = null;
 
@@ -42,8 +41,7 @@ export function xmatValuesMatchValidation(controlKeys: string[]): ValidatorFn {
                 const toSet = _.merge(singleCtrl.errors, error);
                 singleCtrl.setErrors(toSet);
             });
-        }
-        else {
+        } else {
             _.each(controlKeys, key => {
                 const singleCtrl = control.get(key);
                 if (!!singleCtrl.errors && "valuesMatchValidation" in singleCtrl.errors) {
