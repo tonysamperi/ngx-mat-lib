@@ -64,6 +64,7 @@ _old
 _src/**
 _node_modules/**
 node_modules/**
+package-lock.json
 
 # Ngc generated files
 **/*.ngfactory.ts
