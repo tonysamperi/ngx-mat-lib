@@ -211,7 +211,7 @@ files normally.
 
 #TODOS
 * Add dynamic template to xmat-alert-dialog (as of xmat-confirm-dialog)
-* Create dictionary for labels
+* Create dictionary for labels (rely on ngx-translate?)
 * Add xmat-countdown component
 * Add xmat-password component
 * Add xmat-progress-state component
