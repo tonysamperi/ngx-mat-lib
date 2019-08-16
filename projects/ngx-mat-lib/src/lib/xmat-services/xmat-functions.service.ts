@@ -27,7 +27,9 @@ import {XmatSnackBarComponent} from "../xmat-snack-bar/index";
 //
 import {Observable} from "rxjs";
 import {each, includes, extend, merge} from "lodash";
-import * as moment from "moment";
+import * as _moment from "moment";
+
+const moment = _moment;
 
 const colorParams = {
     center: 128,
