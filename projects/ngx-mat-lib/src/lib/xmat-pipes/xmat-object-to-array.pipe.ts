@@ -1,6 +1,8 @@
 import {Pipe, PipeTransform} from "@angular/core";
+//
 import {XmatArrayItemFromObject, XmatGenericObject} from "../xmat-models/index";
-import * as _ from "lodash";
+//
+import {each} from "lodash";
 
 
 @Pipe({name: "objectToArray"})
@@ -12,7 +14,7 @@ export class XmatObjectToArrayPipe implements PipeTransform {
         }
         !!limitTo || (limitTo = Object.keys(object).length);
         const keys = [];
-        _.each(Object.keys(object), (key, index) => {
+        each(Object.keys(object), (key, index) => {
             keys.push({key: key, value: object[key]});
             // Breaks when limit is reached
             return index > limitTo;

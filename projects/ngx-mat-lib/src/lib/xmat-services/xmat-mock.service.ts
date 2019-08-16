@@ -7,6 +7,7 @@ import {
     HttpResponse,
     HttpEventType
 } from "@angular/common/http";
+//
 import {
     XmatGenericObject,
     XmatLib,
@@ -16,9 +17,10 @@ import {
 } from "../xmat-models/index";
 import {XmatConstantsService} from "./xmat-constants.service";
 import {XmatMocksListService} from "./xmat-mocks-list.service";
+//
 import {tap, switchMap} from "rxjs/operators";
 import {Observable, timer} from "rxjs";
-import * as _ from "lodash";
+import {each} from "lodash";
 
 @Injectable()
 export class XmatMockService implements HttpInterceptor {
@@ -44,7 +46,7 @@ export class XmatMockService implements HttpInterceptor {
                 protected _xmatMocksList: XmatMocksListService) {
 
         const mocks = this._xmatMocksList.get();
-        _.each(mocks, (mock) => {
+        each(mocks, (mock) => {
             this._pushMockHandler(mock);
         });
     }
@@ -74,7 +76,8 @@ export class XmatMockService implements HttpInterceptor {
         if (Array.isArray(urlParams)) {
             const serviceName = urlParts[0].substr(this._restBaseUrl.length).split(this._ds).shift();
             const serviceBase = methodKey + this._restBaseUrl + serviceName;
-            for (let j = urlParams.length - 1; j >= 0; j--) {
+            let j = urlParams.length;
+            while (--j >= 0) {
                 const paramsBak = urlParams.slice();
                 paramsBak[j] = this._paramsPlaceholder;
                 let mixedKey = [serviceBase].concat(paramsBak).join(this._ds);
@@ -159,7 +162,7 @@ export class XmatMockService implements HttpInterceptor {
             }
             else {
                 let fileNameSuffix = "";
-                _.each(params, (param) => {
+                each(params, (param) => {
                     fileNameSuffix += this._fileNameSpace + param;
                 });
                 const ending = mock.result === false ? this._fileEndings.ko : this._fileEndings.ok;

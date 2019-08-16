@@ -1,0 +1,28 @@
+@import "../scss/xmat-vars";
+@import "../scss/xmat-mixins";
+
+$theme-types: primary, accent, warn;
+$custom-types: success, info, warning, error, question, disabled;
+
+xmat-alert-box {
+  padding: 2px 0;
+  display: block;
+  overflow: hidden;
+  font-size: mat-font-size($xmat-typography-config, body-1);
+  .xmat-alert-box {
+    @each $type in $theme-types {
+      $bg: map-get($xmat-colors, $type);
+      &.xmat-alert-box-#{$type} {
+        background-color: $bg;
+        color: xmat-best-text-color($bg);
+      }
+    }
+    @each $type in $custom-types {
+      &.xmat-alert-box-#{$type} {
+        background-color: map-get($xmat-colors, $type);
+        color: map-get($xmat-colors, #{$type}-text);
+      }
+    }
+  }
+
+}

@@ -44,6 +44,9 @@
 
   }
 
+  // $xmat-all-cols: str-slice($xmat-all-cols, 0, str-length($xmat-all-cols) - 2);
+  // @debug "COLS SELECTOR = #{$xmat-all-cols}";
+
   #{$xmat-all-cols} {
     position: relative;
     min-height: 1px;

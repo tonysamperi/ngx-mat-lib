@@ -1,5 +1,5 @@
 import {AbstractControl, ValidatorFn, ValidationErrors} from "@angular/forms";
-import * as _ from "lodash";
+import {each, merge} from "lodash";
 
 /**
  * This Function can be assigned to FormGroup validation
@@ -16,7 +16,7 @@ export function xmatValuesMatchValidation(controlKeys: string[]): ValidatorFn {
     }
     if (controlKeys.length === 1) {
         console.error("1 arg supplied for valuesMatchValidation. Rule will never comply.", controlKeys);
-        return (control: AbstractControl): ValidationErrors => {
+        return (_control_: AbstractControl): ValidationErrors => {
             return {
                 [errorKey]: true
             };
@@ -27,7 +27,7 @@ export function xmatValuesMatchValidation(controlKeys: string[]): ValidatorFn {
         match = false;
         error = null;
 
-        _.each(controlKeys, (key, index) => {
+        each(controlKeys, (key, index) => {
             if (index > 0) {
                 // Breaks at first false value
                 return match = control.value[key] === control.value[controlKeys[index - 1]];
@@ -36,13 +36,13 @@ export function xmatValuesMatchValidation(controlKeys: string[]): ValidatorFn {
 
         if (!match) {
             error = {[errorKey]: true};
-            _.each(controlKeys, key => {
+            each(controlKeys, key => {
                 const singleCtrl = control.get(key);
-                const toSet = _.merge(singleCtrl.errors, error);
+                const toSet = merge(singleCtrl.errors, error);
                 singleCtrl.setErrors(toSet);
             });
         } else {
-            _.each(controlKeys, key => {
+            each(controlKeys, key => {
                 const singleCtrl = control.get(key);
                 if (!!singleCtrl.errors && "valuesMatchValidation" in singleCtrl.errors) {
                     delete singleCtrl.errors["valuesMatchValidation"];

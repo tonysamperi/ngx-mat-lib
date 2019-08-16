@@ -1,5 +1,13 @@
 @import "xmat-vars";
 
+@function xmat-best-text-color($bg, $ifLight: map-get($xmat-colors, primary-text), $ifDark: map-get($xmat-colors, primary-contrast)) {
+  @if (lightness($bg) > 50) {
+    @return $ifLight; // Lighter backgorund, return dark color
+  } @else {
+    @return $ifDark; // Darker background, return light color
+  }
+}
+
 //MIXINS
 
 @mixin xmat-transform($transforms) {

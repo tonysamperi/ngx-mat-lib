@@ -1,5 +1,5 @@
 import {FormGroup, ValidatorFn, ValidationErrors} from "@angular/forms";
-import * as _ from "lodash";
+import {sumBy} from "lodash";
 
 /**
  * Accepts a validator and a quantity.
@@ -13,7 +13,7 @@ export function xmatValidatorForAtLeast(validator: ValidatorFn, howMany: number 
 
     return (group: FormGroup): ValidationErrors => {
         if (group && group.controls) {
-            const validCount = _.sumBy(Object.keys(group.controls), (key) => {
+            const validCount = sumBy(Object.keys(group.controls), (key) => {
                 const value = group.controls[key];
                 const result = validator(value);
                 return +!result;

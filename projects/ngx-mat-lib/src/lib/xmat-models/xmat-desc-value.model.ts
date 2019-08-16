@@ -1,4 +1,5 @@
-export interface XmatDescValuePair<T = any> {
-    desc: string;
+export interface XmatSelect<T = any> {
+    description: string;
     value: T;
 }
+

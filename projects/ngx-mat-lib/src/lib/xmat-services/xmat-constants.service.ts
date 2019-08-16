@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
-import {XmatDynamicRestVerbsRef, XmatDescValuePair, XmatGenericObject} from "../xmat-models/index";
-import * as _ from "lodash";
+import {XmatDynamicRestVerbsRef, XmatGenericObject, XmatConstantsLabels} from "../xmat-models/index";
+import {cloneDeep} from "lodash";
 
 // tslint:disable-next-line:naming-convention
-export const XMAT_CONSTANT_LABELS: XmatGenericObject<any> = {
+export const XMAT_CONSTANT_LABELS: XmatConstantsLabels = {
     accept: "Ok",
     cancel: "Annulla",
     changedMind: "Ci ho ripensato",
@@ -13,6 +13,7 @@ export const XMAT_CONSTANT_LABELS: XmatGenericObject<any> = {
         full: ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"],
         short: ["Lun", "Marì", "Mer", "Gio", "Ven", "Sab", "Dom"]
     },
+    errorTitle: "Errore durante l'elaborazione",
     genericError: "Errore tecnico generico",
     leave: "Me ne vado",
     months: {
@@ -67,14 +68,14 @@ export class XmatConstantsService {
 
     public readonly dialogOptions: any = {
         defaultWidth: "400px",
-        disableClose: true,
+        disableClose: true
     };
 
     public readonly ds: string = "/";
 
     public readonly fileNameSpace: string = "-";
 
-    public labels: XmatGenericObject = _.cloneDeep(XMAT_CONSTANT_LABELS);
+    public labels: XmatConstantsLabels = cloneDeep(XMAT_CONSTANT_LABELS);
 
     public messages: XmatGenericObject<string> = {
         warningTitle: XMAT_CONSTANT_LABELS.warningTitle,
@@ -85,7 +86,7 @@ export class XmatConstantsService {
         GET: "get-",
         PUT: "put-",
         POST: "post-",
-        DELETE: "delete-",
+        DELETE: "delete-"
     };
 
     public readonly paramsPlaceholder: string = "@params@";
@@ -97,13 +98,6 @@ export class XmatConstantsService {
         multipleWhiteSpaces: "\\s+(?=\\s)"
     };
     public readonly routeParams: string = "routeParams";
-
-    public readonly selectOptions: XmatGenericObject<XmatDescValuePair<any>> = {
-        empty: {
-            desc: "Seleziona...",
-            value: void 0
-        }
-    };
 
     constructor() {
     }

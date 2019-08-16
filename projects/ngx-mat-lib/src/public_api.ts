@@ -1,5 +1,7 @@
+export * from "./lib/mat-form-field-required/index";
 export * from "./lib/xmat-action-text/index";
 export * from "./lib/xmat-accordion/index";
+export * from "./lib/xmat-alert-box/index";
 export * from "./lib/xmat-badge/index";
 export * from "./lib/xmat-dialog/index";
 export * from "./lib/xmat-global-spinner/index";

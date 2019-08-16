@@ -1,4 +1,5 @@
 import {Injectable} from "@angular/core";
+import {ParamMap, Params, convertToParamMap} from "@angular/router";
 import {
     MatDialog,
     MatDialogConfig,
@@ -7,6 +8,7 @@ import {
     MatSnackBarRef,
     MatDialogRef
 } from "@angular/material";
+//
 import {
     XmatConfirmDialogComponent,
     XmatAlertDialogComponent
@@ -17,15 +19,15 @@ import {
     XmatAlertDialogActions,
     XmatConfirmDialogData,
     XmatSnackBarData,
-    XmatFileReaderEvent
+    XmatFileReaderEvent,
+    XmatGenericObject
 } from "../xmat-models/index";
 import {XmatConstantsService, XMAT_CONSTANT_LABELS} from "./xmat-constants.service";
 import {XmatSnackBarComponent} from "../xmat-snack-bar/index";
+//
 import {Observable} from "rxjs";
-import * as moment_ from "moment";
-import * as _ from "lodash";
-
-const moment = moment_;
+import {each, includes, extend, merge} from "lodash";
+import * as moment from "moment";
 
 const colorParams = {
     center: 128,
@@ -46,14 +48,14 @@ const rgb2Hex = (r, g, b) => {
 
 const eachEnum = (srcEnum, iteratee) => {
     const target = [];
-    _.each(srcEnum, (key) => {
+    each(srcEnum, (key) => {
         // Continue if key is not a number
         if (typeof srcEnum[key] !== typeof 0) {
             return true;
         }
         target.push(srcEnum[key]);
     });
-    return _.each(target, iteratee);
+    return each(target, iteratee);
 };
 
 const eachFrom = (array, index, iteratee) => {
@@ -124,12 +126,14 @@ export class XmatFunctionsService {
                 // For both arrays and objects
                 if (!!source[key] && typeof source[key] === typeof {}) {
                     target[key] = this.createReflectionModel(source[key], level + 1);
-                } else {
+                }
+                else {
                     target[key] = void 0;
                 }
             }
             return target;
-        } else {
+        }
+        else {
             console.error("Cannot create reflection of non object");
             return void 0;
         }
@@ -150,6 +154,37 @@ export class XmatFunctionsService {
 
     eachFrom(collection, index, iteratee): any[] {
         return eachFrom(collection, index, iteratee);
+    }
+
+    extractQueryParams(queryString = location.search): ParamMap {
+        const query: Params = {};
+        const pairs = (queryString[0] === "?" ? queryString.substr(1) : queryString).split("&");
+        each(pairs, pair => {
+            const key = decodeURIComponent(pair.split("=")[0]);
+            if (!!key) {
+                query[key] = decodeURIComponent(pair.split("=")[1] || "");
+            }
+        });
+        return convertToParamMap(query);
+    }
+
+    filterProps(original: XmatGenericObject, exclude: string[] = []): XmatGenericObject {
+        if (original !== Object(original)) {
+            console.error("TidUtils => Argument was not valid object", original);
+            return;
+        }
+
+        if (Array.isArray(exclude) && exclude.length) {
+            return Object.keys(original).reduce((obj, key) => {
+                if (!includes(exclude, key)) {
+                    obj[key] = original[key];
+                }
+
+                return obj;
+            }, {});
+        }
+
+        return original;
     }
 
     /**
@@ -224,9 +259,9 @@ export class XmatFunctionsService {
     openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData,
                     // tslint:disable-next-line:max-line-length
                     returnRef: boolean = false): Observable<XmatAlertDialogActions> | MatDialogRef<XmatAlertDialogComponent, XmatAlertDialogActions> {
-        data = _.extend({}, this._defaultAlertData, data);
+        data = extend({}, this._defaultAlertData, data);
         const dialogConfig = new MatDialogConfig<XmatAlertDialogData>();
-        _.extend(dialogConfig, {
+        extend(dialogConfig, {
             id: data.dialogId,
             width: this._xmatConstants.dialogOptions.defaultWidth,
             data: data,
@@ -236,7 +271,8 @@ export class XmatFunctionsService {
         const dialogRef = this._dialog.open(XmatAlertDialogComponent, dialogConfig);
         if (returnRef) {
             return dialogRef;
-        } else {
+        }
+        else {
             return new Observable(observer => {
                 // Catch result
                 dialogRef.afterClosed().subscribe((result: XmatAlertDialogActions) => {
@@ -263,10 +299,10 @@ export class XmatFunctionsService {
                       returnRef: boolean = false): MatDialogRef<XmatConfirmDialogComponent, boolean> | Observable<boolean> {
 
         const dialogConfig = new MatDialogConfig<XmatConfirmDialogData>();
-        _.extend(dialogConfig, {
+        extend(dialogConfig, {
             id: data.dialogId,
             width: width,
-            data: <XmatConfirmDialogData>_.merge({}, this._confirmDialogDefaults, data),
+            data: <XmatConfirmDialogData>merge({}, this._confirmDialogDefaults, data),
             disableClose: disableClose
         });
 
@@ -275,7 +311,8 @@ export class XmatFunctionsService {
 
         if (returnRef) {
             return dialogRef;
-        } else {
+        }
+        else {
             return new Observable(observer => {
                 // Catch result
                 dialogRef.afterClosed().subscribe((result: boolean) => {
@@ -318,13 +355,28 @@ export class XmatFunctionsService {
         if (!!data.type) {
             panelClassNames.push(data.type);
         }
-        _.extend(snackBarConfig, {
+        extend(snackBarConfig, {
             data: data,
             duration: data.duration || 5000,
             panelClass: panelClassNames
         });
 
         return this._snackBar.openFromComponent(XmatSnackBarComponent, snackBarConfig);
+    }
+
+    /**
+     * Shortcut to open an XmatAlertDialog passing only an error message
+     * @param msg
+     */
+    showErrorAlert(msg: string | HTMLElement = this._xmatConstants.labels.genericError): Observable<XmatAlertDialogActions> {
+        return this.openAlertDialog({
+            type: XmatAlertTypes.error,
+            title: this._xmatConstants.labels.errorTitle,
+            dialogContent: msg,
+            hideCancelButton: !0,
+            hideConfirmButton: !1,
+            confirmText: this._xmatConstants.labels.close
+        } as XmatAlertDialogData);
     }
 
     /**
@@ -339,7 +391,7 @@ export class XmatFunctionsService {
      * %d - Number (both integer and float).
      * %% - single percent sign ('%'). This does not consume an argument.
      */
-    sprintf(...args) {
+    sprintf(...args): string {
         let index = 1;
         return (args[0] + "").replace(/%((\d)\$)?([sd%])/g, function (match, _group_, pos, _format_) {
             if (match === "%%") {
@@ -350,7 +402,8 @@ export class XmatFunctionsService {
             }
             if (pos in args && pos > 0) {
                 return args[pos];
-            } else {
+            }
+            else {
                 return match;
             }
         });
@@ -361,7 +414,8 @@ export class XmatFunctionsService {
     private _parseDateFallback(value: string | number) {
         if (typeof value === typeof 0 || !isNaN(+value)) {
             return new Date(+value);
-        } else {
+        }
+        else {
             return new Date(<string>value);
         }
     }

@@ -1,4 +1,4 @@
-# xMatLib 7.2.8
+# xMatLib 7.2.9
 
 A bunch of utilities and components to use in your Angular 5+ apps!
 
@@ -186,9 +186,11 @@ $ npm run lint
 ##Thanks to
 
 Versioning
-Font Awesome will be maintained under the Semantic Versioning guidelines as much as possible. Releases will be numbered with the following format:
+NgxMatLib will be maintained under the Semantic Versioning guidelines as much as possible.
 
-<major>.<minor>.<patch>
+Releases will be numbered with the following format:
+
+`<major>.<minor>.<patch>`
 
 And constructed with the following guidelines:
 

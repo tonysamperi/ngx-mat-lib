@@ -453,3 +453,14 @@
 #7.2.8
 * Added xmatFillAtLeast validation (checks for 1 valid field in group)
 * Misc and refactor
+
+#7.2.9
+* XmatAlertDialog refactored
+* XmatConstantsService labels moved to new file (will better deal with dictionary)
+* New component XmatAlertBox similar to *alert in Bootstrap*
+* XmatAlertTypes moved to new file (used now by new component XmatAlertBox)
+* Refactored lodash imports (better complies with packager)
+* New functions in XmatFunctionsService: extractQueryParams, filterProps
+* New directive MatFormFieldRequired. Deals with MatFormField and ReactiveForms
+* XmatDescValuePair renamed in XmatSelect (still suitable for radios)
+* Misc and refactor

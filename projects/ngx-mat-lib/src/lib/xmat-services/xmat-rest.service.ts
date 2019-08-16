@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {Observable, forkJoin, of} from "rxjs";
-import {map} from "rxjs/operators";
+//
 import {XmatConstantsService} from "./xmat-constants.service";
 import {
     XmatFile,
@@ -10,7 +9,10 @@ import {
     XmatRestVerbs
 } from "../xmat-models/index";
 import {XmatGenericObject} from "../xmat-models/index";
-import * as _ from "lodash";
+//
+import {Observable, forkJoin} from "rxjs";
+import {map} from "rxjs/operators";
+import {each} from "lodash";
 
 /**
  * XMAT REST BY TONY SAMPERI
@@ -96,7 +98,7 @@ export class XmatRestService {
 
     $all(configs: XmatHttpConfig[]): Observable<any[]> {
         const queue: Observable<any>[] = [];
-        _.each(configs, (c: XmatHttpConfig) => {
+        each(configs, (c: XmatHttpConfig) => {
             queue.push(this.$http(c));
         });
 
@@ -106,14 +108,14 @@ export class XmatRestService {
     $allMap(configs: XmatGenericObject<XmatHttpConfig>): Observable<any> {
         const queue: Observable<any>[] = [];
         const queueKeys: Array<number | string> = [];
-        _.each(configs, (c: XmatHttpConfig, key: string | number) => {
+        each(configs, (c: XmatHttpConfig, key: string | number) => {
             queue.push(this.$http(c));
             queueKeys.push(key);
         });
         return forkJoin(queue)
         .pipe(map((raw: any[]) => {
             const mapped = {};
-            _.each(raw, (value, index) => {
+            each(raw, (value, index) => {
                 mapped[queueKeys[index]] = value;
             });
 

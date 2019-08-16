@@ -6,11 +6,13 @@ import {
     ViewContainerRef,
     ViewEncapsulation
 } from "@angular/core";
+//
 import {XmatLegendItemContentComponent} from "./xmat-legend-item-content.component";
 import {XmatLegendItem, XmatLegendLayout, XmatLegendLayouts} from "./xmat-legend.model";
 import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {XmatLegendItemStyle} from "./xmat-legend.model";
-import * as _ from "lodash";
+//
+import {each} from "lodash";
 
 const xmatLegendDefaultCols: number = 4;
 
@@ -90,7 +92,7 @@ export class XmatLegendComponent {
         }
         if (this._fillColumns) {
             const fillerCount = (this._columns - (this.items.length % this._columns)) % this._columns;
-            _.each(new Array(fillerCount), () => {
+            each(new Array(fillerCount), () => {
                     this.items.push({
                         content: `<span style="display: none"></span>`,
                         className: "xmat-grid-fill"
@@ -98,8 +100,7 @@ export class XmatLegendComponent {
                 }
             );
         }
-
-        _.each(this.items, (item: XmatLegendItem) => {
+        each(this.items, (item: XmatLegendItem) => {
             if (typeof item.content === "string") {
                 const tmpCompInstance = this._constructContent();
                 // this._xmatFunctions.logWithStyle("XmatLegend", "Was String Content", "#006699", item.content);

@@ -1,5 +1,5 @@
 import {AbstractControl, ValidatorFn} from "@angular/forms";
-import * as _ from "lodash";
+import {indexOf} from "lodash";
 
 /**
  * A selection must match
@@ -11,7 +11,7 @@ export function xmatValidListSelection(sourceOptions: any[], controlKey): Valida
         if (!value) {
             return null;
         }
-        const matchIndex = _.indexOf(sourceOptions, value);
+        const matchIndex = indexOf(sourceOptions, value);
         return matchIndex > -1 ? null : {"invalidListSelection": {value: control.value}};
     };
 }

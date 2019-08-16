@@ -1,5 +1,7 @@
-$swal2-white:       #fff !default;
-$swal2-black:       #000 !default;
+@import "../scss/xmat-vars";
+
+$swal2-white: #fff !default;
+$swal2-black: #000 !default;
 
 // BOX MODEL
 $swal2-width: 32em !default;
@@ -22,10 +24,11 @@ $swal2-icon-size: 5em !default;
 $swal2-icon-zoom: normal !default;
 $swal2-success: #a5dc86 !default;
 $swal2-success-border: rgba($swal2-success, .3) !default;
-$swal2-error: #f27474 !default;
-$swal2-warning: #f8bb86 !default;
-$swal2-info: #3fc3ee !default;
-$swal2-question: #87adbd !default;
+
+$swal2-error: map-get($xmat-colors, danger) !default;
+$swal2-warning: map-get($xmat-colors, warning) !default;
+$swal2-info: map-get($xmat-colors, info) !default;
+$swal2-question: map-get($xmat-colors, question) !default;
 
 // IMAGE
 $swal2-image-margin: 1.25em auto !default;

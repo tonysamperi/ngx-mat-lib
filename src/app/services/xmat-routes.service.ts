@@ -1,7 +1,9 @@
 import {Injectable} from "@angular/core";
 import {Route} from "@angular/router";
+//
 import {XmatRoute} from "../models/public";
-import * as _ from "lodash";
+//
+import {each} from "lodash";
 
 @Injectable()
 export class XmatRoutesService {
@@ -26,7 +28,7 @@ export class XmatRoutesService {
     generateXmatRoutesItems(condition?: string): XmatRoute[] {
         const ds = "/";
         const result: XmatRoute[] = [];
-        _.each(this._routes, route => {
+        each(this._routes, route => {
             if (!!route.data) {
                 if (!!condition && !route.data[condition]) {
                     return !0;

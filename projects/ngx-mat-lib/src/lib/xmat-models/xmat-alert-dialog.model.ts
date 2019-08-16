@@ -1,3 +1,5 @@
+import {XmatAlertTypes} from "./xmat-alert-types.model";
+
 export interface XmatAlertDialogData {
     cancelText?: string;
     confirmText?: string;
@@ -8,14 +10,6 @@ export interface XmatAlertDialogData {
     showCloseButton?: boolean;
     title?: string;
     type: XmatAlertTypes;
-}
-
-export enum XmatAlertTypes {
-    success,
-    error,
-    question,
-    info,
-    warning
 }
 
 export enum XmatAlertDialogActions {

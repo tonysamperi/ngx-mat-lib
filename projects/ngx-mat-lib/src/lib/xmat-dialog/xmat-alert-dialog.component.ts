@@ -1,8 +1,11 @@
 import {AfterViewInit, Component, Inject, Input, OnInit, ViewChild} from "@angular/core";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
-import {XmatAlertDialogActions, XmatAlertTypes} from "../xmat-models/xmat-alert-dialog.model";
+//
+import {XmatAlertDialogActions} from "../xmat-models/xmat-alert-dialog.model";
 import {XmatAlertDialogData} from "../xmat-models/xmat-alert-dialog.model";
-import * as _ from "lodash";
+import {XmatAlertTypes} from "../xmat-models/xmat-alert-types.model";
+//
+import {merge} from "lodash";
 
 const bgColorKeyKebab: string = "background-color";
 const bgColorKeyCamel: string = "backgroundColor";
@@ -76,7 +79,7 @@ export class XmatAlertDialogComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         // Apply primary bg if color is not set
         if (!!this._confirmStyles) {
-            _.merge(this.md.styles.confirm, this._confirmStyles);
+            merge(this.md.styles.confirm, this._confirmStyles);
         }
         const hasDefaultColor = !!this.md.styles.confirm[bgColorKeyKebab] || !!this.md.styles.confirm[bgColorKeyCamel];
 
@@ -87,7 +90,7 @@ export class XmatAlertDialogComponent implements OnInit, AfterViewInit {
         }
 
         if (!!this._cancelStyles) {
-            _.merge(this.md.styles.cancel, this._cancelStyles);
+            merge(this.md.styles.cancel, this._cancelStyles);
         }
     }
 
