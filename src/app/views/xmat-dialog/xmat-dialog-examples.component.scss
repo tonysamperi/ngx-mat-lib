@@ -1,0 +1,10 @@
+@import "xmat-vars";
+
+.xmat-alert-buttons-wrap {
+  > button {
+	margin: $xmat-pad;
+	&:first-child {
+	  margin-left: 0;
+	}
+  }
+}

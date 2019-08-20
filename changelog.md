@@ -464,3 +464,7 @@
 * New directive MatFormFieldRequired. Deals with MatFormField and ReactiveForms
 * XmatDescValuePair renamed in XmatSelect (still suitable for radios)
 * Misc and refactor
+
+#7.2.10
+* Reverted XmatAlertDialog colors
+* Added XmatAlertDialog examples in Dialog Examples

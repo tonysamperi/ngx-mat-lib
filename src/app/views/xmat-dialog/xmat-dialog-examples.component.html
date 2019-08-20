@@ -1,11 +1,33 @@
 <h1>{{title}}</h1>
 <hr />
 <p>REF TEXT: {{twoWayText || "empty"}}</p>
-<button (click)="showDialog()">
-    SHOW DIALOG
+
+<div class="xmat-alert-buttons-wrap">
+    <button mat-button mat-raised-button (click)="showAlert(alertTypes.error)">
+        SHOW ERROR ALERT
+    </button>
+    <button mat-button mat-raised-button (click)="showAlert(alertTypes.warning)">
+        SHOW WARNING ALERT
+    </button>
+    <button mat-button mat-raised-button (click)="showAlert(alertTypes.info)">
+        SHOW INFO ALERT
+    </button>
+    <button mat-button mat-raised-button (click)="showAlert(alertTypes.question)">
+        SHOW QUESTION ALERT
+    </button>
+    <button mat-button mat-raised-button (click)="showAlert(alertTypes.success)">
+        SHOW SUCCESS ALERT
+    </button>
+</div>
+<hr class="xmat-margin-top-1x xmat-margin-bottom-1x" />
+<button mat-button mat-raised-button (click)="showDialog()">
+    SHOW DIALOG WITH REF
 </button>
 
 <xmat-dialog-content #myDialogContent>
-    <input type="text" [(ngModel)]="twoWayText" />
+    <input title="Custom text bind to dialog"
+           type="text"
+           [(ngModel)]="twoWayText" />
     <p>My static content</p>
 </xmat-dialog-content>
+
