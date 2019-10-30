@@ -1,7 +1,15 @@
-import {AfterViewInit, Component, ElementRef, Input, ViewChild, ViewEncapsulation} from "@angular/core";
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    Input,
+    Output,
+    ViewEncapsulation
+} from "@angular/core";
 import {CanDisable, CanColor, ThemePalette, mixinColor} from "@angular/material";
 import {Constructor} from "@angular/material/typings/core/common-behaviors/constructor";
 import {coerceBooleanProperty} from "@angular/cdk/coercion";
+import {EventEmitter} from "@angular/core";
 
 const DEFAULT_COLOR = "accent";
 const transcludedHeaderSelector: string = ".xmat-accordion-title";
@@ -35,19 +43,42 @@ export const _XmatAccordionMixinBase: Constructor<CanColor> & typeof XmatAccordi
 
 export class XmatAccordionComponent extends _XmatAccordionMixinBase implements CanColor, CanDisable, AfterViewInit {
 
+    @Output() expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
     @Input() color: ThemePalette;
     @Input() disabled: boolean;
 
     @Input()
     set expanded(value: boolean) {
         this._expanded = coerceBooleanProperty(value);
+        this.expandedChange.emit(this._expanded);
     }
 
     get expanded(): boolean {
         return this._expanded;
     }
 
+    @Input()
+    set collapsedHeight(value: string) {
+        this._collapsedHeight = value;
+    }
+
+    get collapsedHeight(): string {
+        return this._collapsedHeight;
+    }
+
+    @Input()
+    set expandedHeight(value: string) {
+        this._expandedHeight = value;
+    }
+
+    get expandedHeight(): string {
+        return this._expandedHeight;
+    }
+
     private _expanded: boolean = false;
+    private _collapsedHeight: string;
+    private _expandedHeight: string;
 
     constructor(elementRef: ElementRef) {
         super(elementRef);

@@ -468,3 +468,8 @@
 #7.2.10
 * Reverted XmatAlertDialog colors
 * Added XmatAlertDialog examples in Dialog Examples
+
+#7.2.11
+* Added controls for XmatAccordion: ExpandedHeight and CollapsedHeight
+* Added emit for expanded attr in XmatAccordion
+* Added PATCH verb in XmatRestVerbs and XmatRestService 

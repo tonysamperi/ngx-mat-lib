@@ -86,7 +86,8 @@ export class XmatConstantsService {
         GET: "get-",
         PUT: "put-",
         POST: "post-",
-        DELETE: "delete-"
+        DELETE: "delete-",
+        PATCH: "patch-"
     };
 
     public readonly paramsPlaceholder: string = "@params@";

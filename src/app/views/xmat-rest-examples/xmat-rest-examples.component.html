@@ -1,12 +1,31 @@
 <h1>REST UTILS</h1>
 <div>
-
-    <button (click)="reloadA()">RELOAD Call A</button>
+    <button mat-raised-button
+            class="xmat-d-inline-block xmat-margin-right-2x"
+            color="primary"
+            [disabled]="statusA === states.RUNNING"
+            (click)="reloadA()">RELOAD Call A
+    </button>
+    <button mat-raised-button
+            class="xmat-d-inline-block xmat-margin-right-2x"
+            color="primary"
+            (click)="doQueue()">TRY $q
+    </button>
+    <button mat-raised-button
+            class="xmat-d-inline-block xmat-margin-right-2x"
+            color="primary"
+            (click)="doPatch()">TRY PATCH
+    </button>
     <br />
     <p><strong>call A state:</strong> {{statusA}}</p>
     <ng-container *ngIf="!!dataA">
         <h2>Call A response</h2>
         <ngx-json-view [data]="dataA"></ngx-json-view>
+    </ng-container>
+
+    <ng-container *ngIf="!!patchData">
+        <h2>PATCH response</h2>
+        <ngx-json-view [data]="patchData"></ngx-json-view>
     </ng-container>
 
     <!--<hr />-->
@@ -16,6 +35,7 @@
 </div>
 <hr />
 <div>
-    <p *ngIf="timeA">got call A response after {{timeA}} ms. Pre delay was {{preDelay}}, post delay was
-        {{postDelay}}</p>
+    <p *ngIf="timeA">got call A response after <strong>{{timeA}}</strong> ms. Pre delay was
+        <strong>{{preDelay}}</strong>, post delay was
+        <strong>{{postDelay}}</strong></p>
 </div>

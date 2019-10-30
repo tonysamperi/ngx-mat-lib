@@ -23,7 +23,8 @@ export class XmatTestRestService extends XmatRestService {
         getOuUsers: `${this._restBaseUrl}ou/${_param}/${_param}/people`,
         getOuRoles: `${this._restBaseUrl}ou/${_param}/${_param}/roles`,
         getRequestsByUid: `${this._restBaseUrl}requests/subject/${_param}`,
-        postUsers: `https://reqres.in/api/users`
+        postUsers: `https://reqres.in/api/users`,
+        testPatch: `${this._restBaseUrl}requests/test`,
     };
 
     readonly servicesConfigs = {
@@ -52,6 +53,9 @@ export class XmatTestRestService extends XmatRestService {
         },
         postUsers: (): XmatHttpConfig => {
             return this._generateHttpConfig(XmatRestVerbs.GET, this.servicesUrls.postUsers);
+        },
+        testPatch: (): XmatHttpConfig => {
+            return this._generateHttpConfig(XmatRestVerbs.PATCH, this.servicesUrls.testPatch);
         }
     };
 

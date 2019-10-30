@@ -34,4 +34,14 @@ $palette: (
     }
   }
 
+  &.xmat-accordion-no-top-padding {
+    mat-expansion-panel.mat-expansion-panel {
+      .mat-expansion-panel-content {
+        .mat-expansion-panel-body {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
 }

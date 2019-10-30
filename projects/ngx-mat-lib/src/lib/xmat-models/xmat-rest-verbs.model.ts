@@ -2,8 +2,9 @@ export enum XmatRestVerbs {
     GET = "GET",
     POST = "POST",
     PUT = "PUT",
-    DELETE = "DELETE"
+    DELETE = "DELETE",
+    PATCH = "PATCH"
 }
 
-export type XmatDynamicRestVerbsRef<T> = {[key in keyof typeof XmatRestVerbs]: T};
+export type XmatDynamicRestVerbsRef<T> = { [key in keyof typeof XmatRestVerbs]: T };
 

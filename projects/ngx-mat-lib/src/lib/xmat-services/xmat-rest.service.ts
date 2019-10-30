@@ -12,7 +12,7 @@ import {XmatGenericObject} from "../xmat-models/index";
 //
 import {Observable, forkJoin} from "rxjs";
 import {map} from "rxjs/operators";
-import {each} from "lodash";
+import {forEach} from "lodash";
 
 /**
  * XMAT REST BY TONY SAMPERI
@@ -98,24 +98,24 @@ export class XmatRestService {
 
     $all(configs: XmatHttpConfig[]): Observable<any[]> {
         const queue: Observable<any>[] = [];
-        each(configs, (c: XmatHttpConfig) => {
+        forEach(configs, (c: XmatHttpConfig) => {
             queue.push(this.$http(c));
         });
 
         return forkJoin(queue);
     }
 
-    $allMap(configs: XmatGenericObject<XmatHttpConfig>): Observable<any> {
+    $allMap(configs: XmatGenericObject<XmatHttpConfig>): Observable<XmatGenericObject<any>> {
         const queue: Observable<any>[] = [];
         const queueKeys: Array<number | string> = [];
-        each(configs, (c: XmatHttpConfig, key: string | number) => {
+        forEach(configs, (c: XmatHttpConfig, key: string | number) => {
             queue.push(this.$http(c));
             queueKeys.push(key);
         });
         return forkJoin(queue)
         .pipe(map((raw: any[]) => {
             const mapped = {};
-            each(raw, (value, index) => {
+            forEach(raw, (value, index) => {
                 mapped[queueKeys[index]] = value;
             });
 
@@ -140,16 +140,17 @@ export class XmatRestService {
                 if (!!config.data) {
                     // Accepting 0, null, void 0 as empty params
                     if (this._xmatConstants.isStrictlyObject(config.data)) {
-                        let key;
-                        for (key in config.data) {
+                        forEach(Object.keys(config.data), (key: string) => {
                             params = params.append(key, config.data[key]);
-                        }
+                        });
                     }
                     else {
                         console.warn("Error: [XmatRest:badparams]");
                     }
                 }
                 return this._http.get<T>(config.url, {params: params});
+            case XmatRestVerbs.PATCH:
+                return this._http.patch<T>(config.url, config.data, {params: config.params});
             case XmatRestVerbs.POST:
                 return this._http.post<T>(config.url, config.data, {params: config.params});
             case XmatRestVerbs.DELETE:
