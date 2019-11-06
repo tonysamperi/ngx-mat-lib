@@ -473,3 +473,9 @@
 * Added controls for XmatAccordion: ExpandedHeight and CollapsedHeight
 * Added emit for expanded attr in XmatAccordion
 * Added PATCH verb in XmatRestVerbs and XmatRestService 
+
+#7.2.12
+* Typography improved
+
+#7.2.13
+* Version bump
