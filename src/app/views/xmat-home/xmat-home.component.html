@@ -1,5 +1,5 @@
 <h2>TIME INPUT</h2>
-<mat-form-field class="autoWidth">
+<mat-form-field class="autoWidth" floatLabel="always">
     <mat-icon matSuffix>alarm</mat-icon>
     <xmat-time name="ubiTimeInputTest"
                placeholder="hh:mm"
@@ -10,7 +10,7 @@
 <hr />
 <h2>Form Group</h2>
 <div [formGroup]="testFormGroup" class="xmat-test-form-group">
-    <mat-form-field class="xmat-margin-right-2x">
+    <mat-form-field class="xmat-margin-right-2x" floatLabel="auto">
         <mat-label>Some</mat-label>
         <input matInput type="text" formControlName="foo" />
     </mat-form-field>

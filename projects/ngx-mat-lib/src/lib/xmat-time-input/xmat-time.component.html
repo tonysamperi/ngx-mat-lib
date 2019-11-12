@@ -20,6 +20,7 @@
            [placeholder]="placeholderM"
            maxlength="2"
            size="2">
-    <span class="xmat-time-required"
-          *ngIf="required">*</span>
+    <span class="xmat-time-required xmat-fade"
+          [ngClass]="{'xmat-fade-in': !shouldLabelFloat}"
+          *ngIf="required && !disabled">*</span>
 </div>

@@ -38,12 +38,12 @@ export class XmatHomeComponent implements OnInit {
     testTimeModel: XmatTime = new XmatTime(12, 15);
     xmatTimeCtrl: FormControl;
 
-    private _isTimeRequired: boolean = !1;
+    private _isTimeRequired: boolean = !0;
 
     constructor(private _functions: XmatFunctionsService,
                 fb: FormBuilder) {
         this.testFormGroup = fb.group({
-            "xmatTime": [""],
+            "xmatTime": ["", [Validators.required]],
             "foo": ["bar", [Validators.required]]
         });
 

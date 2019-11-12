@@ -482,3 +482,7 @@
 
 #7.2.14
 * Added handling for external control disabled/required states on XmatTime
+
+#7.2.15
+* Fix required mark on XmatTime on control disabled
+* Fix wrong operator on errorState check

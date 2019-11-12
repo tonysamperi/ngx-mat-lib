@@ -32,6 +32,7 @@ import {
     XMAT_DATE_FORMATS,
     XMAT_LOCALE_IT,
     XmatMatDateLocale,
+    MatFormFieldRequiredModule,
     // COMPS MODULES
     XmatDialogModule,
     XmatActionTextModule,
@@ -115,6 +116,8 @@ export class XmatCdkMatImportsModule {
         XmatLegendModule,
         XmatTimeModule,
         XmatSnackBarModule,
+        // MISC
+        MatFormFieldRequiredModule
     ],
     providers: [
         // SERVS

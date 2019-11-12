@@ -293,8 +293,9 @@ export class XmatMatTimeComponent implements ControlValueAccessor, MatFormFieldC
     validate(_c_: FormControl | FormGroup): ValidationErrors | null {
         const value = this.parts.value;
         const charsCount = value.hours.length + value.minutes.length;
-        const addFormatError = this.parts.invalid && (charsCount > 0 || charsCount < 4);
+        const addFormatError = this.parts.invalid && (charsCount > 0 && charsCount < 4);
         this.errorState = addFormatError;
+        console.info("Setting errorState", this.errorState);
         return addFormatError ? {timeFormatError: true} : null;
 
     }
