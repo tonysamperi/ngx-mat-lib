@@ -1,6 +1,7 @@
 import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {FocusMonitor} from "@angular/cdk/a11y";
 import {
+    ControlValueAccessor,
     FormBuilder,
     FormControl,
     FormGroup,
@@ -8,9 +9,22 @@ import {
     NG_VALIDATORS,
     NG_VALUE_ACCESSOR,
     ValidationErrors,
-    Validators
+    Validators,
+    ControlContainer
 } from "@angular/forms";
-import {Component, ElementRef, forwardRef, Input, OnDestroy, ViewEncapsulation} from "@angular/core";
+import {
+    Component,
+    ElementRef,
+    forwardRef,
+    OnInit,
+    DoCheck,
+    Input,
+    Host,
+    SkipSelf,
+    Optional,
+    OnDestroy,
+    ViewEncapsulation,
+} from "@angular/core";
 import {MatFormFieldControl} from "@angular/material";
 import {Subject} from "rxjs";
 import {XmatTime} from "../xmat-models/index";
@@ -21,6 +35,14 @@ const elementType = "input";
 
 const hoursPattern = new RegExp("^([01][0-9]|2[0-3])");
 const minutesPattern = new RegExp("^([0-5][0-9])$");
+
+const isParentControlRequired = function (control: FormControl) {
+    if (control.validator !== null) {
+        const validator = control.validator({} as FormControl);
+        return validator && validator.required;
+    }
+    return false;
+};
 
 @Component({
     selector: controlType,
@@ -41,7 +63,7 @@ const minutesPattern = new RegExp("^([0-5][0-9])$");
     encapsulation: ViewEncapsulation.None
 })
 
-export class XmatMatTimeComponent implements MatFormFieldControl<XmatTime>, OnDestroy {
+export class XmatMatTimeComponent implements ControlValueAccessor, MatFormFieldControl<XmatTime>, OnInit, DoCheck, OnDestroy {
 
     static nextId: number = 0;
 
@@ -112,6 +134,8 @@ export class XmatMatTimeComponent implements MatFormFieldControl<XmatTime>, OnDe
         this.stateChanges.next();
     }
 
+    @Input() formControlName: string;
+
 
     controlType: string = controlType;
     describedBy = "";
@@ -129,6 +153,7 @@ export class XmatMatTimeComponent implements MatFormFieldControl<XmatTime>, OnDe
     stateChanges = new Subject<void>();
 
     private _deniedChars = /[^0-9]+/;
+    private _extCtrl: FormControl;
     private _$matFormField: HTMLElement = null;
     private _required: boolean = false;
     private _disabled: boolean = false;
@@ -138,8 +163,10 @@ export class XmatMatTimeComponent implements MatFormFieldControl<XmatTime>, OnDe
     };
 
     constructor(private _formBuilder: FormBuilder,
-                private _focusMonitor: FocusMonitor,
-                private _elRef: ElementRef) {
+                private _elRef: ElementRef,
+                @Optional() @Host() @SkipSelf()
+                private _controlContainer: ControlContainer,
+                private _focusMonitor: FocusMonitor) {
 
         this.parts = _formBuilder.group({
             "hours": ["", Validators.pattern(hoursPattern)],
@@ -157,9 +184,26 @@ export class XmatMatTimeComponent implements MatFormFieldControl<XmatTime>, OnDe
         this._handlePropagation();
     }
 
+    ngDoCheck(): void {
+        if (!!this._extCtrl) {
+            const parentCtrlRequired = isParentControlRequired(this._extCtrl);
+            if (this.required !== parentCtrlRequired) {
+                this.required = parentCtrlRequired;
+                // this.errorState = this.parts.invalid;
+            }
+        }
+    }
+
     ngOnDestroy(): void {
         this.stateChanges.complete();
         this._focusMonitor.stopMonitoring(this._elRef.nativeElement);
+    }
+
+    ngOnInit(): void {
+        if (!!this.formControlName && this._controlContainer) {
+            this._extCtrl = this._controlContainer.control.get(this.formControlName) as FormControl;
+            this.required = isParentControlRequired(this._extCtrl);
+        }
     }
 
     onContainerClick(event: MouseEvent): void {
@@ -182,6 +226,10 @@ export class XmatMatTimeComponent implements MatFormFieldControl<XmatTime>, OnDe
     registerOnTouched() {
     }
 
+    setDisabledState(isDisabled: boolean) {
+        this.disabled = isDisabled;
+    }
+
     setTouched(): void {
         this.parts.markAsTouched();
         this.validate(this.parts);
@@ -197,7 +245,8 @@ export class XmatMatTimeComponent implements MatFormFieldControl<XmatTime>, OnDe
         if (event.key === void 0) {
             keyCode = event.keyCode || event.charCode;
             inputChar = String.fromCharCode(keyCode);
-        } else {
+        }
+        else {
             inputChar = event.key;
             if (inputChar.indexOf("Arrow") > -1) {
                 return true;
@@ -289,16 +338,19 @@ export class XmatMatTimeComponent implements MatFormFieldControl<XmatTime>, OnDe
         if (this._disabled) {
             hoursCtrl.setValidators([]);
             minsCtrl.setValidators([]);
+            this.errorState = !1;
         }
         else {
             if (this._required) {
                 hoursCtrl.setValidators([Validators.required].concat(this._validators.hours));
                 minsCtrl.setValidators([Validators.required].concat(this._validators.minutes));
-            } else {
+            }
+            else {
                 hoursCtrl.setValidators(this._validators.hours);
                 minsCtrl.setValidators(this._validators.minutes);
             }
         }
+        this._handlePropagation();
     }
 
 

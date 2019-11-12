@@ -7,13 +7,33 @@
                [disabled]="isUbiTimeInputDisabled"
                [required]="isUbiTimeInputRequired"></xmat-time>
 </mat-form-field>
-<mat-form-field class="autoWidth">
-    <mat-label>HH:MM</mat-label>
-    <mat-icon matSuffix>alarm</mat-icon>
-    <xmat-time name="ubiTimeInputTest"
-                     [(ngModel)]="testTimeModel2"></xmat-time>
-</mat-form-field>
-
+<hr />
+<h2>Form Group</h2>
+<div [formGroup]="testFormGroup" class="xmat-test-form-group">
+    <mat-form-field class="xmat-margin-right-2x">
+        <mat-label>Some</mat-label>
+        <input matInput type="text" formControlName="foo" />
+    </mat-form-field>
+    <mat-form-field class="autoWidth">
+        <mat-label>HH:MM</mat-label>
+        <mat-icon matSuffix>alarm</mat-icon>
+        <xmat-time name="ubiTimeInputTest"
+                   formControlName="xmatTime"></xmat-time>
+    </mat-form-field>
+    <h2>GROUP VALID? {{testFormGroup.valid ? "YES" : "NO"}}</h2>
+    <h2>TIME VALUE: {{xmatTimeCtrl.value | json}} ({{xmatTimeCtrl.valid ? "VALID" : "INVALID"}})</h2>
+</div>
+<div>
+    <button mat-raised-button
+            (click)="xmatTimeCtrl.disabled ? xmatTimeCtrl.enable() : xmatTimeCtrl.disable()"
+            color="primary">Toggle disable
+    </button>
+    <span>&nbsp;</span>
+    <button mat-raised-button
+            (click)="updateXmatTimeCtrlValidators()"
+            color="primary">Toggle required
+    </button>
+</div>
 <hr />
 
 <h2>DATEPICKER</h2>
@@ -46,14 +66,14 @@
 <hr />
 <xmat-legend-item-content #myTest1>
     XMAT LEGEND CONTENT 1
-    <button (click)="alert('Hello')">PIPPO</button>
+    <button (click)="alert('Hello')">HELLO</button>
 </xmat-legend-item-content>
 <xmat-legend-item-content #myTest2>
     <strong>XMAT LC2</strong>
 </xmat-legend-item-content>
 <xmat-legend-item-content #myTest3>
     XMAT LEGEND CONTENT ICNOMPLETE
-    <button (click)="alert('Goodbye')">PLUTO</button>
+    <button (click)="alert('Goodbye')">GOODBYE</button>
 </xmat-legend-item-content>
 
 

@@ -479,3 +479,6 @@
 
 #7.2.13
 * Version bump
+
+#7.2.14
+* Added handling for external control disabled/required states on XmatTime
