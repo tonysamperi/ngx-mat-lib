@@ -14,7 +14,7 @@
     </button>
     <button mat-button
             mat-raised-button
-            color="warn"
+            [color]="data.confirmColor || 'warn'"
             (click)="onYesClick()">
         {{data.confirmText}}
     </button>

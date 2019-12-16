@@ -4,6 +4,7 @@ export * from "./lib/xmat-accordion/index";
 export * from "./lib/xmat-alert-box/index";
 export * from "./lib/xmat-badge/index";
 export * from "./lib/xmat-dialog/index";
+export * from "./lib/xmat-divider/index";
 export * from "./lib/xmat-global-spinner/index";
 export * from "./lib/xmat-legend/index";
 export * from "./lib/xmat-mini-chip-list/index";

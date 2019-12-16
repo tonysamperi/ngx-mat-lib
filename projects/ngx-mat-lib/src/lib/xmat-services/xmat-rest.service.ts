@@ -105,7 +105,7 @@ export class XmatRestService {
         return forkJoin(queue);
     }
 
-    $allMap(configs: XmatGenericObject<XmatHttpConfig>): Observable<XmatGenericObject<any>> {
+    $allMap<T extends XmatGenericObject<XmatHttpConfig>, U = any>(configs: T): Observable<XmatGenericObject<U>> {
         const queue: Observable<any>[] = [];
         const queueKeys: Array<number | string> = [];
         forEach(configs, (c: XmatHttpConfig, key: string | number) => {

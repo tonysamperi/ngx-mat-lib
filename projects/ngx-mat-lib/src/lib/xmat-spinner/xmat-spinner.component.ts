@@ -1,5 +1,5 @@
-import {Component, ElementRef, AfterViewInit, Input, ViewChild} from "@angular/core";
-import {MatSpinner} from "@angular/material";
+import { Component, ElementRef, AfterViewInit, Input, ViewChild } from "@angular/core";
+import { MatSpinner } from "@angular/material";
 
 const defaultDiameter = 100;
 
@@ -10,9 +10,9 @@ const defaultDiameter = 100;
 })
 export class XmatSpinnerComponent implements AfterViewInit {
 
-    @Input("diameter") diameter: number = defaultDiameter;
+    @Input() diameter: number = defaultDiameter;
 
-    @Input("customParent") customParent: string;
+    @Input() customParent: string;
 
     @ViewChild(MatSpinner) spinner: MatSpinner;
 

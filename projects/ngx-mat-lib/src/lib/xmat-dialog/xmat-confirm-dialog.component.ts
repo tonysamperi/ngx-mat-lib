@@ -1,7 +1,7 @@
-import {Component, ComponentFactoryResolver, ComponentRef, Inject, OnInit, ViewContainerRef} from "@angular/core";
-import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
-import {XmatConfirmDialogData} from "../xmat-models/xmat-confirm-dialog.model";
-import {XmatDialogContentComponent} from "./xmat-dialog-content.component";
+import { Component, ComponentFactoryResolver, ComponentRef, Inject, OnInit, ViewContainerRef } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { XmatConfirmDialogData } from "../xmat-models/xmat-confirm-dialog.model";
+import { XmatDialogContentComponent } from "./xmat-dialog-content.component";
 
 @Component({
     selector: "xmat-confirm-dialog",
@@ -15,10 +15,11 @@ export class XmatConfirmDialogComponent implements OnInit {
     protected _dialogContentClass = XmatDialogContentComponent;
     protected _dialogContentRef: ComponentRef<XmatDialogContentComponent>;
 
-    constructor(protected _dialogRef: MatDialogRef<XmatConfirmDialogComponent>,
-                protected _resolver: ComponentFactoryResolver,
-                protected _viewContainerRef: ViewContainerRef,
-                @Inject(MAT_DIALOG_DATA) public data: XmatConfirmDialogData) {
+    constructor(
+        protected _dialogRef: MatDialogRef<XmatConfirmDialogComponent>,
+        protected _resolver: ComponentFactoryResolver,
+        protected _viewContainerRef: ViewContainerRef,
+        @Inject(MAT_DIALOG_DATA) public data: XmatConfirmDialogData) {
     }
 
     ngOnInit(): void {

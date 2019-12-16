@@ -492,5 +492,11 @@
 * Rule ".xmat-capitalize-first-only" renamed to xmat-capitalize-first in xmat-typography.scss
 * Added tslint in projects/ngx-mat-lib, solves tslint errors when using the lib sources directly (requires angular.json config) 
 * Added new xmat-divider component since mat-divider change behaviour accordingly to container
+* New component xmat-divider, which doesn't get influenced by containers (unlike mat-divider)
+* Added xmat-capitalize-children
+* Changed colors for xmat-alert disabled
+* Added missing color for disabled-text
+* Fixed xmat-confirm-dialog confirm button color override not working
+* Misc and refactor
 
  
