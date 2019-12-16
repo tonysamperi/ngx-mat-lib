@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "../../tslint.json"
+  ],
+  "rules": {
+    "naming-convention": [
+      true,
+      // override the above format option for exported constants to allow only UPPER_CASE
+      {
+        "type": "variable",
+        "modifiers": [
+          "export",
+          "const"
+        ],
+        "format": "PascalCase",
+        "prefix": "xmat"
+      },
+      // enforce PascalCase for classes, interfaces, enums, etc. Remember, there are   still no underscores allowed.
+      {
+        "type": "type",
+        "format": "PascalCase",
+        "prefix": "Xmat"
+      },
+      // abstract classes must have the prefix "Abstract". The following part of the name must be valid PascalCase
+      {
+        "type": "class",
+        "modifiers": "export",
+        "prefix": "Xmat"
+      },
+      {
+        "type": "genericTypeParameter",
+        "format": [
+          "UPPER_CASE"
+        ],
+        "prefix": ""
+      }
+    ]
+  }
+}

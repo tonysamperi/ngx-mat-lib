@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {ParamMap, Params, convertToParamMap} from "@angular/router";
+import { Injectable } from "@angular/core";
+import { ParamMap, Params, convertToParamMap } from "@angular/router";
 import {
     MatDialog,
     MatDialogConfig,
@@ -22,14 +22,15 @@ import {
     XmatFileReaderEvent,
     XmatGenericObject
 } from "../xmat-models/index";
-import {XmatConstantsService, XMAT_CONSTANT_LABELS} from "./xmat-constants.service";
-import {XmatSnackBarComponent} from "../xmat-snack-bar/index";
+import { XmatConstantsService, XMAT_CONSTANT_LABELS } from "./xmat-constants.service";
+import { XmatSnackBarComponent } from "../xmat-snack-bar/index";
 //
-import {Observable} from "rxjs";
-import {each, includes, extend, merge} from "lodash";
-import * as _moment from "moment";
+import { Observable, forkJoin } from "rxjs";
+import { map } from "rxjs/operators";
+import { each, includes, extend, merge } from "lodash";
+import { parseZone as moment } from "moment";
 
-const moment = _moment;
+type XmatObservablesMap = XmatGenericObject<Observable<any>>;
 
 const colorParams = {
     center: 128,
@@ -58,19 +59,6 @@ const eachEnum = (srcEnum, iteratee) => {
         target.push(srcEnum[key]);
     });
     return each(target, iteratee);
-};
-
-const eachFrom = (array, index, iteratee) => {
-    // tslint:disable-next-line:naming-convention
-    let _index = index == null ? -1 : index;
-    const length = array == null ? 0 : array.length;
-
-    while (++_index < length) {
-        if (iteratee(array[_index], _index, array) === false) {
-            break;
-        }
-    }
-    return array;
 };
 
 /**
@@ -103,7 +91,7 @@ export class XmatFunctionsService {
     };
 
     constructor(protected _dialog: MatDialog,
-                protected  _snackBar: MatSnackBar,
+                protected _snackBar: MatSnackBar,
                 protected _xmatConstants: XmatConstantsService) {
     }
 
@@ -154,8 +142,21 @@ export class XmatFunctionsService {
         return eachEnum(srcEnum, iteratee);
     }
 
-    eachFrom(collection, index, iteratee): any[] {
-        return eachFrom(collection, index, iteratee);
+    eachFrom<T = any>(array: T[], index: number, iteratee: (item: T, index: number, source: T[]) => any): T[] {
+        if (!Array.isArray(array)) {
+            console.error(`eachFrom only accept arrays as source, found instead ${typeof array}`);
+            return array;
+        }
+        // tslint:disable-next-line:naming-convention
+        let _index = index == null ? -1 : index;
+        const length = array == null ? 0 : array.length;
+
+        while (++_index < length) {
+            if (iteratee(array[_index], _index, array) === false) {
+                break;
+            }
+        }
+        return array;
     }
 
     extractQueryParams(queryString = location.search): ParamMap {
@@ -351,7 +352,7 @@ export class XmatFunctionsService {
         });
     }
 
-    showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}): MatSnackBarRef<XmatSnackBarComponent> {
+    showSnackBar(data: XmatSnackBarData = { message: "-", showAction: false }): MatSnackBarRef<XmatSnackBarComponent> {
         const snackBarConfig = new MatSnackBarConfig();
         const panelClassNames = ["xmat-snack"];
         if (!!data.type) {
@@ -411,7 +412,34 @@ export class XmatFunctionsService {
         });
     }
 
-    // Private methods
+    $qMap<T extends XmatGenericObject<any> = XmatGenericObject<any>>(source: XmatObservablesMap): Observable<T> {
+        const queue: Observable<any>[] = [];
+        const queueKeys: Array<number | string> = [];
+        each(source, (o: any, key: string | number) => {
+            queue.push(o);
+            queueKeys.push(key);
+        });
+        return forkJoin(queue)
+        .pipe(map((raw: any[]) => {
+            const mapped = {};
+            each(raw, (value, index) => {
+                mapped[queueKeys[index]] = value;
+            });
+
+            return mapped as T;
+        }));
+    }
+
+    $qArray<T = any>(source: Observable<T>[]): Observable<T[]> {
+        const queue: Observable<T>[] = [];
+        each(source, (o: Observable<T>) => {
+            queue.push(o);
+        });
+
+        return forkJoin(queue);
+    }
+
+    // Private
 
     private _parseDateFallback(value: string | number) {
         if (typeof value === typeof 0 || !isNaN(+value)) {

@@ -37,8 +37,12 @@
 	text-transform: capitalize;
   }
 
-  .xmat-capitalize-first-only::first-letter {
+  .xmat-capitalize-first::first-letter {
 	text-transform: capitalize;
+  }
+
+  .xmat-text-bold {
+	font-weight: bold;
   }
 
 }

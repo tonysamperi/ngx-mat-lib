@@ -486,3 +486,11 @@
 #7.2.15
 * Fix required mark on XmatTime on control disabled
 * Fix wrong operator on errorState check
+
+#7.2.16
+* Added xmat-text-bold in xmat-typography.scss
+* Rule ".xmat-capitalize-first-only" renamed to xmat-capitalize-first in xmat-typography.scss
+* Added tslint in projects/ngx-mat-lib, solves tslint errors when using the lib sources directly (requires angular.json config) 
+* Added new xmat-divider component since mat-divider change behaviour accordingly to container
+
+ 
