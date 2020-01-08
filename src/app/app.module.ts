@@ -40,6 +40,7 @@ import {
     XmatTimeModule,
     XmatSnackBarModule,
     XmatLegendModule,
+    XmatNavBarModule,
     // SERVS
     XmatConstantsService,
     XmatFunctionsService,
@@ -114,6 +115,7 @@ export class XmatCdkMatImportsModule {
         XmatAccordionModule,
         XmatDialogModule,
         XmatLegendModule,
+        XmatNavBarModule,
         XmatTimeModule,
         XmatSnackBarModule,
         // MISC

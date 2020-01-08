@@ -497,6 +497,8 @@
 * Changed colors for xmat-alert disabled
 * Added missing color for disabled-text
 * Fixed xmat-confirm-dialog confirm button color override not working
+* Added xmat-nav-bar.component to add navigation to nav-tab-bar
+* Fixed package.json versions (resolves failing build due to tsickle release)
 * Misc and refactor
 
  

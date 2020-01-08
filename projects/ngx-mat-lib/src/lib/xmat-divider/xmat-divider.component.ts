@@ -18,9 +18,6 @@ import { coerceBooleanProperty } from "@angular/cdk/coercion";
 })
 export class XmatDividerComponent {
 
-    static ngAcceptInputType_vertical: boolean | string | null | undefined;
-    static ngAcceptInputType_inset: boolean | string | null | undefined;
-
     /** Whether the divider is vertically aligned. */
     @Input()
     get vertical(): boolean { return this._vertical; }

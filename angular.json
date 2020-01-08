@@ -149,8 +149,7 @@
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "tsConfig": "projects/ngx-mat-lib/tsconfig.lib.json",
-            "project": "projects/ngx-mat-lib/ng-package.json",
-            "tslintConfig": "project/ngx-mat-lib/tslint.json"
+            "project": "projects/ngx-mat-lib/ng-package.json"
           }
         },
         "test": {
