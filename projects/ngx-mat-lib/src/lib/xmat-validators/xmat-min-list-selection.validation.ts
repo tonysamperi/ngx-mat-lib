@@ -1,4 +1,4 @@
-import {ValidatorFn, FormArray} from "@angular/forms";
+import { ValidatorFn, FormArray } from "@angular/forms";
 
 /**
  * An array selection must have
@@ -7,9 +7,9 @@ import {ValidatorFn, FormArray} from "@angular/forms";
 export function xmatMinListSelection(min: number = 1): ValidatorFn {
     return (formArray: FormArray) => {
         const totalSelected = formArray.controls
-        .map(control => control.value)
-        .reduce((prev, next) => next ? prev + next : prev, 0);
-        return totalSelected < min ? {xmatMinListSelection: true} : null;
+            .map(control => +!!control.value)
+            .reduce((prev, next) => prev + next, 0);
+        return totalSelected < min ? { xmatMinListSelection: true } : null;
     };
 
 }

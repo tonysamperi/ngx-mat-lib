@@ -46,6 +46,7 @@
     }
   }
 
+  // Padding by 10
   @each $rule in $space-rules {
     .xmat-#{$rule}- {
       @each $direction in $directions {

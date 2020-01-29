@@ -1,6 +1,6 @@
-import {Injectable} from "@angular/core";
-import {XmatDynamicRestVerbsRef, XmatGenericObject, XmatConstantsLabels} from "../xmat-models/index";
-import {cloneDeep} from "lodash";
+import { Injectable } from "@angular/core";
+import { XmatDynamicRestVerbsRef, XmatGenericObject, XmatConstantsLabels } from "../xmat-models/index";
+import { cloneDeep } from "lodash";
 
 // tslint:disable-next-line:naming-convention
 export const XMAT_CONSTANT_LABELS: XmatConstantsLabels = {
@@ -30,6 +30,14 @@ export const XMAT_CONSTANT_LABELS: XmatConstantsLabels = {
     understood: "Ho capito",
     warningTitle: "Attenzione"
 };
+
+const emojiRanges = [
+    "[\uE000-\uF8FF]",
+    "\uD83C[\uDC00-\uDFFF]",
+    "\uD83D[\uDC00-\uDFFF]",
+    "[\u2011-\u26FF]",
+    "\uD83E[\uDD10-\uDDFF]"
+];
 
 
 @Injectable()
@@ -96,7 +104,9 @@ export class XmatConstantsService {
     public readonly regExps: XmatGenericObject<string> = {
         trailingWhiteSpaces: "\\s+$",
         leadingWhiteSpaces: "^\\s+",
-        multipleWhiteSpaces: "\\s+(?=\\s)"
+        multipleWhiteSpaces: "\\s+(?=\\s)",
+        specialChars: `[~!\`@#$%\\^&*()+=\\-\\[\\]\\';,\\/\\{}|\\\":<>\\?£¥÷_×]`,
+        emojis: emojiRanges.join("|")
     };
     public readonly routeParams: string = "routeParams";
 

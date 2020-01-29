@@ -1,16 +1,20 @@
-import {NgModule} from "@angular/core";
-import {XmatObjectToArrayPipe} from "./xmat-object-to-array.pipe";
+import { NgModule } from "@angular/core";
+import { XmatKebabCasePipe } from "./xmat-kebab-case.pipe";
+import { XmatObjectToArrayPipe } from "./xmat-object-to-array.pipe";
 
 @NgModule({
     declarations: [
-        XmatObjectToArrayPipe
+        XmatKebabCasePipe,
+        XmatObjectToArrayPipe,
     ],
     exports: [
-        XmatObjectToArrayPipe
+        XmatKebabCasePipe,
+        XmatObjectToArrayPipe,
     ],
     providers: []
 })
 export class XmatPipesModule {
 }
 
-export {XmatObjectToArrayPipe} from "./xmat-object-to-array.pipe";
+export { XmatKebabCasePipe } from "./xmat-kebab-case.pipe";
+export { XmatObjectToArrayPipe } from "./xmat-object-to-array.pipe";

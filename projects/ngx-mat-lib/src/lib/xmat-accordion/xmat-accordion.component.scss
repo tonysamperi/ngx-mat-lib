@@ -8,6 +8,11 @@ $palette: (
 );
 
 // PAY ATTENTION: when using 'encapsulation: ViewEncapsulation.none' :host selector won't work...
+
+.xmat-accordion mat-expansion-panel.mat-expansion-panel.xmat-accordion-no-header .mat-expansion-panel-content .mat-expansion-panel-body {
+  padding-top: 8px;
+}
+
 .xmat-accordion {
 
   @each $mat-key, $mat-color in $palette {
@@ -29,9 +34,14 @@ $palette: (
       }
     }
 
-    .xmat-accordion-no-header .mat-expansion-panel-body {
-      padding-top: $xmat-pad * 2;
+    &.xmat-accordion-no-header {
+      .mat-expansion-panel-content {
+        .mat-expansion-panel-body {
+          padding-top: $xmat-pad;
+        }
+      }
     }
+
   }
 
   &.xmat-accordion-no-top-padding {

@@ -9,8 +9,6 @@ import {sumBy} from "lodash";
  */
 export function xmatValidatorForAtLeast(validator: ValidatorFn, howMany: number = 1): ValidatorFn {
 
-    const errorKey = "valuesFillAtLeastValidation";
-
     return (group: FormGroup): ValidationErrors => {
         if (group && group.controls) {
             const validCount = sumBy(Object.keys(group.controls), (key) => {
@@ -18,8 +16,8 @@ export function xmatValidatorForAtLeast(validator: ValidatorFn, howMany: number 
                 const result = validator(value);
                 return +!result;
             });
-            return validCount >= howMany ? null : {[errorKey]: true};
+            return validCount >= howMany ? null : {valuesFillAtLeastValidation: true};
         }
 
-    }​
+    }​;
 }

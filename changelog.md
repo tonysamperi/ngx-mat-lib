@@ -501,4 +501,14 @@
 * Fixed package.json versions (resolves failing build due to tsickle release)
 * Misc and refactor
 
- 
+ #7.2.17
+ * new Pipe: XmatKebabCasePipe
+ * new validations for XmatTimeComponent: MaxTime and MinTime
+ * new regular expressions in XmatConstantsService to handle special chars and emojis
+ * XmatFunctionsService: replaceAll (replaces multiple matches in string according to map)
+ * XmatFunctionsService: showErrorSnackBar (similar to showErrorAlert) shortcut
+ * XmatFunctionsService: stripEmojis and stripSpecialchars to cleanup strings
+ * XmatMockService: fixed mockKey algorithm, finds better combinations of params and placeholders
+ * XmatTimeComponent: fixed error handling on external controllers (turn red)
+ * improved function xmatMinListSelection
+ * 

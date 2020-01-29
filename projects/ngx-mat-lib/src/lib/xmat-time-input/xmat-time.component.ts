@@ -303,7 +303,7 @@ export class XmatMatTimeComponent implements ControlValueAccessor, MatFormFieldC
         const value = this.parts.value;
         const charsCount = value.hours.length + value.minutes.length;
         const addFormatError = this.parts.invalid && (charsCount > 0 && charsCount < 4);
-        this.errorState = addFormatError;
+        this.errorState = addFormatError  || this._extCtrl && !this._extCtrl.pristine && this._extCtrl.invalid;
 
         return addFormatError ? { timeFormatError: true } : null;
     }

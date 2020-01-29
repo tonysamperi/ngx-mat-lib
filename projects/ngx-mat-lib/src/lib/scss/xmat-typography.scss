@@ -29,6 +29,10 @@
     text-transform: uppercase;
   }
 
+  .xmat-uppercase-descendants * {
+    text-transform: uppercase;
+  }
+
   .xmat-lowercase {
     text-transform: lowercase;
   }

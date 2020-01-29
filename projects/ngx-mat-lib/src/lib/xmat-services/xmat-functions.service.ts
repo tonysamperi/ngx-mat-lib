@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { ParamMap, Params, convertToParamMap } from "@angular/router";
+import {Injectable} from "@angular/core";
+import {ParamMap, Params, convertToParamMap} from "@angular/router";
 import {
     MatDialog,
     MatDialogConfig,
@@ -20,15 +20,16 @@ import {
     XmatConfirmDialogData,
     XmatSnackBarData,
     XmatFileReaderEvent,
-    XmatGenericObject
+    XmatGenericObject,
+    XmatSnackBarDataTypes
 } from "../xmat-models/index";
-import { XmatConstantsService, XMAT_CONSTANT_LABELS } from "./xmat-constants.service";
-import { XmatSnackBarComponent } from "../xmat-snack-bar/index";
+import {XmatConstantsService, XMAT_CONSTANT_LABELS} from "./xmat-constants.service";
+import {XmatSnackBarComponent} from "../xmat-snack-bar/index";
 //
-import { Observable, forkJoin } from "rxjs";
-import { map } from "rxjs/operators";
-import { each, includes, extend, merge } from "lodash";
-import { parseZone as moment } from "moment";
+import {Observable, forkJoin} from "rxjs";
+import {map} from "rxjs/operators";
+import {each, includes, extend, merge} from "lodash";
+import {parseZone as moment} from "moment";
 
 type XmatObservablesMap = XmatGenericObject<Observable<any>>;
 
@@ -352,19 +353,34 @@ export class XmatFunctionsService {
         });
     }
 
-    showSnackBar(data: XmatSnackBarData = { message: "-", showAction: false }): MatSnackBarRef<XmatSnackBarComponent> {
-        const snackBarConfig = new MatSnackBarConfig();
-        const panelClassNames = ["xmat-snack"];
-        if (!!data.type) {
-            panelClassNames.push(data.type);
-        }
-        extend(snackBarConfig, {
+    replaceAll(haystack: string, mapObj: XmatGenericObject<string>): string {
+        const regExp = new RegExp(Object.keys(mapObj).join("|"), "gi");
+
+        return haystack.replace(regExp, function (matched) {
+            return mapObj[matched.toLowerCase()];
+        });
+    }
+
+    showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}): MatSnackBarRef<XmatSnackBarComponent> {
+
+        return this._snackBar.openFromComponent(XmatSnackBarComponent, extend(new MatSnackBarConfig(), {
             data: data,
             duration: data.duration || 5000,
-            panelClass: panelClassNames
-        });
+            panelClass: ["xmat-snack", data.type]
+        }));
+    }
 
-        return this._snackBar.openFromComponent(XmatSnackBarComponent, snackBarConfig);
+    /**
+     * Shortcut to open an XmatAlertDialog passing only an error message
+     * @param msg
+     */
+    showErrorSnackBar(msg: string = this._xmatConstants.labels.genericError, duration: number = 5000): MatSnackBarRef<XmatSnackBarComponent> {
+
+        return this._snackBar.openFromComponent(XmatSnackBarComponent, extend(new MatSnackBarConfig(), {
+            data: {message: msg},
+            duration: duration,
+            panelClass: ["xmat-snack", XmatSnackBarDataTypes.fail]
+        }));
     }
 
     /**
@@ -410,6 +426,14 @@ export class XmatFunctionsService {
                 return match;
             }
         });
+    }
+
+    stripEmojis(str: string): string {
+        return str.replace(new RegExp(this._xmatConstants.regExps.emojis, "g"), "");
+    }
+
+    stripSpecialChars(str: string): string {
+        return str.replace(new RegExp(this._xmatConstants.regExps.specialChars, "g"), "");
     }
 
     $qMap<T extends XmatGenericObject<any> = XmatGenericObject<any>>(source: XmatObservablesMap): Observable<T> {
