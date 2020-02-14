@@ -1,10 +1,12 @@
-<h3 mat-dialog-title>{{data.title}}</h3>
-<div mat-dialog-content>
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content
+     [ngClass]="{'xmat-margin-bottom-0': data.hideActions}">
     <ng-container *ngTemplateOutlet="dialogContentOutlet.xMatDialogContent">
 
     </ng-container>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions
+     *ngIf="!data.hideActions">
     <button mat-button
             mat-raised-button
             *ngIf="!data.hideCancelButton"
@@ -14,6 +16,7 @@
     </button>
     <button mat-button
             mat-raised-button
+            [disabled]="data.additionalForm?.invalid"
             [color]="data.confirmColor || 'warn'"
             (click)="onYesClick()">
         {{data.confirmText}}

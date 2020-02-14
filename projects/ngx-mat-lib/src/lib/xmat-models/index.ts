@@ -1,9 +1,9 @@
 export * from "./xmat-alert-dialog.model";
 export * from "./xmat-alert-types.model";
-export * from "./xmat-array-item-from-object.model";
+export * from "./xmat-breakpoints.model";
 export * from "./xmat-confirm-dialog.model";
 export * from "./xmat-constants-labels.model";
-export * from "./xmat-desc-value.model";
+export * from "./xmat-select.model";
 export * from "./xmat-file.model";
 export * from "./xmat-file-reader-event.model";
 export * from "./xmat-generic-object";
@@ -15,4 +15,5 @@ export * from "./xmat-overlay-styles.model";
 export * from "./xmat-reponse-types.model";
 export * from "./xmat-rest-verbs.model";
 export * from "./xmat-snack-bar-data.model";
+export * from "./xmat-summary.model";
 export * from "./xmat-time.model";

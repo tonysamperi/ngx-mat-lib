@@ -5,6 +5,7 @@ import {
     XmatDownloadComponent,
     XmatHomeComponent,
     XmatRestExamplesComponent,
+    XmatUtilsComponent
 } from "../views/public";
 
 export interface XmatRoute {
@@ -21,7 +22,8 @@ export enum XmatRoutesUrlsMap {
     download = "download",
     dialog = "dialog",
     home = "home",
-    rest = "rest"
+    rest = "rest",
+    utils = "utils"
 }
 
 export const xmatRoutes: Routes = [
@@ -72,6 +74,16 @@ export const xmatRoutes: Routes = [
         data: {
             key: XmatRoutesUrlsMap.rest,
             label: "Rest tools",
+            mainMenu: !0,
+        }
+    },
+    {
+        path: XmatRoutesUrlsMap.utils,
+        canActivate: [],
+        component: XmatUtilsComponent,
+        data: {
+            key: XmatRoutesUrlsMap.utils,
+            label: "Utils",
             mainMenu: !0,
         }
     },

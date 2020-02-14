@@ -17,10 +17,10 @@ export class XmatTestMocksListService extends XmatMocksListService {
      *  {method: this._methodsKeys.GET, url: this._servicesUrls.myService + this._ds + this._paramsPlaceholder, status: 200}
      *  DEFAULT TIMEOUT IS 2000 ms (xmat)
      */
-    private _ds = this._sfcConstants.ds;
-    private _methodsKeys = this._sfcConstants.methodsKeys;
+    private _ds = this._xmatConstants.ds;
+    private _methodsKeys = this._xmatConstants.methodsKeys;
     private _mocksFolder = "./assets/services-mocks/";
-    private _params = this._sfcConstants.paramsPlaceholder;
+    private _params = this._xmatConstants.paramsPlaceholder;
     private _remoteNode = location.protocol + this._ds + this._ds + location.hostname + ":3000" + this._ds;
     private _servicesUrls = this._rest.servicesUrls;
 
@@ -48,7 +48,7 @@ export class XmatTestMocksListService extends XmatMocksListService {
         }
     ];
 
-    constructor(private _sfcConstants: XmatConstantsService,
+    constructor(private _xmatConstants: XmatConstantsService,
                 private _rest: XmatTestRestService) {
 
         super();

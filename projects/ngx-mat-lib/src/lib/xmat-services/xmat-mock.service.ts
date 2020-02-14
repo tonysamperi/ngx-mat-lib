@@ -77,6 +77,23 @@ export class XmatMockService implements HttpInterceptor {
             const serviceName = urlParts[0].substr(this._restBaseUrl.length).split(this._ds).shift();
             const serviceBase = methodKey + this._restBaseUrl + serviceName;
             let j = urlParams.length;
+            /*while (--j >= 0) {
+             const paramsBak = urlParams.slice();
+             paramsBak[j] = this._paramsPlaceholder;
+             let mixedKey = [serviceBase].concat(paramsBak).join(this._ds);
+             if (this._mockExists(mixedKey)) {
+             this._logEnabled && console.info(`XmatMock: found mock with key ${mixedKey}`);
+             return this._mocks[mixedKey](request, next, urlParams.slice(j), urlParts[1]);
+             }
+             if (!!paramsBak[j + 1]) {
+             paramsBak[j + 1] = this._paramsPlaceholder;
+             mixedKey = [serviceBase].concat(paramsBak).join(this._ds);
+             if (this._mockExists(mixedKey)) {
+             this._logEnabled && console.info(`XmatMock: found mock with key ${mixedKey}`);
+             return this._mocks[mixedKey](request, next, urlParams.slice(j), urlParts[1]);
+             }
+             }
+             }*/
             while (--j >= 0) {
                 const paramsBak = urlParams.slice();
                 paramsBak[j] = this._paramsPlaceholder;

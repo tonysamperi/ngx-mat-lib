@@ -1,0 +1,25 @@
+<div class="xmat-summary"
+     fxLayout="row wrap"
+     fxLayoutGap="2%">
+    <div fxFlex="98"
+         [fxFlex.xl]="98 / config.columns.xl"
+         [fxFlex.lg]="98 / config.columns.lg"
+         [fxFlex.md]="98 / config.columns.md"
+         [fxFlex.sm]="98 / config.columns.sm"
+         [fxFlex.xs]="98 / config.columns.xs"
+         *ngFor="let column of summary">
+        <div fxLayout
+             class="xmat-summary-row"
+             *ngFor="let field of column">
+            <div fxFlex="35"
+                 [ngClass]="{'xmat-capitalize-first': !config.noCapitalize}"
+                 class="xmat-text-left">
+                <strong>{{field.description}}</strong>
+            </div>
+            <div fxFlex="65"
+                 class="xmat-text-right">
+                {{field.value}}
+            </div>
+        </div>
+    </div>
+</div>

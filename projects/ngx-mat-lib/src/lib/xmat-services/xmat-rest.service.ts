@@ -1,18 +1,18 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
 //
-import {XmatConstantsService} from "./xmat-constants.service";
+import { XmatConstantsService } from "./xmat-constants.service";
 import {
     XmatFile,
     XmatHttpConfig,
     XmatResponseTypes,
     XmatRestVerbs
 } from "../xmat-models/index";
-import {XmatGenericObject} from "../xmat-models/index";
+import { XmatGenericObject } from "../xmat-models/index";
 //
-import {Observable, forkJoin} from "rxjs";
-import {map} from "rxjs/operators";
-import {forEach} from "lodash";
+import { Observable, forkJoin, throwError } from "rxjs";
+import { map } from "rxjs/operators";
+import { forEach } from "lodash";
 
 /**
  * XMAT REST BY TONY SAMPERI
@@ -57,12 +57,27 @@ export class XmatRestService {
     protected _ds = this._xmatConstants.ds;
 
     constructor(protected _http: HttpClient,
-                protected _xmatConstants: XmatConstantsService) {
+        protected _xmatConstants: XmatConstantsService) {
 
     }
 
-    downloadBlobFromUrl(file: XmatFile): void {
-        this.getBlobFromUrl(file).subscribe((results: Blob) => {
+    downloadBlobFromUrl(file: XmatFile, verb?: XmatRestVerbs.GET, onError?: (err: any) => void): void;
+    downloadBlobFromUrl(file: XmatFile, verb: XmatRestVerbs.PATCH, body: any, onError?: (err: any) => void): void;
+    downloadBlobFromUrl(
+        file: XmatFile,
+        verb: XmatRestVerbs.GET | XmatRestVerbs.PATCH = XmatRestVerbs.GET,
+        body?: any | void,
+        onError?: (err: any) => void
+    ): void {
+        let call;
+        if (verb === XmatRestVerbs.GET) {
+            call = this.getBlobFromUrl(file, verb);
+        }
+        if (verb === XmatRestVerbs.PATCH) {
+            call = this.getBlobFromUrl(file, verb, body);
+        }
+
+        call.subscribe((results: Blob) => {
             // IE DOESN'T SUPPORT TRIGGERING SO WE START DOWNLOADING WITH THIS PORKAROUND
             if (window.navigator.msSaveOrOpenBlob) {
                 window.navigator.msSaveOrOpenBlob(results, file.fileName);
@@ -77,10 +92,14 @@ export class XmatRestService {
                 linkEl.click();
                 document.body.removeChild(linkEl);
             }
+        }, (err: any) => {
+            typeof onError === typeof isNaN && onError(err);
         });
     }
 
-    getBlobFromUrl(file: XmatFile): Observable<Blob> {
+    getBlobFromUrl(file: XmatFile, verb?: XmatRestVerbs.GET): Observable<Blob>;
+    getBlobFromUrl(file: XmatFile, verb: XmatRestVerbs.PATCH, body: any): Observable<Blob>;
+    getBlobFromUrl(file: XmatFile, verb: XmatRestVerbs.GET | XmatRestVerbs.PATCH = XmatRestVerbs.GET, body?: any): Observable<Blob> {
         if (!file || !file.url) {
             console.error("XmatRest: invalid XmatFile provided!", file);
             return void 0;
@@ -91,9 +110,18 @@ export class XmatRestService {
             file.fileName = `xmat-document${ext}`;
         }
 
-        return this._http.get(file.url, {
-            responseType: XmatResponseTypes.blob
-        });
+        if (verb === XmatRestVerbs.GET) {
+            return this._http.get(file.url, {
+                responseType: XmatResponseTypes.blob
+            });
+        }
+        if (verb === XmatRestVerbs.PATCH) {
+            return this._http.patch(file.url, body, {
+                responseType: XmatResponseTypes.blob
+            });
+        }
+
+        throw new Error(`XmatRest: invalid verb provided for 'getBlobFromUrl'. Expected GET|PATCH, got ${verb}`);
     }
 
     $all(configs: XmatHttpConfig[]): Observable<any[]> {
@@ -113,14 +141,14 @@ export class XmatRestService {
             queueKeys.push(key);
         });
         return forkJoin(queue)
-        .pipe(map((raw: any[]) => {
-            const mapped = {};
-            forEach(raw, (value, index) => {
-                mapped[queueKeys[index]] = value;
-            });
+            .pipe(map((raw: any[]) => {
+                const mapped = {};
+                forEach(raw, (value, index) => {
+                    mapped[queueKeys[index]] = value;
+                });
 
-            return mapped;
-        }));
+                return mapped;
+            }));
     }
 
     $http<T>(config: XmatHttpConfig = this._generateHttpConfig()): Observable<T> {
@@ -148,15 +176,15 @@ export class XmatRestService {
                         console.warn("Error: [XmatRest:badparams]");
                     }
                 }
-                return this._http.get<T>(config.url, {params: params});
+                return this._http.get<T>(config.url, { params: params });
             case XmatRestVerbs.PATCH:
-                return this._http.patch<T>(config.url, config.data, {params: config.params});
+                return this._http.patch<T>(config.url, config.data, { params: config.params });
             case XmatRestVerbs.POST:
-                return this._http.post<T>(config.url, config.data, {params: config.params});
+                return this._http.post<T>(config.url, config.data, { params: config.params });
             case XmatRestVerbs.DELETE:
-                return this._http.delete<T>(config.url, {params: config.params});
+                return this._http.delete<T>(config.url, { params: config.params });
             case XmatRestVerbs.PUT:
-                return this._http.put<T>(config.url, config.data, {params: config.params});
+                return this._http.put<T>(config.url, config.data, { params: config.params });
             default:
                 console.error("Error: [XmatRest:badmethod]", arguments);
                 return new Observable();

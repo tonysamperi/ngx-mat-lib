@@ -11,9 +11,9 @@ import {
 // tslint:disable-next-line:naming-convention
 const _injector = Injector.create({providers: [{provide: XmatConstantsService, deps: []}]});
 // tslint:disable-next-line:naming-convention
-const _sfcConstants = _injector.get(XmatConstantsService);
+const _xmatConstants = _injector.get(XmatConstantsService);
 // tslint:disable-next-line:naming-convention
-const _param = _sfcConstants.paramsPlaceholder;
+const _param = _xmatConstants.paramsPlaceholder;
 
 @Injectable()
 export class XmatTestRestService extends XmatRestService {
@@ -60,9 +60,9 @@ export class XmatTestRestService extends XmatRestService {
     };
 
     constructor(protected _http: HttpClient,
-                sfcConstants: XmatConstantsService) {
+                xmatConstants: XmatConstantsService) {
 
-        super(_http, sfcConstants);
+        super(_http, xmatConstants);
 
     }
 

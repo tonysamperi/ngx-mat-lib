@@ -1,8 +1,12 @@
 div[mat-dialog-actions] {
   justify-content: space-between;
   display: flex;
+
+  > button:only-child {
+    margin: auto;
+  }
 }
 
-div[mat-dialog-content] {
+div[mat-dialog-content]:not([class*="xmat-margin-bottom"]) {
   margin-bottom: 24px;
 }

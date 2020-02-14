@@ -26,6 +26,7 @@
     &.xmat-justify-center {
       justify-content: center;
     }
+
   }
 
   .swal2-bg-white {
@@ -73,7 +74,7 @@
   width: $swal2-icon-size;
   height: $swal2-icon-size;
   margin: 1.25em auto 1.875em;
-  border: .25em solid transparent;
+  border: 0.25em solid transparent;
   border-radius: 50%;
   line-height: $swal2-icon-size;
   cursor: default;
@@ -93,21 +94,21 @@
       flex-grow: 1;
     }
 
-    [class^='swal2-x-mark-line'] {
+    [class^="swal2-x-mark-line"] {
       display: block;
       position: absolute;
       top: 2.3125em;
       width: 2.9375em;
-      height: .3125em;
-      border-radius: .125em;
+      height: 0.3125em;
+      border-radius: 0.125em;
       background-color: $swal2-error;
 
-      &[class$='left'] {
+      &[class$="left"] {
         left: 1.0625em;
         transform: rotate(45deg);
       }
 
-      &[class$='right'] {
+      &[class$="right"] {
         right: 1em;
         transform: rotate(-45deg);
       }
@@ -132,25 +133,26 @@
   &.swal2-success {
     border-color: $swal2-success;
 
-    [class^='swal2-success-circular-line'] { // Emulate moving circular line
+    [class^="swal2-success-circular-line"] {
+      // Emulate moving circular line
       position: absolute;
       width: 3.75em;
       height: 7.5em;
       transform: rotate(45deg);
       border-radius: 50%;
 
-      &[class$='left'] {
-        background-color: #FFF;
-        top: -.4375em;
+      &[class$="left"] {
+        background-color: #fff;
+        top: -0.4375em;
         left: -2.0635em;
         transform: rotate(-45deg);
         transform-origin: 3.75em 3.75em;
         border-radius: 7.5em 0 0 7.5em;
       }
 
-      &[class$='right'] {
-        background-color: #FFF;
-        top: -.6875em;
+      &[class$="right"] {
+        background-color: #fff;
+        top: -0.6875em;
         left: 1.875em;
         transform: rotate(-45deg);
         transform-origin: 0 3.75em;
@@ -158,46 +160,48 @@
       }
     }
 
-    .swal2-success-ring { // Ring
+    .swal2-success-ring {
+      // Ring
       position: absolute;
-      top: -.25em;
-      left: -.25em;
+      top: -0.25em;
+      left: -0.25em;
       width: 100%;
       height: 100%;
-      border: .25em solid $swal2-success-border;
+      border: 0.25em solid $swal2-success-border;
       border-radius: 50%;
       z-index: 2;
       box-sizing: content-box;
     }
 
-    .swal2-success-fix { // Hide corners left from animation
+    .swal2-success-fix {
+      // Hide corners left from animation
       position: absolute;
-      top: .5em;
+      top: 0.5em;
       left: 1.625em;
-      width: .4375em;
+      width: 0.4375em;
       height: 5.625em;
       transform: rotate(-45deg);
       z-index: 1;
     }
 
-    [class^='swal2-success-line'] {
+    [class^="swal2-success-line"] {
       display: block;
       position: absolute;
-      height: .3125em;
-      border-radius: .125em;
+      height: 0.3125em;
+      border-radius: 0.125em;
       background-color: $swal2-success;
       z-index: 2;
 
-      &[class$='tip'] {
+      &[class$="tip"] {
         top: 2.875em;
-        left: .875em;
+        left: 0.875em;
         width: 1.5625em;
         transform: rotate(45deg);
       }
 
-      &[class$='long'] {
+      &[class$="long"] {
         top: 2.375em;
-        right: .5em;
+        right: 0.5em;
         width: 2.9375em;
         transform: rotate(-45deg);
       }
@@ -206,7 +210,7 @@
 }
 
 // github.com/sweetalert2/sweetalert2/issues/268
-[class^='swal2'] {
+[class^="swal2"] {
   -webkit-tap-highlight-color: transparent;
 }
 

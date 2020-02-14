@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {ParamMap, Params, convertToParamMap} from "@angular/router";
+import { Injectable } from "@angular/core";
+import { ParamMap, Params, convertToParamMap } from "@angular/router";
 import {
     MatDialog,
     MatDialogConfig,
@@ -21,15 +21,16 @@ import {
     XmatSnackBarData,
     XmatFileReaderEvent,
     XmatGenericObject,
-    XmatSnackBarDataTypes
+    XmatSnackBarDataTypes,
+    XmatSelect
 } from "../xmat-models/index";
-import {XmatConstantsService, XMAT_CONSTANT_LABELS} from "./xmat-constants.service";
-import {XmatSnackBarComponent} from "../xmat-snack-bar/index";
+import { XmatConstantsService, XMAT_CONSTANT_LABELS } from "./xmat-constants.service";
+import { XmatSnackBarComponent } from "../xmat-snack-bar/index";
 //
-import {Observable, forkJoin} from "rxjs";
-import {map} from "rxjs/operators";
-import {each, includes, extend, merge} from "lodash";
-import {parseZone as moment} from "moment";
+import { Observable, forkJoin } from "rxjs";
+import { map } from "rxjs/operators";
+import { each, includes, extend, merge } from "lodash";
+import { parseZone as moment } from "moment";
 
 type XmatObservablesMap = XmatGenericObject<Observable<any>>;
 
@@ -69,19 +70,19 @@ const eachEnum = (srcEnum, iteratee) => {
 @Injectable()
 export class XmatFunctionsService {
 
-    private _colorDb = {
-        factor: colorParams.width + colorParams.center,
-        frequency: Math.PI * 2 / colorParams.diversity,
-        generated: []
-    };
-
-    private _confirmDialogDefaults: XmatConfirmDialogData = {
+    protected _confirmDialogDefaults: XmatConfirmDialogData = {
         confirmText: XMAT_CONSTANT_LABELS.confirm,
         cancelText: XMAT_CONSTANT_LABELS.cancel,
         dialogContent: XMAT_CONSTANT_LABELS.proceed,
         hideCancelButton: false,
         confirmColor: "warn",
         title: XMAT_CONSTANT_LABELS.warningTitle
+    };
+
+    private _colorDb = {
+        factor: colorParams.width + colorParams.center,
+        frequency: Math.PI * 2 / colorParams.diversity,
+        generated: []
     };
 
     private _defaultAlertData: XmatAlertDialogData = {
@@ -92,8 +93,8 @@ export class XmatFunctionsService {
     };
 
     constructor(protected _dialog: MatDialog,
-                protected _snackBar: MatSnackBar,
-                protected _xmatConstants: XmatConstantsService) {
+        protected _snackBar: MatSnackBar,
+        protected _xmatConstants: XmatConstantsService) {
     }
 
     /**
@@ -256,13 +257,30 @@ export class XmatFunctionsService {
         console.groupEnd();
     }
 
+    /**
+     *
+     * @param source the source object
+     * @param keys allows to order the result and/or include only certain props
+     */
+    objectToArray<T = any>(source: XmatGenericObject<any>, keys = Object.keys(source), keepVoid: boolean = !1): XmatSelect<T>[] {
+        const result = [];
+        each(keys, (k) => {
+            source[k] !== void 0 &&
+                result.push({
+                    description: k,
+                    value: source[k]
+                });
+        });
+        return result;
+    }
+
     openAlertDialog(data: XmatAlertDialogData,
-                    returnRef?: false): Observable<XmatAlertDialogActions>;
+        returnRef?: false): Observable<XmatAlertDialogActions>;
     openAlertDialog(data: XmatAlertDialogData,
-                    returnRef: true): MatDialogRef<XmatAlertDialogComponent, XmatAlertDialogActions>;
+        returnRef: true): MatDialogRef<XmatAlertDialogComponent, XmatAlertDialogActions>;
     openAlertDialog(data: XmatAlertDialogData = this._defaultAlertData,
-                    // tslint:disable-next-line:max-line-length
-                    returnRef: boolean = false): Observable<XmatAlertDialogActions> | MatDialogRef<XmatAlertDialogComponent, XmatAlertDialogActions> {
+        // tslint:disable-next-line:max-line-length
+        returnRef: boolean = false): Observable<XmatAlertDialogActions> | MatDialogRef<XmatAlertDialogComponent, XmatAlertDialogActions> {
         data = extend({}, this._defaultAlertData, data);
         const dialogConfig = new MatDialogConfig<XmatAlertDialogData>();
         extend(dialogConfig, {
@@ -289,18 +307,18 @@ export class XmatFunctionsService {
     }
 
     openConfirmDialog(data: XmatConfirmDialogData,
-                      disableClose?: boolean,
-                      width?: string,
-                      returnRef?: false): Observable<boolean>;
+        disableClose?: boolean,
+        width?: string,
+        returnRef?: false): Observable<boolean>;
     openConfirmDialog(data: XmatConfirmDialogData,
-                      disableClose: boolean,
-                      width: string,
-                      returnRef: true): MatDialogRef<XmatConfirmDialogComponent, boolean>;
+        disableClose: boolean,
+        width: string,
+        returnRef: true): MatDialogRef<XmatConfirmDialogComponent, boolean>;
     openConfirmDialog(data?: XmatConfirmDialogData,
-                      disableClose: boolean = false,
-                      width: string = this._xmatConstants.dialogOptions.defaultWidth,
-                      // tslint:disable-next-line:max-line-length
-                      returnRef: boolean = false): MatDialogRef<XmatConfirmDialogComponent, boolean> | Observable<boolean> {
+        disableClose: boolean = false,
+        width: string = this._xmatConstants.dialogOptions.defaultWidth,
+        // tslint:disable-next-line:max-line-length
+        returnRef: boolean = false): MatDialogRef<XmatConfirmDialogComponent, boolean> | Observable<boolean> {
 
         const dialogConfig = new MatDialogConfig<XmatConfirmDialogData>();
         extend(dialogConfig, {
@@ -361,7 +379,7 @@ export class XmatFunctionsService {
         });
     }
 
-    showSnackBar(data: XmatSnackBarData = {message: "-", showAction: false}): MatSnackBarRef<XmatSnackBarComponent> {
+    showSnackBar(data: XmatSnackBarData = { message: "-", showAction: false }): MatSnackBarRef<XmatSnackBarComponent> {
 
         return this._snackBar.openFromComponent(XmatSnackBarComponent, extend(new MatSnackBarConfig(), {
             data: data,
@@ -376,11 +394,12 @@ export class XmatFunctionsService {
      */
     showErrorSnackBar(msg: string = this._xmatConstants.labels.genericError, duration: number = 5000): MatSnackBarRef<XmatSnackBarComponent> {
 
-        return this._snackBar.openFromComponent(XmatSnackBarComponent, extend(new MatSnackBarConfig(), {
-            data: {message: msg},
+        return this.showSnackBar({
+            showAction: !1,
+            message: msg,
             duration: duration,
-            panelClass: ["xmat-snack", XmatSnackBarDataTypes.fail]
-        }));
+            type: XmatSnackBarDataTypes.fail
+        });
     }
 
     /**
@@ -444,14 +463,14 @@ export class XmatFunctionsService {
             queueKeys.push(key);
         });
         return forkJoin(queue)
-        .pipe(map((raw: any[]) => {
-            const mapped = {};
-            each(raw, (value, index) => {
-                mapped[queueKeys[index]] = value;
-            });
+            .pipe(map((raw: any[]) => {
+                const mapped = {};
+                each(raw, (value, index) => {
+                    mapped[queueKeys[index]] = value;
+                });
 
-            return mapped as T;
-        }));
+                return mapped as T;
+            }));
     }
 
     $qArray<T = any>(source: Observable<T>[]): Observable<T[]> {

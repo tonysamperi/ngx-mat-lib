@@ -21,6 +21,7 @@ import {
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRadioModule,
+    MatSelectModule,
     MatSidenavModule,
     MatStepperModule,
     MatTableModule,
@@ -41,7 +42,9 @@ import {
     XmatTimeModule,
     XmatSnackBarModule,
     XmatLegendModule,
+    XmatMediaQueryStateModule,
     XmatNavBarModule,
+    XmatSummaryModule,
     // SERVS
     XmatConstantsService,
     XmatFunctionsService,
@@ -53,7 +56,7 @@ import {XmatAppComponent} from "./xmat-app.component";
 
 // COMPS
 import {
-    XmatMenuComponent
+    XmatMenuComponent,
 } from "./components/public";
 // SRVS
 import {
@@ -70,7 +73,8 @@ import {
     XmatDialogExamplesComponent,
     XmatDownloadComponent,
     XmatHomeComponent,
-    XmatRestExamplesComponent
+    XmatRestExamplesComponent,
+    XmatUtilsComponent
 } from "./views/public";
 import {xmatRoutes} from "./models/xmat-routes";
 
@@ -83,7 +87,8 @@ const XMAT_DECLARATIONS = [
     XmatDialogExamplesComponent,
     XmatDownloadComponent,
     XmatHomeComponent,
-    XmatRestExamplesComponent
+    XmatRestExamplesComponent,
+    XmatUtilsComponent
 ];
 
 @NgModule({
@@ -99,6 +104,7 @@ const XMAT_DECLARATIONS = [
         MatProgressBarModule,
         MatProgressSpinnerModule,
         MatRadioModule,
+        MatSelectModule,
         MatTableModule,
         MatSidenavModule,
         MatStepperModule,
@@ -117,9 +123,11 @@ export class XmatCdkMatImportsModule {
         XmatDialogModule,
         XmatDividerModule,
         XmatLegendModule,
+        XmatMediaQueryStateModule,
         XmatNavBarModule,
         XmatTimeModule,
         XmatSnackBarModule,
+        XmatSummaryModule,
         // MISC
         MatFormFieldRequiredModule
     ],

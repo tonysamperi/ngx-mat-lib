@@ -22,11 +22,11 @@ export class XmatTestInterceptorService {
         let postDelay = 0;
         if (request.params instanceof XmatHttpParams) {
             if (request.params.preDelay > 0) {
-                console.info("SfcInterceptorService: preDelay found", request.params.preDelay);
+                console.info("XmatInterceptorService: preDelay found", request.params.preDelay);
                 preDelay = request.params.preDelay;
             }
             if (request.params.preDelay > 0) {
-                console.info("SfcInterceptorService: postDelay found", request.params.postDelay);
+                console.info("XmatInterceptorService: postDelay found", request.params.postDelay);
                 postDelay = request.params.postDelay > 0 ? request.params.postDelay : 0;
 
             }

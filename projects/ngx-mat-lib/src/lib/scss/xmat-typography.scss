@@ -56,4 +56,9 @@
   .xmat-text-bold {
     font-weight: bold;
   }
+
+  mat-label.xmat-capitalize,
+  mat-label.xmat-capitalize-first {
+    display: inline-block;
+  }
 }

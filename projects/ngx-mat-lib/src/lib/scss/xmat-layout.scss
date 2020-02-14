@@ -91,7 +91,7 @@
 
   $scale: 25;
   @while $scale < 76 {
-    .sfc-scale-#{$scale} {
+    .xmat-scale-#{$scale} {
       transform: scale($scale/100);
     }
     $scale: $scale + 5;

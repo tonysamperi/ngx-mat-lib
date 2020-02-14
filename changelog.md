@@ -511,4 +511,16 @@
  * XmatMockService: fixed mockKey algorithm, finds better combinations of params and placeholders
  * XmatTimeComponent: fixed error handling on external controllers (turn red)
  * improved function xmatMinListSelection
- * 
+ 
+ #7.2.18
+ * Featured xmat-capitalize on mat-label element (capitalize works on d-block or d-inline-block elements)
+ * New param for confirmDialog: additionalForm. Allows to control the "confirm" disabled state with an external Control
+ * New param for confirmDialog: hideActions. Allows to hide both the dialog actions, useful when using a custom ref
+ * "objectToArray" pipe refactored and fixed
+ * Removed useless model XmatArrayItemFromObject
+ * Added dynamic verb to getBlobFromUrl and downloadBlobFromUrl: now handles PATCH besides GET.
+ * New component XmatSummary, which allows to print a simple data set
+ * New component XmatMediaQueryState, to debug @angular/flex-layout states (peer dependency)
+ * New function "objectToArray" in XmatFunctions
+ * Renamed xmat-desc-value.model.ts to xmat-select.model (since it contains XmatSelect)
+ * Misc and refactor

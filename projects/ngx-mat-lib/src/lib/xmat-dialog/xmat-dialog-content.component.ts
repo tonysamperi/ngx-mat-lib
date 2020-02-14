@@ -1,4 +1,4 @@
-import {Component, ViewChild, TemplateRef, ViewEncapsulation} from "@angular/core";
+import { Component, ViewChild, TemplateRef, ViewEncapsulation } from "@angular/core";
 
 @Component({
     selector: "xmat-dialog-content",

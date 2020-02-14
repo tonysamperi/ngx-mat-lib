@@ -13,10 +13,10 @@ export class XmatTestMockService extends XmatMockService {
     protected _logEnabled: boolean = !1;
     protected _defaultMockDelay: number = 500;
 
-    constructor(protected _sfcConstants: XmatConstantsService,
-                protected _sfcMocksList: XmatTestMocksListService) {
+    constructor(protected _xmatConstants: XmatConstantsService,
+                protected _xmatMocksList: XmatTestMocksListService) {
 
-        super(_sfcConstants, _sfcMocksList);
+        super(_xmatConstants, _xmatMocksList);
 
     }
 
