@@ -1,12 +1,11 @@
-import { Component, Input, OnDestroy } from "@angular/core";
-import { XmatSelect, XmatSummaryConfig } from "ngx-mat-lib";
-import { MediaChange, MediaObserver } from "@angular/flex-layout";
+import {Component, Input, OnDestroy} from "@angular/core";
+import {MediaChange, MediaObserver} from "@angular/flex-layout";
 //
-import { XmatBreakpointKeys } from "../xmat-models/xmat-breakpoints.model";
+import {XmatBreakpointKeys, XmatSelect, XmatSummaryConfig} from "../xmat-models/index";
 //
-import { chunk, merge, map, forEach } from "lodash";
-import { Subject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
+import {chunk, merge, map, forEach} from "lodash";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
     selector: "xmat-summary",
@@ -49,15 +48,15 @@ export class XmatSummaryComponent implements OnDestroy {
 
     constructor(mediaService: MediaObserver) {
         mediaService.asObservable()
-            .pipe(takeUntil(this._subsCtrl$))
-            .subscribe((changes: MediaChange[]) => {
-                const change = changes[0];
-                const previousMqAlias = this._currentMqAlias; // Clone previous state to check for columns change
-                if (previousMqAlias !== change.mqAlias) {
-                    this._currentMqAlias = change.mqAlias;
-                    !!this._config && this._needsBuild(previousMqAlias, change.mqAlias) && this._buildSummary();
-                }
-            });
+        .pipe(takeUntil(this._subsCtrl$))
+        .subscribe((changes: MediaChange[]) => {
+            const change = changes[0];
+            const previousMqAlias = this._currentMqAlias; // Clone previous state to check for columns change
+            if (previousMqAlias !== change.mqAlias) {
+                this._currentMqAlias = change.mqAlias;
+                !!this._config && this._needsBuild(previousMqAlias, change.mqAlias) && this._buildSummary();
+            }
+        });
     }
 
     ngOnDestroy(): void {
