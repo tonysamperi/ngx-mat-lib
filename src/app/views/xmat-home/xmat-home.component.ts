@@ -26,6 +26,7 @@ export class XmatHomeComponent implements OnInit {
     @ViewChild("myTest2") myTest2: XmatLegendItemContentComponent;
     @ViewChild("myTest3") myTest3: XmatLegendItemContentComponent;
 
+    actionDisabled: boolean = !1;
     activeLink = "First";
     dpModel = new Date();
     icons = ["", "note_add", "delete_forever"];

@@ -29,7 +29,7 @@ import { XmatSnackBarComponent } from "../xmat-snack-bar/index";
 //
 import { Observable, forkJoin } from "rxjs";
 import { map } from "rxjs/operators";
-import { each, includes, extend, merge } from "lodash";
+import { each, includes, extend } from "lodash";
 import { parseZone as moment } from "moment";
 
 type XmatObservablesMap = XmatGenericObject<Observable<any>>;
@@ -101,32 +101,23 @@ export class XmatFunctionsService {
      * PUBLIC FUNCTIONS
      */
     addLeadingZeroes(n: number | string): string {
-        return ("00" + n).slice(-2);
+        return ("0" + n).slice(-2);
     }
 
     createReflectionModel(source, level = 0): any {
         // For both arrays and objects
         if (!!source && typeof source === typeof {}) {
-            let target = {};
-            if (Array.isArray(source)) {
-                target = [];
-            }
-            const sourceKeys = Object.keys(source);
+            const target = Array.isArray(source) ? [] : {};
+            const sourceKeys = Object.keys(source); // new Object();
             for (let i = 0; i < sourceKeys.length; i++) {
                 const key = sourceKeys[i];
                 // Always create new key on the target, it will eventually be converted to object
                 // For both arrays and objects
-                if (!!source[key] && typeof source[key] === typeof {}) {
-                    target[key] = this.createReflectionModel(source[key], level + 1);
-                }
-                else {
-                    target[key] = void 0;
-                }
+                return target[key] = this.createReflectionModel(source[key], level + 1);
             }
             return target;
         }
         else {
-            console.error("Cannot create reflection of non object");
             return void 0;
         }
     }
@@ -324,7 +315,10 @@ export class XmatFunctionsService {
         extend(dialogConfig, {
             id: data.dialogId,
             width: width,
-            data: <XmatConfirmDialogData>merge({}, this._confirmDialogDefaults, data),
+            data: {
+                ...this._confirmDialogDefaults,
+                ...data
+            } as XmatConfirmDialogData,
             disableClose: disableClose
         });
 

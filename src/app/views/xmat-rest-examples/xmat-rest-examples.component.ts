@@ -61,7 +61,8 @@ export class XmatRestExamplesComponent implements OnInit {
     doQueue(): void {
         this._rest.$allMap({
             first: this._configB,
-            second: this._configC
+            second: this._configC,
+            third: this._rest.servicesConfigs.getOuRoles("abc", "def")
         })
         .subscribe((response: any) => {
             console.info("$all response", response);

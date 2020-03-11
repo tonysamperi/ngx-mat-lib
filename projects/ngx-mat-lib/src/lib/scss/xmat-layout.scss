@@ -14,6 +14,10 @@
     overflow: hidden;
   }
 
+  .xmat-overflow-hidden {
+    overflow: hidden;
+  }
+
   .xmat-opacity-half {
     opacity: 0.5;
   }
@@ -38,6 +42,10 @@
     content: "*";
     margin-left: 5px;
     color: red;
+  }
+
+  .xmat-margin-auto {
+    margin: auto;
   }
 
   @each $direction in $float-directions {

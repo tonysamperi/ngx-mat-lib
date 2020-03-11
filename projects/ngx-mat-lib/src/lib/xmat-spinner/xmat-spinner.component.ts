@@ -10,11 +10,10 @@ const defaultDiameter = 100;
 })
 export class XmatSpinnerComponent implements AfterViewInit {
 
-    @Input() diameter: number = defaultDiameter;
-
-    @Input() customParent: string;
-
     @ViewChild(MatSpinner) spinner: MatSpinner;
+
+    @Input() diameter: number = defaultDiameter;
+    @Input() customParent: string;
 
     constructor(private elementRef: ElementRef) {
         this.diameter > 0 || (this.diameter = defaultDiameter);

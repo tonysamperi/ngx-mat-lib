@@ -3,7 +3,8 @@ import {Injectable} from "@angular/core";
 import {
     XmatMock,
     XmatMocksListService,
-    XmatConstantsService
+    XmatConstantsService,
+    XmatRestVerbs
 } from "ngx-mat-lib";
 
 @Injectable()
@@ -18,7 +19,6 @@ export class XmatTestMocksListService extends XmatMocksListService {
      *  DEFAULT TIMEOUT IS 2000 ms (xmat)
      */
     private _ds = this._xmatConstants.ds;
-    private _methodsKeys = this._xmatConstants.methodsKeys;
     private _mocksFolder = "./assets/services-mocks/";
     private _params = this._xmatConstants.paramsPlaceholder;
     private _remoteNode = location.protocol + this._ds + this._ds + location.hostname + ":3000" + this._ds;
@@ -27,23 +27,23 @@ export class XmatTestMocksListService extends XmatMocksListService {
     // Mocks default timeout (500) see SfcMockService
     private _mocksList: XmatMock[] = [
         {
-            method: this._methodsKeys.GET,
+            method: XmatRestVerbs.GET,
             url: this._servicesUrls.accountsByGid,
         },
         {
-            method: this._methodsKeys.GET,
+            method: XmatRestVerbs.GET,
             url: this._servicesUrls.getOuRoles
         },
         {
-            method: this._methodsKeys.GET,
+            method: XmatRestVerbs.GET,
             url: this._servicesUrls.getOuUsers
         },
         {
-            method: this._methodsKeys.GET,
+            method: XmatRestVerbs.GET,
             url: this._servicesUrls.getRequestsByUid
         },
         {
-            method: this._methodsKeys.PATCH,
+            method: XmatRestVerbs.PATCH,
             url: this._servicesUrls.testPatch
         }
     ];

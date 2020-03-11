@@ -32,7 +32,6 @@ export class XmatMockService implements HttpInterceptor {
     protected readonly _ds = this._xmatConstants.ds;
     protected readonly _fileNameSpace = this._xmatConstants.fileNameSpace;
     protected readonly _mocksBaseUrl: string = this._xmatConstants.mocksBaseUrl;
-    protected readonly _methodsKeys: object = this._xmatConstants.methodsKeys;
     protected readonly _paramsPlaceholder = this._xmatConstants.paramsPlaceholder;
     protected readonly _qm: string = "?";
     protected readonly _queryUrlParam = this._xmatConstants.queryUrlParam;
@@ -63,8 +62,7 @@ export class XmatMockService implements HttpInterceptor {
         }
         // Separate query string from the rest
         const urlParts = request.url.split(this._qm);
-        const methodKey = this._methodsKeys[request.method];
-        const mockKey = methodKey + urlParts[0];
+        const mockKey = request.method + urlParts[0];
 
         // Checks for non parametric URL
         if (this._mockExists(mockKey)) {
@@ -75,25 +73,8 @@ export class XmatMockService implements HttpInterceptor {
         const urlParams = this._extractUrlParams(urlParts[0]);
         if (Array.isArray(urlParams)) {
             const serviceName = urlParts[0].substr(this._restBaseUrl.length).split(this._ds).shift();
-            const serviceBase = methodKey + this._restBaseUrl + serviceName;
+            const serviceBase = request.method + this._restBaseUrl + serviceName;
             let j = urlParams.length;
-            /*while (--j >= 0) {
-             const paramsBak = urlParams.slice();
-             paramsBak[j] = this._paramsPlaceholder;
-             let mixedKey = [serviceBase].concat(paramsBak).join(this._ds);
-             if (this._mockExists(mixedKey)) {
-             this._logEnabled && console.info(`XmatMock: found mock with key ${mixedKey}`);
-             return this._mocks[mixedKey](request, next, urlParams.slice(j), urlParts[1]);
-             }
-             if (!!paramsBak[j + 1]) {
-             paramsBak[j + 1] = this._paramsPlaceholder;
-             mixedKey = [serviceBase].concat(paramsBak).join(this._ds);
-             if (this._mockExists(mixedKey)) {
-             this._logEnabled && console.info(`XmatMock: found mock with key ${mixedKey}`);
-             return this._mocks[mixedKey](request, next, urlParams.slice(j), urlParts[1]);
-             }
-             }
-             }*/
             while (--j >= 0) {
                 const paramsBak = urlParams.slice();
                 paramsBak[j] = this._paramsPlaceholder;
@@ -185,7 +166,7 @@ export class XmatMockService implements HttpInterceptor {
                     fileNameSuffix += this._fileNameSpace + param;
                 });
                 const ending = mock.result === false ? this._fileEndings.ko : this._fileEndings.ok;
-                const methodKey = this._methodsKeys[request.method];
+                const methodKey = `${XmatRestVerbs[request.method]}-`;
                 const url = this._generateJsonUrl(mock.url, methodKey, fileNameSuffix, ending);
                 const queriedUrl = this._generateJsonUrl(mock.url, methodKey, this._fileNameSpace + this._queryUrlParam, ending);
                 mockRequest = request.clone({

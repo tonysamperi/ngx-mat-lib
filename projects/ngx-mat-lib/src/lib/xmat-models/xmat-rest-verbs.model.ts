@@ -6,5 +6,5 @@ export enum XmatRestVerbs {
     PATCH = "PATCH"
 }
 
-export type XmatDynamicRestVerbsRef<T> = { [key in keyof typeof XmatRestVerbs]: T };
+export type XmatRestVerbsRef<T> = { [key in keyof typeof XmatRestVerbs]: T };
 

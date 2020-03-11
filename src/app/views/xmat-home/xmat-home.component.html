@@ -7,7 +7,7 @@
     <a xmat-tab-link disabled>Disabled Link</a>
 </nav>
 
-<h2>TIME INPUT</h2>
+<h2>xmat-time</h2>
 <mat-form-field class="autoWidth" floatLabel="always">
     <mat-icon matSuffix>alarm</mat-icon>
     <xmat-time name="ubiTimeInputTest"
@@ -44,9 +44,7 @@
     </button>
 </div>
 <hr />
-
-<h2>DATEPICKER</h2>
-
+<h2>matDatepicker (error msgs)</h2>
 <mat-form-field>
     <input matInput [matDatepicker]="rhMinPicker"
            #rhMinDate="ngModel"
@@ -71,45 +69,35 @@
         La massima data consentita è {{maxDate | date:'dd/MM/yyyy'}}
     </mat-error>
 </mat-form-field>
-
 <hr />
+<h2>xmat-legend</h2>
 <xmat-legend-item-content #myTest1>
     XMAT LEGEND CONTENT 1
-    <button (click)="alert('Hello')">HELLO</button>
+    <button mat-raised-button (click)="alert('Hello')">HELLO</button>
 </xmat-legend-item-content>
 <xmat-legend-item-content #myTest2>
     <strong>XMAT LC2</strong>
 </xmat-legend-item-content>
 <xmat-legend-item-content #myTest3>
     XMAT LEGEND CONTENT ICNOMPLETE
-    <button (click)="alert('Goodbye')">GOODBYE</button>
+    <button mat-raised-button (click)="alert('Goodbye')">GOODBYE</button>
 </xmat-legend-item-content>
 
-
+<p>First legend</p>
 <xmat-legend [items]="myTestList" layout="grid"></xmat-legend>
-
+<p>Second legend </p>
 <xmat-legend [items]="myTestListB" layout="grid" columns="4" fillColumns="true"></xmat-legend>
-
-<!--<div style="height: 100px; background: #e2e2e2">-->
-<!--<button (click)="actionDisabled = !actionDisabled">-->
-<!--ACTION TOGGLE DISABLED-->
-<!--</button>-->
-<!--<p>DISABLED = {{actionDisabled ? "true":"false"}}</p>-->
-<!--<span xmatActionText color="primary"-->
-<!--[disabled]="actionDisabled"-->
-<!--(click)="showSnackBar($event)">SHOW SNACKBAR</span>-->
-<!--</div>-->
+<hr />
+<h2>xmatActionText</h2>
+<div class="xmat-padding-2x xmat-bg-grey-light">
+    <button mat-raised-button
+            color="primary"
+            (click)="actionDisabled = !actionDisabled">
+        TOGGLE DISABLED
+    </button>
+    <p>DISABLED = {{actionDisabled ? "true" : "false"}}</p>
+    <span xmatActionText color="primary"
+          [disabled]="actionDisabled"
+          (click)="showSnackBar($event)">SHOW SNACKBAR</span>
+</div>
 <div class="xmat-padding-1x"></div>
-
-<h2>TOOLBAR TEST</h2>
-
-<mat-toolbar color="accent">
-    <div>Some text here</div>
-    <mat-form-field>
-        <mat-select [(ngModel)]="optSelection">
-            <mat-option value="opt1">OPT 1</mat-option>
-            <mat-option value="opt2">OPT 2</mat-option>
-            <mat-option value="opt3">OPT 3</mat-option>
-        </mat-select>
-    </mat-form-field>
-</mat-toolbar>

@@ -3,7 +3,7 @@ export * from "./xmat-alert-types.model";
 export * from "./xmat-breakpoints.model";
 export * from "./xmat-confirm-dialog.model";
 export * from "./xmat-constants-labels.model";
-export * from "./xmat-select.model";
+export * from "./xmat-desc-value.model";
 export * from "./xmat-file.model";
 export * from "./xmat-file-reader-event.model";
 export * from "./xmat-generic-object";

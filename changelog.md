@@ -524,3 +524,10 @@
  * New function "objectToArray" in XmatFunctions
  * Renamed xmat-desc-value.model.ts to xmat-select.model (since it contains XmatSelect)
  * Misc and refactor
+
+#7.3.0
+* Simplified mocks handling with XmatRestVerbs instead of XmatConstantsService.methodKeys
+* Removeed useless data from XmatConstantsService. That kind of data can be set externally (extending XmatConstantsService or custom files) 
+* xmatValidListSelection: added reverse mode which returns error if value is in list
+* Renamed XmatDynamicRestVerbsRef to XmatRestVerbsRef
+* Misc and refactor

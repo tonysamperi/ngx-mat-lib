@@ -1,5 +1,5 @@
-import {Component, ElementRef, AfterViewInit, Input, OnDestroy, OnInit} from "@angular/core";
-import {XmatOverlayStyles, XmatGenericObject} from "../xmat-models/index";
+import { Component, ElementRef, AfterViewInit, Input, OnDestroy, OnInit, HostBinding } from "@angular/core";
+import { XmatOverlayStyles, XmatGenericObject } from "../xmat-models/index";
 
 const invalidDisplayValues = ["inline", "none"];
 
@@ -17,6 +17,9 @@ const invalidDisplayValues = ["inline", "none"];
 })
 export class XmatOverlayComponent implements AfterViewInit, OnDestroy, OnInit {
 
+    static nextId: number = 0;
+
+    @HostBinding("id") id: string = `xmat_overlay_${++XmatOverlayComponent.nextId}`;
 
     @Input("zIndex")
     set zIndex(newValue: number) {

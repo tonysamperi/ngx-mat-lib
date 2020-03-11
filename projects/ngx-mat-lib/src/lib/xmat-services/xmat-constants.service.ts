@@ -1,6 +1,5 @@
-import { Injectable } from "@angular/core";
-import { XmatDynamicRestVerbsRef, XmatGenericObject, XmatConstantsLabels } from "../xmat-models/index";
-import { cloneDeep } from "lodash";
+import {Injectable} from "@angular/core";
+import {XmatRestVerbsRef, XmatGenericObject, XmatConstantsLabels} from "../xmat-models/index";
 
 // tslint:disable-next-line:naming-convention
 export const XMAT_CONSTANT_LABELS: XmatConstantsLabels = {
@@ -52,27 +51,6 @@ export class XmatConstantsService {
     };
     public readonly mocksBaseUrl: string = "assets/services-mocks/";
     public restBaseUrl: string = "";
-    // URLS ARE NOT ALPHABETICALLY ORDERED SINCE IT'S LIKELY THAT THEY'LL CHANGE OFTEN AT THIS TIME
-
-    public readonly dialogData: any = {
-        checkOnSave: {
-            title: XMAT_CONSTANT_LABELS.warningTitle,
-            dialogContent: "<p>Si è certi di voler proseguire?</p>"
-        },
-        dataLoss: {
-            title: XMAT_CONSTANT_LABELS.warningTitle,
-            confirmText: XMAT_CONSTANT_LABELS.leave,
-            cancelText: XMAT_CONSTANT_LABELS.stay,
-            dialogContent: "<p>Ci sono dati non salvati. Proseguendo andranno persi.</p>\
-                <p>Si è sicuri di voler abbandonare la view attuale?</p>"
-        },
-        invalidData: {
-            title: XMAT_CONSTANT_LABELS.warningTitle,
-            confirmText: XMAT_CONSTANT_LABELS.understood,
-            hideCancelButton: true,
-            dialogContent: "<p>Ci sono degli errori di compilazione. Ricontrollare i campi evidenziati in rosso.</p>"
-        }
-    };
 
     public readonly dialogOptions: any = {
         defaultWidth: "400px",
@@ -83,19 +61,9 @@ export class XmatConstantsService {
 
     public readonly fileNameSpace: string = "-";
 
-    public labels: XmatConstantsLabels = cloneDeep(XMAT_CONSTANT_LABELS);
-
-    public messages: XmatGenericObject<string> = {
-        warningTitle: XMAT_CONSTANT_LABELS.warningTitle,
-        genericErrorKey: "generic.error"
-    };
-
-    public readonly methodsKeys: XmatDynamicRestVerbsRef<string> = {
-        GET: "get-",
-        PUT: "put-",
-        POST: "post-",
-        DELETE: "delete-",
-        PATCH: "patch-"
+    // These can be overridden by extending this class
+    public labels: XmatConstantsLabels = {
+        ...XMAT_CONSTANT_LABELS
     };
 
     public readonly paramsPlaceholder: string = "@params@";

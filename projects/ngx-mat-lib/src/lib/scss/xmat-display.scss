@@ -1,11 +1,10 @@
-@import "./xmat-vars";
 @import "./xmat-breakpoints";
 
 .xmat-fade {
   opacity: 0;
-  -webkit-transition: opacity .15s linear;
-  -o-transition: opacity .15s linear;
-  transition: opacity .15s linear;
+  -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
 }
 
 .xmat-fade.xmat-fade-in {
@@ -19,32 +18,69 @@
 @each $breakpoint in map-keys($xmat-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $xmat-breakpoints);
+    $infixVal: map-get($xmat-breakpoints, $breakpoint);
+    @warn "Infix is #{$infix}: value #{$infixVal}";
 
-    .xmat-d#{$infix}-none         { display: none !important; }
-    .xmat-d#{$infix}-inline       { display: inline !important; }
-    .xmat-d#{$infix}-inline-block { display: inline-block !important; }
-    .xmat-d#{$infix}-block        { display: block !important; }
-    .xmat-d#{$infix}-table        { display: table !important; }
-    .xmat-d#{$infix}-table-row    { display: table-row !important; }
-    .xmat-d#{$infix}-table-cell   { display: table-cell !important; }
-    .xmat-d#{$infix}-flex         { display: flex !important; }
-    .xmat-d#{$infix}-inline-flex  { display: inline-flex !important; }
+    .xmat-d#{$infix}-none {
+      display: none !important;
+    }
+    .xmat-d#{$infix}-inline {
+      display: inline !important;
+    }
+    .xmat-d#{$infix}-inline-block {
+      display: inline-block !important;
+    }
+    .xmat-d#{$infix}-block {
+      display: block !important;
+    }
+    .xmat-d#{$infix}-table {
+      display: table !important;
+    }
+    .xmat-d#{$infix}-table-row {
+      display: table-row !important;
+    }
+    .xmat-d#{$infix}-table-cell {
+      display: table-cell !important;
+    }
+    .xmat-d#{$infix}-flex {
+      display: flex !important;
+    }
+    .xmat-d#{$infix}-inline-flex {
+      display: inline-flex !important;
+    }
   }
 }
-
 
 //
 // Utilities for toggling `display` in print
 //
 
 @media print {
-  .xmat-d-print-none         { display: none !important; }
-  .xmat-d-print-inline       { display: inline !important; }
-  .xmat-d-print-inline-block { display: inline-block !important; }
-  .xmat-d-print-block        { display: block !important; }
-  .xmat-d-print-table        { display: table !important; }
-  .xmat-d-print-table-row    { display: table-row !important; }
-  .xmat-d-print-table-cell   { display: table-cell !important; }
-  .xmat-d-print-flex         { display: flex !important; }
-  .xmat-d-print-inline-flex  { display: inline-flex !important; }
+  .xmat-d-print-none {
+    display: none !important;
+  }
+  .xmat-d-print-inline {
+    display: inline !important;
+  }
+  .xmat-d-print-inline-block {
+    display: inline-block !important;
+  }
+  .xmat-d-print-block {
+    display: block !important;
+  }
+  .xmat-d-print-table {
+    display: table !important;
+  }
+  .xmat-d-print-table-row {
+    display: table-row !important;
+  }
+  .xmat-d-print-table-cell {
+    display: table-cell !important;
+  }
+  .xmat-d-print-flex {
+    display: flex !important;
+  }
+  .xmat-d-print-inline-flex {
+    display: inline-flex !important;
+  }
 }

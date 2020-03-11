@@ -52,20 +52,6 @@ $xmat-colors: (
         yellow: mat-color($mat-yellow, 700)
 );
 
-//$xmat-breakpoints: (
-//        xs: $mat-xsmall, // 'max-width: 599px'
-//        sm: $mat-small // 'max-width: 959px'
-//);
-
-// Based on @angular/flex-layout breakpoints
-$xmat-breakpoints: (
-        xs: 0,
-        sm: 599px,
-        md: 959px,
-        lg: 1279px,
-        xl: 5000px
-) !default;
-
 // FONTS
 // Create a config with the default typography levels.
 $xmat-typography-config: mat-typography-config();

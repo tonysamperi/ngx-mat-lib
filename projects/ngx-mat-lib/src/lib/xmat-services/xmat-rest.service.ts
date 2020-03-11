@@ -193,12 +193,12 @@ export class XmatRestService {
 
     protected _generateHttpConfig(method: XmatRestVerbs = XmatRestVerbs.GET, url: string = "", queryable: boolean = false): XmatHttpConfig {
         url = this._xmatConstants.removeTrailingSlash(url);
-        return <XmatHttpConfig>{
+        return {
             method: method,
             url: url,
             data: void 0,
             queryable: queryable
-        };
+        } as XmatHttpConfig;
     }
 }
 

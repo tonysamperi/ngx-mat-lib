@@ -1,6 +1,6 @@
-# xMatLib 7.2.18
+# xMatLib 7.3.0
 
-A bunch of utilities and components to use in your Angular 5+ apps!
+A bunch of utilities and components to use in your Angular 7+ apps!
 
 # Before starting
 
@@ -218,4 +218,4 @@ files normally.
 * Add xmat-password component
 * Add xmat-progress-state component
 * Add xmat-datepicker component
-* Allow to change the color of the confirm button in xmat-confirm-dialog
+* Add xmat-simple-table component
