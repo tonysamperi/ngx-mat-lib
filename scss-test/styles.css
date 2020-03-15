@@ -1,1140 +1,8 @@
-/* Theme for the ripple elements.*/
-/* stylelint-disable material/no-prefixes */
-/* stylelint-enable */
-.mat-badge-content {
-  font-weight: 600;
-  font-size: 12px;
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-badge-small .mat-badge-content {
-  font-size: 6px; }
-
-.mat-badge-large .mat-badge-content {
-  font-size: 24px; }
-
-.mat-h1, .mat-headline, .mat-typography h1 {
-  font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 16px; }
-
-.mat-h2, .mat-title, .mat-typography h2 {
-  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 16px; }
-
-.mat-h3, .mat-subheading-2, .mat-typography h3 {
-  font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 16px; }
-
-.mat-h4, .mat-subheading-1, .mat-typography h4 {
-  font: 400 15px/24px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 16px; }
-
-.mat-h5, .mat-typography h5 {
-  font: 400 11.62px/20px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 12px; }
-
-.mat-h6, .mat-typography h6 {
-  font: 400 9.38px/20px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 12px; }
-
-.mat-body-strong, .mat-body-2 {
-  font: 500 14px/24px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-body, .mat-body-1, .mat-typography {
-  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
-  .mat-body p, .mat-body-1 p, .mat-typography p {
-    margin: 0 0 12px; }
-
-.mat-small, .mat-caption {
-  font: 400 12px/20px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-display-4, .mat-typography .mat-display-4 {
-  font: 300 112px/112px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 56px;
-  letter-spacing: -0.05em; }
-
-.mat-display-3, .mat-typography .mat-display-3 {
-  font: 400 56px/56px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 64px;
-  letter-spacing: -0.02em; }
-
-.mat-display-2, .mat-typography .mat-display-2 {
-  font: 400 45px/48px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 64px;
-  letter-spacing: -0.005em; }
-
-.mat-display-1, .mat-typography .mat-display-1 {
-  font: 400 34px/40px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 64px; }
-
-.mat-bottom-sheet-container {
-  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button,
-.mat-flat-button, .mat-fab, .mat-mini-fab {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-button-toggle {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-card {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-card-title {
-  font-size: 24px;
-  font-weight: 500; }
-
-.mat-card-header .mat-card-title {
-  font-size: 20px; }
-
-.mat-card-subtitle,
-.mat-card-content {
-  font-size: 14px; }
-
-.mat-checkbox {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-checkbox-layout .mat-checkbox-label {
-  line-height: 24px; }
-
-.mat-chip {
-  font-size: 14px;
-  font-weight: 500; }
-  .mat-chip .mat-chip-trailing-icon.mat-icon,
-  .mat-chip .mat-chip-remove.mat-icon {
-    font-size: 18px; }
-
-.mat-table {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-header-cell {
-  font-size: 12px;
-  font-weight: 500; }
-
-.mat-cell, .mat-footer-cell {
-  font-size: 14px; }
-
-.mat-calendar {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-calendar-body {
-  font-size: 13px; }
-
-.mat-calendar-body-label,
-.mat-calendar-period-button {
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-calendar-table-header th {
-  font-size: 11px;
-  font-weight: 400; }
-
-.mat-dialog-title {
-  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-expansion-panel-header {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 15px;
-  font-weight: 400; }
-
-.mat-expansion-panel-content {
-  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-form-field {
-  font-size: inherit;
-  font-weight: 400;
-  line-height: 1.125;
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-form-field-wrapper {
-  padding-bottom: 1.34375em; }
-
-.mat-form-field-prefix .mat-icon,
-.mat-form-field-suffix .mat-icon {
-  font-size: 150%;
-  line-height: 1.125; }
-
-.mat-form-field-prefix .mat-icon-button,
-.mat-form-field-suffix .mat-icon-button {
-  height: 1.5em;
-  width: 1.5em; }
-  .mat-form-field-prefix .mat-icon-button .mat-icon,
-  .mat-form-field-suffix .mat-icon-button .mat-icon {
-    height: 1.125em;
-    line-height: 1.125; }
-
-.mat-form-field-infix {
-  padding: 0.5em 0;
-  border-top: 0.84375em solid transparent; }
-
-.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-  transform: translateY(-1.34375em) scale(0.75);
-  width: 133.33333%; }
-
-.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-1.34374em) scale(0.75);
-  width: 133.33334%; }
-
-.mat-form-field-label-wrapper {
-  top: -0.84375em;
-  padding-top: 0.84375em; }
-
-.mat-form-field-label {
-  top: 1.34375em; }
-
-.mat-form-field-underline {
-  bottom: 1.34375em; }
-
-.mat-form-field-subscript-wrapper {
-  font-size: 75%;
-  margin-top: 0.66667em;
-  top: calc(100% - 1.79167em); }
-
-.mat-form-field-appearance-legacy .mat-form-field-wrapper {
-  padding-bottom: 1.25em; }
-
-.mat-form-field-appearance-legacy .mat-form-field-infix {
-  padding: 0.4375em 0; }
-
-.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.001px);
-  -ms-transform: translateY(-1.28125em) scale(0.75);
-  width: 133.33333%; }
-
-.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00101px);
-  -ms-transform: translateY(-1.28124em) scale(0.75);
-  width: 133.33334%; }
-
-.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00102px);
-  -ms-transform: translateY(-1.28123em) scale(0.75);
-  width: 133.33335%; }
-
-.mat-form-field-appearance-legacy .mat-form-field-label {
-  top: 1.28125em; }
-
-.mat-form-field-appearance-legacy .mat-form-field-underline {
-  bottom: 1.25em; }
-
-.mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
-  margin-top: 0.54167em;
-  top: calc(100% - 1.66667em); }
-
-@media print {
-  .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-  .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-    transform: translateY(-1.28122em) scale(0.75); }
-  .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper
-.mat-form-field-label {
-    transform: translateY(-1.28121em) scale(0.75); }
-  .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-    transform: translateY(-1.2812em) scale(0.75); } }
-
-.mat-form-field-appearance-fill .mat-form-field-infix {
-  padding: 0.25em 0 0.75em 0; }
-
-.mat-form-field-appearance-fill .mat-form-field-label {
-  top: 1.09375em;
-  margin-top: -0.5em; }
-
-.mat-form-field-appearance-fill.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-.mat-form-field-appearance-fill.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-  transform: translateY(-0.59375em) scale(0.75);
-  width: 133.33333%; }
-
-.mat-form-field-appearance-fill.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-0.59374em) scale(0.75);
-  width: 133.33334%; }
-
-.mat-form-field-appearance-outline .mat-form-field-infix {
-  padding: 1em 0 1em 0; }
-
-.mat-form-field-appearance-outline .mat-form-field-label {
-  top: 1.84375em;
-  margin-top: -0.25em; }
-
-.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-  transform: translateY(-1.59375em) scale(0.75);
-  width: 133.33333%; }
-
-.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-1.59374em) scale(0.75);
-  width: 133.33334%; }
-
-.mat-grid-tile-header,
-.mat-grid-tile-footer {
-  font-size: 14px; }
-  .mat-grid-tile-header .mat-line,
-  .mat-grid-tile-footer .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-grid-tile-header .mat-line:nth-child(n+2),
-    .mat-grid-tile-footer .mat-line:nth-child(n+2) {
-      font-size: 12px; }
-
-input.mat-input-element {
-  margin-top: -0.0625em; }
-
-.mat-menu-item {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 400; }
-
-.mat-paginator,
-.mat-paginator-page-size .mat-select-trigger {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 12px; }
-
-.mat-radio-button {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-select {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-select-trigger {
-  height: 1.125em; }
-
-.mat-slide-toggle-content {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-slider-thumb-label-text {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 12px;
-  font-weight: 500; }
-
-.mat-stepper-vertical, .mat-stepper-horizontal {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-step-label {
-  font-size: 14px;
-  font-weight: 400; }
-
-.mat-step-sub-label-error {
-  font-weight: normal; }
-
-.mat-step-label-error {
-  font-size: 14px; }
-
-.mat-step-label-selected {
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-tab-group {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-tab-label, .mat-tab-link {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-toolbar,
-.mat-toolbar h1,
-.mat-toolbar h2,
-.mat-toolbar h3,
-.mat-toolbar h4,
-.mat-toolbar h5,
-.mat-toolbar h6 {
-  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0; }
-
-.mat-tooltip {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 10px;
-  padding-top: 6px;
-  padding-bottom: 6px; }
-
-.mat-tooltip-handset {
-  font-size: 14px;
-  padding-top: 8px;
-  padding-bottom: 8px; }
-
-.mat-list-item {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-list-option {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-list-base .mat-list-item {
-  font-size: 16px; }
-  .mat-list-base .mat-list-item .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-list-base .mat-list-item .mat-line:nth-child(n+2) {
-      font-size: 14px; }
-
-.mat-list-base .mat-list-option {
-  font-size: 16px; }
-  .mat-list-base .mat-list-option .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-list-base .mat-list-option .mat-line:nth-child(n+2) {
-      font-size: 14px; }
-
-.mat-list-base .mat-subheader {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-list-base[dense] .mat-list-item {
-  font-size: 12px; }
-  .mat-list-base[dense] .mat-list-item .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-list-base[dense] .mat-list-item .mat-line:nth-child(n+2) {
-      font-size: 12px; }
-
-.mat-list-base[dense] .mat-list-option {
-  font-size: 12px; }
-  .mat-list-base[dense] .mat-list-option .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-list-base[dense] .mat-list-option .mat-line:nth-child(n+2) {
-      font-size: 12px; }
-
-.mat-list-base[dense] .mat-subheader {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 12px;
-  font-weight: 500; }
-
-.mat-option {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 16px; }
-
-.mat-optgroup-label {
-  font: 500 14px/24px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-simple-snackbar {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px; }
-
-.mat-simple-snackbar-action {
-  line-height: 1;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: 500; }
-
-.mat-tree {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-tree-node,
-.mat-nested-tree-node {
-  font-weight: 400;
-  font-size: 14px; }
-
-.mat-ripple {
-  overflow: hidden;
-  position: relative; }
-
-.mat-ripple.mat-ripple-unbounded {
-  overflow: visible; }
-
-.mat-ripple-element {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  transition: opacity, transform 0ms cubic-bezier(0, 0, 0.2, 1);
-  transform: scale(0); }
-  @media (-ms-high-contrast: active) {
-    .mat-ripple-element {
-      display: none; } }
-
-.cdk-visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  outline: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none; }
-
-.cdk-overlay-container, .cdk-global-overlay-wrapper {
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%; }
-
-.cdk-overlay-container {
-  position: fixed;
-  z-index: 1000; }
-  .cdk-overlay-container:empty {
-    display: none; }
-
-.cdk-global-overlay-wrapper {
-  display: flex;
-  position: absolute;
-  z-index: 1000; }
-
-.cdk-overlay-pane {
-  position: absolute;
-  pointer-events: auto;
-  box-sizing: border-box;
-  z-index: 1000;
-  display: flex;
-  max-width: 100%;
-  max-height: 100%; }
-
-.cdk-overlay-backdrop {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  pointer-events: auto;
-  -webkit-tap-highlight-color: transparent;
-  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-  opacity: 0; }
-  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
-    opacity: 1; }
-    @media screen and (-ms-high-contrast: active) {
-      .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
-        opacity: 0.6; } }
-
-.cdk-overlay-dark-backdrop {
-  background: rgba(0, 0, 0, 0.32); }
-
-.cdk-overlay-transparent-backdrop, .cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing {
-  opacity: 0; }
-
-.cdk-overlay-connected-position-bounding-box {
-  position: absolute;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  min-width: 1px;
-  min-height: 1px; }
-
-.cdk-global-scrollblock {
-  position: fixed;
-  width: 100%;
-  overflow-y: scroll; }
-
-@keyframes cdk-text-field-autofill-start {
-  /*!*/ }
-
-@keyframes cdk-text-field-autofill-end {
-  /*!*/ }
-
-.cdk-text-field-autofill-monitored:-webkit-autofill {
-  animation-name: cdk-text-field-autofill-start; }
-
-.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
-  animation-name: cdk-text-field-autofill-end; }
-
-textarea.cdk-textarea-autosize {
-  resize: none; }
-
-textarea.cdk-textarea-autosize-measuring {
-  height: auto !important;
-  overflow: hidden !important;
-  padding: 2px 0 !important;
-  box-sizing: content-box !important; }
-
-/* Theme for the ripple elements.*/
-/* stylelint-disable material/no-prefixes */
-/* stylelint-enable */
-/* Theme for the ripple elements.*/
-/* stylelint-disable material/no-prefixes */
-/* stylelint-enable */
-.mat-badge-content {
-  font-weight: 600;
-  font-size: 12px;
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-badge-small .mat-badge-content {
-  font-size: 6px; }
-
-.mat-badge-large .mat-badge-content {
-  font-size: 24px; }
-
-.mat-h1, .mat-headline, .mat-typography h1 {
-  font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 16px; }
-
-.mat-h2, .mat-title, .mat-typography h2 {
-  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 16px; }
-
-.mat-h3, .mat-subheading-2, .mat-typography h3 {
-  font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 16px; }
-
-.mat-h4, .mat-subheading-1, .mat-typography h4 {
-  font: 400 15px/24px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 16px; }
-
-.mat-h5, .mat-typography h5 {
-  font: 400 11.62px/20px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 12px; }
-
-.mat-h6, .mat-typography h6 {
-  font: 400 9.38px/20px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 12px; }
-
-.mat-body-strong, .mat-body-2 {
-  font: 500 14px/24px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-body, .mat-body-1, .mat-typography {
-  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
-  .mat-body p, .mat-body-1 p, .mat-typography p {
-    margin: 0 0 12px; }
-
-.mat-small, .mat-caption {
-  font: 400 12px/20px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-display-4, .mat-typography .mat-display-4 {
-  font: 300 112px/112px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 56px;
-  letter-spacing: -0.05em; }
-
-.mat-display-3, .mat-typography .mat-display-3 {
-  font: 400 56px/56px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 64px;
-  letter-spacing: -0.02em; }
-
-.mat-display-2, .mat-typography .mat-display-2 {
-  font: 400 45px/48px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 64px;
-  letter-spacing: -0.005em; }
-
-.mat-display-1, .mat-typography .mat-display-1 {
-  font: 400 34px/40px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0 0 64px; }
-
-.mat-bottom-sheet-container {
-  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button,
-.mat-flat-button, .mat-fab, .mat-mini-fab {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-button-toggle {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-card {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-card-title {
-  font-size: 24px;
-  font-weight: 500; }
-
-.mat-card-header .mat-card-title {
-  font-size: 20px; }
-
-.mat-card-subtitle,
-.mat-card-content {
-  font-size: 14px; }
-
-.mat-checkbox {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-checkbox-layout .mat-checkbox-label {
-  line-height: 24px; }
-
-.mat-chip {
-  font-size: 14px;
-  font-weight: 500; }
-  .mat-chip .mat-chip-trailing-icon.mat-icon,
-  .mat-chip .mat-chip-remove.mat-icon {
-    font-size: 18px; }
-
-.mat-table {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-header-cell {
-  font-size: 12px;
-  font-weight: 500; }
-
-.mat-cell, .mat-footer-cell {
-  font-size: 14px; }
-
-.mat-calendar {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-calendar-body {
-  font-size: 13px; }
-
-.mat-calendar-body-label,
-.mat-calendar-period-button {
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-calendar-table-header th {
-  font-size: 11px;
-  font-weight: 400; }
-
-.mat-dialog-title {
-  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-expansion-panel-header {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 15px;
-  font-weight: 400; }
-
-.mat-expansion-panel-content {
-  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-form-field {
-  font-size: inherit;
-  font-weight: 400;
-  line-height: 1.125;
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-form-field-wrapper {
-  padding-bottom: 1.34375em; }
-
-.mat-form-field-prefix .mat-icon,
-.mat-form-field-suffix .mat-icon {
-  font-size: 150%;
-  line-height: 1.125; }
-
-.mat-form-field-prefix .mat-icon-button,
-.mat-form-field-suffix .mat-icon-button {
-  height: 1.5em;
-  width: 1.5em; }
-  .mat-form-field-prefix .mat-icon-button .mat-icon,
-  .mat-form-field-suffix .mat-icon-button .mat-icon {
-    height: 1.125em;
-    line-height: 1.125; }
-
-.mat-form-field-infix {
-  padding: 0.5em 0;
-  border-top: 0.84375em solid transparent; }
-
-.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-  transform: translateY(-1.34375em) scale(0.75);
-  width: 133.33333%; }
-
-.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-1.34374em) scale(0.75);
-  width: 133.33334%; }
-
-.mat-form-field-label-wrapper {
-  top: -0.84375em;
-  padding-top: 0.84375em; }
-
-.mat-form-field-label {
-  top: 1.34375em; }
-
-.mat-form-field-underline {
-  bottom: 1.34375em; }
-
-.mat-form-field-subscript-wrapper {
-  font-size: 75%;
-  margin-top: 0.66667em;
-  top: calc(100% - 1.79167em); }
-
-.mat-form-field-appearance-legacy .mat-form-field-wrapper {
-  padding-bottom: 1.25em; }
-
-.mat-form-field-appearance-legacy .mat-form-field-infix {
-  padding: 0.4375em 0; }
-
-.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.001px);
-  -ms-transform: translateY(-1.28125em) scale(0.75);
-  width: 133.33333%; }
-
-.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00101px);
-  -ms-transform: translateY(-1.28124em) scale(0.75);
-  width: 133.33334%; }
-
-.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00102px);
-  -ms-transform: translateY(-1.28123em) scale(0.75);
-  width: 133.33335%; }
-
-.mat-form-field-appearance-legacy .mat-form-field-label {
-  top: 1.28125em; }
-
-.mat-form-field-appearance-legacy .mat-form-field-underline {
-  bottom: 1.25em; }
-
-.mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
-  margin-top: 0.54167em;
-  top: calc(100% - 1.66667em); }
-
-@media print {
-  .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-  .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-    transform: translateY(-1.28122em) scale(0.75); }
-  .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper
-.mat-form-field-label {
-    transform: translateY(-1.28121em) scale(0.75); }
-  .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-    transform: translateY(-1.2812em) scale(0.75); } }
-
-.mat-form-field-appearance-fill .mat-form-field-infix {
-  padding: 0.25em 0 0.75em 0; }
-
-.mat-form-field-appearance-fill .mat-form-field-label {
-  top: 1.09375em;
-  margin-top: -0.5em; }
-
-.mat-form-field-appearance-fill.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-.mat-form-field-appearance-fill.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-  transform: translateY(-0.59375em) scale(0.75);
-  width: 133.33333%; }
-
-.mat-form-field-appearance-fill.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-0.59374em) scale(0.75);
-  width: 133.33334%; }
-
-.mat-form-field-appearance-outline .mat-form-field-infix {
-  padding: 1em 0 1em 0; }
-
-.mat-form-field-appearance-outline .mat-form-field-label {
-  top: 1.84375em;
-  margin-top: -0.25em; }
-
-.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-  transform: translateY(-1.59375em) scale(0.75);
-  width: 133.33333%; }
-
-.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
-.mat-form-field-label {
-  transform: translateY(-1.59374em) scale(0.75);
-  width: 133.33334%; }
-
-.mat-grid-tile-header,
-.mat-grid-tile-footer {
-  font-size: 14px; }
-  .mat-grid-tile-header .mat-line,
-  .mat-grid-tile-footer .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-grid-tile-header .mat-line:nth-child(n+2),
-    .mat-grid-tile-footer .mat-line:nth-child(n+2) {
-      font-size: 12px; }
-
-input.mat-input-element {
-  margin-top: -0.0625em; }
-
-.mat-menu-item {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 400; }
-
-.mat-paginator,
-.mat-paginator-page-size .mat-select-trigger {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 12px; }
-
-.mat-radio-button {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-select {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-select-trigger {
-  height: 1.125em; }
-
-.mat-slide-toggle-content {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-slider-thumb-label-text {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 12px;
-  font-weight: 500; }
-
-.mat-stepper-vertical, .mat-stepper-horizontal {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-step-label {
-  font-size: 14px;
-  font-weight: 400; }
-
-.mat-step-sub-label-error {
-  font-weight: normal; }
-
-.mat-step-label-error {
-  font-size: 14px; }
-
-.mat-step-label-selected {
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-tab-group {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-tab-label, .mat-tab-link {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-toolbar,
-.mat-toolbar h1,
-.mat-toolbar h2,
-.mat-toolbar h3,
-.mat-toolbar h4,
-.mat-toolbar h5,
-.mat-toolbar h6 {
-  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
-  margin: 0; }
-
-.mat-tooltip {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 10px;
-  padding-top: 6px;
-  padding-bottom: 6px; }
-
-.mat-tooltip-handset {
-  font-size: 14px;
-  padding-top: 8px;
-  padding-bottom: 8px; }
-
-.mat-list-item {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-list-option {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-list-base .mat-list-item {
-  font-size: 16px; }
-  .mat-list-base .mat-list-item .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-list-base .mat-list-item .mat-line:nth-child(n+2) {
-      font-size: 14px; }
-
-.mat-list-base .mat-list-option {
-  font-size: 16px; }
-  .mat-list-base .mat-list-option .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-list-base .mat-list-option .mat-line:nth-child(n+2) {
-      font-size: 14px; }
-
-.mat-list-base .mat-subheader {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 500; }
-
-.mat-list-base[dense] .mat-list-item {
-  font-size: 12px; }
-  .mat-list-base[dense] .mat-list-item .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-list-base[dense] .mat-list-item .mat-line:nth-child(n+2) {
-      font-size: 12px; }
-
-.mat-list-base[dense] .mat-list-option {
-  font-size: 12px; }
-  .mat-list-base[dense] .mat-list-option .mat-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    box-sizing: border-box; }
-    .mat-list-base[dense] .mat-list-option .mat-line:nth-child(n+2) {
-      font-size: 12px; }
-
-.mat-list-base[dense] .mat-subheader {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 12px;
-  font-weight: 500; }
-
-.mat-option {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 16px; }
-
-.mat-optgroup-label {
-  font: 500 14px/24px Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-simple-snackbar {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px; }
-
-.mat-simple-snackbar-action {
-  line-height: 1;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: 500; }
-
-.mat-tree {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.mat-tree-node,
-.mat-nested-tree-node {
-  font-weight: 400;
-  font-size: 14px; }
-
-.mat-ripple {
-  overflow: hidden;
-  position: relative; }
-
-.mat-ripple.mat-ripple-unbounded {
-  overflow: visible; }
-
-.mat-ripple-element {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  transition: opacity, transform 0ms cubic-bezier(0, 0, 0.2, 1);
-  transform: scale(0); }
-  @media (-ms-high-contrast: active) {
-    .mat-ripple-element {
-      display: none; } }
-
-.cdk-visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  outline: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none; }
-
-.cdk-overlay-container, .cdk-global-overlay-wrapper {
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%; }
-
-.cdk-overlay-container {
-  position: fixed;
-  z-index: 1000; }
-  .cdk-overlay-container:empty {
-    display: none; }
-
-.cdk-global-overlay-wrapper {
-  display: flex;
-  position: absolute;
-  z-index: 1000; }
-
-.cdk-overlay-pane {
-  position: absolute;
-  pointer-events: auto;
-  box-sizing: border-box;
-  z-index: 1000;
-  display: flex;
-  max-width: 100%;
-  max-height: 100%; }
-
-.cdk-overlay-backdrop {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  pointer-events: auto;
-  -webkit-tap-highlight-color: transparent;
-  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-  opacity: 0; }
-  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
-    opacity: 1; }
-    @media screen and (-ms-high-contrast: active) {
-      .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
-        opacity: 0.6; } }
-
-.cdk-overlay-dark-backdrop {
-  background: rgba(0, 0, 0, 0.32); }
-
-.cdk-overlay-transparent-backdrop, .cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing {
-  opacity: 0; }
-
-.cdk-overlay-connected-position-bounding-box {
-  position: absolute;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  min-width: 1px;
-  min-height: 1px; }
-
-.cdk-global-scrollblock {
-  position: fixed;
-  width: 100%;
-  overflow-y: scroll; }
-
-@keyframes cdk-text-field-autofill-start {
-  /*!*/ }
-
-@keyframes cdk-text-field-autofill-end {
-  /*!*/ }
-
-.cdk-text-field-autofill-monitored:-webkit-autofill {
-  animation-name: cdk-text-field-autofill-start; }
-
-.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
-  animation-name: cdk-text-field-autofill-end; }
-
-textarea.cdk-textarea-autosize {
-  resize: none; }
-
-textarea.cdk-textarea-autosize-measuring {
-  height: auto !important;
-  overflow: hidden !important;
-  padding: 2px 0 !important;
-  box-sizing: content-box !important; }
-
-/* Theme for the ripple elements.*/
-/* stylelint-disable material/no-prefixes */
-/* stylelint-enable */
 .xmat-fade {
   opacity: 0;
-  -webkit-transition: opacity .15s linear;
-  -o-transition: opacity .15s linear;
-  transition: opacity .15s linear; }
+  -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear; }
 
 .xmat-fade.xmat-fade-in {
   opacity: 1; }
@@ -1165,6 +33,26 @@ textarea.cdk-textarea-autosize-measuring {
 
 .xmat-d-inline-flex {
   display: inline-flex !important; }
+
+@media (min-width: 360) {
+  .xmat-d-xs-none {
+    display: none !important; }
+  .xmat-d-xs-inline {
+    display: inline !important; }
+  .xmat-d-xs-inline-block {
+    display: inline-block !important; }
+  .xmat-d-xs-block {
+    display: block !important; }
+  .xmat-d-xs-table {
+    display: table !important; }
+  .xmat-d-xs-table-row {
+    display: table-row !important; }
+  .xmat-d-xs-table-cell {
+    display: table-cell !important; }
+  .xmat-d-xs-flex {
+    display: flex !important; }
+  .xmat-d-xs-inline-flex {
+    display: inline-flex !important; } }
 
 @media (min-width: 599px) {
   .xmat-d-sm-none {
@@ -2404,364 +1292,437 @@ textarea.cdk-textarea-autosize-measuring {
 /* Theme for the ripple elements.*/
 /* stylelint-disable material/no-prefixes */
 /* stylelint-enable */
-body.pippo .xmat-position-relative {
-  position: relative; }
+body.xmat-test-app .xmat-animated-height {
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: max-height 0.15s linear;
+  -o-transition: max-height 0.15s linear;
+  transition: max-height 0.15s linear; }
 
-body.pippo .xmat-debug {
+body.xmat-test-app .xmat-animated-height.xmat-animated-height-in {
+  max-height: 9999px; }
+
+body.xmat-test-app .xmat-cursor-pointer {
+  cursor: pointer; }
+
+body.xmat-test-app .xmat-debug {
   display: none !important; }
 
-body.pippo .xmat-ellipsis {
+body.xmat-test-app .xmat-ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden; }
 
-body.pippo .xmat-opacity-half {
+body.xmat-test-app .xmat-margin-auto {
+  margin: auto; }
+
+body.xmat-test-app .xmat-overflow-hidden {
+  overflow: hidden; }
+
+body.xmat-test-app .xmat-opacity-half {
   opacity: 0.5; }
 
-body.pippo .xmat-cursor-pointer {
-  cursor: pointer; }
+body.xmat-test-app .xmat-position-relative {
+  position: relative; }
 
-body.pippo .xmat-required:after {
+body.xmat-test-app .xmat-required:after {
   content: "*";
   margin-left: 5px;
   color: red; }
 
-body.pippo .xmat-float-left {
+body.xmat-test-app .xmat-float-left {
   float: left; }
 
-body.pippo .xmat-float-none {
+body.xmat-test-app .xmat-float-none {
   float: none; }
 
-body.pippo .xmat-float-right {
+body.xmat-test-app .xmat-float-right {
   float: right; }
 
-body.pippo .xmat-padding-top-0 {
+body.xmat-test-app .xmat-padding-top-0 {
   padding-top: 0px; }
 
-body.pippo .xmat-padding-top-10 {
+body.xmat-test-app .xmat-padding-top-10 {
   padding-top: 10px; }
 
-body.pippo .xmat-padding-top-20 {
+body.xmat-test-app .xmat-padding-top-20 {
   padding-top: 20px; }
 
-body.pippo .xmat-padding-top-30 {
+body.xmat-test-app .xmat-padding-top-30 {
   padding-top: 30px; }
 
-body.pippo .xmat-padding-top-40 {
+body.xmat-test-app .xmat-padding-top-40 {
   padding-top: 40px; }
 
-body.pippo .xmat-padding-top-50 {
+body.xmat-test-app .xmat-padding-top-50 {
   padding-top: 50px; }
 
-body.pippo .xmat-padding-top-1x {
+body.xmat-test-app .xmat-padding-top-1x {
   padding-top: 8px; }
 
-body.pippo .xmat-padding-top-2x {
+body.xmat-test-app .xmat-padding-top-2x {
   padding-top: 16px; }
 
-body.pippo .xmat-padding-top-3x {
+body.xmat-test-app .xmat-padding-top-3x {
   padding-top: 24px; }
 
-body.pippo .xmat-padding-top-4x {
+body.xmat-test-app .xmat-padding-top-4x {
   padding-top: 32px; }
 
-body.pippo .xmat-padding-right-0 {
+body.xmat-test-app .xmat-padding-right-0 {
   padding-right: 0px; }
 
-body.pippo .xmat-padding-right-10 {
+body.xmat-test-app .xmat-padding-right-10 {
   padding-right: 10px; }
 
-body.pippo .xmat-padding-right-20 {
+body.xmat-test-app .xmat-padding-right-20 {
   padding-right: 20px; }
 
-body.pippo .xmat-padding-right-30 {
+body.xmat-test-app .xmat-padding-right-30 {
   padding-right: 30px; }
 
-body.pippo .xmat-padding-right-40 {
+body.xmat-test-app .xmat-padding-right-40 {
   padding-right: 40px; }
 
-body.pippo .xmat-padding-right-50 {
+body.xmat-test-app .xmat-padding-right-50 {
   padding-right: 50px; }
 
-body.pippo .xmat-padding-right-1x {
+body.xmat-test-app .xmat-padding-right-1x {
   padding-right: 8px; }
 
-body.pippo .xmat-padding-right-2x {
+body.xmat-test-app .xmat-padding-right-2x {
   padding-right: 16px; }
 
-body.pippo .xmat-padding-right-3x {
+body.xmat-test-app .xmat-padding-right-3x {
   padding-right: 24px; }
 
-body.pippo .xmat-padding-right-4x {
+body.xmat-test-app .xmat-padding-right-4x {
   padding-right: 32px; }
 
-body.pippo .xmat-padding-bottom-0 {
+body.xmat-test-app .xmat-padding-bottom-0 {
   padding-bottom: 0px; }
 
-body.pippo .xmat-padding-bottom-10 {
+body.xmat-test-app .xmat-padding-bottom-10 {
   padding-bottom: 10px; }
 
-body.pippo .xmat-padding-bottom-20 {
+body.xmat-test-app .xmat-padding-bottom-20 {
   padding-bottom: 20px; }
 
-body.pippo .xmat-padding-bottom-30 {
+body.xmat-test-app .xmat-padding-bottom-30 {
   padding-bottom: 30px; }
 
-body.pippo .xmat-padding-bottom-40 {
+body.xmat-test-app .xmat-padding-bottom-40 {
   padding-bottom: 40px; }
 
-body.pippo .xmat-padding-bottom-50 {
+body.xmat-test-app .xmat-padding-bottom-50 {
   padding-bottom: 50px; }
 
-body.pippo .xmat-padding-bottom-1x {
+body.xmat-test-app .xmat-padding-bottom-1x {
   padding-bottom: 8px; }
 
-body.pippo .xmat-padding-bottom-2x {
+body.xmat-test-app .xmat-padding-bottom-2x {
   padding-bottom: 16px; }
 
-body.pippo .xmat-padding-bottom-3x {
+body.xmat-test-app .xmat-padding-bottom-3x {
   padding-bottom: 24px; }
 
-body.pippo .xmat-padding-bottom-4x {
+body.xmat-test-app .xmat-padding-bottom-4x {
   padding-bottom: 32px; }
 
-body.pippo .xmat-padding-left-0 {
+body.xmat-test-app .xmat-padding-left-0 {
   padding-left: 0px; }
 
-body.pippo .xmat-padding-left-10 {
+body.xmat-test-app .xmat-padding-left-10 {
   padding-left: 10px; }
 
-body.pippo .xmat-padding-left-20 {
+body.xmat-test-app .xmat-padding-left-20 {
   padding-left: 20px; }
 
-body.pippo .xmat-padding-left-30 {
+body.xmat-test-app .xmat-padding-left-30 {
   padding-left: 30px; }
 
-body.pippo .xmat-padding-left-40 {
+body.xmat-test-app .xmat-padding-left-40 {
   padding-left: 40px; }
 
-body.pippo .xmat-padding-left-50 {
+body.xmat-test-app .xmat-padding-left-50 {
   padding-left: 50px; }
 
-body.pippo .xmat-padding-left-1x {
+body.xmat-test-app .xmat-padding-left-1x {
   padding-left: 8px; }
 
-body.pippo .xmat-padding-left-2x {
+body.xmat-test-app .xmat-padding-left-2x {
   padding-left: 16px; }
 
-body.pippo .xmat-padding-left-3x {
+body.xmat-test-app .xmat-padding-left-3x {
   padding-left: 24px; }
 
-body.pippo .xmat-padding-left-4x {
+body.xmat-test-app .xmat-padding-left-4x {
   padding-left: 32px; }
 
-body.pippo .xmat-margin-top-0 {
+body.xmat-test-app .xmat-margin-top-0 {
   margin-top: 0px; }
 
-body.pippo .xmat-margin-top-10 {
+body.xmat-test-app .xmat-margin-top-10 {
   margin-top: 10px; }
 
-body.pippo .xmat-margin-top-20 {
+body.xmat-test-app .xmat-margin-top-20 {
   margin-top: 20px; }
 
-body.pippo .xmat-margin-top-30 {
+body.xmat-test-app .xmat-margin-top-30 {
   margin-top: 30px; }
 
-body.pippo .xmat-margin-top-40 {
+body.xmat-test-app .xmat-margin-top-40 {
   margin-top: 40px; }
 
-body.pippo .xmat-margin-top-50 {
+body.xmat-test-app .xmat-margin-top-50 {
   margin-top: 50px; }
 
-body.pippo .xmat-margin-top-1x {
+body.xmat-test-app .xmat-margin-top-1x {
   margin-top: 8px; }
 
-body.pippo .xmat-margin-top-2x {
+body.xmat-test-app .xmat-margin-top-2x {
   margin-top: 16px; }
 
-body.pippo .xmat-margin-top-3x {
+body.xmat-test-app .xmat-margin-top-3x {
   margin-top: 24px; }
 
-body.pippo .xmat-margin-top-4x {
+body.xmat-test-app .xmat-margin-top-4x {
   margin-top: 32px; }
 
-body.pippo .xmat-margin-right-0 {
+body.xmat-test-app .xmat-margin-right-0 {
   margin-right: 0px; }
 
-body.pippo .xmat-margin-right-10 {
+body.xmat-test-app .xmat-margin-right-10 {
   margin-right: 10px; }
 
-body.pippo .xmat-margin-right-20 {
+body.xmat-test-app .xmat-margin-right-20 {
   margin-right: 20px; }
 
-body.pippo .xmat-margin-right-30 {
+body.xmat-test-app .xmat-margin-right-30 {
   margin-right: 30px; }
 
-body.pippo .xmat-margin-right-40 {
+body.xmat-test-app .xmat-margin-right-40 {
   margin-right: 40px; }
 
-body.pippo .xmat-margin-right-50 {
+body.xmat-test-app .xmat-margin-right-50 {
   margin-right: 50px; }
 
-body.pippo .xmat-margin-right-1x {
+body.xmat-test-app .xmat-margin-right-1x {
   margin-right: 8px; }
 
-body.pippo .xmat-margin-right-2x {
+body.xmat-test-app .xmat-margin-right-2x {
   margin-right: 16px; }
 
-body.pippo .xmat-margin-right-3x {
+body.xmat-test-app .xmat-margin-right-3x {
   margin-right: 24px; }
 
-body.pippo .xmat-margin-right-4x {
+body.xmat-test-app .xmat-margin-right-4x {
   margin-right: 32px; }
 
-body.pippo .xmat-margin-bottom-0 {
+body.xmat-test-app .xmat-margin-bottom-0 {
   margin-bottom: 0px; }
 
-body.pippo .xmat-margin-bottom-10 {
+body.xmat-test-app .xmat-margin-bottom-10 {
   margin-bottom: 10px; }
 
-body.pippo .xmat-margin-bottom-20 {
+body.xmat-test-app .xmat-margin-bottom-20 {
   margin-bottom: 20px; }
 
-body.pippo .xmat-margin-bottom-30 {
+body.xmat-test-app .xmat-margin-bottom-30 {
   margin-bottom: 30px; }
 
-body.pippo .xmat-margin-bottom-40 {
+body.xmat-test-app .xmat-margin-bottom-40 {
   margin-bottom: 40px; }
 
-body.pippo .xmat-margin-bottom-50 {
+body.xmat-test-app .xmat-margin-bottom-50 {
   margin-bottom: 50px; }
 
-body.pippo .xmat-margin-bottom-1x {
+body.xmat-test-app .xmat-margin-bottom-1x {
   margin-bottom: 8px; }
 
-body.pippo .xmat-margin-bottom-2x {
+body.xmat-test-app .xmat-margin-bottom-2x {
   margin-bottom: 16px; }
 
-body.pippo .xmat-margin-bottom-3x {
+body.xmat-test-app .xmat-margin-bottom-3x {
   margin-bottom: 24px; }
 
-body.pippo .xmat-margin-bottom-4x {
+body.xmat-test-app .xmat-margin-bottom-4x {
   margin-bottom: 32px; }
 
-body.pippo .xmat-margin-left-0 {
+body.xmat-test-app .xmat-margin-left-0 {
   margin-left: 0px; }
 
-body.pippo .xmat-margin-left-10 {
+body.xmat-test-app .xmat-margin-left-10 {
   margin-left: 10px; }
 
-body.pippo .xmat-margin-left-20 {
+body.xmat-test-app .xmat-margin-left-20 {
   margin-left: 20px; }
 
-body.pippo .xmat-margin-left-30 {
+body.xmat-test-app .xmat-margin-left-30 {
   margin-left: 30px; }
 
-body.pippo .xmat-margin-left-40 {
+body.xmat-test-app .xmat-margin-left-40 {
   margin-left: 40px; }
 
-body.pippo .xmat-margin-left-50 {
+body.xmat-test-app .xmat-margin-left-50 {
   margin-left: 50px; }
 
-body.pippo .xmat-margin-left-1x {
+body.xmat-test-app .xmat-margin-left-1x {
   margin-left: 8px; }
 
-body.pippo .xmat-margin-left-2x {
+body.xmat-test-app .xmat-margin-left-2x {
   margin-left: 16px; }
 
-body.pippo .xmat-margin-left-3x {
+body.xmat-test-app .xmat-margin-left-3x {
   margin-left: 24px; }
 
-body.pippo .xmat-margin-left-4x {
+body.xmat-test-app .xmat-margin-left-4x {
   margin-left: 32px; }
 
-body.pippo .xmat-padding-1x {
+body.xmat-test-app .xmat-padding-1x {
   padding: 8px; }
 
-body.pippo .xmat-padding-2x {
+body.xmat-test-app .xmat-padding-2x {
   padding: 16px; }
 
-body.pippo .xmat-padding-3x {
+body.xmat-test-app .xmat-padding-3x {
   padding: 24px; }
 
-body.pippo .xmat-padding-4x {
+body.xmat-test-app .xmat-padding-4x {
   padding: 32px; }
 
-body.pippo .xmat-margin-1x {
+body.xmat-test-app .xmat-no-padding {
+  padding: 0; }
+
+body.xmat-test-app .xmat-margin-1x {
   margin: 8px; }
 
-body.pippo .xmat-margin-2x {
+body.xmat-test-app .xmat-margin-2x {
   margin: 16px; }
 
-body.pippo .xmat-margin-3x {
+body.xmat-test-app .xmat-margin-3x {
   margin: 24px; }
 
-body.pippo .xmat-margin-4x {
+body.xmat-test-app .xmat-margin-4x {
   margin: 32px; }
 
-body.pippo .xmat-row {
+body.xmat-test-app .xmat-no-margin {
+  margin: 0; }
+
+body.xmat-test-app .xmat-scale-25 {
+  transform: scale(0.25); }
+
+body.xmat-test-app .xmat-scale-30 {
+  transform: scale(0.3); }
+
+body.xmat-test-app .xmat-scale-35 {
+  transform: scale(0.35); }
+
+body.xmat-test-app .xmat-scale-40 {
+  transform: scale(0.4); }
+
+body.xmat-test-app .xmat-scale-45 {
+  transform: scale(0.45); }
+
+body.xmat-test-app .xmat-scale-50 {
+  transform: scale(0.5); }
+
+body.xmat-test-app .xmat-scale-55 {
+  transform: scale(0.55); }
+
+body.xmat-test-app .xmat-scale-60 {
+  transform: scale(0.6); }
+
+body.xmat-test-app .xmat-scale-65 {
+  transform: scale(0.65); }
+
+body.xmat-test-app .xmat-scale-70 {
+  transform: scale(0.7); }
+
+body.xmat-test-app .xmat-scale-75 {
+  transform: scale(0.75); }
+
+body.xmat-test-app .xmat-flex-align-start {
+  align-items: start; }
+
+body.xmat-test-app .xmat-flex-justify-start {
+  justify-content: start; }
+
+body.xmat-test-app .xmat-flex-align-center {
+  align-items: center; }
+
+body.xmat-test-app .xmat-flex-justify-center {
+  justify-content: center; }
+
+body.xmat-test-app .xmat-flex-align-end {
+  align-items: end; }
+
+body.xmat-test-app .xmat-flex-justify-end {
+  justify-content: end; }
+
+body.xmat-test-app .xmat-row {
   display: block;
   margin-left: -10px;
   margin-right: -10px;
   margin-bottom: 10px;
   box-sizing: border-box; }
-  body.pippo .xmat-row:before {
+  body.xmat-test-app .xmat-row:before {
     display: table;
     content: " "; }
-  body.pippo .xmat-row:after {
+  body.xmat-test-app .xmat-row:after {
     display: table;
     content: " ";
     clear: both; }
-  body.pippo .xmat-row.xmat-row-noMarginLeft {
+  body.xmat-test-app .xmat-row.xmat-row-noMarginLeft {
     margin-left: 0; }
-  body.pippo .xmat-row.xmat-row-noSideMargin {
+  body.xmat-test-app .xmat-row.xmat-row-noSideMargin {
     margin-left: 0;
     margin-right: 0; }
-  body.pippo .xmat-row.xmat-row-noMarginBottom {
+  body.xmat-test-app .xmat-row.xmat-row-noMarginBottom {
     margin-bottom: 0; }
-  body.pippo .xmat-row.xmat-row-noMargin {
+  body.xmat-test-app .xmat-row.xmat-row-noMargin {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 0; }
 
-body.pippo .xmat-col-1 {
+body.xmat-test-app .xmat-col-1 {
   width: 8.33333%; }
 
-body.pippo .xmat-col-2 {
+body.xmat-test-app .xmat-col-2 {
   width: 16.66667%; }
 
-body.pippo .xmat-col-3 {
+body.xmat-test-app .xmat-col-3 {
   width: 25%; }
 
-body.pippo .xmat-col-4 {
+body.xmat-test-app .xmat-col-4 {
   width: 33.33333%; }
 
-body.pippo .xmat-col-5 {
+body.xmat-test-app .xmat-col-5 {
   width: 41.66667%; }
 
-body.pippo .xmat-col-6 {
+body.xmat-test-app .xmat-col-6 {
   width: 50%; }
 
-body.pippo .xmat-col-7 {
+body.xmat-test-app .xmat-col-7 {
   width: 58.33333%; }
 
-body.pippo .xmat-col-8 {
+body.xmat-test-app .xmat-col-8 {
   width: 66.66667%; }
 
-body.pippo .xmat-col-9 {
+body.xmat-test-app .xmat-col-9 {
   width: 75%; }
 
-body.pippo .xmat-col-10 {
+body.xmat-test-app .xmat-col-10 {
   width: 83.33333%; }
 
-body.pippo .xmat-col-11 {
+body.xmat-test-app .xmat-col-11 {
   width: 91.66667%; }
 
-body.pippo .xmat-col-12 {
+body.xmat-test-app .xmat-col-12 {
   width: 100%; }
 
-body.pippo .xmat-col-1, body.pippo .xmat-col-2, body.pippo .xmat-col-3, body.pippo .xmat-col-4, body.pippo .xmat-col-5, body.pippo .xmat-col-6, body.pippo .xmat-col-7, body.pippo .xmat-col-8, body.pippo .xmat-col-9, body.pippo .xmat-col-10, body.pippo .xmat-col-11, body.pippo .xmat-col-12 {
+body.xmat-test-app .xmat-col-1, body.xmat-test-app .xmat-col-2, body.xmat-test-app .xmat-col-3, body.xmat-test-app .xmat-col-4, body.xmat-test-app .xmat-col-5, body.xmat-test-app .xmat-col-6, body.xmat-test-app .xmat-col-7, body.xmat-test-app .xmat-col-8, body.xmat-test-app .xmat-col-9, body.xmat-test-app .xmat-col-10, body.xmat-test-app .xmat-col-11, body.xmat-test-app .xmat-col-12 {
   position: relative;
   min-height: 1px;
   padding-left: 10px;
@@ -2770,77 +1731,88 @@ body.pippo .xmat-col-1, body.pippo .xmat-col-2, body.pippo .xmat-col-3, body.pip
   margin: 0;
   box-sizing: border-box; }
 
-body.pippo .xmat-col-noPadding {
+body.xmat-test-app .xmat-col-noPadding {
   padding: 0; }
 
-body.pippo .xmat-col-noPaddingLeft {
+body.xmat-test-app .xmat-col-noPaddingLeft {
   padding-left: 0; }
 
-body.pippo .xmat-col-noPaddingRight {
+body.xmat-test-app .xmat-col-noPaddingRight {
   padding-right: 0; }
 
-body.pippo mat-table.debug mat-header-cell.mat-header-cell, body.pippo mat-table.debug mat-cell.mat-cell {
+body.xmat-test-app mat-table.debug mat-header-cell.mat-header-cell, body.xmat-test-app mat-table.debug mat-cell.mat-cell {
   border: 1px solid #d32f2f; }
 
-body.pippo mat-table mat-cell.mat-cell, body.pippo mat-table mat-header-cell.mat-header-cell {
+body.xmat-test-app mat-table mat-cell.mat-cell, body.xmat-test-app mat-table mat-header-cell.mat-header-cell {
   overflow: visible; }
 
-body.pippo mat-form-field.autoWidth {
+body.xmat-test-app mat-form-field.autoWidth {
   min-width: 140px; }
-  body.pippo mat-form-field.autoWidth > div.mat-input-wrapper > div.mat-input-flex > div.mat-input-infix {
+  body.xmat-test-app mat-form-field.autoWidth > div.mat-input-wrapper > div.mat-input-flex > div.mat-input-infix {
     width: auto; }
 
-body.pippo mat-form-field.invert .mat-form-field-underline {
+body.xmat-test-app mat-form-field.invert .mat-form-field-underline {
   background-color: rgba(255, 255, 255, 0.75); }
 
-body.pippo mat-form-field.invert input.mat-input-element, body.pippo mat-form-field.invert label.mat-form-field-placeholder {
+body.xmat-test-app mat-form-field.invert input.mat-input-element, body.xmat-test-app mat-form-field.invert label.mat-form-field-placeholder {
   color: #FFFFFF; }
 
-body.pippo mat-form-field.invert.mat-form-field-disabled {
+body.xmat-test-app mat-form-field.invert.mat-form-field-disabled {
   opacity: 0.2; }
-  body.pippo mat-form-field.invert.mat-form-field-disabled input.mat-input-element {
+  body.xmat-test-app mat-form-field.invert.mat-form-field-disabled input.mat-input-element {
     cursor: not-allowed; }
 
-body.pippo mat-form-field .mat-form-field-prefix mat-icon.mat-icon.matPrefixSmall {
+body.xmat-test-app mat-form-field .mat-form-field-prefix mat-icon.mat-icon.matPrefixSmall {
   font-size: 100%;
   margin-right: 10px; }
 
-body.pippo snack-bar-container.xmat-snack-success {
+body.xmat-test-app snack-bar-container.xmat-snack-success {
   border-top: 5px solid #388e3c; }
 
-body.pippo snack-bar-container.xmat-snack-fail {
+body.xmat-test-app snack-bar-container.xmat-snack-fail {
   border-top: 5px solid #d32f2f; }
 
-body.pippo .xmat-action {
+body.xmat-test-app .xmat-action {
   cursor: pointer; }
-  body.pippo .xmat-action.disabled {
-    opacity: 0.5; }
-  body.pippo .xmat-action.mat-accent {
+  body.xmat-test-app .xmat-action.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    position: relative; }
+    body.xmat-test-app .xmat-action.disabled:after {
+      content: " ";
+      position: absolute;
+      background-color: transparent;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+  body.xmat-test-app .xmat-action.mat-accent {
     color: #daeeff; }
-  body.pippo .xmat-action.mat-warn {
+  body.xmat-test-app .xmat-action.mat-warn {
     color: #f44336; }
-  body.pippo .xmat-action.mat-primary {
+  body.xmat-test-app .xmat-action.mat-primary {
     color: #2d6da3; }
 
-body.pippo .xmat-badge-content {
+body.xmat-test-app .xmat-badge-content {
   color: white;
   background: #2d6da3; }
 
-body.pippo .xmat-badge-accent .xmat-badge-content {
+body.xmat-test-app .xmat-badge-accent .xmat-badge-content {
   background: #daeeff;
   color: rgba(0, 0, 0, 0.87); }
 
-body.pippo .xmat-badge-warn .xmat-badge-content {
+body.xmat-test-app .xmat-badge-warn .xmat-badge-content {
   color: white;
   background: #f44336; }
 
-body.pippo .xmat-badge {
+body.xmat-test-app .xmat-badge {
   position: relative; }
 
-body.pippo .xmat-badge-hidden .xmat-badge-content {
+body.xmat-test-app .xmat-badge-hidden .xmat-badge-content {
   display: none; }
 
-body.pippo .xmat-badge-content {
+body.xmat-test-app .xmat-badge-content {
   position: absolute;
   text-align: center;
   display: inline-block;
@@ -2852,268 +1824,431 @@ body.pippo .xmat-badge-content {
   text-overflow: ellipsis;
   pointer-events: none; }
 
-body.pippo .xmat-badge-content.xmat-badge-active {
+body.xmat-test-app .xmat-badge-content.xmat-badge-active {
   transform: none; }
 
-body.pippo .xmat-badge-small .xmat-badge-content {
+body.xmat-test-app .xmat-badge-small .xmat-badge-content {
   width: 16px;
   height: 16px;
   line-height: 16px; }
   @media (-ms-high-contrast: active) {
-    body.pippo .xmat-badge-small .xmat-badge-content {
+    body.xmat-test-app .xmat-badge-small .xmat-badge-content {
       outline: solid 1px;
       border-radius: 0; } }
 
-body.pippo .xmat-badge-small.xmat-badge-above .xmat-badge-content {
+body.xmat-test-app .xmat-badge-small.xmat-badge-above .xmat-badge-content {
   top: -8px; }
 
-body.pippo .xmat-badge-small.xmat-badge-below .xmat-badge-content {
+body.xmat-test-app .xmat-badge-small.xmat-badge-below .xmat-badge-content {
   bottom: -8px; }
 
-body.pippo .xmat-badge-small.xmat-badge-before .xmat-badge-content {
+body.xmat-test-app .xmat-badge-small.xmat-badge-before .xmat-badge-content {
   left: -16px; }
 
-[dir='rtl'] body.pippo .xmat-badge-small.xmat-badge-before .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-small.xmat-badge-before .xmat-badge-content {
   left: auto;
   right: -16px; }
 
-body.pippo .xmat-badge-small.xmat-badge-after .xmat-badge-content {
+body.xmat-test-app .xmat-badge-small.xmat-badge-after .xmat-badge-content {
   right: -16px; }
 
-[dir='rtl'] body.pippo .xmat-badge-small.xmat-badge-after .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-small.xmat-badge-after .xmat-badge-content {
   right: auto;
   left: -16px; }
 
-body.pippo .xmat-badge-small.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
+body.xmat-test-app .xmat-badge-small.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
   left: -8px; }
 
-[dir='rtl'] body.pippo .xmat-badge-small.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-small.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
   left: auto;
   right: -8px; }
 
-body.pippo .xmat-badge-small.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
+body.xmat-test-app .xmat-badge-small.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
   right: -8px; }
 
-[dir='rtl'] body.pippo .xmat-badge-small.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-small.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
   right: auto;
   left: -8px; }
 
-body.pippo .xmat-badge-medium .xmat-badge-content {
+body.xmat-test-app .xmat-badge-medium .xmat-badge-content {
   width: 22px;
   height: 22px;
   line-height: 22px; }
   @media (-ms-high-contrast: active) {
-    body.pippo .xmat-badge-medium .xmat-badge-content {
+    body.xmat-test-app .xmat-badge-medium .xmat-badge-content {
       outline: solid 1px;
       border-radius: 0; } }
 
-body.pippo .xmat-badge-medium.xmat-badge-above .xmat-badge-content {
+body.xmat-test-app .xmat-badge-medium.xmat-badge-above .xmat-badge-content {
   top: -11px; }
 
-body.pippo .xmat-badge-medium.xmat-badge-below .xmat-badge-content {
+body.xmat-test-app .xmat-badge-medium.xmat-badge-below .xmat-badge-content {
   bottom: -11px; }
 
-body.pippo .xmat-badge-medium.xmat-badge-before .xmat-badge-content {
+body.xmat-test-app .xmat-badge-medium.xmat-badge-before .xmat-badge-content {
   left: -22px; }
 
-[dir='rtl'] body.pippo .xmat-badge-medium.xmat-badge-before .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-medium.xmat-badge-before .xmat-badge-content {
   left: auto;
   right: -22px; }
 
-body.pippo .xmat-badge-medium.xmat-badge-after .xmat-badge-content {
+body.xmat-test-app .xmat-badge-medium.xmat-badge-after .xmat-badge-content {
   right: -22px; }
 
-[dir='rtl'] body.pippo .xmat-badge-medium.xmat-badge-after .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-medium.xmat-badge-after .xmat-badge-content {
   right: auto;
   left: -22px; }
 
-body.pippo .xmat-badge-medium.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
+body.xmat-test-app .xmat-badge-medium.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
   left: -11px; }
 
-[dir='rtl'] body.pippo .xmat-badge-medium.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-medium.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
   left: auto;
   right: -11px; }
 
-body.pippo .xmat-badge-medium.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
+body.xmat-test-app .xmat-badge-medium.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
   right: -11px; }
 
-[dir='rtl'] body.pippo .xmat-badge-medium.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-medium.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
   right: auto;
   left: -11px; }
 
-body.pippo .xmat-badge-large .xmat-badge-content {
+body.xmat-test-app .xmat-badge-large .xmat-badge-content {
   width: 28px;
   height: 28px;
   line-height: 28px; }
   @media (-ms-high-contrast: active) {
-    body.pippo .xmat-badge-large .xmat-badge-content {
+    body.xmat-test-app .xmat-badge-large .xmat-badge-content {
       outline: solid 1px;
       border-radius: 0; } }
 
-body.pippo .xmat-badge-large.xmat-badge-above .xmat-badge-content {
+body.xmat-test-app .xmat-badge-large.xmat-badge-above .xmat-badge-content {
   top: -14px; }
 
-body.pippo .xmat-badge-large.xmat-badge-below .xmat-badge-content {
+body.xmat-test-app .xmat-badge-large.xmat-badge-below .xmat-badge-content {
   bottom: -14px; }
 
-body.pippo .xmat-badge-large.xmat-badge-before .xmat-badge-content {
+body.xmat-test-app .xmat-badge-large.xmat-badge-before .xmat-badge-content {
   left: -28px; }
 
-[dir='rtl'] body.pippo .xmat-badge-large.xmat-badge-before .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-large.xmat-badge-before .xmat-badge-content {
   left: auto;
   right: -28px; }
 
-body.pippo .xmat-badge-large.xmat-badge-after .xmat-badge-content {
+body.xmat-test-app .xmat-badge-large.xmat-badge-after .xmat-badge-content {
   right: -28px; }
 
-[dir='rtl'] body.pippo .xmat-badge-large.xmat-badge-after .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-large.xmat-badge-after .xmat-badge-content {
   right: auto;
   left: -28px; }
 
-body.pippo .xmat-badge-large.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
+body.xmat-test-app .xmat-badge-large.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
   left: -14px; }
 
-[dir='rtl'] body.pippo .xmat-badge-large.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-large.xmat-badge-overlap.xmat-badge-before .xmat-badge-content {
   left: auto;
   right: -14px; }
 
-body.pippo .xmat-badge-large.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
+body.xmat-test-app .xmat-badge-large.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
   right: -14px; }
 
-[dir='rtl'] body.pippo .xmat-badge-large.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
+[dir='rtl'] body.xmat-test-app .xmat-badge-large.xmat-badge-overlap.xmat-badge-after .xmat-badge-content {
   right: auto;
   left: -14px; }
 
-body.pippo .xmat-badge-content {
+body.xmat-test-app .xmat-badge-content {
   font-weight: 600;
   font-size: 12px;
   font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-body.pippo .xmat-badge-small .xmat-badge-content {
+body.xmat-test-app .xmat-badge-small .xmat-badge-content {
   font-size: 6px; }
 
-body.pippo .xmat-badge-large .xmat-badge-content {
+body.xmat-test-app .xmat-badge-large .xmat-badge-content {
   font-size: 24px; }
 
-body.pippo .xmat-text-left {
+body.xmat-test-app .xmat-text-left {
   text-align: left; }
 
-body.pippo .xmat-text-center {
+body.xmat-test-app .xmat-text-center {
   text-align: center; }
 
-body.pippo .xmat-text-right {
+body.xmat-test-app .xmat-text-right {
   text-align: right; }
 
-body.pippo .xmat-color-accent {
+body.xmat-test-app .xmat-color-error {
+  color: #F8d7da; }
+
+body.xmat-test-app .xmat-color-error-text {
+  color: #721c24; }
+
+body.xmat-test-app .xmat-color-warning {
+  color: #fff3cd; }
+
+body.xmat-test-app .xmat-color-warning-text {
+  color: #856404; }
+
+body.xmat-test-app .xmat-color-info {
+  color: #cce5ff; }
+
+body.xmat-test-app .xmat-color-info-text {
+  color: #004085; }
+
+body.xmat-test-app .xmat-color-question {
+  color: #d1ecf1; }
+
+body.xmat-test-app .xmat-color-question-text {
+  color: #0c5460; }
+
+body.xmat-test-app .xmat-color-success {
+  color: #d4edda; }
+
+body.xmat-test-app .xmat-color-success-text {
+  color: #155724; }
+
+body.xmat-test-app .xmat-color-disabled {
+  color: #aaaaaa; }
+
+body.xmat-test-app .xmat-color-disabled-text {
+  color: #777777; }
+
+body.xmat-test-app .xmat-color-accent {
   color: #daeeff; }
 
-body.pippo .xmat-color-accent-light {
+body.xmat-test-app .xmat-color-accent-light {
   color: #f2f9fc; }
 
-body.pippo .xmat-color-black {
+body.xmat-test-app .xmat-color-black {
   color: #000000; }
 
-body.pippo .xmat-color-blue {
+body.xmat-test-app .xmat-color-blue {
   color: #1976d2; }
 
-body.pippo .xmat-color-gold {
+body.xmat-test-app .xmat-color-gold {
   color: #DAA520; }
 
-body.pippo .xmat-color-green {
+body.xmat-test-app .xmat-color-green {
   color: #388e3c; }
 
-body.pippo .xmat-color-grey {
+body.xmat-test-app .xmat-color-grey {
   color: #9e9e9e; }
 
-body.pippo .xmat-color-grey-light {
+body.xmat-test-app .xmat-color-grey-light {
   color: #eeeeee; }
 
-body.pippo .xmat-color-orange {
+body.xmat-test-app .xmat-color-orange {
   color: #ffa500; }
 
-body.pippo .xmat-color-primary {
+body.xmat-test-app .xmat-color-primary {
   color: #2d6da3; }
 
-body.pippo .xmat-color-primary-contrast {
+body.xmat-test-app .xmat-color-primary-contrast {
   color: white; }
 
-body.pippo .xmat-color-primary-highlight {
+body.xmat-test-app .xmat-color-primary-highlight {
   color: rgba(45, 109, 163, 0.2); }
 
-body.pippo .xmat-color-primary-text {
+body.xmat-test-app .xmat-color-primary-text {
   color: rgba(0, 0, 0, 0.87); }
 
-body.pippo .xmat-color-red {
+body.xmat-test-app .xmat-color-red {
   color: #d32f2f; }
 
-body.pippo .xmat-color-warn {
+body.xmat-test-app .xmat-color-warn {
   color: #f44336; }
 
-body.pippo .xmat-color-white {
+body.xmat-test-app .xmat-color-white {
   color: #FFFFFF; }
 
-body.pippo .xmat-color-yellow {
+body.xmat-test-app .xmat-color-yellow {
   color: #fbc02d; }
 
-body.pippo .xmat-bg-accent {
+body.xmat-test-app .xmat-bg-error {
+  background-color: #F8d7da; }
+
+body.xmat-test-app .xmat-bg-error-text {
+  background-color: #721c24; }
+
+body.xmat-test-app .xmat-bg-warning {
+  background-color: #fff3cd; }
+
+body.xmat-test-app .xmat-bg-warning-text {
+  background-color: #856404; }
+
+body.xmat-test-app .xmat-bg-info {
+  background-color: #cce5ff; }
+
+body.xmat-test-app .xmat-bg-info-text {
+  background-color: #004085; }
+
+body.xmat-test-app .xmat-bg-question {
+  background-color: #d1ecf1; }
+
+body.xmat-test-app .xmat-bg-question-text {
+  background-color: #0c5460; }
+
+body.xmat-test-app .xmat-bg-success {
+  background-color: #d4edda; }
+
+body.xmat-test-app .xmat-bg-success-text {
+  background-color: #155724; }
+
+body.xmat-test-app .xmat-bg-disabled {
+  background-color: #aaaaaa; }
+
+body.xmat-test-app .xmat-bg-disabled-text {
+  background-color: #777777; }
+
+body.xmat-test-app .xmat-bg-accent {
   background-color: #daeeff; }
 
-body.pippo .xmat-bg-accent-light {
+body.xmat-test-app .xmat-bg-accent-light {
   background-color: #f2f9fc; }
 
-body.pippo .xmat-bg-black {
+body.xmat-test-app .xmat-bg-black {
   background-color: #000000; }
 
-body.pippo .xmat-bg-blue {
+body.xmat-test-app .xmat-bg-blue {
   background-color: #1976d2; }
 
-body.pippo .xmat-bg-gold {
+body.xmat-test-app .xmat-bg-gold {
   background-color: #DAA520; }
 
-body.pippo .xmat-bg-green {
+body.xmat-test-app .xmat-bg-green {
   background-color: #388e3c; }
 
-body.pippo .xmat-bg-grey {
+body.xmat-test-app .xmat-bg-grey {
   background-color: #9e9e9e; }
 
-body.pippo .xmat-bg-grey-light {
+body.xmat-test-app .xmat-bg-grey-light {
   background-color: #eeeeee; }
 
-body.pippo .xmat-bg-orange {
+body.xmat-test-app .xmat-bg-orange {
   background-color: #ffa500; }
 
-body.pippo .xmat-bg-primary {
+body.xmat-test-app .xmat-bg-primary {
   background-color: #2d6da3; }
 
-body.pippo .xmat-bg-primary-contrast {
+body.xmat-test-app .xmat-bg-primary-contrast {
   background-color: white; }
 
-body.pippo .xmat-bg-primary-highlight {
+body.xmat-test-app .xmat-bg-primary-highlight {
   background-color: rgba(45, 109, 163, 0.2); }
 
-body.pippo .xmat-bg-primary-text {
+body.xmat-test-app .xmat-bg-primary-text {
   background-color: rgba(0, 0, 0, 0.87); }
 
-body.pippo .xmat-bg-red {
+body.xmat-test-app .xmat-bg-red {
   background-color: #d32f2f; }
 
-body.pippo .xmat-bg-warn {
+body.xmat-test-app .xmat-bg-warn {
   background-color: #f44336; }
 
-body.pippo .xmat-bg-white {
+body.xmat-test-app .xmat-bg-white {
   background-color: #FFFFFF; }
 
-body.pippo .xmat-bg-yellow {
+body.xmat-test-app .xmat-bg-yellow {
   background-color: #fbc02d; }
 
-body.pippo .xmat-uppercase {
+body.xmat-test-app .xmat-font-10 {
+  font-size: 10px; }
+
+body.xmat-test-app .xmat-font-12 {
+  font-size: 12px; }
+
+body.xmat-test-app .xmat-font-14 {
+  font-size: 14px; }
+
+body.xmat-test-app .xmat-font-16 {
+  font-size: 16px; }
+
+body.xmat-test-app .xmat-font-18 {
+  font-size: 18px; }
+
+body.xmat-test-app .xmat-font-20 {
+  font-size: 20px; }
+
+body.xmat-test-app .xmat-font-22 {
+  font-size: 22px; }
+
+body.xmat-test-app .xmat-font-24 {
+  font-size: 24px; }
+
+body.xmat-test-app .xmat-font-26 {
+  font-size: 26px; }
+
+body.xmat-test-app .xmat-font-28 {
+  font-size: 28px; }
+
+body.xmat-test-app .xmat-font-30 {
+  font-size: 30px; }
+
+body.xmat-test-app .xmat-font-32 {
+  font-size: 32px; }
+
+body.xmat-test-app .xmat-font-34 {
+  font-size: 34px; }
+
+body.xmat-test-app .xmat-font-36 {
+  font-size: 36px; }
+
+body.xmat-test-app .xmat-font-38 {
+  font-size: 38px; }
+
+body.xmat-test-app .xmat-font-40 {
+  font-size: 40px; }
+
+body.xmat-test-app .xmat-font-42 {
+  font-size: 42px; }
+
+body.xmat-test-app .xmat-font-44 {
+  font-size: 44px; }
+
+body.xmat-test-app .xmat-font-46 {
+  font-size: 46px; }
+
+body.xmat-test-app .xmat-font-48 {
+  font-size: 48px; }
+
+body.xmat-test-app .xmat-font-50 {
+  font-size: 50px; }
+
+body.xmat-test-app .xmat-underline {
+  text-decoration: underline; }
+
+body.xmat-test-app .xmat-uppercase {
   text-transform: uppercase; }
 
-body.pippo .xmat-lowercase {
+body.xmat-test-app .xmat-uppercase-descendants * {
+  text-transform: uppercase; }
+
+body.xmat-test-app .xmat-lowercase {
   text-transform: lowercase; }
 
-body.pippo .xmat-capitalize {
+body.xmat-test-app .xmat-capitalize {
   text-transform: capitalize; }
+
+body.xmat-test-app .xmat-capitalize-first::first-letter {
+  text-transform: capitalize; }
+
+body.xmat-test-app .xmat-capitalize-children > * {
+  text-transform: capitalize; }
+
+body.xmat-test-app .xmat-capitalize-first-children > *::first-letter {
+  text-transform: capitalize; }
+
+body.xmat-test-app .xmat-text-bold {
+  font-weight: bold; }
+
+body.xmat-test-app mat-label.xmat-capitalize,
+body.xmat-test-app mat-label.xmat-capitalize-first {
+  display: inline-block; }
+
+body.xmat-test-app .xmat-divider {
+  border-top-color: rgba(0, 0, 0, 0.12); }
+
+body.xmat-test-app .xmat-divider-vertical {
+  border-right-color: rgba(0, 0, 0, 0.12); }
 
 /* Theme for the ripple elements.*/
 /* stylelint-disable material/no-prefixes */
@@ -4563,10 +3698,10 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   border-color: rgba(0, 0, 0, 0.38); }
 
 .mat-progress-bar-background {
-  fill: #c5cae9; }
+  fill: #c0d3e3; }
 
 .mat-progress-bar-buffer {
-  background-color: #c5cae9; }
+  background-color: #c0d3e3; }
 
 .mat-progress-bar-fill::after {
   background-color: #2d6da3; }
@@ -4889,7 +4024,7 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 .mat-tab-group.mat-primary .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled), .mat-tab-nav-bar.mat-primary .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .mat-tab-nav-bar.mat-primary .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
 .mat-tab-nav-bar.mat-primary .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
 .mat-tab-nav-bar.mat-primary .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled) {
-  background-color: rgba(197, 202, 233, 0.3); }
+  background-color: rgba(192, 211, 227, 0.3); }
 
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: #2d6da3; }
@@ -4928,7 +4063,7 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 .mat-tab-group.mat-background-primary .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled), .mat-tab-nav-bar.mat-background-primary .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .mat-tab-nav-bar.mat-background-primary .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
 .mat-tab-nav-bar.mat-background-primary .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
 .mat-tab-nav-bar.mat-background-primary .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled) {
-  background-color: rgba(197, 202, 233, 0.3); }
+  background-color: rgba(192, 211, 227, 0.3); }
 
 .mat-tab-group.mat-background-primary .mat-tab-header, .mat-tab-group.mat-background-primary .mat-tab-links, .mat-tab-nav-bar.mat-background-primary .mat-tab-header, .mat-tab-nav-bar.mat-background-primary .mat-tab-links {
   background-color: #2d6da3; }
@@ -5043,7 +4178,7 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url("assets/fonts/MaterialIcons-Regular.woff2") format("woff2"); }
+  src: url("assets/fonts/MaterialIcons-Regular.woff") format("woff"); }
 
 .material-icons {
   font-family: 'Material Icons';

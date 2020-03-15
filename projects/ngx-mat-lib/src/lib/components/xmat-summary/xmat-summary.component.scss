@@ -1,0 +1,20 @@
+@import "../../scss/xmat-vars";
+
+.xmat-summary {
+  .xmat-summary-row {
+    padding-top: $xmat-pad;
+    border-bottom: 1px dotted rgba(#000, 0.2);
+    align-items: center;
+    line-height: 3 * $xmat-pad;
+    position: relative;
+
+    i.fa-chevron-right {
+      line-height: 4 * $xmat-pad;
+    }
+
+    i.extra-info-toggle {
+      position: absolute;
+      right: 0;
+    }
+  }
+}

@@ -1,107 +1,118 @@
 @mixin xmat-layout() {
-  .xmat-position-relative {
-    position: relative;
-  }
-
-  .xmat-debug {
-    display: none !important;
-  }
-
-  .xmat-ellipsis {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  .xmat-overflow-hidden {
-    overflow: hidden;
-  }
-
-  .xmat-opacity-half {
-    opacity: 0.5;
-  }
 
   .xmat-animated-height {
-    overflow: hidden;
-    max-height: 0;
-    -webkit-transition: max-height 0.15s linear;
-    -o-transition: max-height 0.15s linear;
-    transition: max-height 0.15s linear;
+	overflow: hidden;
+	max-height: 0;
+	-webkit-transition: max-height 0.15s linear;
+	-o-transition: max-height 0.15s linear;
+	transition: max-height 0.15s linear;
   }
 
   .xmat-animated-height.xmat-animated-height-in {
-    max-height: 9999px;
+	max-height: 9999px;
   }
 
   .xmat-cursor-pointer {
-    cursor: pointer;
+	cursor: pointer;
   }
 
-  .xmat-required:after {
-    content: "*";
-    margin-left: 5px;
-    color: red;
+  .xmat-debug {
+	display: none !important;
+  }
+
+  .xmat-ellipsis {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100%;
+	overflow: hidden;
   }
 
   .xmat-margin-auto {
-    margin: auto;
+	margin: auto;
   }
 
+  .xmat-overflow-hidden {
+	overflow: hidden;
+  }
+
+  .xmat-opacity-half {
+	opacity: 0.5;
+  }
+
+  .xmat-position-relative {
+	position: relative;
+  }
+
+  .xmat-required:after {
+	content: "*";
+	margin-left: 5px;
+	color: red;
+  }
+
+
   @each $direction in $float-directions {
-    .xmat-float-#{$direction} {
-      float: $direction;
-    }
+	.xmat-float-#{$direction} {
+	  float: $direction;
+	}
   }
 
   // Padding by 10
   @each $rule in $space-rules {
-    .xmat-#{$rule}- {
-      @each $direction in $directions {
-        &#{$direction}- {
-          $i: 0;
-          @while $i < 51 {
-            &#{$i} {
-              #{$rule}-#{$direction}: #{$i}px;
-            }
-            $i: $i + 10;
-          }
+	.xmat-#{$rule}- {
+	  @each $direction in $directions {
+		&#{$direction}- {
+		  $i: 0;
+		  @while $i < 51 {
+			&#{$i} {
+			  #{$rule}-#{$direction}: #{$i}px;
+			}
+			$i: $i + 10;
+		  }
 
-          $i: 1;
-          @while $i < 5 {
-            $value: $i * $xmat-pad;
-            &#{$i}x {
-              #{$rule}-#{$direction}: #{$value};
-            }
-            $i: $i + 1;
-          }
-        }
-      }
-    }
+		  $i: 1;
+		  @while $i < 5 {
+			$value: $i * $xmat-pad;
+			&#{$i}x {
+			  #{$rule}-#{$direction}: #{$value};
+			}
+			$i: $i + 1;
+		  }
+		}
+	  }
+	}
   }
 
   // Default full margin/padding of 16px
   @each $rule in $space-rules {
-    .xmat-#{$rule}- {
-      $i: 1;
-      @while $i < 5 {
-        $value: $i * $xmat-pad;
-        &#{$i}x {
-          #{$rule}: #{$value};
-        }
-        $i: $i + 1;
-      }
-    }
-    .xmat-no-#{$rule} {
-      #{$rule}: 0;
-    }
+	.xmat-#{$rule}- {
+	  $i: 1;
+	  @while $i < 5 {
+		$value: $i * $xmat-pad;
+		&#{$i}x {
+		  #{$rule}: #{$value};
+		}
+		$i: $i + 1;
+	  }
+	}
+	.xmat-no-#{$rule} {
+	  #{$rule}: 0;
+	}
   }
 
   $scale: 25;
   @while $scale < 76 {
-    .xmat-scale-#{$scale} {
-      transform: scale($scale/100);
-    }
-    $scale: $scale + 5;
+	.xmat-scale-#{$scale} {
+	  transform: scale($scale/100);
+	}
+	$scale: $scale + 5;
+  }
+
+  @each $direction in $flex-directrons {
+	.xmat-flex-align-#{$direction} {
+	  align-items: $direction;
+	}
+	.xmat-flex-justify-#{$direction} {
+	  justify-content: $direction;
+	}
   }
 }

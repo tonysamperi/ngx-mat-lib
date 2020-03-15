@@ -4,9 +4,9 @@
 @import "./xmat-grid";
 @import "./xmat-material-overrides";
 @import "./xmat-typography";
-@import "../xmat-action-text/xmat-action-text.directive";
-@import "../xmat-badge/xmat-badge.directive";
-@import "../xmat-divider/xmat-divider.theme.scss";
+@import "../directives/xmat-action-text/xmat-action-text.directive";
+@import "../directives/xmat-badge/xmat-badge.directive";
+@import "../components/xmat-divider/xmat-divider.theme.scss";
 
 $xmat-wrap-selector: "body" !default;
 

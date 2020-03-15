@@ -1,1 +1,1 @@
-export * from "./xmat-routes";
+export * from "./xmat-routes.model";

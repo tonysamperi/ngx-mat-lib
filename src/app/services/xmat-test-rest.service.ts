@@ -23,7 +23,7 @@ export class XmatTestRestService extends XmatRestService {
         getOuUsers: `${this._restBaseUrl}ou/${_param}/${_param}/people`,
         getOuRoles: `${this._restBaseUrl}ou/${_param}/${_param}/roles`,
         getRequestsByUid: `${this._restBaseUrl}requests/subject/${_param}`,
-        postUsers: `https://reqres.in/api/users`,
+        getUsers: `https://reqres.in/api/users`,
         testPatch: `${this._restBaseUrl}requests/test`,
     };
 
@@ -51,8 +51,8 @@ export class XmatTestRestService extends XmatRestService {
         getRequestsByUid: (uid: string): XmatHttpConfig => {
             return this._generateHttpConfig(XmatRestVerbs.GET, this.servicesUrls.getRequestsByUid.replace(_param, uid));
         },
-        postUsers: (): XmatHttpConfig => {
-            return this._generateHttpConfig(XmatRestVerbs.GET, this.servicesUrls.postUsers);
+        getUsers: (): XmatHttpConfig => {
+            return this._generateHttpConfig(XmatRestVerbs.GET, this.servicesUrls.getUsers);
         },
         testPatch: (): XmatHttpConfig => {
             return this._generateHttpConfig(XmatRestVerbs.PATCH, this.servicesUrls.testPatch);

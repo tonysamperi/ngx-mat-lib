@@ -1,0 +1,27 @@
+<mat-table *ngIf="config?.dataSource"
+           [dataSource]="config.dataSource">
+
+    <ng-container *ngFor="let col of config.cols">
+        <ng-container [matColumnDef]="col.key">
+            <mat-header-cell *matHeaderCellDef
+                             [ngClass]="[col.thKlass, config.thKlass]">
+                <span>
+                    {{col.label}}
+                </span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row;"
+                      [ngClass]="[col.tdKlass, config.tdKlass]">
+                <span *ngIf="!col.isHTML">
+                    {{row[col.key] || col.ifEmpty}}
+                </span>
+                <span *ngIf="col.isHTML"
+                      [innerHTML]="row[col.key] || col.ifEmpty">
+                </span>
+            </mat-cell>
+        </ng-container>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedCols;">
+    </mat-row>
+</mat-table>

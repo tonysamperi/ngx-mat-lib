@@ -1,0 +1,18 @@
+/* XmatTableExamplesComponent */
+
+.table-col-60 {
+  max-width: 60px;
+}
+
+span.avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+span.avatar > img {
+  width: 100%;
+  display: inline-block;
+}

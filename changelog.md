@@ -531,3 +531,8 @@
 * xmatValidListSelection: added reverse mode which returns error if value is in list
 * Renamed XmatDynamicRestVerbsRef to XmatRestVerbsRef
 * Misc and refactor
+
+#7.3.1
+* Folders structure improved (no breaking changes if you imported from ngx-mat-lib)
+* Fixed XmatActionTextDirective disabled behaviour  
+* Added XmatSimpleTableComponent

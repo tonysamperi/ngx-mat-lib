@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
-import {xmatEnvironment} from "../environments/environment";
+//
+import * as appInfo from "../../package.json";
 
 @Component({
     selector: "xmat-app",
@@ -8,6 +9,6 @@ import {xmatEnvironment} from "../environments/environment";
 })
 export class XmatAppComponent {
 
-    appVersion: string = xmatEnvironment.appVersion;
+    appVersion: string = (appInfo as any).version;
 
 }

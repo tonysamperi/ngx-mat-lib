@@ -40,10 +40,12 @@ import {
     XmatDialogModule,
     XmatDividerModule,
     XmatTimeModule,
-    XmatSnackBarModule,
     XmatLegendModule,
     XmatMediaQueryStateModule,
     XmatNavBarModule,
+    XmatSimpleTableModule,
+    XmatSnackBarModule,
+    XmatSpinnerModule,
     XmatSummaryModule,
     // SERVS
     XmatConstantsService,
@@ -53,11 +55,14 @@ import {
 
 // TEST APP IMPORTS
 import {XmatAppComponent} from "./xmat-app.component";
-
 // COMPS
 import {
     XmatMenuComponent,
 } from "./components/public";
+// DIRECTIVES
+import {
+    XmatHighlightDirective,
+} from "./directives/public";
 // SRVS
 import {
     XmatRoutesService,
@@ -66,7 +71,6 @@ import {
     XmatTestMocksListService,
     XmatTestRestService,
 } from "./services/public";
-
 // VIEWS
 import {
     XmatAccordionExamplesComponent,
@@ -74,9 +78,10 @@ import {
     XmatDownloadComponent,
     XmatHomeComponent,
     XmatRestExamplesComponent,
+    XmatTableExamplesComponent,
     XmatUtilsComponent
 } from "./views/public";
-import {xmatRoutes} from "./models/xmat-routes";
+import {xmatRoutes} from "./models/xmat-routes.model";
 
 
 const XMAT_DECLARATIONS = [
@@ -88,7 +93,10 @@ const XMAT_DECLARATIONS = [
     XmatDownloadComponent,
     XmatHomeComponent,
     XmatRestExamplesComponent,
-    XmatUtilsComponent
+    XmatTableExamplesComponent,
+    XmatUtilsComponent,
+    // DIRECTIVES
+    XmatHighlightDirective,
 ];
 
 @NgModule({
@@ -126,7 +134,9 @@ export class XmatCdkMatImportsModule {
         XmatMediaQueryStateModule,
         XmatNavBarModule,
         XmatTimeModule,
+        XmatSimpleTableModule,
         XmatSnackBarModule,
+        XmatSpinnerModule,
         XmatSummaryModule,
         // MISC
         MatFormFieldRequiredModule

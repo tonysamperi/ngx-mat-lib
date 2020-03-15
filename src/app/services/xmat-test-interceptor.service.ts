@@ -25,9 +25,9 @@ export class XmatTestInterceptorService {
                 console.info("XmatInterceptorService: preDelay found", request.params.preDelay);
                 preDelay = request.params.preDelay;
             }
-            if (request.params.preDelay > 0) {
+            if (request.params.postDelay > 0) {
                 console.info("XmatInterceptorService: postDelay found", request.params.postDelay);
-                postDelay = request.params.postDelay > 0 ? request.params.postDelay : 0;
+                postDelay = request.params.postDelay;
 
             }
         }

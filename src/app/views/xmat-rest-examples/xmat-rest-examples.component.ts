@@ -35,22 +35,22 @@ export class XmatRestExamplesComponent implements OnInit {
     timeA: number;
 
     //
-    protected _configB: XmatHttpConfig = this._rest.servicesConfigs.accountsByGid.get("5");
-    protected _configC: XmatHttpConfig = this._rest.servicesConfigs.getRequestsByUid("ABCDEF1");
+    protected _configB: XmatHttpConfig = this._xmatRestSrv.servicesConfigs.accountsByGid.get("5");
+    protected _configC: XmatHttpConfig = this._xmatRestSrv.servicesConfigs.getRequestsByUid("ABCDEF1");
 
 
-    constructor(private _rest: XmatTestRestService) {
+    constructor(private _xmatRestSrv: XmatTestRestService) {
 
     }
 
     doPatch(): void {
         this.patchData = void 0;
-        const config = this._rest.servicesConfigs.testPatch();
+        const config = this._xmatRestSrv.servicesConfigs.testPatch();
         config.data = {
             foo: "bar",
             goo: "car"
         };
-        this._rest.$http(config).subscribe(response => {
+        this._xmatRestSrv.$http(config).subscribe(response => {
             console.info("PATCH SUCCESS", response);
             this.patchData = response;
         }, (error: HttpErrorResponse) => {
@@ -59,10 +59,10 @@ export class XmatRestExamplesComponent implements OnInit {
     }
 
     doQueue(): void {
-        this._rest.$allMap({
+        this._xmatRestSrv.$allMap({
             first: this._configB,
             second: this._configC,
-            third: this._rest.servicesConfigs.getOuRoles("abc", "def")
+            third: this._xmatRestSrv.servicesConfigs.getOuRoles("abc", "def")
         })
         .subscribe((response: any) => {
             console.info("$all response", response);
@@ -82,12 +82,12 @@ export class XmatRestExamplesComponent implements OnInit {
     // Private
 
     protected _callA(): void {
-        const myConfigA = this._rest.servicesConfigs.postUsers();
+        const myConfigA = this._xmatRestSrv.servicesConfigs.getUsers();
         myConfigA.params = new XmatHttpParams(this.preDelay, this.postDelay);
         this.statusA = XmatRestStates.RUNNING;
         this.dataA = this.timeA = void 0;
         const startA = +new Date();
-        this._rest.$http(myConfigA).subscribe(response => {
+        this._xmatRestSrv.$http(myConfigA).subscribe(response => {
             console.info("GOT RESPONSE FOR callA", response);
             this.dataA = response;
             this.statusA = XmatRestStates.SUCCESS;
@@ -100,7 +100,7 @@ export class XmatRestExamplesComponent implements OnInit {
     protected _callB(): void {
         this.statusB = XmatRestStates.RUNNING;
         this.dataB = void 0;
-        this._rest.$http(this._configB).subscribe(response => {
+        this._xmatRestSrv.$http(this._configB).subscribe(response => {
             this.dataB = response;
             this.statusB = XmatRestStates.SUCCESS;
         }, (error: HttpErrorResponse) => {
@@ -112,7 +112,7 @@ export class XmatRestExamplesComponent implements OnInit {
     protected _callC(): void {
         this.statusC = XmatRestStates.RUNNING;
         this.dataC = void 0;
-        this._rest.$http(this._configC).subscribe(response => {
+        this._xmatRestSrv.$http(this._configC).subscribe(response => {
             this.dataC = response;
             this.statusC = XmatRestStates.SUCCESS;
         }, (error: HttpErrorResponse) => {
