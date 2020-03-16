@@ -532,7 +532,10 @@
 * Renamed XmatDynamicRestVerbsRef to XmatRestVerbsRef
 * Misc and refactor
 
-#7.3.1
+#7.3.1 (removed)
 * Folders structure improved (no breaking changes if you imported from ngx-mat-lib)
 * Fixed XmatActionTextDirective disabled behaviour  
 * Added XmatSimpleTableComponent
+
+#7.3.2
+* Fix imports for some scss files wrong due to refactor
