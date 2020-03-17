@@ -30,12 +30,7 @@ const replaceUpperNeedle = /Xxx/gm;
 const compTypes = ["shared", "view"];
 
 // SUPPORT VARS - START
-let upperCompName;
-let compName;
-let compType;
-let compDest;
-
-// SUPPORT VARS - END
+let compDest, compName, compType, upperCompName;
 
 function mainSequenceCallback(err) {
     if (err) {
@@ -62,6 +57,9 @@ gulp.task(tasks.create, (cb) => {
     dest = "";
     compDest = "";
     const compTypeIndex = readlineSync.keyInSelect(compTypes, "What type of comp would you like to build?");
+    if (compTypeIndex === -1) {
+        return console.info("User cancelled.");
+    }
     compType = compTypes[compTypeIndex];
     console.info("CHOSEN COMP TYPE", compType);
     compName = readlineSync.question("Choose a name for your component (lowercase)");

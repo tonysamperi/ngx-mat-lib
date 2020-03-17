@@ -1,27 +1,27 @@
-<h1>{{title}}</h1>
-<hr />
-<p>REF TEXT: {{twoWayText || "empty"}}</p>
-
-<div class="xmat-alert-buttons-wrap">
-    <button mat-button mat-raised-button (click)="showAlert(alertTypes.error)">
-        SHOW ERROR ALERT
+<h2 class="xmat-margin-bottom-0">{{title}}</h2>
+<xmat-divider class="xmat-margin-bottom-1x"></xmat-divider>
+<div fxLayout fxLayoutGap="16px">
+    <button color="warn" mat-button mat-raised-button (click)="showAlert(alertTypes.error)">
+        ERROR
     </button>
-    <button mat-button mat-raised-button (click)="showAlert(alertTypes.warning)">
-        SHOW WARNING ALERT
+    <button class="xmat-bg-orange" mat-button mat-raised-button (click)="showAlert(alertTypes.warning)">
+        WARNING
     </button>
-    <button mat-button mat-raised-button (click)="showAlert(alertTypes.info)">
-        SHOW INFO ALERT
+    <button color="primary" mat-button mat-raised-button (click)="showAlert(alertTypes.info)">
+        INFO
     </button>
-    <button mat-button mat-raised-button (click)="showAlert(alertTypes.question)">
-        SHOW QUESTION ALERT
+    <button color="accent" mat-button mat-raised-button (click)="showAlert(alertTypes.question)">
+        QUESTION
     </button>
-    <button mat-button mat-raised-button (click)="showAlert(alertTypes.success)">
-        SHOW SUCCESS ALERT
+    <button class="xmat-bg-green xmat-color-white" mat-button mat-raised-button (click)="showAlert(alertTypes.success)">
+        SUCCESS
     </button>
 </div>
-<hr class="xmat-margin-top-1x xmat-margin-bottom-1x" />
+<xmat-divider class="xmat-margin-top-1x xmat-margin-bottom-1x"></xmat-divider>
+<p>You can change this text from the dialog</p>
+<p>{{twoWayText || "empty"}}</p>
 <button mat-button mat-raised-button (click)="showDialog()">
-    SHOW DIALOG WITH REF
+    Open dialog
 </button>
 
 <xmat-dialog-content #myDialogContent>

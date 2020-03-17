@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ReactiveFormsModule} from "@angular/forms";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 import {
     DateAdapter,
@@ -25,6 +26,7 @@ import {
     MatSidenavModule,
     MatStepperModule,
     MatTableModule,
+    MatTabsModule,
     MatToolbarModule,
 } from "@angular/material";
 
@@ -33,7 +35,10 @@ import {
     XMAT_DATE_FORMATS,
     XMAT_LOCALE_IT,
     XmatMatDateLocale,
+    // DIRECTIVES
     MatFormFieldRequiredModule,
+    XmatHideModule,
+    XmatShowModule,
     // COMPS MODULES
     XmatActionTextModule,
     XmatAccordionModule,
@@ -61,7 +66,7 @@ import {
 } from "./components/public";
 // DIRECTIVES
 import {
-    XmatHighlightDirective,
+    XmatHighlightDirective
 } from "./directives/public";
 // SRVS
 import {
@@ -82,7 +87,6 @@ import {
     XmatUtilsComponent
 } from "./views/public";
 import {xmatRoutes} from "./models/xmat-routes.model";
-
 
 const XMAT_DECLARATIONS = [
     // COMPS
@@ -117,6 +121,7 @@ const XMAT_DECLARATIONS = [
         MatSidenavModule,
         MatStepperModule,
         MatTableModule,
+        MatTabsModule,
         MatToolbarModule
     ]
 })
@@ -138,8 +143,10 @@ export class XmatCdkMatImportsModule {
         XmatSnackBarModule,
         XmatSpinnerModule,
         XmatSummaryModule,
-        // MISC
-        MatFormFieldRequiredModule
+        // DIRECTIVES
+        MatFormFieldRequiredModule,
+        XmatHideModule,
+        XmatShowModule,
     ],
     providers: [
         // SERVS
@@ -163,6 +170,7 @@ export class XmatImportsModule {
             useHash: true,
             enableTracing: false
         }),
+        FlexLayoutModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,

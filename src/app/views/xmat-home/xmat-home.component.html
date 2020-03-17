@@ -1,12 +1,50 @@
-<h2>MATERIAL NAV-BAR TABS WITH NAVIGATION</h2>
-<p>(Shrink the screen to make the paginator appear)</p>
+<h2 class="xmat-margin-bottom-0">Material tab-nav-bar with arrows on mobile</h2>
+<p class="xmat-margin-top-0">(Shrink the screen to make the paginator appear)</p>
 <nav xmat-tab-nav-bar>
     <a xmat-tab-link *ngFor="let link of links"
        (click)="activeLink = link"
        [active]="activeLink == link"> {{link}} </a>
     <a xmat-tab-link disabled>Disabled Link</a>
 </nav>
-
+<div class="xmat-spacer-2x"></div>
+<xmat-divider></xmat-divider>
+<h2 class="xmat-margin-bottom-0">XmatShow / XmatHide</h2>
+<p class="xmat-margin-top-0">Inspired by AngularJS ng-show/ng-hide</p>
+<mat-tab-group>
+    <mat-tab label="Demo">
+        <div class="xmat-padding-2x">
+            <div fxLayout class="xmat-margin-bottom-2x">
+                <div fxFlex="50">
+                    <div class="square xmat-bg-red" [xmatShow]="showRedDiv"></div>
+                </div>
+                <div fxFlex="50">
+                    <p>showRedDiv ? {{showRedDiv ? "TRUE" : "FALSE"}}</p>
+                    <button mat-raised-button (click)="showRedDiv = !showRedDiv">Toggle xmatShow</button>
+                </div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">
+                    <div class="square xmat-bg-green" [xmatHide]="hideGreenDiv"></div>
+                </div>
+                <div fxFlex="50">
+                    <p>hideGreenDiv ? {{hideGreenDiv ? "TRUE" : "FALSE"}}</p>
+                    <button mat-raised-button (click)="hideGreenDiv = !hideGreenDiv">Toggle xmatShow</button>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Source">
+        <div>
+            <pre>
+                <code highlight type="html">
+&lt;div class=&quot;square xmat-bg-red&quot; [xmatShow]=&quot;showRedDiv&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;square xmat-bg-green&quot; [xmatHide]=&quot;hideGreenDiv&quot;&gt;&lt;/div&gt;
+                </code>
+            </pre>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+<xmat-divider></xmat-divider>
 <h2>xmat-time</h2>
 <mat-form-field class="autoWidth" floatLabel="always">
     <mat-icon matSuffix>alarm</mat-icon>
@@ -16,7 +54,7 @@
                [disabled]="isUbiTimeInputDisabled"
                [required]="isUbiTimeInputRequired"></xmat-time>
 </mat-form-field>
-<hr />
+<xmat-divider></xmat-divider>
 <h2>Form Group</h2>
 <div [formGroup]="testFormGroup" class="xmat-test-form-group">
     <mat-form-field class="xmat-margin-right-2x" floatLabel="auto">
@@ -43,7 +81,7 @@
             color="primary">Toggle required
     </button>
 </div>
-<hr />
+<xmat-divider></xmat-divider>
 <h2>matDatepicker (error msgs)</h2>
 <mat-form-field>
     <input matInput [matDatepicker]="rhMinPicker"
@@ -69,7 +107,7 @@
         La massima data consentita è {{maxDate | date:'dd/MM/yyyy'}}
     </mat-error>
 </mat-form-field>
-<hr />
+<xmat-divider></xmat-divider>
 <h2>xmat-legend</h2>
 <xmat-legend-item-content #myTest1>
     XMAT LEGEND CONTENT 1
@@ -87,7 +125,7 @@
 <xmat-legend [items]="myTestList" layout="grid"></xmat-legend>
 <p>Second legend </p>
 <xmat-legend [items]="myTestListB" layout="grid" columns="4" fillColumns="true"></xmat-legend>
-<hr />
+<xmat-divider></xmat-divider>
 <h2>xmatActionText</h2>
 <div class="xmat-padding-2x xmat-bg-grey-light">
     <button mat-raised-button

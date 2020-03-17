@@ -13,9 +13,11 @@ const successMsg = " task completed succesfully";
 
 // PATHS
 const rootFolder = path.join(__dirname, "..", "/");
-const contentFiles = path.join(__dirname, "component/**");
+const compSourceFiles = path.join(__dirname, "component/**");
+const directiveSourceFiles = path.join(__dirname, "directive/**");
 const libFolder = path.join(rootFolder, "projects/ngx-mat-lib/src/lib/");
 const compsFolder = path.join(libFolder, "components");
+const directivesFolder = path.join(libFolder, "directives");
 
 const tasks = {
     create: "newcompLib:create",
@@ -26,12 +28,10 @@ const tasks = {
 const replaceLowerNeedle = /xxx/gm;
 const replaceUpperNeedle = /Xxx/gm;
 
-// SUPPORT VARS - START
-let upperCompName;
-let compName;
-let compDest;
+const compTypes = ["component", "directive"];
 
-// SUPPORT VARS - END
+// SUPPORT VARS - START
+let compDest, compName, compType, upperCompName, sourceFiles;
 
 function mainSequenceCallback(err) {
     if (err) {
@@ -57,6 +57,12 @@ gulp.task(tasks.create, (cb) => {
     upperCompName = "";
     dest = "";
     compDest = "";
+    const compTypeIndex = readlineSync.keyInSelect(compTypes, "What type of comp would you like to build?");
+    if (compTypeIndex === -1) {
+        return console.info("User cancelled.");
+    }
+    compType = compTypes[compTypeIndex];
+    console.info("CHOSEN COMP TYPE", compType);
     compName = readlineSync.question("Choose a name for your component (lowercase)");
     if (!compName) {
         return console.error(new Error("You moron!! Name can't be empty!!"));
@@ -65,7 +71,19 @@ gulp.task(tasks.create, (cb) => {
     console.info("CHOSEN COMP NAME: ", compName);
     upperCompName = kebabToCamel(compName);
     upperCompName = capitalizeFirstLetter(appPrefix) + capitalizeFirstLetter(upperCompName);
-    compDest = path.join(compsFolder, [appPrefix, compName].join(dash));
+
+    switch (compType) {
+        case compTypes[0]: // COMPS
+            compDest = path.join(compsFolder, [appPrefix, compName].join(dash));
+            sourceFiles = compSourceFiles;
+            break;
+        case compTypes[1]: // VIEWS
+            compDest = path.join(directivesFolder, [appPrefix, compName].join(dash));
+            sourceFiles = directiveSourceFiles;
+            break;
+        default:
+            return console.error(new Error("Whoops, something bad happened"));
+    }
     cb();
 });
 
@@ -75,7 +93,7 @@ gulp.task(tasks.write, (cb) => {
         return cb();
     }
     const lowerName = [appPrefix, compName].join(dash);
-    return gulp.src(contentFiles)
+    return gulp.src(sourceFiles)
     .pipe(replace(replaceLowerNeedle, lowerName))
     .pipe(replace(replaceUpperNeedle, upperCompName))
     .pipe(rename(function (path) {

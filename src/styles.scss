@@ -3,11 +3,14 @@ $xmat-body-class: "xmat-test-app";
 //
 @import "xmat-library";
 @import "xmat-vars";
+@import "./src/app/directives/highlight/highlight.directive";
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($xmat-theme);
+
+@include highlight-theme();
 
 /* fallback */
 @font-face {
@@ -34,18 +37,30 @@ $xmat-body-class: "xmat-test-app";
   -moz-osx-font-smoothing: grayscale;
 }
 
-xmat-app {
-  > mat-sidenav-container {
-    > mat-sidenav.mat-drawer.xmat-sidenav {
-      width: 250px;
-      background-color: map-get($xmat-colors, primary);
-      color: map-get($xmat-colors, primary-contrast);
-      text-align: center;
-    }
+body.xmat-test-app {
+  /* COMMON APPEARENCE - START */
+  font-family: mat-font-family($xmat-typography-config);
 
-    div.xmat-router-outlet-wrap {
-      padding: 2 * $xmat-pad;
-    }
+  xmat-app > mat-sidenav-container {
+	> mat-sidenav.mat-drawer.xmat-sidenav {
+	  width: 250px;
+	  background-color: map-get($xmat-colors, primary);
+	  color: map-get($xmat-colors, primary-contrast);
+	  text-align: center;
+	}
+
+	div.xmat-router-outlet-wrap {
+	  padding: 2 * $xmat-pad;
+	}
+
+	pre {
+	  margin: 0;
+	}
+
+	.docs-source {
+	  padding: 2 * $xmat-pad;
+	  min-height: 150px;
+	}
   }
 }
 

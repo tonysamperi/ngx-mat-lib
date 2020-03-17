@@ -1,23 +1,59 @@
-<button (click)="accordionOpened = !accordionOpened">
-    ACCORDION TOGGLE OPEN
-</button>
-<p>EXPANDED = {{accordionOpened ? "true" : "false"}}</p>
-<button (click)="accordionDisabled = !accordionDisabled">
-    ACCORDION TOGGLE DISABLED
-</button>
-<p>DISABLED = {{accordionDisabled ? "true" : "false"}}</p>
-<xmat-accordion [(expanded)]="accordionOpened"
-                [disabled]="accordionDisabled"
-                color="primary">
-    <div class="xmat-accordion-title">
-        ACCORDION TITLE
-    </div>
-    <div class="xmat-accordion-content">
-        <div style="width: 50%; margin: 0 auto; padding: 16px; background: #e2e2e2">
-            <h2>MY ACCORDION CONTENT</h2>
+<h2 class="xmat-margin-bottom-0">xmat-accordion</h2>
+<p>A simpler way to declare a mat-accordion: just remember xmat-accordion, title, header and optionally desc</p>
+<mat-tab-group>
+    <mat-tab label="Demo">
+        <div class="xmat-padding-2x">
+            <button (click)="accordionOpened = !accordionOpened">
+                ACCORDION TOGGLE OPEN
+            </button>
+            <p>EXPANDED = {{accordionOpened ? "true" : "false"}}</p>
+            <button (click)="accordionDisabled = !accordionDisabled">
+                ACCORDION TOGGLE DISABLED
+            </button>
+            <p>DISABLED = {{accordionDisabled ? "true" : "false"}}</p>
+            <xmat-accordion [(expanded)]="accordionOpened"
+                            [disabled]="accordionDisabled"
+                            color="primary">
+                <div class="xmat-accordion-title">
+                    ACCORDION TITLE ({{accordionDisabled ? "DISABLED" : "ENABLED"}})
+                </div>
+                <div class="xmat-accordion-content">
+                    <div class="my-content">
+                        <h2>MY ACCORDION CONTENT</h2>
+                    </div>
+                </div>
+            </xmat-accordion>
         </div>
-    </div>
-</xmat-accordion>
+    </mat-tab>
+    <mat-tab label="Source">
+        <div>
+            <pre>
+                <code highlight type="html">
+&lt;button (click)=&quot;accordionOpened = !accordionOpened&quot;&gt;
+    ACCORDION TOGGLE OPEN
+&lt;/button&gt;
+&lt;p&gt;EXPANDED = {{accordionOpened ? &quot;true&quot; : &quot;false&quot;}}&lt;/p&gt;
+&lt;button (click)=&quot;accordionDisabled = !accordionDisabled&quot;&gt;
+    ACCORDION TOGGLE DISABLED
+&lt;/button&gt;
+&lt;p&gt;DISABLED = {{accordionDisabled ? &quot;true&quot; : &quot;false&quot;}}&lt;/p&gt;
+&lt;xmat-accordion [(expanded)]=&quot;accordionOpened&quot;
+                [disabled]=&quot;accordionDisabled&quot;
+                color=&quot;primary&quot;&gt;
+    &lt;div class=&quot;xmat-accordion-title&quot;&gt;
+        ACCORDION TITLE ({{accordionDisabled ? &quot;DISABLED&quot; : &quot;ENABLED&quot;}})
+    &lt;/div&gt;
+    &lt;div class=&quot;xmat-accordion-content&quot;&gt;
+        &lt;div class=&quot;my-content&quot;&gt;
+            &lt;h2&gt;MY ACCORDION CONTENT&lt;/h2&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/xmat-accordion&gt;
+                </code>
+            </pre>
+        </div>
+    </mat-tab>
+</mat-tab-group>
 <xmat-divider></xmat-divider>
 <h2>Accordion with no header</h2>
 <p>This is useful to make hidden panes you can make appear programmatically</p>
@@ -28,7 +64,7 @@
 <xmat-accordion color="accent"
                 [(expanded)]="accordionBOpened">
     <div class="xmat-accordion-content">
-        <div style="width: 50%; margin: 0 auto; padding: 16px; background: #e2e2e2">
+        <div class="my-content">
             <h2>MY SECRET CONTENT</h2>
         </div>
     </div>

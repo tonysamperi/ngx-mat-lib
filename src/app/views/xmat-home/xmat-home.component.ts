@@ -37,7 +37,8 @@ export class XmatHomeComponent implements OnInit {
     isUbiTimeInputRequired = !0;
     myTestList: XmatLegendItem[];
     myTestListB: XmatLegendItem[];
-    optSelection: string;
+    showRedDiv: boolean = !0;
+    hideGreenDiv: boolean = !1;
     testFormGroup: FormGroup;
     testTimeModel: XmatTime = new XmatTime(12, 15);
     xmatTimeCtrl: FormControl;

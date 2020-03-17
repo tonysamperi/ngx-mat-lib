@@ -527,7 +527,7 @@
 
 #7.3.0
 * Simplified mocks handling with XmatRestVerbs instead of XmatConstantsService.methodKeys
-* Removeed useless data from XmatConstantsService. That kind of data can be set externally (extending XmatConstantsService or custom files) 
+* Removed useless data from XmatConstantsService. That kind of data can be set externally (extending XmatConstantsService or custom files) 
 * xmatValidListSelection: added reverse mode which returns error if value is in list
 * Renamed XmatDynamicRestVerbsRef to XmatRestVerbsRef
 * Misc and refactor
@@ -539,3 +539,13 @@
 
 #7.3.2
 * Fix imports for some scss files wrong due to refactor
+
+#7.3.3
+* Improved gulpfile in ngx-mat-lib-repo (dev purposes)
+* Added XmatShow and XmatHide directives, inspired by ng-show and ng-hide
+* Added highlight directive in ngx-mat-lib-repo (demo purposes)
+* Gulpfiles recfactored and improved (added directive option)
+* Fixed xmat-accordion (broken due to automatic refactor)
+* Fixed xmat-accordion collapsedHeight and expandedHeight behaviour
+* Improved [demo app](https://tonysamperi.github.io/ngx-mat-lib)
+* Misc and refactor

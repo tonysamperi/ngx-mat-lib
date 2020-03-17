@@ -1,68 +1,77 @@
 @mixin xmat-typography() {
   @each $direction in $text-directions {
-    .xmat-text-#{$direction} {
-      text-align: $direction;
-    }
+	.xmat-text-#{$direction} {
+	  text-align: $direction;
+	}
   }
 
   @each $color-name, $color-value in $xmat-colors {
-    .xmat-color-#{$color-name} {
-      color: $color-value;
-    }
+	.xmat-color-#{$color-name} {
+	  color: $color-value;
+	}
   }
 
   @each $color-name, $color-value in $xmat-colors {
-    .xmat-bg-#{$color-name} {
-      background-color: $color-value;
-    }
+	.xmat-bg-#{$color-name} {
+	  background-color: $color-value;
+	}
   }
 
   $size: 10;
   @while $size < 51 {
-    .xmat-font-#{$size} {
-      font-size: #{$size}px;
-    }
-    $size: $size + 2;
+	.xmat-font-#{$size} {
+	  font-size: #{$size}px;
+	}
+	$size: $size + 2;
   }
 
   .xmat-underline {
-    text-decoration: underline;
+	text-decoration: underline;
   }
 
   .xmat-uppercase {
-    text-transform: uppercase;
+	text-transform: uppercase;
   }
 
   .xmat-uppercase-descendants * {
-    text-transform: uppercase;
+	text-transform: uppercase;
   }
 
   .xmat-lowercase {
-    text-transform: lowercase;
+	text-transform: lowercase;
   }
 
   .xmat-capitalize {
-    text-transform: capitalize;
+	text-transform: capitalize;
   }
 
   .xmat-capitalize-first::first-letter {
-    text-transform: capitalize;
+	text-transform: capitalize;
   }
 
   .xmat-capitalize-children > * {
-    text-transform: capitalize;
+	text-transform: capitalize;
   }
 
   .xmat-capitalize-first-children > *::first-letter {
-    text-transform: capitalize;
+	text-transform: capitalize;
   }
 
   .xmat-text-bold {
-    font-weight: bold;
+	font-weight: bold;
   }
 
   mat-label.xmat-capitalize,
   mat-label.xmat-capitalize-first {
-    display: inline-block;
+	display: inline-block;
+  }
+
+  // FONT SIZE
+  $i: 10;
+  @while $i < 32 {
+	.xmat-font-#{$i} {
+	  font-size: #{$i}px;
+	}
+	$i: $i+2;
   }
 }

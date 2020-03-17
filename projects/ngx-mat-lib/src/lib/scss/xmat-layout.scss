@@ -99,12 +99,33 @@
 	}
   }
 
+  // SCALE
   $scale: 25;
   @while $scale < 76 {
 	.xmat-scale-#{$scale} {
 	  transform: scale($scale/100);
 	}
 	$scale: $scale + 5;
+  }
+
+  // SPACER DIV 10px - 100px
+  $i: 10;
+  @while $i < 101 {
+	.xmat-spacer-#{$i} {
+	  width: 100%;
+	  height: #{$i}px;
+	}
+	$i: $i + 10;
+  }
+
+  // SPACER DIV $xmat-pad - 10 * $xmat-pad
+  $i: 1;
+  @while $i < 11 {
+	.xmat-spacer-#{$i}x {
+	  width: 100%;
+	  height: $i * $xmat-pad;
+	}
+	$i: $i + 1;
   }
 
   @each $direction in $flex-directrons {

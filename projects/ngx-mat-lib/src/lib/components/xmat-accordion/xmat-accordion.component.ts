@@ -12,7 +12,7 @@ import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {EventEmitter} from "@angular/core";
 
 const DEFAULT_COLOR = "accent";
-const transcludedHeaderSelector: string = ".xmat-accordion-examples-title";
+const transcludedHeaderSelector: string = ".xmat-accordion-title";
 const headerSelector: string = "mat-expansion-panel-header";
 // const transcludedContentSelector: string = ".xmat-accordion-examples-content";
 
@@ -28,15 +28,15 @@ export const _XmatAccordionMixinBase: Constructor<CanColor> & typeof XmatAccordi
 
 @Component({
     selector: "xmat-accordion",
+    templateUrl: "./xmat-accordion.component.html",
     styleUrls: ["./xmat-accordion.component.scss"],
     host: {
         "[attr.disabled]": "disabled || null",
-        "class": "xmat-accordion-examples",
+        "class": "xmat-accordion",
         "[class.mat-primary]": "color == 'primary'",
         "[class.mat-accent]": "color == 'accent'",
         "[class.mat-warn]": "color == 'warn'"
     },
-    templateUrl: "./xmat-accordion.component.html",
     encapsulation: ViewEncapsulation.None
 })
 
@@ -92,7 +92,7 @@ export class XmatAccordionComponent extends _XmatAccordionMixinBase implements C
             const $panel = $header.parentElement;
             if ($header.querySelectorAll(transcludedHeaderSelector).length === 0) {
                 $panel.removeChild($header);
-                $panel.classList.add("xmat-accordion-examples-no-header");
+                $panel.classList.add("xmat-accordion-no-header");
             }
         }
     }

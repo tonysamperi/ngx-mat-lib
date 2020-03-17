@@ -1,7 +1,8 @@
- <mat-accordion>
+<mat-accordion>
     <mat-expansion-panel [disabled]="disabled"
                          [(expanded)]="expanded">
-        <mat-expansion-panel-header>
+        <mat-expansion-panel-header [collapsedHeight]="collapsedHeight"
+                                    [expandedHeight]="expandedHeight">
             <mat-panel-title>
                 <ng-content select=".xmat-accordion-title"></ng-content>
             </mat-panel-title>
